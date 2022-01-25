@@ -57,7 +57,7 @@ parse:
     repo_issue: |
       [issue](https://github.com/introcompsys/spring2022/issues)
     bscalendar: |
-      [Course Calendar on BrightSpace](FIXME)
+      [Course Calendar on BrightSpace](https://brightspace.uri.edu/d2l/le/calendar/174751)
     bssite: |
       [Brightspace site](https://brightspace.uri.edu/d2l/home/174751)
-    ghinstructors: FIXMEinstructors
+    ghinstructors: sp22instructors

@@ -22,24 +22,20 @@ parts:
   #   - file: assignments/
   - caption: FAQ
     chapters:
-    - file: faq/index
     - file: faq/syllabus
     - file: faq/github
-    - file: faq/debugging
   - caption: Resources
     chapters:
     - file: resources/glossary
-    - file: resources/python
+    - file: resources/languages
     - file: resources/cheatsheet
-    - file: resources/datasets
     - file: resources/tips
     - file: resources/learning
     - file: resources/gettinghelp
-    - file: resources/terminal
     - file: resources/organization
     - url: https://rhodyprog4ds.github.io/BrownFall20/letters/
       title: Advice from Dr. Brown's Data Science Students
-    - file: letters/index
+
 
 
 
