@@ -8,7 +8,7 @@
  -->
 ### I can't push to my repository, I get an error that updates were rejected
 ````{toggle}
-
+If your error looks like this...
 ```
 ! [rejected] main -> main (fetch first)
 error: failed to push some refs to <repository name>
@@ -30,26 +30,6 @@ git pull
 You'll probably have to [resolve a merge conflict](https://docs.github.com/en/github/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line)
 ````
 
-### The content I added to my portfolio isn't in the pdf
-
-````{toggle}
-There was an error in the original `_toc.yml` file, change yours to match the following:
-
-```
-format: jb-book
-root: intro
-parts:
-  - caption: About
-    chapters:
-    - file: about/index
-    - file: about/grading
-#  - caption: Check 1
-#    chapters:
-#    - file: submission_1_intro
-```
-
-uncomment the later lines and add any new files you add. 
-````
 
 
 
@@ -61,7 +41,7 @@ You need to use SSH with a public/private key; HTTPS with a [Personal Access Tok
 
 ````
 
-### My .ipynb file isn't showing in the staging area or didn't push
+<!-- ### My .ipynb file isn't showing in the staging area or didn't push
 ````{toggle}
 .ipynb files are json that include all of the output, including tables as html and plots as svg, so, unlike plain code files, they don't play well with
 version control.  
@@ -84,14 +64,14 @@ get help.
 As a last resort, use the jupyter interface to download (File > Download as > ...)your notebook as `.md`
 if avialable or `.py` if not and then move that file from your Downloads folder
 to your repository.  We'll set up another workflow for future work
-````
+```` -->
 
 
-### My portfolio won't compile
+<!-- ### My copy of the site won't compile
 ````{toggle}
 If there's an error your notebook it can't complete running. You can allow it to run if the error is on purpose by changing settings as mentioned on the [formatting](portfolio/formatting) page.
 
-````
+```` -->
 
 
 (preemptive-merge)=

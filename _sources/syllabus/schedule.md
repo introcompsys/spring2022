@@ -89,10 +89,10 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - introductions, tool practice
 * - 2021-01-27
   - How does knowledge work in computing?
-  - Read through the class site, notes
+  - [Read through the class site, notes, reflect on a thing you know well](class2prep)
   - course  FAQ, knowledge discussion
 * - 2021-02-01
-  - 
+  -
   -
   -
 * - 2021-02-03
