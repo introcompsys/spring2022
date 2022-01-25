@@ -38,7 +38,7 @@ parts:
     - file: resources/terminal
     - file: resources/organization
     - url: https://rhodyprog4ds.github.io/BrownFall20/letters/
-      title: Advice from FA2020 Students
+      title: Advice from Dr. Brown's Data Science Students
     - file: letters/index
 
 

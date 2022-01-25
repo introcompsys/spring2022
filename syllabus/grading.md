@@ -16,6 +16,20 @@ kernelspec:
 This section of the syllabus describes the principles and mechanics of the grading for the course.
 <!-- This course will be graded on a basis of a set of *skills* (described in detail the next section of the syllabus). This is in contrast to more common grading on a basis of points earned through assignments. -->
 
+## Learning Outcomes
+
+The goal is for you to learn and the grading is designed to as close as possible actually align to how much you have learned.  So, the first thing to keep in mind, always is the course learning outcomes:
+
+By the end of the semester, students will be able to:
+
+1. Differentiate the different classes of tools used in computer science in terms of their features, roles, and how they interact and justify positions and preferences among popular tools
+1. Identify the computational pipeline from hardware to high level programming language
+1. Discuss implications of choices across levels of abstraction
+1. Describe the context under which essential components of computing systems were developed and explain the impact of that context on the systems.
+
+These are what I will be looking for evidence of to say that you met those or not.
+
+
 +++
 
 ## Principles of Grading
