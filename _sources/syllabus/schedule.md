@@ -92,7 +92,7 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - Read through the class site, notes
   - course  FAQ, knowledge discussion
 * - 2021-02-01
-  -
+  - 
   -
   -
 * - 2021-02-03

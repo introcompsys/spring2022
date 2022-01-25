@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to Study in this class &#8212; Introduction to Computer Systems</title>
+    <title>Introduction &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting Help with Programming" href="gettinghelp.html" />
-    <link rel="prev" title="General Tips and Resources" href="tips.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -160,34 +158,34 @@
   Resources
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="glossary.html">
+  <a class="reference internal" href="../resources/glossary.html">
    Glossary
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="cheatsheet.html">
+  <a class="reference internal" href="../resources/cheatsheet.html">
    Cheatsheet
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tips.html">
+  <a class="reference internal" href="../resources/tips.html">
    General Tips and Resources
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
    How to Study in this class
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gettinghelp.html">
+  <a class="reference internal" href="../resources/gettinghelp.html">
    Getting Help with Programming
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="organization.html">
+  <a class="reference internal" href="../resources/organization.html">
    Getting Organized for class
   </a>
  </li>
@@ -237,7 +235,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/resources/learning.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notes/2022-01-25.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -257,10 +255,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fresources/learning.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-01-25.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/resources/learning.md"><button
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-01-25.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -286,19 +284,51 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-this-way">
-   Why this way?
+  <a class="reference internal nav-link" href="#what-is-a-system">
+   What is a System?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-in-class">
-   Learning in class
+  <a class="reference internal nav-link" href="#what-are-we-going-to-learn-and-editing-on-github">
+   What are we going to learn? and Editing on GitHub
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#after-class">
-   After class
+  <a class="reference internal nav-link" href="#for-next-class">
+   For next class
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-physical-code-will-we-be-writing-this-semester">
+     What physical code will we be writing this semester?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-would-committing-pull-requests-branches-etc-work-if-you-wanted-to-work-on-something-on-your-computer">
+     How would committing, pull requests, branches, etc work if you wanted to work on something on your computer?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-github-seem-so-simple-on-a-surface-level-but-to-actually-use-it-requires-much-deeper-knowledge">
+     Why does github seem so simple on a surface level? but to actually use it requires much deeper knowledge…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-i-be-able-to-view-my-answers-on-prismia-chat-for-the-future-will-it-erase">
+     Will I be able to view my answers on prismia chat for the future? Will it erase?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-about-the-feedback-page-how-to-merge-it-or-not-merge-it-at-all">
+     What about the feedback page? How to merge it or not merge it at all?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -310,7 +340,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to Study in this class</h1>
+                <h1>Introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -321,19 +351,51 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-this-way">
-   Why this way?
+  <a class="reference internal nav-link" href="#what-is-a-system">
+   What is a System?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-in-class">
-   Learning in class
+  <a class="reference internal nav-link" href="#what-are-we-going-to-learn-and-editing-on-github">
+   What are we going to learn? and Editing on GitHub
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#after-class">
-   After class
+  <a class="reference internal nav-link" href="#for-next-class">
+   For next class
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-physical-code-will-we-be-writing-this-semester">
+     What physical code will we be writing this semester?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-would-committing-pull-requests-branches-etc-work-if-you-wanted-to-work-on-something-on-your-computer">
+     How would committing, pull requests, branches, etc work if you wanted to work on something on your computer?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-github-seem-so-simple-on-a-surface-level-but-to-actually-use-it-requires-much-deeper-knowledge">
+     Why does github seem so simple on a surface level? but to actually use it requires much deeper knowledge…
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-i-be-able-to-view-my-answers-on-prismia-chat-for-the-future-will-it-erase">
+     Will I be able to view my answers on prismia chat for the future? Will it erase?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-about-the-feedback-page-how-to-merge-it-or-not-merge-it-at-all">
+     What about the feedback page? How to merge it or not merge it at all?
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -344,68 +406,67 @@
             
               <div>
                 
-  <div class="section" id="how-to-study-in-this-class">
-<h1>How to Study in this class<a class="headerlink" href="#how-to-study-in-this-class" title="Permalink to this headline">¶</a></h1>
-<p>In this page, I break down how I expect learning to work for this class.</p>
-<p>I hope that with this advice, you never feel like this while working on assignments
-for this class.
-<img alt="man throwing computer monitor in anger, clip from The IT Crowd" src="https://i.gifer.com/5SNC.gif" /></p>
-<div class="section" id="why-this-way">
-<h2>Why this way?<a class="headerlink" href="#why-this-way" title="Permalink to this headline">¶</a></h2>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>A new book that might be of interest if you find programming classes hard is
-<a class="reference external" href="https://www.manning.com/books/the-programmers-brain#toc">the Programmers Brain</a>
-As of 2021-09-07, it is available for free by clicking on chapters at that linked
-table of contents section.</p>
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<!-- ## Introductions -->
+<div class="section" id="what-is-a-system">
+<h2>What is a System?<a class="headerlink" href="#what-is-a-system" title="Permalink to this headline">¶</a></h2>
 </div>
-<p>Learning requires iterative practice.
-It does not require memorizing all of the specific commands, but instead learning the basic patterns.<br />
-Using reference materials frequently is a built in part of programming, most languages have built in help as a part of the language for this reason.
-This course is designed to have you not only learn the material, but also to build skill in learning to program.  Following these guidelines will help you build habits to not only be successful in this class, but also in future programming.</p>
-<!-- ```{admonition} Where are your help tools?
-In Python and Jupyter notebooks, what help tools do you have?
-``` -->
+<div class="section" id="what-are-we-going-to-learn-and-editing-on-github">
+<h2>What are we going to learn? and Editing on GitHub<a class="headerlink" href="#what-are-we-going-to-learn-and-editing-on-github" title="Permalink to this headline">¶</a></h2>
+<p>We initialized your <a class="reference external" href="https://classroom.github.com/a/3ne9UY-R">KWL Chart</a>. You will keep this chart up to date over the course of the semester.  Mostly it will be prompted when you should fill it in, but you can add to it whenever you would like.</p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p>GitHub itself provides pretty good documentation, full of screenshots for things in browser.
+<a class="reference external" href="https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files">editing a file</a>
+<a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request</a></p>
 </div>
-<div class="section" id="learning-in-class">
-<h2>Learning in class<a class="headerlink" href="#learning-in-class" title="Permalink to this headline">¶</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>My goal is to use class time so that you can be successful with <em>minimal frustration</em>
-while working outside of class time.</p>
 </div>
-<p>Programming requires both practical skills and abstract concepts. During class time, we will cover the practical aspects and introduce the basic concepts. You will get to see the basic practical details and real examples of debugging during class sessions. Learning to debug something you’ve never encountered before and setting up your programming environment, for example, are <em>high frustration</em> activities, when you’re learning, because you don’t know what you don’t know.  On the other hand, diving deeper into options and more complex applications of what you have already seen in class, while challenging, is something I’m confident that you can all be successful at with minimal frustration once you’ve seen basic ideas in class. My goal is that you can repeat the patterns and processes we use in class outside of class to complete assignments, while acknowledging that you will definitely have to look things up and read documentation outside of class.</p>
-<p>Each class will open with some time to review what was covered in the last session before adding new material.</p>
-<p>To get the most out of class sessions, you should have a laptop with you.  During class you should be following along with Dr. Brown. You’ll answer questions on Prismia chat, and when appropriate you should try running necessary code to answer those questions.  If you encounter errors, share them via Prismia chat so that we can see and help you.</p>
+<div class="section" id="for-next-class">
+<span id="class2prep"></span><h2>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section will contain more detail, but a short list of what you need will always be in the <a class="reference internal" href="../syllabus/schedule.html"><span class="doc std std-doc">schedule</span></a></p>
 </div>
-<div class="section" id="after-class">
-<h2>After class<a class="headerlink" href="#after-class" title="Permalink to this headline">¶</a></h2>
-<p>After class, you should practice with the concepts introduced.<br />
-This means reviewing the notes: both yours from class and the annotated notes posted to the course website.<br />
-When you review the notes, you should be adding comments on tricky aspects of the code and narrative text between code blocks in markdown cells.
-While you review your notes and the annotated course notes, you should also read the documentation for new modules, libraries, or functions introduced in that class.
-We will collaboratively annotate notes for this course.  Dr. Brown will post a basic outline of what was covered in class and we will all fill in explanations, tips, and challenge questions.  Responsibility for the main annotation will rotate.</p>
-<!-- In the annotated notes, there will often be extra questions or ideas on how to extend and practice the concepts.  Try these out. -->
-<p>If you find anything hard to understand or unclear, write it down to bring to class the next day or post an issue on the course website.</p>
-<!-- ## Assignments
-
-
-In assignments, you will be asked to practice with specific concepts at an intermediate level.
-Assignments will apply the concepts from class with minimal extensions.  You will probably need
-to use help functions and read documentation to complete assignments, but mostly to look up
-things you saw in class and make minor variations. Most of what you need for
-assignments will be in the class notes, which is another reason to read them after class.
-
-## Portfolios
-
-In portfolios, your goal is to extend and apply the concepts taught in class and
-practiced in assignments to solve more realistic problems.  You may also reflect
-on your learning in order to demonstrate deep understanding.  These will require
-significant reading beyond what we cover in class. -->
-<!-- ## Building skill in computational thinking
-
-
-## Putting them together -->
+<ul class="simple">
+<li><p>More practice with <a class="reference external" href="https://classroom.github.com/a/wHq_HF4g">GitHub terminology</a>. Accept this assignment, read through it, and follow the instructions at the end.</p></li>
+<li><p>Review these notes, bring any questions you have to class</p></li>
+<li><p>Read the syllabus, explore this whole <a class="reference external" href="https://introcompsys.github.io/spring2022/">website</a>. Bring questions about the course.</p></li>
+<li><p>Think about one thing you’ve learned really well (computing or not) and how do you know that you know it?  (bring your example)</p></li>
+</ul>
+</div>
+<div class="section" id="questions-after-class">
+<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-physical-code-will-we-be-writing-this-semester">
+<h3>What physical code will we be writing this semester?<a class="headerlink" href="#what-physical-code-will-we-be-writing-this-semester" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Shell scripts, tiny bits of C, small examples of python.  Mostly, we’ll be focused on the glue that connects the pieces of a regular code project more than developing  a lot of code. We will not, for example, study any algorithms.</p>
+</div>
+</div>
+<div class="section" id="how-would-committing-pull-requests-branches-etc-work-if-you-wanted-to-work-on-something-on-your-computer">
+<h3>How would committing, pull requests, branches, etc work if you wanted to work on something on your computer?<a class="headerlink" href="#how-would-committing-pull-requests-branches-etc-work-if-you-wanted-to-work-on-something-on-your-computer" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will learn how to work with git offline next week. You can use git (and GitHub) via a terminal, specialized desktop applications, or built into many IDEs.</p>
+</div>
+</div>
+<div class="section" id="why-does-github-seem-so-simple-on-a-surface-level-but-to-actually-use-it-requires-much-deeper-knowledge">
+<h3>Why does github seem so simple on a surface level? but to actually use it requires much deeper knowledge…<a class="headerlink" href="#why-does-github-seem-so-simple-on-a-surface-level-but-to-actually-use-it-requires-much-deeper-knowledge" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>GitHub provides a user friendly wrapper around git, which is an open source version control tool that is designed to be very powerful for and primarily used by, experienced programmers with a good knowledge of files systems.  Git is in fact a special file system. GitHub makes the most common actions easier so that more people can do them, but the underlying tool can do so many things, so it can be complicated.</p>
+</div>
+</div>
+<div class="section" id="will-i-be-able-to-view-my-answers-on-prismia-chat-for-the-future-will-it-erase">
+<h3>Will I be able to view my answers on prismia chat for the future? Will it erase?<a class="headerlink" href="#will-i-be-able-to-view-my-answers-on-prismia-chat-for-the-future-will-it-erase" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Yes, the prismia history will always be available.  You can also download the transcript from each class.</p>
+</div>
+</div>
+<div class="section" id="what-about-the-feedback-page-how-to-merge-it-or-not-merge-it-at-all">
+<h3>What about the feedback page? How to merge it or not merge it at all?<a class="headerlink" href="#what-about-the-feedback-page-how-to-merge-it-or-not-merge-it-at-all" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will specifically advise you on when you should merge the Feedback PR.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -422,7 +483,7 @@ significant reading beyond what we cover in class. -->
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./resources"
+            path: "./notes"
         },
         predefinedOutput: true
     }
@@ -433,21 +494,7 @@ significant reading beyond what we cover in class. -->
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="tips.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">General Tips and Resources</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="gettinghelp.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting Help with Programming</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
