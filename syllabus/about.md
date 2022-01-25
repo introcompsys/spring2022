@@ -1,35 +1,69 @@
 # Basic Facts
 
-### About this course
+# Introduction to Computer Systems
 
-Data science exists at the intersection of computer science, statistics, and machine
-learning. That means writing programs to access and manipulate data so that it becomes
-available for analysis using statistical and machine learning techniques is at the core of
-data science. Data scientists use their data and analytical ability to find and interpret rich
-data sources; manage large amounts of data despite hardware, software, and bandwidth
-constraints; merge data sources; ensure consistency of datasets; create visualizations to
-aid in understanding data; build mathematical models using the data; and present and
-communicate the data insights/findings.
-
-This course provides a survey of data science. Topics include data driven programming
-in Python; data sets, file formats and meta-data; descriptive statistics, data visualization,
-and foundations of predictive data modeling and machine learning; accessing web data
-and databases; distributed data management. You will work on weekly substantial
-programming problems such as accessing data in database and visualize it or build
-machine learning models of a given data set.
+This new course links together different ideas that you have encountered but not covered
+deeply in other courses.  We'll learn about tools used in programming and how they
+work. The goal of this course is to help you understand how your computer and programming
+environment work so that you can debug and learn independently more confident.
 
 
-Basic programming skills (CSC201 or CSC211) are a prerequisite to this course. This course is a prerequisite course to machine learning, where you learn how machine learning algorithms work. In this course, we will start with a very fast review of basic programming ideas, since you've already done that before. We will learn how to *use* machine learning algorithms to do data science, but not how to *build* machine learning algorithms, we'll use packages that implement the algorithms for us.
+## Quck Facts
+
+- **Course time:** Spring 2022, TuTh 12:30PM - 1:45PM
+- **Credits:** 4
+
+
+
+To request a permission number [complete this google form](https://forms.gle/eVrmK9SBKYqpCNk99)
+**you must be signed into your URI google account to access the form**
+
+## Why Take this course
+
+1. use and understand git/ GitHub
+1. make sense of cryptic compiler messages
+1. understand how file organization impacts programming
+1. fulfill your 300 level CSC elective requirement
+1. preview ideas that will be explored in depth in 411 & 412
+
+## Topics covered
+
+_this is a partial list_
+- git and other version control
+- bash and other shell scripting
+- filesystems
+- basics of hardware
+- what happens when you compile code
+- what are the different types of software on your computer
+
+
+## Catalog Description
+
+
+How the history and context of computing impacts the practice of computing today. Tools used in
+programming and computational problem solving. How programming works from high level
+languages to hardware. Survey of computer hardware and representation of information.
+Pre: CSC110, any 200 level CSC course, or equivalent.
+
+## Learning Outcomes
+
+By the end of the semester, students will be able to:
+
+1. Differentiate the different classes of tools used in computer science in terms of their features, roles, and how they interact and justify positions and preferences among popular tools
+1. Identify the computational pipeline from hardware to high level programming language
+1. Discuss implications of choices across levels of abstraction
+1. Describe the context under which essential components of computing systems were developed and explain the impact of that context on the systems.
 
 
 
 ### About this syllabus
 
-This syllabus is a *living*  document and accessible from BrightSpace, as a pdf for download directly online at [rhodyprog4ds.github.io/BrownFall21/syllabus](https://rhodyprog4ds.github.io/BrownFall21/syllabus/). If you choose to download a copy of it, note that it is only a copy. You can get notification of changes from GitHub by "watching" the 
-{{ '[repository](https://github.com/rhodyprog4ds/{/{repo})'.format(repo=repo_name) }}
+<!-- This syllabus is a *living*  document and accessible from BrightSpace, as a pdf for download directly online at [introcompsys.github.io/BrownFall21/syllabus](https://rhodyprog4ds.github.io/BrownFall21/syllabus/). If you choose to download a copy of it, note that it is only a copy.  -->
+You can get notification of changes from GitHub by "watching" the
+{{ '[repository](https://github.com/introcompsys/{/{repo})'.format(repo=repo_name) }}
 You can view the date of changes and exactly what changes were made on the Github {{ repo_commits}} page.
 
-Creating an {{ repo_issue }} is also a good way to ask questions about anything in the course it will prompt additions and expand the FAQ section.
+Creating an {{ repo_issue }} is also a good way to ask questions about anything in the course it will prompt additions and expand the FAQ section. That will be linked when sovle and you will get a notification at that time.
 
 
 ### About your instructor
