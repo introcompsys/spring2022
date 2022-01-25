@@ -15,7 +15,7 @@ html:
 
 
 repository:
-  url                       : https://github.com/introcompsys/ # The URL to your book's repository
+  url                       : https://github.com/introcompsys/spring2022 # The URL to your book's repository
   path_to_book              : ""  # A path to your book's folder, relative to the repository root.
   branch                    : main  # Which branch of the repository should be used when creating links
 
@@ -49,13 +49,13 @@ parse:
     - smartquotes
     - substitution
   myst_substitutions:
-    time: TuTH12:30-1:45
+    time: TuTH 12:30-1:45
     location: Engineering Building Room 040
-    repo_name: FIXME
+    repo_name: spring2022
     repo_commits: |
-      [commit history](https://github.com/introcompsys/FIXME/commits)
+      [commit history](https://github.com/introcompsys/spring2022/commits)
     repo_issue: |
-      [issue](https://github.com/introcompsys/FIXME/issues)
+      [issue](https://github.com/introcompsys/spring2022/issues)
     bscalendar: |
       [Course Calendar on BrightSpace](FIXME)
     bssite: |
