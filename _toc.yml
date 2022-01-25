@@ -6,7 +6,7 @@ parts:
     # - file: syllabus/index
     - file: syllabus/about
     - file: syllabus/tools
-    - file: syllabus/achievements
+    - file: syllabus/schedule
     - file: syllabus/grading
     - file: syllabus/policies
     - file: syllabus/uri_resources

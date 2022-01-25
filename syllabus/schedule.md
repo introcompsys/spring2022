@@ -17,11 +17,6 @@ _one week_
 ### How do all of these topics relate?
 
 _approximatley two weeks_
-
-We'll spend a few classes doing an overview where we go through each topic in a litte more depth than an introduction, but not as deep as the rest of the semester. In this section, we will focus on how the different things we will see later all relate to one another more than a deep understanding of each one.  At the end of this unit, we'll work on your grading contracts.
-
-We'll also learn more key points in history of computing to help tie concepts together in a narrative.
-
 ````{margin}
 ```{tip}
 We will integrate history throughout the whole course.  Connecting ideas to
@@ -30,6 +25,11 @@ one another, and especially in a sort of narrative form can help improve retenti
 We'll also come back to differnt topics over and over again with a slightly different framing each time.  This will both connect ideas, give you chance to practice recalling (more recall practice improves long term rentention of things you learn), and give you a chance to learn things in different ways.
 ```
 ````
+We'll spend a few classes doing an overview where we go through each topic in a litte more depth than an introduction, but not as deep as the rest of the semester. In this section, we will focus on how the different things we will see later all relate to one another more than a deep understanding of each one.  At the end of this unit, we'll work on your grading contracts.
+
+We'll also learn more key points in history of computing to help tie concepts together in a narrative.
+
+
 Topics:
 - bash
 - man pages (built in help)
