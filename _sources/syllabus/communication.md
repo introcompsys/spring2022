@@ -16,29 +16,30 @@ kernelspec:
 
 # Course Communications
 
-<!--
+
 ```{code-cell}
 :tags: ["remove-input"]
 
 import pandas as pd
 from IPython.display import display, Markdown, HTML
 pd.set_option('display.max_colwidth', 0)
-df = pd.read_csv('../_data/communication.csv')
+# df = pd.read_csv('../_data/communication.csv')
 
 help_df = pd.read_csv('../_data/help_hours.csv')
-``` -->
+```
 
 ## Help Hours
 
 TBA
 
-<!--
+
 ```{code-cell}
 :tags: ["remove-input"]
 
 help_df.style.hide_index()
 ```
-
+Online office hours locations are linked in the #help channel on slack
+<!--
 
 We have several different ways to communicate in this course. This section summarizes them -->
 
