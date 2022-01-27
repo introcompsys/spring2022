@@ -61,3 +61,11 @@ In about the third week you will complete, from a provided template, a grading c
 The finalized grading contract will include the specification that each piece of work has to adhere to.
 
 All contracts will include maintaining a KWL Chart for the duration of the semester and consistent responses in class.  
+
+## Deadlines
+
+Each week there will be two feedback periods, where I review work that has been
+submitted. These will be:
+
+- Tuesdays at 5pm
+- Thursdays at 4pm
