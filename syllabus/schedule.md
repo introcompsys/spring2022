@@ -39,6 +39,7 @@ Topics:
 - compilation
 - information vs data
 
+(sectools)=
 ### What tools do Computer Scientists use?
 
 _approximately four weeks_
