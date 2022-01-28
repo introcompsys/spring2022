@@ -6,7 +6,7 @@
 
 ````
  -->
-### I can't push to my repository, I get an error that updates were rejected
+## I can't push to my repository, I get an error that updates were rejected
 ````{toggle}
 If your error looks like this...
 ```
@@ -34,7 +34,7 @@ You'll probably have to [resolve a merge conflict](https://docs.github.com/en/gi
 
 
 
-### My command line says I cannot use a password
+## My command line says I cannot use a password
 ````{toggle}
 GitHub has [strong rules](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github) about authentication
 You need to use SSH with a public/private key; HTTPS with a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) or use the [GitHub CLI](https://cli.github.com/) [auth](https://cli.github.com/manual/gh_auth_login)
@@ -75,7 +75,7 @@ If there's an error your notebook it can't complete running. You can allow it to
 
 
 (preemptive-merge)=
-### Help! I accidentally merged the Feedback Pull Request before my assignment was graded
+## Help! I accidentally merged the Feedback Pull Request before my assignment was graded
 ````{toggle}
 
 That's ok. You can fix it.

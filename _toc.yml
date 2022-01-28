@@ -3,7 +3,7 @@ root: index
 parts:
   - caption: Syllabus
     chapters:
-    # - file: syllabus/index
+    - file: syllabus/index
     - file: syllabus/about
     - file: syllabus/tools
     - file: syllabus/schedule
