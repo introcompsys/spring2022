@@ -39,6 +39,7 @@ Topics:
 - compilation
 - information vs data
 
+(sectools)=
 ### What tools do Computer Scientists use?
 
 _approximately four weeks_
@@ -92,9 +93,9 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - [Read through the class site, notes, reflect on a thing you know well](class2prep)
   - course  FAQ, knowledge discussion
 * - 2021-02-01
-  -
-  -
-  -
+  - How do I use git offline?
+  - [review notes, reflect on issues, check environment, map cs knowledge](class3prep)
+  - cloning, pushing, terminal basics
 * - 2021-02-03
   -
   -
