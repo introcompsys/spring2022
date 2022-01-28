@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. How does learning and knowledge work in computing? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="1. Introduction" href="2022-01-25.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-01-27.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-01-27.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-01-27.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-review">
+   2.1. Git review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scavenger-hunt">
+   2.2. Scavenger Hunt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recall-systems">
+   2.3. Recall, Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mental-models-and-learning">
+   2.4. Mental Models and Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-it-like-to-know-something-really-well">
+     2.4.1. What is it like to know something really well?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-we-need-this-for-computer-systems">
+   2.5. Why do we need this for computer systems?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#systems-are-designed-by-programmers">
+     2.5.1. Systems are designed by programmers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#context-matters">
+     2.5.2. Context Matters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimal-is-relative">
+     2.5.3. Optimal is relative
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-i-expect-this-to-work">
+   2.6. How I expect this to work
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-next-class">
+   2.7. For next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   2.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   2.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-would-i-learn-more-about-version-control-systems">
+     2.9.1. How would I learn more about version control systems?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-github-to-make-more-meaningful-repositories-instead-of-just-a-mess-of-files-that-are-not-properly-uploaded">
+     2.9.2. How to use github to make more meaningful repositories, instead of just a mess of files that are not properly uploaded?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-benefits-to-using-git-offline-vs-using-it-only-in-conjunction-with-github">
+     2.9.3. Are there any benefits to using git offline vs using it only in conjunction with github?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-will-we-be-establishing-the-grade-contracts">
+     2.9.4. When will we be establishing the grade contracts?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-i-be-better-at-communicating-documentation">
+     2.9.5. How can I be better at communicating documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-often-are-we-supposed-to-update-our-kwl-charts">
+     2.9.6. How often are we supposed to update our KWL Charts?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-we-get-a-notification-when-you-post-the-notes-or-do-we-just-check-periodically">
+     2.9.7. Do we get a notification when you post the notes, or do we just check periodically?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How does learning and knowledge work in computing?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-review">
+   2.1. Git review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scavenger-hunt">
+   2.2. Scavenger Hunt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recall-systems">
+   2.3. Recall, Systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mental-models-and-learning">
+   2.4. Mental Models and Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-it-like-to-know-something-really-well">
+     2.4.1. What is it like to know something really well?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-we-need-this-for-computer-systems">
+   2.5. Why do we need this for computer systems?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#systems-are-designed-by-programmers">
+     2.5.1. Systems are designed by programmers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#context-matters">
+     2.5.2. Context Matters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimal-is-relative">
+     2.5.3. Optimal is relative
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-i-expect-this-to-work">
+   2.6. How I expect this to work
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-next-class">
+   2.7. For next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   2.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   2.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-would-i-learn-more-about-version-control-systems">
+     2.9.1. How would I learn more about version control systems?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-github-to-make-more-meaningful-repositories-instead-of-just-a-mess-of-files-that-are-not-properly-uploaded">
+     2.9.2. How to use github to make more meaningful repositories, instead of just a mess of files that are not properly uploaded?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-any-benefits-to-using-git-offline-vs-using-it-only-in-conjunction-with-github">
+     2.9.3. Are there any benefits to using git offline vs using it only in conjunction with github?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-will-we-be-establishing-the-grade-contracts">
+     2.9.4. When will we be establishing the grade contracts?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-can-i-be-better-at-communicating-documentation">
+     2.9.5. How can I be better at communicating documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-often-are-we-supposed-to-update-our-kwl-charts">
+     2.9.6. How often are we supposed to update our KWL Charts?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-we-get-a-notification-when-you-post-the-notes-or-do-we-just-check-periodically">
+     2.9.7. Do we get a notification when you post the notes, or do we just check periodically?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-does-learning-and-knowledge-work-in-computing">
+<h1><span class="section-number">2. </span>How does learning and knowledge work in computing?<a class="headerlink" href="#how-does-learning-and-knowledge-work-in-computing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="git-review">
+<h2><span class="section-number">2.1. </span>Git review<a class="headerlink" href="#git-review" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Make sure you get <a class="reference external" href="https://classroom.github.com/a/wHq_HF4g">GitHub terminology</a> down and use this “assignment” to practice.</p></li>
+</ul>
+</div>
+<div class="section" id="scavenger-hunt">
+<h2><span class="section-number">2.2. </span>Scavenger Hunt<a class="headerlink" href="#scavenger-hunt" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The goal here is to make sure you know where to find basic things, not that you
+have memorized every bit of information about the course</p>
+</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Where can you find when office hours are?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text"><a class="reference external" href="https://introcompsys.github.io/spring2022/syllabus/communication.html">Course Communications</a></p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Where can you find the detailed list of what to prepare for today’s class?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text"><a class="reference external" href="https://introcompsys.github.io/spring2022/notes/2022-01-25.html">the notes from the previous class</a></p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Where is the regrading policy?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text"><a class="reference external" href="https://introcompsys.github.io/spring2022/syllabus/policies.html">the grading policies page in the syllabus section</a></p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+There’s a term you don’t recognize in an activity, where should you look?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">the <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/glossary.html">glossary</a> under resources</p>
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Something went wrong in an assignment repo on GitHub, what should you check before asking for help?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">the <a class="reference external" href="https://introcompsys.github.io/spring2022/faq/github.html">git and GitHub</a>
+section under FAQ</p>
+</div>
+</details></div>
+<div class="section" id="recall-systems">
+<h2><span class="section-number">2.3. </span>Recall, Systems<a class="headerlink" href="#recall-systems" title="Permalink to this headline">¶</a></h2>
+<p><em>“Systems”</em> in computing often refers to all the parts that help make the
+“more exciting” algorithmic parts work. Systems is like the magic that helps
+you get things done in practice, so that you can shift your attention elsewhere.</p>
+<p>In intro courses, we typically give you an environment to hide all the problems
+that could occur at the systems level.</p>
+<p>Systems programming is how to look at the file system, the operating system, etc.</p>
+</div>
+<div class="section" id="mental-models-and-learning">
+<h2><span class="section-number">2.4. </span>Mental Models and Learning<a class="headerlink" href="#mental-models-and-learning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-it-like-to-know-something-really-well">
+<h3><span class="section-number">2.4.1. </span>What is it like to know something really well?<a class="headerlink" href="#what-is-it-like-to-know-something-really-well" title="Permalink to this headline">¶</a></h3>
+<p>When we know something well, it is easier to do, we can do it multple ways,
+it is easy to explain to others and we can explain it multiple ways.
+we can do the task almost automatically and combine and create things in new
+ways.  This is true for all sorts of things.</p>
+</div>
+<p>a mental model is how you think about a concept and your way of relating it.
+Novices have sparse mental models, experts have connected mental models.</p>
+<p>When we first learn new things, we first get the basic concepts down, but we
+may not know how they relate.</p>
+<div class="figure align-default" id="id3">
+<img alt="../_images/2022-01-27-mental_model_novice.svg" src="../_images/2022-01-27-mental_model_novice.svg" /><p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">a novice mental model is disconnected and has few concepts</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>As we learn more, they become more connected.</p>
+<div class="figure align-default" id="id4">
+<img alt="../_images/2022-01-27-mental_model_competent.svg" src="../_images/2022-01-27-mental_model_competent.svg" /><p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">a compententmental model starts to have some connections, with relationships
+between the concepts.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id5">
+<img alt="../_images/2022-01-27-mental_model_advanced.svg" src="../_images/2022-01-27-mental_model_advanced.svg" /><p class="caption"><span class="caption-number">Fig. 2.3 </span><span class="caption-text">an expert mentla model is densley connected and has more concepts in it.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>We can visualize with concept maps. Which connect the ideas using relationships
+on the arrows.</p>
+<div class="figure align-default" id="id6">
+<img alt="../_images/2022-01-27-mental_model_git.svg" src="../_images/2022-01-27-mental_model_git.svg" /><p class="caption"><span class="caption-number">Fig. 2.4 </span><span class="caption-text">a small concept map showing that git is an instance of both a file system and
+a version control system.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="why-do-we-need-this-for-computer-systems">
+<h2><span class="section-number">2.5. </span>Why do we need this for computer systems?<a class="headerlink" href="#why-do-we-need-this-for-computer-systems" title="Permalink to this headline">¶</a></h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This section contain points added here that were not discussed directly in class, but are important and will come back up</p>
+</div>
+<div class="section" id="systems-are-designed-by-programmers">
+<h3><span class="section-number">2.5.1. </span>Systems are designed by programmers<a class="headerlink" href="#systems-are-designed-by-programmers" title="Permalink to this headline">¶</a></h3>
+<p>Computer Science is not a natural science like biology or physics where we try
+to understand some aspect of the world that we live in.  Computer Science as a
+discipline, like algorithms, mostly derives from Math.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Historically, Computer Science Departments were often initally formed by professors
+in math creating a new department or, sometimes, making a new degree programs
+without even creating a new department at first.  In some places, CS degree
+programs also grew within or out of Electrical Engineering.  At URI, CS grew
+out of math.</p>
+</div>
+<p>So, when we study computer science, while parts of it are limited by physics<a class="footnote-reference brackets" href="#physics" id="id1">1</a>, most of it is essentially an
+imaginary world that is made by people.  Understanding how people think, both
+generally, and common patterns within the community of programmers<a class="footnote-reference brackets" href="#programmerthink" id="id2">2</a>
+understand how things work and why they are the way they are.  The why can also
+make it easier to remember, or, it can help you know what things you can find
+alternatives for, or even where you might invent a whole new thing that is
+better in some way.</p>
+<div class="figure align-default" id="id7">
+<img alt="https://drek4537l1klr.cloudfront.net/hermans2/Figures/CH01_F02_Hermans2.png" src="https://drek4537l1klr.cloudfront.net/hermans2/Figures/CH01_F02_Hermans2.png" />
+<p class="caption"><span class="caption-number">Fig. 2.5 </span><span class="caption-text">An overview of the three cognitive processes that <a class="reference external" href="https://www.manning.com/books/the-programmers-brain#toc">this book</a> covers: STM, LTM, and working memory. The arrows labeled 1 represent information coming into your brain. The arrows labeled 2 indicate the information that proceeds into your STM. Arrow 3 represents information traveling from the STM into the working memory, where it’s combined with information from the LTM (arrow 4). Working memory is where the information is processed while you think about it.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="context-matters">
+<h3><span class="section-number">2.5.2. </span>Context Matters<a class="headerlink" href="#context-matters" title="Permalink to this headline">¶</a></h3>
+<p>This context of how things were developed can infulence how we understand it.
+We will also talk about the history of computing as we go through different
+topics in class so that we can build that context up.</p>
+</div>
+<div class="section" id="optimal-is-relative">
+<h3><span class="section-number">2.5.3. </span>Optimal is relative<a class="headerlink" href="#optimal-is-relative" title="Permalink to this headline">¶</a></h3>
+<p>The “best” way to do something is always relative to the context.  “Best” is a
+vague term.  It could be most computationally efficient theoretically,
+fastest to run on a particular type of hardware, or easiest for another programmer
+to read.</p>
+<p>We will see how the best choice varies a lot as we investigate things at
+different levels of abstraction.</p>
+</div>
+</div>
+<div class="section" id="how-i-expect-this-to-work">
+<h2><span class="section-number">2.6. </span>How I expect this to work<a class="headerlink" href="#how-i-expect-this-to-work" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="for-next-class">
+<span id="class3prep"></span><h2><span class="section-number">2.7. </span>For next class<a class="headerlink" href="#for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is what is required, before the next class and will be checked or if you
+don’t do it you will have trouble participating in class</p>
+</div>
+<ol class="simple">
+<li><p>Review these notes, both rendered as html and the raw markdown in the repository.</p></li>
+<li><p>find 2-3 examples of things in programming you have got working, but did not really understand. this could be errors you fixed, or something you just know you’re supposed to do, but not why</p></li>
+<li><p>map out your computing knowledge and add it to your kwl chart repo. this can be an image that you upload or a text-based outline.</p></li>
+<li><p>Make sure you have a working environment for next week. Use slack to ask for help.</p>
+<ul class="simple">
+<li><p>check that you have Python installed with Jupyter, ideally with <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">Anaconda</a></p></li>
+<li><p>install <a class="reference external" href="https://jupyterbook.org/intro.html">jupyter book</a></p></li>
+<li><p>install <a class="reference external" href="https://git-scm.com/downloads">GitBash</a> on windows (optional for others)</p></li>
+<li><p>make sure you have Xcode on MacOS</p></li>
+<li><p>install <a class="reference external" href="https://github.com/cli/cli#installation">the GitHub CLI</a> on all OSs</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="more-practice">
+<h2><span class="section-number">2.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Activities in this section are optional, but things that may help you prepare,
+or (in future classes) extend the idea.</p>
+</div>
+<ul class="simple">
+<li><p>(optional) try mapping out using <a class="reference external" href="https://mermaid-js.github.io/mermaid/#/">mermaid</a> syntax, we’ll be using other tools that will faciltate rendering later, or try getting it to render on your own.</p></li>
+<li><p>(optional) read chapter 1 <a class="reference external" href="https://www.manning.com/books/the-programmers-brain#toc">the programmmer’s brain</a>. Some of the ideas we talked about today are mentioned there, and it relates to where you’re suppoed to be looking for things that you have done, but didn’t really understand.</p></li>
+<li><p>try adding something to this page or the glossary of the course site or link
+a glossary term to an occurence of it on the site.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>terms on this page that could be added to the glossary include <a class="reference external" href="https://stjs.tech/glossary/#filesystem">filesystem</a> and <a class="reference external" href="https://stjs.tech/glossary/#operating_system">operating system</a>. The <a class="reference external" href="https://jupyterbook.org/content/content-blocks.html#glossaries">jupyter book docs</a>  show how to add to a glossary and link to the glossary
+from another page.</p>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">2.9. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-would-i-learn-more-about-version-control-systems">
+<h3><span class="section-number">2.9.1. </span>How would I learn more about version control systems?<a class="headerlink" href="#how-would-i-learn-more-about-version-control-systems" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will talk more about this in in <a class="reference internal" href="../syllabus/schedule.html#sectools"><span class="std std-ref"> the tools section of the course</span></a></p>
+</div>
+</div>
+<div class="section" id="how-to-use-github-to-make-more-meaningful-repositories-instead-of-just-a-mess-of-files-that-are-not-properly-uploaded">
+<h3><span class="section-number">2.9.2. </span>How to use github to make more meaningful repositories, instead of just a mess of files that are not properly uploaded?<a class="headerlink" href="#how-to-use-github-to-make-more-meaningful-repositories-instead-of-just-a-mess-of-files-that-are-not-properly-uploaded" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will talk a bit about how git works to get some of this.  Some of this will
+also be dependent on the <em>type</em> of code that you are working on.  For example,
+organizing data science examples would be different than a data science library
+which would be different than a backend API, even if they were all in Python.</p>
+</div>
+</div>
+<div class="section" id="are-there-any-benefits-to-using-git-offline-vs-using-it-only-in-conjunction-with-github">
+<h3><span class="section-number">2.9.3. </span>Are there any benefits to using git offline vs using it only in conjunction with github?<a class="headerlink" href="#are-there-any-benefits-to-using-git-offline-vs-using-it-only-in-conjunction-with-github" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>offline you can use more powerful code editing tools and run your code more frequently.
+Even offline, you can use it with GitHub.</p>
+<p>Advantages to using git without GitHub, but with a different host could be
+privacy reasons- if you own your own server; that you want to track changes, but
+do not need a backup at all; that you want different hosting for their interface
+that provides different features; or that you don’t trust Microsoft(who bought
+GitHub).  Some people also do not use GitHub because they have ICE as a
+customer.</p>
+</div>
+</div>
+<div class="section" id="when-will-we-be-establishing-the-grade-contracts">
+<h3><span class="section-number">2.9.4. </span>When will we be establishing the grade contracts?<a class="headerlink" href="#when-will-we-be-establishing-the-grade-contracts" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will work on grading contracts in <em>approximately</em> the third week.  They will
+be due on or after Feburary 13th.  You will have at least one week from when you
+get the template to the first review.</p>
+</div>
+</div>
+<div class="section" id="how-can-i-be-better-at-communicating-documentation">
+<h3><span class="section-number">2.9.5. </span>How can I be better at communicating documentation<a class="headerlink" href="#how-can-i-be-better-at-communicating-documentation" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We are going to focus on the tools to produce documentation sites and for
+distributing documentation.  To learn more about documentation, in terms of
+what to write and where, I have <a class="reference external" href="https://carpentries-incubator.github.io/python-packaging-publishing/05-documentation-types-roles/index.html">an outline here</a>.
+I also learned a lot from <a class="reference external" href="https://www.slideshare.net/NelleV/docathon-how-to-write-good-documentation">this tutorial</a>.  In general, open source community resources tend
+to be where you can learn more about this.  Also, most langauges’ official
+documentation  will have information eg for <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#documentation-strings">python</a>.</p>
+</div>
+</div>
+<div class="section" id="how-often-are-we-supposed-to-update-our-kwl-charts">
+<h3><span class="section-number">2.9.6. </span>How often are we supposed to update our KWL Charts?<a class="headerlink" href="#how-often-are-we-supposed-to-update-our-kwl-charts" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>You will be prompted (either in class or as a class preparation) when I expect
+it at a minimum, but you can also add to it when you think of things.</p>
+</div>
+</div>
+<div class="section" id="do-we-get-a-notification-when-you-post-the-notes-or-do-we-just-check-periodically">
+<h3><span class="section-number">2.9.7. </span>Do we get a notification when you post the notes, or do we just check periodically?<a class="headerlink" href="#do-we-get-a-notification-when-you-post-the-notes-or-do-we-just-check-periodically" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The #siteupdates channel in slack shows when commits are pushed to the repository
+for the site, you can also create a more custom version of notification using
+either the <a class="reference external" href="https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications">GitHub watch</a> or the GitHub bot in a slack DM to yourself,
+using <code class="docutils literal notranslate"><span class="pre">/github</span> <span class="pre">help</span></code>.</p>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="physics"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>when we are <em>really</em> close to the hardware</p>
+</dd>
+<dt class="label" id="programmerthink"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Of course, not <em>all</em> programmers think the same way, but when
+people spend time together and communicate, they start to share patterns in how
+they think. So, while you do <strong>not</strong> have to think the same way as these patterns,
+knowing what they are will help you reading code, and understanding things.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-01-25.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
