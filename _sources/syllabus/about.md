@@ -60,7 +60,7 @@ By the end of the semester, students will be able to:
 
 <!-- This syllabus is a *living*  document and accessible from BrightSpace, as a pdf for download directly online at [introcompsys.github.io/BrownFall21/syllabus](https://rhodyprog4ds.github.io/BrownFall21/syllabus/). If you choose to download a copy of it, note that it is only a copy.  -->
 You can get notification of changes from GitHub by "watching" the
-{{ '[repository](https://github.com/introcompsys/{/{repo})'.format(repo=repo_name) }}
+{{ '[repository](https://github.com/introcompsys/{repo})'.format(repo=repo_name) }}
 You can view the date of changes and exactly what changes were made on the Github {{ repo_commits}} page.
 
 Creating an {{ repo_issue }} is also a good way to ask questions about anything in the course it will prompt additions and expand the FAQ section. That will be linked when sovle and you will get a notification at that time.

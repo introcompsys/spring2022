@@ -1,13 +1,13 @@
-## General URI Policies
+# General URI Policies
 
 
-### Anti-Bias  Statement:
+## Anti-Bias  Statement:
 
 We respect the rights and dignity of each individual and group. We reject prejudice and intolerance, and we work to understand differences. We believe that equity and inclusion are critical components for campus community members to thrive. If you are a target or a witness of a bias incident, you are encouraged to submit a report to the URI Bias Response Team at www.uri.edu/brt. There you will also find people and resources to help.
 
 
 
-### Disability Services for Students Statement:
+## Disability Services for Students Statement:
 
  Your access in this course is important. Please send me your Disability Services for Students (DSS) accommodation letter early in the semester so that we have adequate time to discuss and arrange your approved academic accommodations. If you have not yet established services through DSS, please contact them to engage in a confidential conversation about the process for requesting reasonable accommodations in the classroom. DSS can be reached by calling: 401-874-2098, visiting: web.uri.edu/disability, or emailing: dss@etal.uri.edu.  We are available to meet with students enrolled in Kingston as well as Providence courses.
 
@@ -15,7 +15,7 @@ We respect the rights and dignity of each individual and group. We reject prejud
 
 
 
-### Academic Honesty
+## Academic Honesty
 
 Students are expected to be honest in all academic work. A student’s name on any written work, quiz or exam shall be regarded as assurance that the work is the result of the student’s own independent thought and study. Work should be stated in the student’s own words, properly attributed to its source.   Students have an obligation to know how to quote, paraphrase, summarize, cite and reference the work of others with integrity. The following are examples of academic dishonesty.
 
@@ -34,7 +34,7 @@ Students are expected to be honest in all academic work. A student’s name on a
 - Submitting the same paper for more than one course without prior approval from the instructors
 
 
-### URI COVID-19 Statement
+## URI COVID-19 Statement
 
 The University is committed to delivering its educational mission while protecting the health and safety of our community. While the university has worked to create a healthy learning environment for all, it is up to all of us to ensure our campus stays that way.
 

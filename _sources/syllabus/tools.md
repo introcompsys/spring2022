@@ -1,4 +1,4 @@
-## Tools and Resources
+# Tools and Resources
 
 We will use a variety of tools to conduct class and to facilitate your programming. You will need a computer with Linux, MacOS, or Windows. It is unlikely that a tablet will be able to do all of the things required in this course. A Chromebook may work, especially with developer tools turned on. Ask Dr. Brown if you need help getting access to an adequate computer.
 
@@ -10,7 +10,7 @@ All of the tools and resources below are either:
   - freely available online.
 
 
-### BrightSpace
+## BrightSpace
 
 ````{margin}
 ```{note}
@@ -25,7 +25,7 @@ This is also where your grades will appear and how I will post announcements.
 For announcements, you can [customize](https://documentation.brightspace.com/EN/le/announcements/learner/enable_notifications_in_announcements.htm) how you receive them.
 
 
-### Prismia chat
+## Prismia chat
 
 Our class link for [Prismia chat](https://prismia.chat/) is available on Brightspace.
 Once you've joined once, you can use the link above or type the url: prismia.chat.
@@ -33,20 +33,20 @@ We will use this for chatting and in-class understanding checks.
 
 On Prismia, all students see the instructor's messages, but only the Instructor and TA see student responses. 
 
-### Course Manual
+## Course Manual
 
 The course manual will have content including the class policies, scheduling, class notes, assignment information, and additional resources.
 <!-- This will be linked from Brightspace and available publicly online at ). -->
 Links to the course reference text and code documentation will also be included here in the assignments and class notes.
 
-### GitHub
+## GitHub
 
 You will need a [GitHub](https://github.com/) Account. If you do not already have one, please [create one](https://github.com/signup) by the first day of class. If you have one, but have not used it recently, you may need to update your password and login credentials as the [Authentication rules](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github) changed in Summer 2021.  In order to use the command line with https, you will need to [create a Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) for each device you use. In order to use the command line with SSH, set up your public key.
 
 
 
-(prorgramming-env)=
-### Programming Environment
+(programming-env)=
+## Programming Environment
 
 In this course, we will use several programming environments. In order to complete assignments you need the items listed in the requirements list. The easiest way to meet these requirements is to follow the recommendations below. I will provide instruction assuming that you have followed the recommendations.
 We will add tools throughout the semester, but the following will be enough
@@ -58,7 +58,7 @@ to write code from scratch in specific languages, but we will rely on programmin
 environments to apply concepts.
 ```
 
-#### Requirements:
+### Requirements:
 - Python with scientific computing packages (numpy, scipy, jupyter, pandas, seaborn, sklearn)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - A bash shell
@@ -77,7 +77,7 @@ all Git instructions will be given as instructions for the command line interfac
 Everything in this class will be tested with the up to date (or otherwise specified) version of Jupyter Notebooks. Google Colab is similar, but not the same, and some things may not work there. It is an okay backup, but should not be your primary work environment.
 ```
 
-#### Recommendation:
+### Recommendation:
 - Install python via [Anaconda](https://www.anaconda.com/products/individual)
 - if you use Windows, install Git and Bash with [GitBash](https://gitforwindows.org/) ([video instructions](https://youtu.be/339AEqk9c-8)).
 - if you use MacOS, install Git with the Xcode Command Line Tools. On Mavericks (10.9) or above you can do this by trying to run git from the Terminal the very first time.`git --version`
@@ -134,17 +134,10 @@ Video install instructions for Anaconda:
 On Mac,  to install python via environment, [this article may be helpful](https://opensource.com/article/19/5/python-3-default-mac)
 - I don't have a video for linux, but it's a little more straight forward.
 
-### Textbook
-
-The text for this class is a reference book and will not be a source of assignments. It will be a helpful reference and you may be directed there for answers to questions or alternate explanations ot topics.
-
-Python for Data Science is available free [online](https://jakevdp.github.io/PythonDataScienceHandbook/):
 
 
 
-
-
-### Zoom (backup only, Fall 2021 is in person)
+### Zoom (backup only & office hours only, Spring 2022 is in person)
 
 [^tldr]: Too long; didn't read.
 
@@ -152,6 +145,5 @@ This is where we will meet if for any reason we cannot be in person. You will fi
 
 URI provides all faculty, staff, and students with a paid Zoom account. It *can* run in your browser or on a mobile device, but you will be able to participate in class best if you download the [Zoom client](https://zoom.us/download) on your computer. Please [log in](https://uri-edu.zoom.us/) and [configure your account](https://uri-edu.zoom.us/profile).  Please add a photo of yourself to your account so that we can still see your likeness in some form when your camera is off. You may also wish to use a virtual background and you are welcome to do so.  
 
-Class will be interactive, so if you cannot be in a quiet place at class time, headphones with a built in microphone are strongly recommended.
 
 For help, you can access the [instructions provided by IT](https://web.uri.edu/itservicedesk/zoom-at-uri/).
