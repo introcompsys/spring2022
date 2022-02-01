@@ -97,9 +97,9 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - [review notes, reflect on issues, check environment, map cs knowledge](class3prep)
   - cloning, pushing, terminal basics
 * - 2021-02-03
-  -
-  -
-  -
+  - Why do I need to use a terminal?
+  - [review notes, practice git offline 2 ways, update kwl](class4prep)
+  - bash, organizing a project
 * - 2021-02-08
   -
   -
