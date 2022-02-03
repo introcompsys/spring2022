@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Why Do I Need to Use a terminal? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="3. How do I use git offline" href="2022-02-01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-03.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-03.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-03.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-the-next-class">
+   4.1. Prepare for the next class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminal-file-moving-reflection">
+     4.1.1. Terminal File moving reflection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#software-reflection">
+     4.1.2. Software Reflection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Why Do I Need to Use a terminal?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-the-next-class">
+   4.1. Prepare for the next class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminal-file-moving-reflection">
+     4.1.1. Terminal File moving reflection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#software-reflection">
+     4.1.2. Software Reflection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="why-do-i-need-to-use-a-terminal">
+<h1><span class="section-number">4. </span>Why Do I Need to Use a terminal?<a class="headerlink" href="#why-do-i-need-to-use-a-terminal" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span><span class="n">teaching</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="n">test_help</span><span class="o">.</span><span class="n">py</span> <span class="n">test_imp</span><span class="o">.</span><span class="n">py</span> <span class="n">test_alt</span><span class="o">.</span><span class="n">py</span> <span class="n">overview</span><span class="o">.</span><span class="n">md</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span><span class="p">:</span> <span class="n">command</span> <span class="ow">not</span> <span class="n">found</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># GitHub Practice</span>
+
+<span class="n">Name</span><span class="p">:</span> <span class="n">sarah</span>
+<span class="o">|</span><span class="n">file</span> <span class="o">|</span> <span class="n">contents</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">------|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">core</span> <span class="n">abstract</span> <span class="n">classes</span> <span class="k">for</span> <span class="n">the</span> <span class="n">project</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">utitly</span> <span class="n">funtions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">called</span> <span class="n">by</span> <span class="n">many</span> <span class="n">classes</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">the</span> <span class="n">info</span> <span class="n">on</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="n">can</span> <span class="n">be</span> <span class="n">reused</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">how</span> <span class="n">people</span> <span class="n">can</span> <span class="n">contribute</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">file</span> <span class="k">with</span> <span class="n">function</span> <span class="k">with</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">pip</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_helpers</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_imp</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_alt</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">file</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">api</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">config</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">book</span> <span class="n">toc</span> <span class="n">file</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">organized</span> <span class="k">for</span> <span class="n">docs</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">myst</span> <span class="n">notebook</span> <span class="n">example</span> <span class="n">of</span> <span class="n">using</span> <span class="n">the</span> <span class="n">code</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">scratch</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="kn">from</span> <span class="nn">dev</span> <span class="o">|</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">docs</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">docs</span>			<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">tests</span> <span class="n">mymodule</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">mymodule</span>
+<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>			<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="o">..</span>			<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="o">.</span><span class="n">git</span>			<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+<span class="o">.</span><span class="n">github</span>			<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">tests</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">mymodule</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">docs</span>			<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>In some versions we can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">--</span><span class="n">help</span>
+
+</pre></div>
+</div>
+<p>we can always use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">mv</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">ls</span>
+<span class="n">usage</span><span class="p">:</span> <span class="n">mv</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span> <span class="o">|</span> <span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="n">source</span> <span class="n">target</span>
+       <span class="n">mv</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="o">|</span> <span class="o">-</span><span class="n">i</span> <span class="o">|</span> <span class="o">-</span><span class="n">n</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="n">source</span> <span class="o">...</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">hl</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="mi">16</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>   <span class="mf">1.2</span><span class="n">K</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">56</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>    <span class="mi">14</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">1</span> <span class="mi">13</span><span class="p">:</span><span class="mi">23</span> <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">3</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>    <span class="mi">96</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">13</span><span class="p">:</span><span class="mi">04</span> <span class="n">docs</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">2</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>    <span class="mi">64</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">13</span><span class="p">:</span><span class="mi">01</span> <span class="n">mymodule</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">drwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">2</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>    <span class="mi">64</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">13</span><span class="p">:</span><span class="mi">01</span> <span class="n">tests</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">brownsarahm</span>  <span class="n">staff</span>     <span class="mi">0</span><span class="n">B</span> <span class="n">Feb</span>  <span class="mi">3</span> <span class="mi">12</span><span class="p">:</span><span class="mi">51</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># GitHub Practice</span>
+
+<span class="n">Name</span><span class="p">:</span> <span class="n">sarah</span>
+<span class="o">|</span><span class="n">file</span> <span class="o">|</span> <span class="n">contents</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">------|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">core</span> <span class="n">abstract</span> <span class="n">classes</span> <span class="k">for</span> <span class="n">the</span> <span class="n">project</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">utitly</span> <span class="n">funtions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">called</span> <span class="n">by</span> <span class="n">many</span> <span class="n">classes</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">the</span> <span class="n">info</span> <span class="n">on</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="n">can</span> <span class="n">be</span> <span class="n">reused</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">how</span> <span class="n">people</span> <span class="n">can</span> <span class="n">contribute</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">file</span> <span class="k">with</span> <span class="n">function</span> <span class="k">with</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">pip</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_helpers</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_imp</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_alt</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">file</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">api</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">config</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">book</span> <span class="n">toc</span> <span class="n">file</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">organized</span> <span class="k">for</span> <span class="n">docs</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">myst</span> <span class="n">notebook</span> <span class="n">example</span> <span class="n">of</span> <span class="n">using</span> <span class="n">the</span> <span class="n">code</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">scratch</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="kn">from</span> <span class="nn">dev</span> <span class="o">|</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">*.</span><span class="n">yml</span> <span class="n">docs</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="n">test_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_abc</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests</span>
+<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">test_</span><span class="o">*</span> <span class="n">tests</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">mymodule</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">docs</span>			<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">example</span><span class="o">.</span><span class="n">md</span>		<span class="n">tests</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">*.</span><span class="n">py</span> <span class="n">mymodule</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">tests</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="c1"># GitHub Practice</span>
+
+<span class="n">Name</span><span class="p">:</span> <span class="n">sarah</span>
+<span class="o">|</span><span class="n">file</span> <span class="o">|</span> <span class="n">contents</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">------|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">core</span> <span class="n">abstract</span> <span class="n">classes</span> <span class="k">for</span> <span class="n">the</span> <span class="n">project</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">utitly</span> <span class="n">funtions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">called</span> <span class="n">by</span> <span class="n">many</span> <span class="n">classes</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">the</span> <span class="n">info</span> <span class="n">on</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="n">can</span> <span class="n">be</span> <span class="n">reused</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">how</span> <span class="n">people</span> <span class="n">can</span> <span class="n">contribute</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">file</span> <span class="k">with</span> <span class="n">function</span> <span class="k">with</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">pip</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_helpers</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_imp</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_alt</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">file</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">api</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">config</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">book</span> <span class="n">toc</span> <span class="n">file</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">organized</span> <span class="k">for</span> <span class="n">docs</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">myst</span> <span class="n">notebook</span> <span class="n">example</span> <span class="n">of</span> <span class="n">using</span> <span class="n">the</span> <span class="n">code</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">scratch</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="kn">from</span> <span class="nn">dev</span> <span class="o">|</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">tests</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">mymodule</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mymodule</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">..</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>	<span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>	<span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">API</span><span class="o">.</span><span class="n">md</span>			<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">docs</span>			<span class="n">tests</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">example</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">mv</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">mv</span> <span class="n">overview</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>		<span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">mymodule</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>		<span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">tests</span>
+<span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">docs</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">Untitled</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>    <span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>  <span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>  
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">Untitled</span><span class="o">*</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">docs</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>	<span class="n">mymodule</span>	<span class="n">tests</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">md</span>
+<span class="n">cd</span> <span class="n">docs</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">API</span><span class="o">.</span><span class="n">md</span>		<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>	<span class="n">index</span><span class="o">.</span><span class="n">md</span>	<span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>	<span class="n">example</span><span class="o">.</span><span class="n">md</span>	<span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">index</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># GitHub Practice</span>
+
+<span class="n">Name</span><span class="p">:</span> <span class="n">sarah</span>
+<span class="o">|</span><span class="n">file</span> <span class="o">|</span> <span class="n">contents</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">------|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">core</span> <span class="n">abstract</span> <span class="n">classes</span> <span class="k">for</span> <span class="n">the</span> <span class="n">project</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">utitly</span> <span class="n">funtions</span> <span class="n">that</span> <span class="n">are</span> <span class="n">called</span> <span class="n">by</span> <span class="n">many</span> <span class="n">classes</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">classes</span> <span class="n">that</span> <span class="n">inherit</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">abc</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">the</span> <span class="n">info</span> <span class="n">on</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="n">can</span> <span class="n">be</span> <span class="n">reused</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">how</span> <span class="n">people</span> <span class="n">can</span> <span class="n">contribute</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">file</span> <span class="k">with</span> <span class="n">function</span> <span class="k">with</span> <span class="n">instructions</span> <span class="k">for</span> <span class="n">pip</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_abc</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_helpers</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_imp</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">tests_alt</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">tests</span> <span class="k">for</span> <span class="n">constructors</span> <span class="ow">and</span> <span class="n">methods</span> <span class="ow">in</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span><span class="o">|</span>
+<span class="o">|</span> <span class="n">API</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">file</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">api</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyterbook</span> <span class="n">config</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">book</span> <span class="n">toc</span> <span class="n">file</span> <span class="k">for</span> <span class="n">documentation</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">philosophy</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">how</span> <span class="n">the</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">organized</span> <span class="k">for</span> <span class="n">docs</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">example</span><span class="o">.</span><span class="n">md</span> <span class="o">|</span> <span class="n">myst</span> <span class="n">notebook</span> <span class="n">example</span> <span class="n">of</span> <span class="n">using</span> <span class="n">the</span> <span class="n">code</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">scratch</span><span class="o">.</span><span class="n">ipynb</span> <span class="o">|</span> <span class="n">jupyter</span> <span class="n">notebook</span> <span class="kn">from</span> <span class="nn">dev</span> <span class="o">|</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="o">../</span><span class="n">mymodule</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">../</span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="o">../</span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+	<span class="o">../</span><span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+	<span class="o">./</span>
+	<span class="o">../</span><span class="n">mymodule</span><span class="o">/</span>
+	<span class="o">../</span><span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+	<span class="o">../</span><span class="n">tests</span><span class="o">/</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">docs</span><span class="o">/</span>
+	<span class="n">mymodule</span><span class="o">/</span>
+	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+	<span class="n">tests</span><span class="o">/</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;insclass 2-3&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="n">c15cf43</span><span class="p">]</span> <span class="n">insclass</span> <span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
+ <span class="mi">20</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">41</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">API</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">overview</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">docs</span><span class="o">/</span><span class="n">philosophy</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mymodule</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">abstract_base_class</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_abc</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_alt</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_help</span><span class="o">.</span><span class="n">py</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_imp</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">9</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">8</span> <span class="n">threads</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">7</span><span class="o">/</span><span class="mi">7</span><span class="p">),</span> <span class="mf">1.22</span> <span class="n">KiB</span> <span class="o">|</span> <span class="mf">1.22</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">7</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">1</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+   <span class="mi">17320</span><span class="n">fc</span><span class="o">..</span><span class="n">c15cf43</span>  <span class="n">main</span> <span class="o">-&gt;</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">test</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">test</span>
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="prepare-for-the-next-class">
+<h2><span class="section-number">4.1. </span>Prepare for the next class<a class="headerlink" href="#prepare-for-the-next-class" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Review the notes</p></li>
+<li><p>Reorganize a folder on your computer ( good candidate may be  desktop or downloads folder), using only a terminal to make new directories, move files, check what’s inside them, etc. Answer reflection questions (will be in notes) in a new file, <code class="docutils literal notranslate"><span class="pre">terminal.md</span></code> in your kwl repo.</p></li>
+<li><p>Add a <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/glossary.html">glossary</a> to the site to define a term or <a class="reference external" href="https://introcompsys.github.io/spring2022/resources/cheatsheet.html">cheatsheet</a> entry  to describe a command that we have used so far.</p></li>
+<li><p>Examine a large project you have done or by finding an open source project on GitHub.  Answer the reflection questions in <code class="docutils literal notranslate"><span class="pre">software.md</span></code> in your kwl repo. (will be in notes)</p></li>
+</ol>
+<div class="section" id="terminal-file-moving-reflection">
+<h3><span class="section-number">4.1.1. </span>Terminal File moving reflection<a class="headerlink" href="#terminal-file-moving-reflection" title="Permalink to this headline">¶</a></h3>
+<p>Start with a file explorer open, but then try to close it and use only command line tools to explore and make your choices</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="k">1.</span> Did this get easier toward the end?
+<span class="k">1.</span> Use the history to see which commands you used and how many times each, make a table below.
+<span class="k">1.</span> Did you have to look up how to do anything we had not done in class?
+<span class="k">1.</span> When do you think that using the terminal will be better than using your GUI file explorer?
+<span class="k">1.</span> What questions/challenges/ relfections do you have after this?
+<span class="k">1.</span> What kinds of things might you want to write a bash script for given what you know in bash so far? come up with 1-2 scenarios
+</pre></div>
+</div>
+</div>
+<div class="section" id="software-reflection">
+<h3><span class="section-number">4.1.2. </span>Software Reflection<a class="headerlink" href="#software-reflection" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="k">1.</span> link to public repo if applicable or title of your project
+<span class="k">1.</span> What types of files are there that are not code?
+<span class="k">1.</span> What different types of code files are in the project? Do they serve different goals?
+<span class="k">1.</span> Is it all in one language or are there multiple?
+<span class="k">1.</span> Try to figure out (remember) how the project works. What types of things, without running the code can you look at at a high level?
+
+<span class="gu">## More Practice</span>
+
+<span class="k">1.</span> Try to do as many things as possible on the terminal for a whole week.
+<span class="k">1.</span> Make yourself a bash cheatsheet (and/or contribute to one on the course site)
+<span class="k">1.</span> Read through part 1 of [<span class="nt">the programmer&#39;s brain</span>](<span class="na">https://www.manning.com/books/the-programmers-brain</span>) and try the exercises, especially in chapter 4.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>How do I use git offline</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
