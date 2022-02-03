@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. How do I use git offline &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="2. How does learning and knowledge work in computing?" href="2022-01-27.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. How do I use git offline
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-01.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-01.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-goals">
+   3.1. Todays Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-an-issue-with-a-commit">
+   3.2. Closing an Issue with a commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-set-up-locally">
+   3.3. Getting Set up Locally
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-git-and-github-locally">
+   3.4. Using Git and GitHub locally
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticating-with-github">
+     3.4.1. Authenticating with GitHub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloning-a-repository">
+     3.4.2. Cloning a repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-new-files-to-a-repository-locally">
+     3.4.3. Adding new files to a Repository Locally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-editing-on-the-terminal">
+     3.4.4. Text editing on the terminal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commiting-changes-to-a-file">
+     3.4.5. Commiting Changes to a file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sending-changes-to-github">
+     3.4.6. Sending Changes to GitHub
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-third-way-to-close-an-issue">
+   3.5. A third way to close an issue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   3.6. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   3.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   3.8. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-push-the-file-before-commit-and-if-so-what-will-happen">
+     3.8.1. Can we push the file before commit? And if so, what will happen?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-add-and-commit-they-seem-to-do-the-same-thing-to-me">
+     3.8.2. what is the difference between add and commit? They seem to do the same thing to me.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-point-to-doing-multiple-commits-before-a-push">
+     3.8.3. Is there a point to doing multiple commits before a push.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-i-just-use-github-desktop-if-i-have-it-already">
+     3.8.4. Can I just use GitHub Desktop if I have it already?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How do I use git offline</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-goals">
+   3.1. Todays Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#closing-an-issue-with-a-commit">
+   3.2. Closing an Issue with a commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-set-up-locally">
+   3.3. Getting Set up Locally
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-git-and-github-locally">
+   3.4. Using Git and GitHub locally
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#authenticating-with-github">
+     3.4.1. Authenticating with GitHub
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloning-a-repository">
+     3.4.2. Cloning a repository
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-new-files-to-a-repository-locally">
+     3.4.3. Adding new files to a Repository Locally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-editing-on-the-terminal">
+     3.4.4. Text editing on the terminal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commiting-changes-to-a-file">
+     3.4.5. Commiting Changes to a file
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sending-changes-to-github">
+     3.4.6. Sending Changes to GitHub
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-third-way-to-close-an-issue">
+   3.5. A third way to close an issue
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   3.6. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   3.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   3.8. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-we-push-the-file-before-commit-and-if-so-what-will-happen">
+     3.8.1. Can we push the file before commit? And if so, what will happen?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-difference-between-add-and-commit-they-seem-to-do-the-same-thing-to-me">
+     3.8.2. what is the difference between add and commit? They seem to do the same thing to me.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-point-to-doing-multiple-commits-before-a-push">
+     3.8.3. Is there a point to doing multiple commits before a push.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-i-just-use-github-desktop-if-i-have-it-already">
+     3.8.4. Can I just use GitHub Desktop if I have it already?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-do-i-use-git-offline">
+<h1><span class="section-number">3. </span>How do I use git offline<a class="headerlink" href="#how-do-i-use-git-offline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="todays-goals">
+<h2><span class="section-number">3.1. </span>Todays Goals<a class="headerlink" href="#todays-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>just enough bash</p></li>
+<li><p>offline git basics</p></li>
+<li><p>practice with issues as something to <em>do</em> while we work with git offline</p></li>
+</ul>
+</div>
+<div class="section" id="closing-an-issue-with-a-commit">
+<h2><span class="section-number">3.2. </span>Closing an Issue with a commit<a class="headerlink" href="#closing-an-issue-with-a-commit" title="Permalink to this headline">¶</a></h2>
+<p>We can close issues with commits, we’ll first review making commits in browser
+to see how that works, then we will do it offline again.</p>
+<p>Use the create a <a class="reference external" href="https://classroom.github.com/a/iIl5Vvlp">test repo for today’s class</a>
+it will have some issues it in upon creation.</p>
+<a screen shot here would be good>
+<p>Notice what happened:</p>
+<ul class="simple">
+<li><p>the file is added and the commit has the the message</p></li>
+<li><p>the issue is closed</p></li>
+<li><p>if we go look at the closed issues, we can see on the issue that it was linked to the commit</p></li>
+<li><p>from the issue, we can see what the changes were that made are supposed to relate to this</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>we can still comment on an issue that is already closed.</p>
+</div>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>We can also re-open issues.
+Try that out and then make a new commit to close it again. Why is this a useful
+feature for GitHub?</p>
+</div>
+</div>
+<div class="section" id="getting-set-up-locally">
+<h2><span class="section-number">3.3. </span>Getting Set up Locally<a class="headerlink" href="#getting-set-up-locally" title="Permalink to this headline">¶</a></h2>
+<p>Opening different terminals</p>
+<ul class="simple">
+<li><p>default terminal on mac, ue the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command to use bash (zsh will be mostly the same; it’s derivative, but to ensure exactly the same as mine use bash)</p></li>
+<li><p>use gitbash on Windows</p></li>
+</ul>
+<p>To change directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> path/to/go/to
+</pre></div>
+</div>
+<p>To make a directory (folder) for things in this course (or in my case for inclass time)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir sysinclass
+</pre></div>
+</div>
+<p>Then we have to <code class="docutils literal notranslate"><span class="pre">cd</span></code> into that new folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sysinclass</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>To view where we are, we <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">pwd</span>
+</pre></div>
+</div>
+<p>View files</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+<p>It’s empty for now, but we will change that soon.</p>
+</div>
+<div class="section" id="using-git-and-github-locally">
+<h2><span class="section-number">3.4. </span>Using Git and GitHub locally<a class="headerlink" href="#using-git-and-github-locally" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="authenticating-with-github">
+<h3><span class="section-number">3.4.1. </span>Authenticating with GitHub<a class="headerlink" href="#authenticating-with-github" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways to authenticate securely with GitHub and other git clients.  We’re going to use <em>easier</em> ones for today, but we’ll come back to the third, which is a bit more secure and is a more general type of authentication.</p>
+<ol>
+<li><p>GitHub CLI: enter the following and follow the prompts.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">auth</span> <span class="n">login</span>
+</pre></div>
+</div>
+</li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">personal access token</a>. This is a special one time password that you can use like a password, but it is limited in scope and will expire (as long as you choose settings well)</p></li>
+<li><p>ssh keys</p></li>
+</ol>
+</div>
+<div class="section" id="cloning-a-repository">
+<h3><span class="section-number">3.4.2. </span>Cloning a repository<a class="headerlink" href="#cloning-a-repository" title="Permalink to this headline">¶</a></h3>
+<p>Cloning a repository makes a local copy of a remote git repository.</p>
+<!-- this is a markdown (html) comment, fill in the following and uncomment it (or part of it) as a contribution
+```{admonition} Further Reading
+
+[Git documentation basics chapter](url/here)
+
+[git clone reference ]() from git documentation
+
+[github docs cloning a repository]()
+
+[github cli cloning]()
+```
+ -->
+<p>We can clone in two different ways, with git only or with the GitHub CLI tools.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>My repository, like yours, is private so copying these lines directly will not work.  You will have to replace my GitHub username with your own.</p>
+</div>
+</div>
+<p>with the GitHub CLI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">repo</span> <span class="n">clone</span> <span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span>
+</pre></div>
+</div>
+<p>with git only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>the git only version can be used with git repositories that are hosted anywhere, for example on <a class="reference external" href="https://bitbucket.org/">BitBucket</a><br />
+or <a class="reference external" href="https://about.gitlab.com/">GitLab</a></p>
+</div>
+<p>Either way we will see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cloning</span> <span class="n">into</span> <span class="s1">&#39;github-in-class-brownsarahm&#39;</span><span class="o">...</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">15</span><span class="o">/</span><span class="mi">15</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">9</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">15</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">5</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">Receiving</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">15</span><span class="o">/</span><span class="mi">15</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+</pre></div>
+</div>
+<!-- describing what this output means would be a great contribution -->
+<p>Now we can check what happened using <code class="docutils literal notranslate"><span class="pre">ls</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span>
+</pre></div>
+</div>
+<p>When we clone a repository, it creates a new directory and downloads all of the contents and the repository information, including where it came from so that we can send our new changes back there.</p>
+</div>
+<div class="section" id="adding-new-files-to-a-repository-locally">
+<h3><span class="section-number">3.4.3. </span>Adding new files to a Repository Locally<a class="headerlink" href="#adding-new-files-to-a-repository-locally" title="Permalink to this headline">¶</a></h3>
+<p>We first go into that folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>We can see what is there.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">touch</span> <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+<p>and then we see the list of files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+</pre></div>
+</div>
+<p>which gives us the following output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<!-- describing what happens here is a great contirbution also adding the images from prismia is too -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+<span class="o">.</span>		<span class="o">.</span><span class="n">git</span>		<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="o">..</span>		<span class="o">.</span><span class="n">github</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>again, we can check what git knows about</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>and take note of the key differences from before.</p>
+<!--  more interpretation here is a great contribution -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;create empty about&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="n">b81cf15</span><span class="p">]</span> <span class="n">create</span> <span class="n">empty</span> <span class="n">about</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="mi">0</span> <span class="n">deletions</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="text-editing-on-the-terminal">
+<h3><span class="section-number">3.4.4. </span>Text editing on the terminal<a class="headerlink" href="#text-editing-on-the-terminal" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>then we can edit the file, adding some content and then write out (to save) and then exit nano</p>
+</div>
+<div class="section" id="commiting-changes-to-a-file">
+<h3><span class="section-number">3.4.5. </span>Commiting Changes to a file<a class="headerlink" href="#commiting-changes-to-a-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">1</span> <span class="n">commit</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">about</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add about.md
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
+On branch main
+Your branch is ahead of <span class="s1">&#39;origin/main&#39;</span> by <span class="m">1</span> commit.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+	modified:   about.md
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s1">&#39;complete about closes #2</span>
+<span class="s1">&gt; &#39;</span>
+
+<span class="o">[</span>main 17320fc<span class="o">]</span> <span class="nb">complete</span> about closes <span class="c1">#2</span>
+ <span class="m">1</span> file changed, <span class="m">4</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">2</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sending-changes-to-github">
+<h3><span class="section-number">3.4.6. </span>Sending Changes to GitHub<a class="headerlink" href="#sending-changes-to-github" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+<span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">7</span><span class="o">/</span><span class="mi">7</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">8</span> <span class="n">threads</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="mi">535</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="mf">535.00</span> <span class="n">KiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">6</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">1</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">1</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+   <span class="n">f707186</span><span class="o">.</span><span class="mf">.17320</span><span class="n">fc</span>  <span class="n">main</span> <span class="o">-&gt;</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>Notice on GitHub that the issue is now closed. and the commit is referenced and shows the changes.</p>
+</div>
+</div>
+<div class="section" id="a-third-way-to-close-an-issue">
+<h2><span class="section-number">3.5. </span>A third way to close an issue<a class="headerlink" href="#a-third-way-to-close-an-issue" title="Permalink to this headline">¶</a></h2>
+<p>See the <code class="docutils literal notranslate"><span class="pre">classmate</span></code> issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>owner:
+- [ ] give a class mate access to the repo
+- [ ] assign this issue to them
+
+classmate:
+- [ ] add `classmate.md` with your name and expected graduation on  a bracn `classmate`
+- [ ] open a PR that will close this issue
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Do the <code class="docutils literal notranslate"><span class="pre">owner</span></code> list in your repo (the on that ends with your user name)</p></li>
+<li><p>Do the classmate actions in <em>another person’s repo</em></p></li>
+<li><p>In <em>your own</em> repo, on the PR made by your class mate, tag <code class="docutils literal notranslate"><span class="pre">&#64;sp21instructors</span></code> in a comment and then merge the PR.</p></li>
+</ol>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I seeded these notes by using the <code class="docutils literal notranslate"><span class="pre">Export</span> <span class="pre">text</span></code> option from the mac terminal app.  Other terminals have similar options and you can always get <em>only</em> the list of commands you have run with <code class="docutils literal notranslate"><span class="pre">history</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class4prep"></span><h2><span class="section-number">3.6. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you do the last two after Thursday that’s okay but the rest are important
+practice to reinforce what you just learned and to prepare for what we will do
+in class on Thursday.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The “prepare for class” section is the minimum, the “more practice” is more like what will be reqiured for a B, but there’s ramp up time at the beginning.</p>
+<p>“Prepare for class” will generally be due at the time of the next class because we will use that stuff in the next class session.
+“More practice” you can come back to as fits in your schedule, (though I don’t recommend too big of a lag).</p>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<ol class="simple">
+<li><p>Complete the classmate issue in your in-class repository.</p></li>
+<li><p>read the notes PR, add or comment on a tip, resource, a bit of history in a sidebar or additional end of class question</p></li>
+<li><p>try using git in your IDE of choice, log any challenges you have on the practice repo (<code class="docutils literal notranslate"><span class="pre">github-in-class-username</span></code>), and tag &#64;sp22instructors on GitHub. You can use either repo we have made in class, or one for an assignment in another course.</p></li>
+<li><p>using your terminal, download your KWL repo and update your ‘learned’ column on a new branch</p></li>
+<li><p>answer the questions below in a new markdown file, <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code> in your KWL on your new branch and push the changes to GitHub</p></li>
+<li><p>Create a PR from your new branch to main <strong>do not merge this until instructed</strong></p></li>
+<li><p>add your programming challenge(s) you have had as issues to <a class="reference external" href="https://github.com/introcompsys/sp22community">our private repo</a> or to the course website repo if you like. Put one ‘challenge/question’ per issue so that we can close them as addressed. See last class notes for prompt.</p></li>
+<li><p>Create or comment on a discussion thread in the <a class="reference external" href="https://github.com/introcompsys/sp22community">private repo</a> about the part of CS/ type of programming you like best/what you want to do post graduation.</p></li>
+</ol>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>remember you can copy text from here directly into your file</p>
+</div>
+</div>
+<p>Questions:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## Reflection</span>
+<span class="k">1.</span> Describe the staging area (what happens after git add) in your own words. Can you think of an analogy for it? Is there anything similar in a hobby you have?
+<span class="k">1.</span> what step is the hardest for you to remember?
+<span class="k">1.</span> Compare and contrast using git on the terminal and through your IDE. when would each be better/worse?
+<span class="k">1.</span> Describe the commit that closed the <span class="sb">`classmate`</span> issue, who does it attribute the fix to?
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<h2><span class="section-number">3.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Find the “Try it yourself” boxes in these notes, try them and add notes/ responses under a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">More</span> <span class="pre">Practice</span></code> heading in your <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code> file of your KWL repo.</p></li>
+<li><p>Download the course site repo via terminal.</p></li>
+<li><p>Explore the difference between <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>: make a change in a repo, then try committing and pushing without adding. Make another change, then add and push without committing.  Describe what happens in each case in your <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">3.8. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="can-we-push-the-file-before-commit-and-if-so-what-will-happen">
+<h3><span class="section-number">3.8.1. </span>Can we push the file before commit? And if so, what will happen?<a class="headerlink" href="#can-we-push-the-file-before-commit-and-if-so-what-will-happen" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<svg viewBox="0 0 36 24" width="36" height="16" xmlns="http://www.w3.org/2000/svg"
+    class="octicon no-title" aria-hidden="true">
+  <g xmlns="http://www.w3.org/2000/svg" class="jp-icon3">
+    <circle cx="0" cy="12" r="6"></circle>
+    <circle cx="18" cy="12" r="6"></circle>
+    <circle cx="36" cy="12" r="6"></circle>
+  </g>
+</svg><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">First, the practice repo we made today is a place where you can totally try literally anything you’re curious about in order to see what happens. If it gets in a weird state just create and issue and tag &#64;sp21instructors or post on slack in #help.</p>
+<p class="card-text">Second, we don’t actually push <em>files</em> we push <em>changes</em> or the new entries to the .git directory. With that in mind, a commit is what adds the changes to the .git, so while you can push whenever, your new content won’t show up until it is committed.</p>
+</div>
+</details></div>
+<div class="section" id="what-is-the-difference-between-add-and-commit-they-seem-to-do-the-same-thing-to-me">
+<h3><span class="section-number">3.8.2. </span>what is the difference between add and commit? They seem to do the same thing to me.<a class="headerlink" href="#what-is-the-difference-between-add-and-commit-they-seem-to-do-the-same-thing-to-me" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<svg viewBox="0 0 36 24" width="36" height="16" xmlns="http://www.w3.org/2000/svg"
+    class="octicon no-title" aria-hidden="true">
+  <g xmlns="http://www.w3.org/2000/svg" class="jp-icon3">
+    <circle cx="0" cy="12" r="6"></circle>
+    <circle cx="18" cy="12" r="6"></circle>
+    <circle cx="36" cy="12" r="6"></circle>
+  </g>
+</svg><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Add puts it in the staging area, getting it ready to be committed.  Commit actually adds an entry to the history. The staging area allows you to select which changed files to commit at once.</p>
+</div>
+</details></div>
+<div class="section" id="is-there-a-point-to-doing-multiple-commits-before-a-push">
+<h3><span class="section-number">3.8.3. </span>Is there a point to doing multiple commits before a push.<a class="headerlink" href="#is-there-a-point-to-doing-multiple-commits-before-a-push" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<svg viewBox="0 0 36 24" width="36" height="16" xmlns="http://www.w3.org/2000/svg"
+    class="octicon no-title" aria-hidden="true">
+  <g xmlns="http://www.w3.org/2000/svg" class="jp-icon3">
+    <circle cx="0" cy="12" r="6"></circle>
+    <circle cx="18" cy="12" r="6"></circle>
+    <circle cx="36" cy="12" r="6"></circle>
+  </g>
+</svg><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">It depends.  A commit is a point that you can go back to, push, sends what you have locally to a remote (GitHub in this case). If you are only using Git to create a backup of your code</p>
+</div>
+</details></div>
+<div class="section" id="can-i-just-use-github-desktop-if-i-have-it-already">
+<h3><span class="section-number">3.8.4. </span>Can I just use GitHub Desktop if I have it already?<a class="headerlink" href="#can-i-just-use-github-desktop-if-i-have-it-already" title="Permalink to this headline">¶</a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<svg viewBox="0 0 36 24" width="36" height="16" xmlns="http://www.w3.org/2000/svg"
+    class="octicon no-title" aria-hidden="true">
+  <g xmlns="http://www.w3.org/2000/svg" class="jp-icon3">
+    <circle cx="0" cy="12" r="6"></circle>
+    <circle cx="18" cy="12" r="6"></circle>
+    <circle cx="36" cy="12" r="6"></circle>
+  </g>
+</svg><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">The next class is designed to answer this question.  The shortest form is that, outside of this class, you can use git however you want. Here, we’re learning the terminal version and Thursday we’ll talk about why.</p>
+</div>
+</details></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-01-27.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>How does learning and knowledge work in computing?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
