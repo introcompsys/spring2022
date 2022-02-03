@@ -18,6 +18,7 @@ parts:
       - file: notes/2022-01-25
       - file: notes/2022-01-27
       - file: notes/2022-02-01
+      - file: notes/2022-02-02
   # - caption: Assignments
   #   numbered: True
   #   chapters:
