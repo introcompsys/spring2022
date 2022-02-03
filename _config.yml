@@ -1,7 +1,7 @@
 # Book settings
 title: Introduction to Computer Systems
 author: Professor Sarah M Brown
-# logo: 
+# logo:
 
 html:
   favicon                   : ""  # A path to a favicon image
@@ -52,6 +52,7 @@ parse:
     time: TuTH 12:30-1:45
     location: Engineering Building Room 040
     repo_name: spring2022
+    semester: Spring 2022
     repo_commits: |
       [commit history](https://github.com/introcompsys/spring2022/commits)
     repo_issue: |
