@@ -101,15 +101,15 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - [review notes, practice git offline 2 ways, update kwl](class4prep)
   - bash, organizing a project
 * - 2021-02-08
-  -
-  -
+  - What are the software parts of a computer system?
+  - [practice bash, contribute to the course site, examine a software project](class5prep)
   -
 * - 2021-02-10
-  -
+  - What are the hardware parts of a computer system?
   -
   -
 * - 2021-02-15
-  -
+  - How can I collaborate with git?
   -
   -
 * - 2021-02-17
