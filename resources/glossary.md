@@ -18,5 +18,8 @@ GitHub
 
 repository
   a project folder with tracking information in it in the form of a .git file
+  
+Bash
+  a command line tool that is used to manipulate files and directories
 
 ```
