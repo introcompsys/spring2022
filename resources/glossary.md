@@ -18,5 +18,8 @@ GitHub
 
 repository
   a project folder with tracking information in it in the form of a .git file
+  
+push (changes to a repository)
+  to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
 
 ```
