@@ -193,3 +193,7 @@ Now you're done!
 If you have trouble, create an issue and tag `@@rhodyprog4ds/fall20instructors` for help.
 
 ````
+## For an Assignment, should we make a new branch for every assignment or do everything in one branch?
+````
+You should do everything in their own branch and then merge them after you are done.
+````
