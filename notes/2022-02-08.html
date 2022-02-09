@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Can I reset a Git repository? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="4. Why Do I Need to Use a terminal?" href="2022-02-03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Can I reset a Git repository?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-08.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-08.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-08.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   5. Can I reset a Git repository?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-files-requires-care">
+   6. Moving Files Requires Care
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-in-out-and-error">
+   7. Standard In, Out, and Error
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#layers-of-a-computer-system">
+   8. Layers of a Computer System
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   9. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10. More Practice
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   11. Questions After class
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-if-i-dont-meet-the-requirements-for-the-grade-i-contract-for">
+     11.1. What happens if I don’t meet the requirements for the grade I contract for?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-can-we-expect-approved-pull-requests">
+     11.2. When can we expect approved pull requests?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-echo-multiple-files-at-the-same-time">
+     11.3. Can you echo multiple files at the same time?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-this-character-do-something-different-than-the-redirect-character">
+     11.4. does this character “&lt;” do something different than the redirect character “&gt;”?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-under-the-hood-with">
+     11.5. What’s under the hood with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &gt;
+      </span>
+     </code>
+     ?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-level-of-understanding-of-the-abstraction-stack-is-typical-for-a-programmer">
+     11.6. What level of understanding of the abstraction stack is typical for a programmer?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-you-would-want-to-override-the-name-path-of-a-file">
+   12. Why you would want to override the name/path of a file?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-authentication-on-github-work">
+     12.1. How does Authentication on GitHub work?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Can I reset a Git repository?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   5. Can I reset a Git repository?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moving-files-requires-care">
+   6. Moving Files Requires Care
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-in-out-and-error">
+   7. Standard In, Out, and Error
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#layers-of-a-computer-system">
+   8. Layers of a Computer System
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   9. Prepare for Next Class
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10. More Practice
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   11. Questions After class
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-if-i-dont-meet-the-requirements-for-the-grade-i-contract-for">
+     11.1. What happens if I don’t meet the requirements for the grade I contract for?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-can-we-expect-approved-pull-requests">
+     11.2. When can we expect approved pull requests?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-you-echo-multiple-files-at-the-same-time">
+     11.3. Can you echo multiple files at the same time?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-this-character-do-something-different-than-the-redirect-character">
+     11.4. does this character “&lt;” do something different than the redirect character “&gt;”?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#whats-under-the-hood-with">
+     11.5. What’s under the hood with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       &gt;
+      </span>
+     </code>
+     ?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-level-of-understanding-of-the-abstraction-stack-is-typical-for-a-programmer">
+     11.6. What level of understanding of the abstraction stack is typical for a programmer?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-you-would-want-to-override-the-name-path-of-a-file">
+   12. Why you would want to override the name/path of a file?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-authentication-on-github-work">
+     12.1. How does Authentication on GitHub work?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="can-i-reset-a-git-repository">
+<h1><span class="section-number">5. </span>Can I reset a Git repository?<a class="headerlink" href="#can-i-reset-a-git-repository" title="Permalink to this headline">¶</a></h1>
+<!-- this could use some screen shots for the github step for where to find the commit hash -->
+<ol class="simple">
+<li><p>Find the hash number for the first commit of your in-class repo.</p></li>
+<li><p>On your terminal, navigate to that repo.</p></li>
+<li><p>Check out that commit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">&lt;paste</span> <span class="pre">hash</span> <span class="pre">here&gt;</span></code></p></li>
+<li><p>Look back at what happened, using <code class="docutils literal notranslate"><span class="pre">ls</span></code></p></li>
+<li><p>Make a new branch called ‘reset’ and push that branch to GitHub.</p></li>
+<li><p>Switch back to the current version of the repo</p></li>
+<li><p>In browser, compare the two branches, visually.</p></li>
+</ol>
+</div>
+<div class="section" id="moving-files-requires-care">
+<h1><span class="section-number">6. </span>Moving Files Requires Care<a class="headerlink" href="#moving-files-requires-care" title="Permalink to this headline">¶</a></h1>
+<!-- needs explanation here -->
+<p>A question from last week was what happens if we move a file to an address where there already is one?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">fa</span>
+<span class="n">echo</span> <span class="s2">&quot;file one&quot;</span> <span class="o">&gt;</span> <span class="n">fa</span>
+<span class="n">cat</span> <span class="n">fa</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;file two&quot;</span> <span class="o">&gt;</span> <span class="n">fb</span>
+<span class="n">cat</span> <span class="n">fb</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">fa</span> <span class="n">fb</span>
+<span class="n">cat</span> <span class="n">fb</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="standard-in-out-and-error">
+<h1><span class="section-number">7. </span>Standard In, Out, and Error<a class="headerlink" href="#standard-in-out-and-error" title="Permalink to this headline">¶</a></h1>
+<p>We have been using bash to move files around and explore the system so far.  In doing so we have also seen <code class="docutils literal notranslate"><span class="pre">cat</span></code> that we saw would display the contents of a file.</p>
+<p>What it actually does is a little bit different. Let’s try <code class="docutils literal notranslate"><span class="pre">cat</span></code> without putting a file name after it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span>
+</pre></div>
+</div>
+<p>It waits for us to type, if we type and then press enter, what we typed is displayed and it keeps waiting.</p>
+<p>Use control/command + d to exit.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span></code> actually looks at standard input, a special file in our computer that gets the input from the keyboard if we don’t tell it otherwise.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">fa</span>
+</pre></div>
+</div>
+<p>is a shortcut basically for</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">&lt;</span> <span class="n">fa</span>
+</pre></div>
+</div>
+<p>which says explicitly, get ready to the contents of standard in to standard out and then put the contents of <code class="docutils literal notranslate"><span class="pre">fa</span></code> and put it on standard in. The arrow is called a redirect.</p>
+<p>We used <code class="docutils literal notranslate"><span class="pre">echo</span></code> to write to a file above in the little experiment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;some text&quot;</span> <span class="o">&gt;</span> <span class="n">a_file</span>
+<span class="n">cat</span> <span class="n">a_file</span>
+</pre></div>
+</div>
+<p>and we get output as before</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p>That line has two new parts both <code class="docutils literal notranslate"><span class="pre">echo</span></code> and the <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> syntax.
+Let’s try <code class="docutils literal notranslate"><span class="pre">echo</span></code> by itself.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;hello world&quot;</span>
+</pre></div>
+</div>
+<p>and we see</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span> <span class="n">world</span>
+</pre></div>
+</div>
+<p>Echo puts content on standard out, which is a special file that is by default linked to the display of the terminal.  It could have been set elsewhere, and that’s what the redirect does.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;some text&quot;</span> <span class="o">&gt;</span> <span class="n">a_file</span>
+<span class="n">cat</span> <span class="n">a_file</span>
+</pre></div>
+</div>
+<p>This sends that text to standard out and redirects standard out to the file <code class="docutils literal notranslate"><span class="pre">a_file</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p>if we use two arrows it will append instead of overwriting.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;some more text&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">a_file</span>
+<span class="n">cat</span> <span class="n">a_file</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">some</span> <span class="n">text</span>
+<span class="n">some</span> <span class="n">more</span> <span class="n">text</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">echo</span>
+</pre></div>
+</div>
+<!-- this was an experiment to answer a question about how to prepend  need to be explained
+echo "new prepend" > b_file
+echo a_file >> b_file
+cat b_file
+new prepend
+a_file
+man echo
+man echo
+a_file >> b_file
+-bash: a_file: command not found -->
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>File descriptor</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Abbreviation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Standard input</p></td>
+<td><p>0</p></td>
+<td><p>The default data stream for input, for example in a command pipeline. In the terminal, this defaults to keyboard input from the user.</p></td>
+<td><p>stdin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Standard output</p></td>
+<td><p>1</p></td>
+<td><p>The default data stream for output, for example when a command prints text. In the terminal, this defaults to the user’s screen.</p></td>
+<td><p>stdout</p></td>
+</tr>
+<tr class="row-even"><td><p>Standard error</p></td>
+<td><p>2</p></td>
+<td><p>The default data stream for output that relates to an error occurring. In the terminal, this defaults to the user’s screen.</p></td>
+<td><p>stderr</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>GitBash <a class="reference external" href="https://github.com/swcarpentry/shell-novice/issues/249">does not support man</a>
+the reasons athe developer <a class="reference external" href="https://github.com/git-for-windows/git/issues/696">does not want to</a> are also visible. You can use the help option <code class="docutils literal notranslate"><span class="pre">-help</span></code> try the help command.<br />
+The help is slightly different from the man pages overall.</p>
+<p>Alternatively, you can modify your environment further.
+Enabling the Windows subsystem for Linux is one option. So is booting into Linux
+<a class="reference external" href="https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview">for example ubuntu</a>
+that is installed on a flash drive. This uses the flas drive as the hard drive
+for the operating system. This option creates 2 whole “computers” at the
+software level, that use the same hardware.</p>
+</div>
+</div>
+<div class="section" id="layers-of-a-computer-system">
+<h1><span class="section-number">8. </span>Layers of a Computer System<a class="headerlink" href="#layers-of-a-computer-system" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Application</p></li>
+<li><p>Algorithm</p></li>
+<li><p>Programming Language</p></li>
+<li><p>Assembly Language</p></li>
+<li><p>Machine Code</p></li>
+<li><p>Instruction set Architecture</p></li>
+<li><p>Micro Architecture</p></li>
+<li><p>Gates/registers</p></li>
+<li><p>Devices (transistors)</p></li>
+<li><p>Physics</p></li>
+</ol>
+</div>
+<div class="section" id="prepare-for-next-class">
+<h1><span class="section-number">9. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.nand2tetris.org/software">install h/w simulator</a></p></li>
+<li><p>Add a glossary, cheatsheet entry, or historical context/facts about the things we have learned to the site.</p></li>
+<li><p>Review past classes prep/more practice and catchup if appropriate</p></li>
+<li><p>Map out how you think about data moving through a small program using the levels of abstraction. Add this to a markdown table in your KWL chart repo called <code class="docutils literal notranslate"><span class="pre">abstraction.md</span></code>. If you prefer a different format than a table, that is okay, but put it in your KWL repo. It is okay if you are not sure, the goal is to think through this.</p></li>
+</ol>
+</div>
+<div class="section" id="more-practice">
+<h1><span class="section-number">10. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>pay attention to how many steps you do to know what value of N to use. You should be able to do all of number 1 in your terminal.</p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>redirects (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>) can be used with other commands, not only echo</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get stuck on any of these create an issue and tag &#64;sp22instructors</p>
+</div>
+</div>
+<ol class="simple">
+<li><p>Once your PRs in your KWL are merged so that main and feedback match, pull to updates your local copy. In a new terminal window, navigate there and then move the your KWL chart to a file called <code class="docutils literal notranslate"><span class="pre">chart.md</span></code>. Create a new README files with a list of all the files in your repo. Use <code class="docutils literal notranslate"><span class="pre">history</span> <span class="pre">N</span></code> (N is the number of past commands that history will return) and redirects to write the steps you took to <code class="docutils literal notranslate"><span class="pre">reorg.md</span></code>. Review that file to make sure it doesn’t have extra steps in it and remove any if needed using nano then commit that file to your repo.</p></li>
+<li><p>find a place where there is a comment in the course notes indicating content to add and submit a PR adding that content. This could be today’s notes or a past day’s.</p></li>
+<li><p>Add a new file to your KWL repo called <code class="docutils literal notranslate"><span class="pre">stdinouterr.md</span></code> Try the following one at a time in your terminal and describe what happens and explain why or list questions for each in the file. What tips/reminders would you give a new user  (or yourself) about using redirects and <code class="docutils literal notranslate"><span class="pre">echo</span></code>?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span> <span class="pre">&gt;</span> <span class="pre">fa</span> <span class="pre">&gt;</span> <span class="pre">fb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;a</span> <span class="pre">test&quot;</span> <span class="pre">&gt;</span> <span class="pre">fc</span> <span class="pre">fd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">fe</span> <span class="pre">echo</span> <span class="pre">&quot;hi</span> <span class="pre">there&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">&quot;</span> <span class="pre">&gt;</span> <span class="pre">ff</span> <span class="pre">world</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ff</span> <span class="pre">echo</span> <span class="pre">hello</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">&lt;</span> <span class="pre">echo</span> <span class="pre">hello</span> <span class="pre">there</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="questions-after-class">
+<h1><span class="section-number">11. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-happens-if-i-dont-meet-the-requirements-for-the-grade-i-contract-for">
+<h2><span class="section-number">11.1. </span>What happens if I don’t meet the requirements for the grade I contract for?<a class="headerlink" href="#what-happens-if-i-dont-meet-the-requirements-for-the-grade-i-contract-for" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>You will be able to revise the contract if you choose to earn a different grade.
+The revision will also have to get approved, but it is an option. If you do not
+fulfill your contract in the form it is stated at the end of the semester, you
+will get an incomplete and then we will make a plan to change that to a letter.</p>
+</div>
+</div>
+<div class="section" id="when-can-we-expect-approved-pull-requests">
+<h2><span class="section-number">11.2. </span>When can we expect approved pull requests?<a class="headerlink" href="#when-can-we-expect-approved-pull-requests" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>Feedback hours mostly, which are 5-6pm on Tuesday and 4-5pm on Thursday</p>
+</div>
+</div>
+<div class="section" id="can-you-echo-multiple-files-at-the-same-time">
+<h2><span class="section-number">11.3. </span>Can you echo multiple files at the same time?<a class="headerlink" href="#can-you-echo-multiple-files-at-the-same-time" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>Echo sends only to stdout, we can redirect stdout to a different file, but echo specifically goes to the one place.  The question then becomes can we redirect std out to two places at once, which we cannot do with redirects alone either.  However, we can send output multiple places using a few more commands.  We’ll come back to this one next week. Also try the last exercise under more practice.</p>
+</div>
+</div>
+<div class="section" id="does-this-character-do-something-different-than-the-redirect-character">
+<h2><span class="section-number">11.4. </span>does this character “&lt;” do something different than the redirect character “&gt;”?<a class="headerlink" href="#does-this-character-do-something-different-than-the-redirect-character" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>They are both <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Redirections.html">redirections</a> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> is less common.</p>
+</div>
+</div>
+<div class="section" id="whats-under-the-hood-with">
+<h2><span class="section-number">11.5. </span>What’s under the hood with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>?<a class="headerlink" href="#whats-under-the-hood-with" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>The official documentation for <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Redirections.html">redirections</a> describes some. We’ll come back to it after we talk
+through the overview of hardware a bit more in the next class.</p>
+</div>
+</div>
+<div class="section" id="what-level-of-understanding-of-the-abstraction-stack-is-typical-for-a-programmer">
+<h2><span class="section-number">11.6. </span>What level of understanding of the abstraction stack is typical for a programmer?<a class="headerlink" href="#what-level-of-understanding-of-the-abstraction-stack-is-typical-for-a-programmer" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p>This is going to depend on their training.  A person who programs after a short
+coding bootcamp or a scientist who codes in order to do their scientific research
+may only understnd the application and algorithm layers and be perfectly content
+and able to fulfill their goals.  With a Computer Science degree we hope that by
+the end you have down to Assembly very strong and the basic ideas down to gates/
+registers.  Someone with a Computer Engineering degree will have more understanding
+at the lower levels but maybe less in programming languages and algorithms than a
+CS degree. Plus anyone can go learn more and forget things they once knew.  Also how much you actively use this knowledge is going to vary.  Someone who writes firmware is going to be focused on a very different point in that stack that someone who develops new machine learning applications for example.</p>
+</div>
+</div>
+</div>
+<div class="section" id="why-you-would-want-to-override-the-name-path-of-a-file">
+<h1><span class="section-number">12. </span>Why you would want to override the name/path of a file?<a class="headerlink" href="#why-you-would-want-to-override-the-name-path-of-a-file" title="Permalink to this headline">¶</a></h1>
+<div class="toggle docutils container">
+<p>You probably would not want to do this very often, but for example, I do this
+when I download a newer version of a file and my browser names the new version
+something like <code class="docutils literal notranslate"><span class="pre">file_name</span> <span class="pre">(1).ext</span></code> I actually wanted to overwrite but it assumes
+that I do not, so I use <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">file_name\</span> <span class="pre">(1).ext</span> <span class="pre">file_name.ext</span></code> to overwrite the
+new, updated content into the better file name (without the space and (1))</p>
+</div>
+<div class="section" id="how-does-authentication-on-github-work">
+<h2><span class="section-number">12.1. </span>How does Authentication on GitHub work?<a class="headerlink" href="#how-does-authentication-on-github-work" title="Permalink to this headline">¶</a></h2>
+<div class="toggle docutils container">
+<p><a class="reference external" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">GitHub</a> provides a whole page on that with advice and links.
+We will also come back to this in order to talk about ssh keys and ssh generally
+next week.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-03.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Why Do I Need to Use a terminal?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
