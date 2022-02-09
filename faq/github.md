@@ -195,5 +195,5 @@ If you have trouble, create an issue and tag `@@rhodyprog4ds/fall20instructors` 
 ````
 ## For an Assignment, should we make a new branch for every assignment or do everything in one branch?
 ````
-You should do everything in their own branch and then merge them after you are done.
+Doing each new assignment in its own branch is best practice. In a typical software development flow once the codebase is stable a new branch would be created for each new feature or patch. This analogy should help you build intuition for this GitHub flow and using branches.  Also, pull requests are the best way for us to give you feedback. Also, if you create a branch when you do not need it, you can easily merge them after you are done, but it is hard to isolate things onto a branch if it's on main already.
 ````
