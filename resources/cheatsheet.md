@@ -34,3 +34,8 @@ Delete everything in a directory with confirmation:
 ```
 rm -iR directory
 ```
+Move a file or Directory:
+```
+mv <directory name> <new directory name>
+mv <file name> <new file name>
+```
