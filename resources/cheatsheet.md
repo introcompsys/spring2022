@@ -34,3 +34,18 @@ Delete everything in a directory with confirmation:
 ```
 rm -iR directory
 ```
+Wildcard / Kleene star
+
+The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
+
+Example, given a directory `stuff/`:
+```
+stuff/
+  a.py
+  b.py
+  c.py
+  other.txt
+  another.md
+  nested_folder/
+```
+If we were to run `ls *.py` while in the `stuff/` directory, the command actually run by the computer is `ls a.py b.py c.py`. This also works for commands like `mv`. I.e. `mv *.py nested_folder/` runs `mv a.py b.py c.py nested_folder/`
