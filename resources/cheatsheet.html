@@ -364,6 +364,20 @@
 <h1>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">¶</a></h1>
 <p>Patterns and examples of how to accomplish frequent tasks. We will build up
 this section together over the course of the semester.</p>
+<p>Delete an empty directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rmdir</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>Since you can’t delete a directory with files in it you need to recursively delete the folder and its contents. The <code class="docutils literal notranslate"><span class="pre">-R</span></code> is a recursive declaration which tells the terminal to delete the folder, the files within the folder, subfolders, files in the subfolder etc. <a class="reference external" href="https://www.macworld.com/article/222596/command-line-deleting-files-folders-mac-terminal.html">Source</a></p>
+<p>Delete everything in a directory without confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">R</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-i</span></code> is a flag that prompts you if you want to remove each separate file in the directory.</p>
+<p>Delete everything in a directory with confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">iR</span> <span class="n">directory</span>
+</pre></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
