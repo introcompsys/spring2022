@@ -79,7 +79,7 @@ for platform, data in df.groupby('platform'):
 - use issues for content directly related to assignments.  If you push your code to the repository and then open an issue, I can see your code and your question at the same time and download it to run it if I need to debug it
 - use issues for questions about this syllabus or class notes. At the top right there's a GitHub logo <i class="fab fa-github"></i> that allows you to open a issue (for a question) or suggest an edit (eg if you think there's a typo or you find an additional helpful resource related to something)
 
-### For E-email
+### For E-mail
 
 - use e-mail for general inquiries or notifications
 - Please include `[CSC392]`  in the subject line of your email along with the topic of your message. This is important, because your messages are important, but I also get a lot of e-mail. Consider these a cheat code to my inbox: I have setup a filter that will flag your e-mail if you include that in subject to ensure that I see it.
