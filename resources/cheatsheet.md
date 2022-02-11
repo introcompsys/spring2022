@@ -34,7 +34,7 @@ Delete everything in a directory with confirmation:
 ```
 rm -iR directory
 ```
-Wildcard / Kleene star
+## Wildcard / Kleene star
 
 The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
 
