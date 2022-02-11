@@ -35,7 +35,7 @@ Delete everything in a directory with confirmation:
 rm -iR directory
 ```
 
-List information about the files:
+List the contents of the directory:
 ```
 ls
 ```
