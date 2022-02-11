@@ -17,6 +17,9 @@ kernelspec:
 Patterns and examples of how to accomplish frequent tasks. We will build up
 this section together over the course of the semester. 
 
+
+## Basic Bash file operations
+
 Delete an empty directory:
 ```
 rmdir directory
@@ -34,6 +37,12 @@ Delete everything in a directory with confirmation:
 ```
 rm -iR directory
 ```
+
+List the contents of the directory:
+```
+ls
+```
+
 ## Wildcard / Kleene star
 
 The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
@@ -49,3 +58,4 @@ stuff/
   nested_folder/
 ```
 If we were to run `ls *.py` while in the `stuff/` directory, the command actually run by the computer is `ls a.py b.py c.py`. This also works for commands like `mv`. I.e. `mv *.py nested_folder/` runs `mv a.py b.py c.py nested_folder/`
+
