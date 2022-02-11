@@ -342,6 +342,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-bash-file-operations">
+   Basic Bash file operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wildcard-kleene-star">
+   Wildcard / Kleene star
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -354,6 +372,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-bash-file-operations">
+   Basic Bash file operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wildcard-kleene-star">
+   Wildcard / Kleene star
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -364,6 +400,8 @@
 <h1>Cheatsheet<a class="headerlink" href="#cheatsheet" title="Permalink to this headline">¶</a></h1>
 <p>Patterns and examples of how to accomplish frequent tasks. We will build up
 this section together over the course of the semester.</p>
+<div class="section" id="basic-bash-file-operations">
+<h2>Basic Bash file operations<a class="headerlink" href="#basic-bash-file-operations" title="Permalink to this headline">¶</a></h2>
 <p>Delete an empty directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rmdir</span> <span class="n">directory</span>
 </pre></div>
@@ -381,6 +419,22 @@ this section together over the course of the semester.</p>
 <p>List the contents of the directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="wildcard-kleene-star">
+<h2>Wildcard / Kleene star<a class="headerlink" href="#wildcard-kleene-star" title="Permalink to this headline">¶</a></h2>
+<p>The wildcard character in bash <code class="docutils literal notranslate"><span class="pre">*</span></code> works by expanding in place to separate arguments that match whatever pattern you’re writing.</p>
+<p>Example, given a directory <code class="docutils literal notranslate"><span class="pre">stuff/</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stuff</span><span class="o">/</span>
+  <span class="n">a</span><span class="o">.</span><span class="n">py</span>
+  <span class="n">b</span><span class="o">.</span><span class="n">py</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">py</span>
+  <span class="n">other</span><span class="o">.</span><span class="n">txt</span>
+  <span class="n">another</span><span class="o">.</span><span class="n">md</span>
+  <span class="n">nested_folder</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>If we were to run <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">*.py</span></code> while in the <code class="docutils literal notranslate"><span class="pre">stuff/</span></code> directory, the command actually run by the computer is <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">a.py</span> <span class="pre">b.py</span> <span class="pre">c.py</span></code>. This also works for commands like <code class="docutils literal notranslate"><span class="pre">mv</span></code>. I.e. <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">*.py</span> <span class="pre">nested_folder/</span></code> runs <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">a.py</span> <span class="pre">b.py</span> <span class="pre">c.py</span> <span class="pre">nested_folder/</span></code></p>
 </div>
 </div>
 
