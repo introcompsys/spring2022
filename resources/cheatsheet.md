@@ -76,5 +76,5 @@ cp file_name.ext copied_file_name.ext
 ``` {note} 
 1. In every command you can add your directory/ location (ex. docs/file_name.ext).
 2. "." dot symbolizes our current location and ".." two dots, one level up in the directory tree.
-3. "*" replaces all words after the symbol (ex. pyt*.py shows all files starting with word pyt and extension py).
+3. "*" represents any number of unknown characters; creates a pattern (ex. rm pyt*.py removes all files that start on 'pyt' and end with extension py).
 ```
