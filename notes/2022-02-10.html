@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Survey of Hardware &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="5. Review and Abstraction" href="2022-02-08.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Survey of Hardware
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-10.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-10.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-10.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-does-assembly-come-from">
+   6.1. Where does assembly come from?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-simulator">
+   6.2. Using the simulator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-constants">
+   6.3. Adding Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-variable">
+   6.4. Using a variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-output">
+   6.5. Using output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   6.6. Prepare for Next Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction-reflection">
+     6.6.1. Abstraction reflection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-kwl-chart-rows">
+     6.6.2. New KWL chart rows
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   6.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   6.8. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-assembly-then-converted-to-binary-and-if-so-why-isnt-the-code-translated-straight-to-binary-instead-of-from-code-to-assembly-to-binary">
+     6.8.1. Is assembly then converted to binary and if so, why isn’t the code translated straight to binary instead of from code to assembly to binary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-a-mean-in-cpu-emulator">
+     6.8.2. What does A mean in CPU Emulator?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-the-prepare-for-next-class-says-things-like-organize-your-thoughts-on-is-it-expected-that-we-make-a-md-file-somewhere-on-github-to-show-this-work">
+     6.8.3. When the prepare for next class says things like “organize your thoughts on …” is it expected that we make a .md file somewhere on GitHub to show this work?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Survey of Hardware</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-does-assembly-come-from">
+   6.1. Where does assembly come from?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-simulator">
+   6.2. Using the simulator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-constants">
+   6.3. Adding Constants
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-variable">
+   6.4. Using a variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-output">
+   6.5. Using output
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   6.6. Prepare for Next Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abstraction-reflection">
+     6.6.1. Abstraction reflection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#new-kwl-chart-rows">
+     6.6.2. New KWL chart rows
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   6.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   6.8. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-assembly-then-converted-to-binary-and-if-so-why-isnt-the-code-translated-straight-to-binary-instead-of-from-code-to-assembly-to-binary">
+     6.8.1. Is assembly then converted to binary and if so, why isn’t the code translated straight to binary instead of from code to assembly to binary?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-a-mean-in-cpu-emulator">
+     6.8.2. What does A mean in CPU Emulator?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-the-prepare-for-next-class-says-things-like-organize-your-thoughts-on-is-it-expected-that-we-make-a-md-file-somewhere-on-github-to-show-this-work">
+     6.8.3. When the prepare for next class says things like “organize your thoughts on …” is it expected that we make a .md file somewhere on GitHub to show this work?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="survey-of-hardware">
+<h1><span class="section-number">6. </span>Survey of Hardware<a class="headerlink" href="#survey-of-hardware" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-does-assembly-come-from">
+<h2><span class="section-number">6.1. </span>Where does assembly come from?<a class="headerlink" href="#where-does-assembly-come-from" title="Permalink to this headline">¶</a></h2>
+<p>In order to watch what happens in hardware when a program runs, which is our goal today, we will execute a compiled program. It is written in assembly code.  Typically, we do not write assembly, but instead it is produced by the compiler.</p>
+<p>Technically assembly instructions and the values we operate on are represented in binary on hardware, but these more readable level instructions, though basic, are a useful abstraction.  These instructions are also hardware nonspecific.</p>
+</div>
+<div class="section" id="using-the-simulator">
+<h2><span class="section-number">6.2. </span>Using the simulator<a class="headerlink" href="#using-the-simulator" title="Permalink to this headline">¶</a></h2>
+<p>On MacOS:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> path/nand2tetris/tools
+bash CPUEmulator.sh
+</pre></div>
+</div>
+<p>On Windows:
+Double click on the CPUEmulator.bat file</p>
+<p>We’re going to use the test cases from the book’s project 5:</p>
+<ol class="simple">
+<li><p>Load Program</p></li>
+<li><p>Navigate to nand2tetris/projects/05</p></li>
+</ol>
+<p>We’re not going to <em>do</em> project 5, which is to build a CPU, but instead to use the test.</p>
+<p>For more on how the emulator works see the <a class="reference external" href="https://www.nand2tetris.org/_files/ugd/44046b_24b3a15aa628404fbf6dacd86d7da3af.pdf">CPU Emulator Tutorial</a>.</p>
+<p>For much more detail about how this all works <a class="reference external" href="https://www.nand2tetris.org/_files/ugd/44046b_d70026d8c1424487a451eaba3e372132.pdf">chapter 4</a> of the related text book has description of the machine code and assembly language.</p>
+</div>
+<div class="section" id="adding-constants">
+<h2><span class="section-number">6.3. </span>Adding Constants<a class="headerlink" href="#adding-constants" title="Permalink to this headline">¶</a></h2>
+<p>We’ll use add.hack first.</p>
+<p>This program adds constants, 2+3.</p>
+<p>It is a program, assembly code that we are loading to the simulator’s ROM, which is memory that gets read only by the CPU.</p>
+<p>Run the simulator and watch what each line of the program does.</p>
+<p>Notice the following:</p>
+<ul class="simple">
+<li><p>to compute with a constant, that number only exists in ROM in the instructions</p></li>
+<li><p>to write a value to memory the address register first has to be pointed to what where in the memory the value will go, then the value can be sent there</p></li>
+</ul>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Write code in a high level language that would compile into this program. Try writing two different variations.</p>
+</div>
+</div>
+<div class="section" id="using-a-variable">
+<h2><span class="section-number">6.4. </span>Using a variable<a class="headerlink" href="#using-a-variable" title="Permalink to this headline">¶</a></h2>
+<p>Next use the max.hack.</p>
+<p>This one compares the values at two memory locations. In order to use it, you have to write values to the RAM 0 and RAM 1 manually.</p>
+<p>It first takes the value from each location and passes the first value to D, then uses the ALU to assign the difference between the two values to D. Then, if the value is greater than 0, it jumps to line to line 10 in the ROM (of the instructions). Line 10, sets A to 0 and 11 sets D to the value from RAM 0. If, instead, the value is less than 0, A is set 1, then and D is set to that value. Then the program points A to 2 and writes the value from D there.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Write code in a high level language that would compile into this program. Try writing multiple different versions.</p>
+<p>What does this program assume has happened that it doesn’t include in its body.</p>
+</div>
+</div>
+<div class="section" id="using-output">
+<h2><span class="section-number">6.5. </span>Using output<a class="headerlink" href="#using-output" title="Permalink to this headline">¶</a></h2>
+<p>The rect.hack program writes to output, by using a specific memory location that is connected to the output.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Try working through this program using the tools to understand what it does</p>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class7prep"></span><h2><span class="section-number">6.6. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Read these notes and practice with the hardware simulator, try to understand its assembly and walk through what other steps happen.  Make notes on what you want to remember most or had the most trouble with in <code class="docutils literal notranslate"><span class="pre">hardwaresurvey.md</span></code></p></li>
+<li><p>Review and update your listing of how data moves through a program in your <code class="docutils literal notranslate"><span class="pre">abstraction.md</span></code>.  Answer reflection questions below.</p></li>
+<li><p>Review the commit history and git blame of a repo in browser- what must be in the .git directory for GitHub to render all of that information? (be prepared to discuss this in class)</p></li>
+<li><p>Fill in the Know and Want to know columns for the new KWL chart rows below.</p></li>
+<li><p>Begin your <a class="reference external" href="https://classroom.github.com/a/qBKaxi-z">grading contract</a>, bring questions to class Tuesday.</p></li>
+</ol>
+<div class="section" id="abstraction-reflection">
+<h3><span class="section-number">6.6.1. </span>Abstraction reflection<a class="headerlink" href="#abstraction-reflection" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Did you initially get stuck anywhere?
+1. How does what we saw with the hardware simulators differ from how you had thought about it before?
+1. Are there cases where what you previously thought was functional for what you were doing but not totally correct? Describe them.
+</pre></div>
+</div>
+</div>
+<div class="section" id="new-kwl-chart-rows">
+<h3><span class="section-number">6.6.2. </span>New KWL chart rows<a class="headerlink" href="#new-kwl-chart-rows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">file</span> <span class="n">system</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span><span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">bash</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">abstraction</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span><span class="n">programming</span> <span class="n">languages</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<h2><span class="section-number">6.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Complete the <code class="docutils literal notranslate"><span class="pre">Try</span> <span class="pre">it</span> <span class="pre">Yourself</span></code> blocks above in your <code class="docutils literal notranslate"><span class="pre">hardwaresurvey.md</span></code>.</p></li>
+<li><p>Expand on your update to <code class="docutils literal notranslate"><span class="pre">abstraction.md</span></code>: Can you reconcile different ways you have seen memory before?</p></li>
+</ol>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">6.8. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="is-assembly-then-converted-to-binary-and-if-so-why-isnt-the-code-translated-straight-to-binary-instead-of-from-code-to-assembly-to-binary">
+<h3><span class="section-number">6.8.1. </span>Is assembly then converted to binary and if so, why isn’t the code translated straight to binary instead of from code to assembly to binary?<a class="headerlink" href="#is-assembly-then-converted-to-binary-and-if-so-why-isnt-the-code-translated-straight-to-binary-instead-of-from-code-to-assembly-to-binary" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Yes, assembly is converted to binary in order to write it to the hardware.  The Emulator that we used today showed the numbers in RAM and the instructions both in higher level representations than binary.  The advantage to assembly is that it is hardware independent and human readable. It is low level and limited to what the hardware <em>can</em> do, but it is a version of that that can be run on different hardware.</p>
+</div>
+</div>
+<div class="section" id="what-does-a-mean-in-cpu-emulator">
+<h3><span class="section-number">6.8.2. </span>What does A mean in CPU Emulator?<a class="headerlink" href="#what-does-a-mean-in-cpu-emulator" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="when-the-prepare-for-next-class-says-things-like-organize-your-thoughts-on-is-it-expected-that-we-make-a-md-file-somewhere-on-github-to-show-this-work">
+<h3><span class="section-number">6.8.3. </span>When the prepare for next class says things like “organize your thoughts on …” is it expected that we make a .md file somewhere on GitHub to show this work?<a class="headerlink" href="#when-the-prepare-for-next-class-says-things-like-organize-your-thoughts-on-is-it-expected-that-we-make-a-md-file-somewhere-on-github-to-show-this-work" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>For things I expect to review, the instructions will tell you where it goes.  Other things, we will bring up in a future class, so you should have it handy, but you can put it in a repo or a private set of notes.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-08.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Review and Abstraction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
