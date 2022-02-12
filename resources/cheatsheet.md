@@ -73,7 +73,7 @@ Copy a file:
 cp file_name.ext copied_file_name.ext
 ```
 
-``` {dropdown} 
+``` {note} 
 1. In every command you can add your directory/ location (ex. docs/file_name.ext).
 2. "." dot symbolizes our current location and ".." two docts, a location one up.
 3. "*" replaces all words after the symbol (ex. pyt*.py shows all files starting with word pyt and extension py).
