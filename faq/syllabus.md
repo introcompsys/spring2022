@@ -1,7 +1,7 @@
 # Syllabus and Grading FAQ
 
 
-<!-- 
+
 ## How much does assignment x, class participation, or a portfolio check weigh in my grade?
 ```{toggle}
 There is no specific weight for any activities, because your grade is based on earning achievements for the skills listed in the [skills rubric](achievement-definitions).
@@ -13,12 +13,26 @@ If you do not submit (or earn no achievements from) your portfolio, the maximum 
 
 ## Can I submit this assignment late if ...?
 ```{toggle}
-Late assignments are not accepted, however, your grade is based on the skills, not the assignments. All skills are assessed in at least two [assignments](assignment-skills), so missing any one will not hurt your grade. If you need an accommodation because you cannot submit multiple assignments, contact Dr. Brown.
+In this class, there are feedback hours instead of deadlines for specific assignments.  If your work is not in by the feedback hours, you will get feedback at the next hours. If your grading contract has dated milestones, (eg for a project) post an issue in your contract repo with title `late milestone: <name of milestone>` and in the body proposes when it will be in instead and how this delay will not affect your future work.  If you need more dramatic shift, propose a revision to your contract.
 ```
 
-## I don't understand my grade on this assignment
+## I don't understand the feedback  on this assignment
 ```{toggle}
 If you have questions about your grade, the best place to get feedback is to reply on the Feedback PR.  Either reply directly to one of the inline comments, or the summary.
 
-Be specific about what you think you should have earned and why.
-``` -->
+Be specific about what you think is wrong so that we can expand more.
+
+```
+
+
+## What should a Deeper exploration look like and where do I put it?
+```{toggle}
+It should be a tutorial or blog style piece of writing, likely with code
+excerpts or screenshots embedded in it.
+
+[an example that uses mostly screenshots](https://rhodyprog4ds.github.io/BrownFall21/notes/2021-09-10.html)
+
+[an example of heavily annotated code](https://rhodyprog4ds.github.io/BrownFall21/notes/2021-09-17.html)
+
+They should be markdown files in your KWL repo.  I recommend myst markdown. 
+```
