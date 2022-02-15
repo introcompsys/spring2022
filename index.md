@@ -21,12 +21,6 @@ This site is a resource for the course.  We do not follow a text book for this c
 
 The resources section has links and short posts that provide  more context and explanation.  Content in this section is for the most part not strictly the material that you'll be graded on, but it is often material that will help you understand and grow as a programmer and data scientist.
 
-## Activity Priority Key
-
-- <i class="fa-solid fa-star"></i>  starred more practice task are priority items (in terms of grading)
-- <i class="fa-solid fa-circle-exclamation"></i> prepare items with this are the  most important to complete before class because we will use them directly during class
-- <i class="fa-solid fa-brain"></i> this icon indicates things you could use as the start of a deeper exploration
-
 
 ## Reading each page
 
@@ -56,8 +50,4 @@ Both notes and assignment pages will have hints from time to time. Pay attention
 
 ```{admonition} Think Ahead
 Think ahead boxes will guide you to start thinking about what can go into your portfolio to build on the material at hand.
-```
-
-```{admonition} Ram Token Opportunity
-Chances to earn ram tokens are highlighted this way.
 ```

@@ -17,5 +17,7 @@ This is not currently complete but will contain a listing with links to recommen
   - content
 * - README
   - the chart, (or toc)
+* - workflows.md
+  - [workflow]
 
 ```
