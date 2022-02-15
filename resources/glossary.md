@@ -29,5 +29,6 @@ shell
 terminal
   a program that makes shell visible for us and allows for interactions with it
 
-
+standard input (stdin)
+  default device for input from user
 ```
