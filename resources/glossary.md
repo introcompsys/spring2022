@@ -23,13 +23,17 @@ pull (changes from a repository)
   
 repository
   a project folder with tracking information in it in the form of a .git file
-  
 
 shell
   a command line interface; allows for access to an operating system
   
 terminal
   a program that makes shell visible for us and allows for interactions with it
+  
+ROM (Read-Only Memory)
+  Memory that only gets read by the CPU
+  
+
 
 
 ```
