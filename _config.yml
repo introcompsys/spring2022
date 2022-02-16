@@ -24,7 +24,7 @@ latex:
   latex_documents:
     targetname: book.tex
 
-exclude_patterns            : ['_data/*',  README.md, ignore/*]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns            : ['_data/*',  README.md, ignore/*, '_practice/*','_prepare/*']  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
 #######################################################################################
 # Execution settings
@@ -34,6 +34,11 @@ execute:
   exclude_patterns          : []  # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   allow_errors              : true
 
+sphinx:
+  config:
+    language: en
+  extra_extensions:
+  - sphinx_panels
 
 
 parse:
