@@ -21,6 +21,7 @@ parts:
       - file: notes/2022-02-03
       - file: notes/2022-02-08
       - file: notes/2022-02-10
+      - file: notes/2022-02-15
 
   # - caption: Assignments
   #   numbered: True
