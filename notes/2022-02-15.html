@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>What actually is git? &#8212; Introduction to Computer Systems</title>
+    <title>7. What actually is git? &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,6 +52,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Syllabus and Grading FAQ" href="../faq/syllabus.html" />
+    <link rel="prev" title="6. Survey of Hardware" href="2022-02-10.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -147,7 +149,7 @@
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-01-25.html">
    1. Introduction
@@ -176,6 +178,15 @@
  <li class="toctree-l1">
   <a class="reference internal" href="2022-02-10.html">
    6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
   </a>
  </li>
 </ul>
@@ -353,101 +364,101 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grading-contract-q-a">
-   Grading Contract Q &amp; A
+   7.1. Grading Contract Q &amp; A
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-file-system-with-a-version-control-user-interface">
-   Git is a File System with a Version Control user interface
+   7.2. Git is a File System with a Version Control user interface
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-distributed">
-   Git is distributed
+   7.3. Git is distributed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-are-the-parts-of-git">
-   What are the parts of git?
+   7.4. What are the parts of git?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-head">
-     Git HEAD
+     7.4.1. Git HEAD
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-refs">
-     Git Refs
+     7.4.2. Git Refs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-config-and-branch-naming">
-     Git Config  and branch naming
+     7.4.3. Git Config  and branch naming
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-objects">
-     Git Objects
+     7.4.4. Git Objects
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#starting-a-git-repository-from-scratch">
-   Starting a Git Repository from Scratch
+   7.5. Starting a Git Repository from Scratch
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next Class
+   7.6. Prepare for next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   7.7. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions after class
+   7.8. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-should-the-grading-contract-be-turned-in">
-     when should the grading contract be turned in?
+     7.8.1. when should the grading contract be turned in?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-you-create-multiple-remotes-that-have-the-same-name">
-     Can you create multiple remotes that have the same name?
+     7.8.2. Can you create multiple remotes that have the same name?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-does-it-mean-when-a-branch-is-both-x-commits-ahead-of-main-but-also-y-commits-behind">
-     what does it mean when a branch is both x commits ahead of main, but also y commits behind?
+     7.8.3. what does it mean when a branch is both x commits ahead of main, but also y commits behind?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#should-we-be-working-with-git-entirely-from-the-terminal-for-classwork-or-is-it-our-preference">
-     Should we be working with Git entirely from the terminal for classwork or is it our preference?
+     7.8.4. Should we be working with Git entirely from the terminal for classwork or is it our preference?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-we-be-using-the-github-cli-to-publish-our-repo-to-github">
-     Will we be using the github cli to publish our repo to github?
+     7.8.5. Will we be using the github cli to publish our repo to github?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-next-couple-of-classes">
-     Questions we will answer in the next couple of classes
+     7.8.6. Questions we will answer in the next couple of classes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
-   Resources
+   7.9. Resources
   </a>
  </li>
 </ul>
@@ -472,101 +483,101 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grading-contract-q-a">
-   Grading Contract Q &amp; A
+   7.1. Grading Contract Q &amp; A
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-a-file-system-with-a-version-control-user-interface">
-   Git is a File System with a Version Control user interface
+   7.2. Git is a File System with a Version Control user interface
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#git-is-distributed">
-   Git is distributed
+   7.3. Git is distributed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-are-the-parts-of-git">
-   What are the parts of git?
+   7.4. What are the parts of git?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-head">
-     Git HEAD
+     7.4.1. Git HEAD
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-refs">
-     Git Refs
+     7.4.2. Git Refs
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-config-and-branch-naming">
-     Git Config  and branch naming
+     7.4.3. Git Config  and branch naming
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#git-objects">
-     Git Objects
+     7.4.4. Git Objects
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#starting-a-git-repository-from-scratch">
-   Starting a Git Repository from Scratch
+   7.5. Starting a Git Repository from Scratch
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next Class
+   7.6. Prepare for next Class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   7.7. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions after class
+   7.8. Questions after class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-should-the-grading-contract-be-turned-in">
-     when should the grading contract be turned in?
+     7.8.1. when should the grading contract be turned in?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#can-you-create-multiple-remotes-that-have-the-same-name">
-     Can you create multiple remotes that have the same name?
+     7.8.2. Can you create multiple remotes that have the same name?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-does-it-mean-when-a-branch-is-both-x-commits-ahead-of-main-but-also-y-commits-behind">
-     what does it mean when a branch is both x commits ahead of main, but also y commits behind?
+     7.8.3. what does it mean when a branch is both x commits ahead of main, but also y commits behind?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#should-we-be-working-with-git-entirely-from-the-terminal-for-classwork-or-is-it-our-preference">
-     Should we be working with Git entirely from the terminal for classwork or is it our preference?
+     7.8.4. Should we be working with Git entirely from the terminal for classwork or is it our preference?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-we-be-using-the-github-cli-to-publish-our-repo-to-github">
-     Will we be using the github cli to publish our repo to github?
+     7.8.5. Will we be using the github cli to publish our repo to github?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-we-will-answer-in-the-next-couple-of-classes">
-     Questions we will answer in the next couple of classes
+     7.8.6. Questions we will answer in the next couple of classes
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
-   Resources
+   7.9. Resources
   </a>
  </li>
 </ul>
@@ -586,28 +597,28 @@
 </div>
 </div>
 <div class="section" id="what-actually-is-git">
-<h1>What actually <em>is</em> git?<a class="headerlink" href="#what-actually-is-git" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>What actually <em>is</em> git?<a class="headerlink" href="#what-actually-is-git" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="grading-contract-q-a">
-<h2>Grading Contract Q &amp; A<a class="headerlink" href="#grading-contract-q-a" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Grading Contract Q &amp; A<a class="headerlink" href="#grading-contract-q-a" title="Permalink to this headline">¶</a></h2>
 <p><span class="xref myst">Grading contract information is added to the syllabus</span></p>
 <p>and the <span class="xref myst">FAQ</span> section</p>
 </div>
 <div class="section" id="git-is-a-file-system-with-a-version-control-user-interface">
-<h2>Git is a File System with a Version Control user interface<a class="headerlink" href="#git-is-a-file-system-with-a-version-control-user-interface" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Git is a File System with a Version Control user interface<a class="headerlink" href="#git-is-a-file-system-with-a-version-control-user-interface" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">git is fundamentally a content-addressable filesystem with a VCS user interface written on top of it.</a></p>
 <p>Porcelain: the user friendly VCS</p>
 <p>Plumbing: the internal workings- a toolkit for a VCS</p>
 <p>We have so far used git as a version control system.  A version control system, in general, will have operations like commit, push, pull, clone.  These may work differently under the hood or be called different things, but those are what something needs to have in order to</p>
 </div>
 <div class="section" id="git-is-distributed">
-<h2>Git is distributed<a class="headerlink" href="#git-is-distributed" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Git is distributed<a class="headerlink" href="#git-is-distributed" title="Permalink to this headline">¶</a></h2>
 <p>Git can have different workflows</p>
 <p><img alt="subversion workflow" src="https://git-scm.com/images/about/workflow-a&#64;2x.png" /></p>
 <p><img alt="integration manager workflow" src="https://git-scm.com/images/about/workflow-b&#64;2x.png" /></p>
 <p><img alt="dictator and lieutenants workflow" src="https://git-scm.com/images/about/workflow-c&#64;2x.png" /></p>
 </div>
 <div class="section" id="what-are-the-parts-of-git">
-<h2>What are the parts of git?<a class="headerlink" href="#what-are-the-parts-of-git" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.4. </span>What are the parts of git?<a class="headerlink" href="#what-are-the-parts-of-git" title="Permalink to this headline">¶</a></h2>
 <p>and we’re going to start by examinging our familiar github inclass repo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">/</span>
 <span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
@@ -656,7 +667,7 @@
 </tbody>
 </table>
 <div class="section" id="git-head">
-<h3>Git HEAD<a class="headerlink" href="#git-head" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>Git HEAD<a class="headerlink" href="#git-head" title="Permalink to this headline">¶</a></h3>
 <p>We can look at the head file</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">HEAD</span>
 </pre></div>
@@ -686,7 +697,7 @@ file, but that is the first thing it does.</p>
 main in the <code class="docutils literal notranslate"><span class="pre">refs</span></code> directory.</p>
 </div>
 <div class="section" id="git-refs">
-<h3>Git Refs<a class="headerlink" href="#git-refs" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span>Git Refs<a class="headerlink" href="#git-refs" title="Permalink to this headline">¶</a></h3>
 <p>We can loook at that</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
 </pre></div>
@@ -783,7 +794,7 @@ pw
 </div>
 </div>
 <div class="section" id="git-config-and-branch-naming">
-<h3>Git Config  and branch naming<a class="headerlink" href="#git-config-and-branch-naming" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.3. </span>Git Config  and branch naming<a class="headerlink" href="#git-config-and-branch-naming" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">.</span><span class="n">git</span>
 <span class="n">cat</span> <span class="n">config</span>
 </pre></div>
@@ -815,7 +826,7 @@ pw
 </div>
 </div>
 <div class="section" id="git-objects">
-<h3>Git Objects<a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.4.4. </span>Git Objects<a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">objects</span><span class="o">/</span>
 <span class="n">ls</span>
 </pre></div>
@@ -827,7 +838,7 @@ pw
 </div>
 </div>
 <div class="section" id="starting-a-git-repository-from-scratch">
-<h2>Starting a Git Repository from Scratch<a class="headerlink" href="#starting-a-git-repository-from-scratch" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.5. </span>Starting a Git Repository from Scratch<a class="headerlink" href="#starting-a-git-repository-from-scratch" title="Permalink to this headline">¶</a></h2>
 <p>We’ll create  clear repo at the top levle of our inclass directory so that it is not inside another repo</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
 <span class="n">pwd</span>
@@ -885,7 +896,7 @@ pw
 </div>
 </div>
 <div class="section" id="prepare-for-next-class">
-<span id="class8prep"></span><h2>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<span id="class8prep"></span><h2><span class="section-number">7.6. </span>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ol>
@@ -903,7 +914,7 @@ pw
 </div>
 </div>
 <div class="section" id="more-practice">
-<span id="class8practice"></span><h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<span id="class8practice"></span><h2><span class="section-number">7.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
 <!--
 ```{glue:} more-practice
 ``` --><div class="cell tag_remove-input docutils container">
@@ -923,36 +934,36 @@ pw
 </div>
 </div>
 <div class="section" id="questions-after-class">
-<h2>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.8. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="when-should-the-grading-contract-be-turned-in">
-<h3>when should the grading contract be turned in?<a class="headerlink" href="#when-should-the-grading-contract-be-turned-in" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.1. </span>when should the grading contract be turned in?<a class="headerlink" href="#when-should-the-grading-contract-be-turned-in" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>First draft is due Thursday, Feb 17 at 4pm as in the README</p>
 </div>
 </div>
 <div class="section" id="can-you-create-multiple-remotes-that-have-the-same-name">
-<h3>Can you create multiple remotes that have the same name?<a class="headerlink" href="#can-you-create-multiple-remotes-that-have-the-same-name" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.2. </span>Can you create multiple remotes that have the same name?<a class="headerlink" href="#can-you-create-multiple-remotes-that-have-the-same-name" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>no each remote has to have a different name, like each variable in a program has to be unique if you try to create a new remote with the same name it would overwrite the old one</p>
 </div>
 </div>
 <div class="section" id="what-does-it-mean-when-a-branch-is-both-x-commits-ahead-of-main-but-also-y-commits-behind">
-<h3>what does it mean when a branch is both x commits ahead of main, but also y commits behind?<a class="headerlink" href="#what-does-it-mean-when-a-branch-is-both-x-commits-ahead-of-main-but-also-y-commits-behind" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.3. </span>what does it mean when a branch is both x commits ahead of main, but also y commits behind?<a class="headerlink" href="#what-does-it-mean-when-a-branch-is-both-x-commits-ahead-of-main-but-also-y-commits-behind" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="should-we-be-working-with-git-entirely-from-the-terminal-for-classwork-or-is-it-our-preference">
-<h3>Should we be working with Git entirely from the terminal for classwork or is it our preference?<a class="headerlink" href="#should-we-be-working-with-git-entirely-from-the-terminal-for-classwork-or-is-it-our-preference" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.4. </span>Should we be working with Git entirely from the terminal for classwork or is it our preference?<a class="headerlink" href="#should-we-be-working-with-git-entirely-from-the-terminal-for-classwork-or-is-it-our-preference" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>In class, we will use the terminal because it is the most consistent and transparent.  For other work, you can edit it however you like.  You can work in browser, with the GitHub desktop client, using the GitHub CLI, or your favorite IDE’s tools. I recommend giving the terminal a serious try because it will have all of the features of git and other tools may not, but your preference is fine.  It could actually be really good for your general understanding to practice with git at least two ways.</p>
 </div>
 </div>
 <div class="section" id="will-we-be-using-the-github-cli-to-publish-our-repo-to-github">
-<h3>Will we be using the github cli to publish our repo to github?<a class="headerlink" href="#will-we-be-using-the-github-cli-to-publish-our-repo-to-github" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.5. </span>Will we be using the github cli to publish our repo to github?<a class="headerlink" href="#will-we-be-using-the-github-cli-to-publish-our-repo-to-github" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>We are going to mostly use the base git CLI because it is more general and usable in more contexts (for example, your remote could be on GitLab or BitBucket or an internal private server)</p>
 </div>
 </div>
 <div class="section" id="questions-we-will-answer-in-the-next-couple-of-classes">
-<h3>Questions we will answer in the next couple of classes<a class="headerlink" href="#questions-we-will-answer-in-the-next-couple-of-classes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.8.6. </span>Questions we will answer in the next couple of classes<a class="headerlink" href="#questions-we-will-answer-in-the-next-couple-of-classes" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>What is the purpose of the index file?</p></li>
 <li><p>How do you add your local repo to github?</p></li>
@@ -962,7 +973,7 @@ pw
 </div>
 </div>
 <div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.9. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://git-scm.com/doc">git docs</a></p></li>
 <li><p><a class="reference external" href="https://git-scm.com/book/en/v2">git book</a> this includes other spoken languages as well if that is helpful for you.</p></li>
@@ -994,7 +1005,21 @@ pw
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-10.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Survey of Hardware</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../faq/syllabus.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Syllabus and Grading FAQ</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
