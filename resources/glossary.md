@@ -30,6 +30,10 @@ shell
   
 terminal
   a program that makes shell visible for us and allows for interactions with it
+  
+Blessed Repository
+ a repository which has the approval of the managers of the project, acting as the "de facto" standard
+ where all other clones are made from
 
 
 ```
