@@ -20,6 +20,12 @@ this section together over the course of the semester.
 
 ## Basic Bash file operations
 
+Make a new directory:
+
+```
+mkdir directory
+```
+
 Delete an empty directory:
 ```
 rmdir directory
@@ -42,6 +48,19 @@ List the contents of the directory:
 ```
 ls
 ```
+
+Write to a file:
+```
+nano file
+```
+
+See the contents of a file:
+```
+cat file
+```
+
+
+
 
 ## Wildcard / Kleene star
 
