@@ -192,6 +192,28 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   FAQ
  </span>
 </p>
@@ -292,7 +314,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-02-01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notes/2022-02-01.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -331,6 +356,23 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-02-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -583,7 +625,9 @@
             
               <div>
                 
-  <div class="section" id="how-do-i-use-git-offline">
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="how-do-i-use-git-offline">
 <h1><span class="section-number">3. </span>How do I use git offline<a class="headerlink" href="#how-do-i-use-git-offline" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="todays-goals">
 <h2><span class="section-number">3.1. </span>Todays Goals<a class="headerlink" href="#todays-goals" title="Permalink to this headline">¶</a></h2>
@@ -894,16 +938,20 @@ in class on Thursday.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
 <ol class="simple">
 <li><p>Complete the classmate issue in your in-class repository.</p></li>
 <li><p>read the notes PR, add or comment on a tip, resource, a bit of history in a sidebar or additional end of class question</p></li>
 <li><p>try using git in your IDE of choice, log any challenges you have on the practice repo (<code class="docutils literal notranslate"><span class="pre">github-in-class-username</span></code>), and tag &#64;sp22instructors on GitHub. You can use either repo we have made in class, or one for an assignment in another course.</p></li>
-<li><p>using your terminal, download your KWL repo and update your ‘learned’ column on a new branch</p></li>
+<li><p>using your terminal, download your KWL repo and update your 'learned' column on a new branch</p></li>
 <li><p>answer the questions below in a new markdown file, <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code> in your KWL on your new branch and push the changes to GitHub</p></li>
 <li><p>Create a PR from your new branch to main <strong>do not merge this until instructed</strong></p></li>
-<li><p>add your programming challenge(s) you have had as issues to <a class="reference external" href="https://github.com/introcompsys/sp22community">our private repo</a> or to the course website repo if you like. Put one ‘challenge/question’ per issue so that we can close them as addressed. See last class notes for prompt.</p></li>
+<li><p>add your programming challenge(s) you have had as issues to <a class="reference external" href="https://github.com/introcompsys/sp22community">our private repo</a> or to the course website repo if you like. Put one 'challenge/question' per issue so that we can close them as addressed. See last class notes for prompt.</p></li>
 <li><p>Create or comment on a discussion thread in the <a class="reference external" href="https://github.com/introcompsys/sp22community">private repo</a> about the part of CS/ type of programming you like best/what you want to do post graduation.</p></li>
 </ol>
+</div>
+</div>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition tip">
@@ -922,11 +970,15 @@ in class on Thursday.</p>
 </div>
 <div class="section" id="more-practice">
 <h2><span class="section-number">3.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
 <ol class="simple">
-<li><p>Find the “Try it yourself” boxes in these notes, try them and add notes/ responses under a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">More</span> <span class="pre">Practice</span></code> heading in your <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code> file of your KWL repo.</p></li>
+<li><p>Find the &quot;Try it yourself&quot; boxes in these notes, try them and add notes/ responses under a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">More</span> <span class="pre">Practice</span></code> heading in your <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code> file of your KWL repo.</p></li>
 <li><p>Download the course site repo via terminal.</p></li>
 <li><p>Explore the difference between <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> try committing and pushing without adding, then add and push without committing.  Describe what happens in each case in your <code class="docutils literal notranslate"><span class="pre">gitoffline.md</span></code></p></li>
 </ol>
+</div>
+</div>
 </div>
 <div class="section" id="questions-after-class">
 <h2><span class="section-number">3.8. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>

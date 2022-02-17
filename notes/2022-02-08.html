@@ -192,6 +192,28 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   FAQ
  </span>
 </p>
@@ -292,7 +314,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-02-08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/notes/2022-02-08.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -331,6 +356,23 @@
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-02-08.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -551,7 +593,9 @@
             
               <div>
                 
-  <div class="section" id="review-and-abstraction">
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="review-and-abstraction">
 <h1><span class="section-number">5. </span>Review and Abstraction<a class="headerlink" href="#review-and-abstraction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="can-i-reset-a-git-repository">
 <h2><span class="section-number">5.1. </span>Can I reset a Git repository?<a class="headerlink" href="#can-i-reset-a-git-repository" title="Permalink to this headline">¶</a></h2>
@@ -707,6 +751,8 @@ software level, that use the same hardware.</p>
 </div>
 <div class="section" id="prepare-for-next-class">
 <span id="class6prep"></span><h2><span class="section-number">5.5. </span>Prepare for Next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
 <ol class="simple">
 <li><p><a class="reference external" href="https://www.nand2tetris.org/software">install h/w simulator</a></p></li>
 <li><p>Add a glossary, cheatsheet entry, or historical context/facts about the things we have learned to the site.</p></li>
@@ -714,8 +760,29 @@ software level, that use the same hardware.</p>
 <li><p>Map out how you think about data moving through a small program using the levels of abstraction. Add this to a markdown table in your KWL chart repo called <code class="docutils literal notranslate"><span class="pre">abstraction.md</span></code>. If you prefer a different format than a table, that is okay, but put it in your KWL repo. It is okay if you are not sure, the goal is to think through this.</p></li>
 </ol>
 </div>
+</div>
+</div>
 <div class="section" id="more-practice">
 <h2><span class="section-number">5.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Once your PRs in your KWL are merged so that main and feedback match, pull to updates your local copy. In a new terminal window, navigate there and then move the your KWL chart to a file called <code class="docutils literal notranslate"><span class="pre">chart.md</span></code>. Create a new README files with a list of all the files in your repo. Use <code class="docutils literal notranslate"><span class="pre">history</span> <span class="pre">N</span></code> (N is the number of past commands that history will return) and redirects to write the steps you took to <code class="docutils literal notranslate"><span class="pre">reorg.md</span></code>. Review that file to make sure it doesn't have extra steps in it and remove any if needed using nano then commit that file to your repo.</p></li>
+<li><p>find a place where there is a comment in the course notes indicating content to add and submit a PR adding that content. This could be today's notes or a past day's.</p></li>
+<li><p>Add a new file to your KWL repo called <code class="docutils literal notranslate"><span class="pre">stdinouterr.md</span></code> Try the following one at a time in your terminal and describe what happens and explain why or list questions for each in the file. What tips/reminders would you give a new user  (or yourself) about using redirects and <code class="docutils literal notranslate"><span class="pre">echo</span></code>?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span> <span class="pre">&gt;</span> <span class="pre">fa</span> <span class="pre">&gt;</span> <span class="pre">fb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;a</span> <span class="pre">test&quot;</span> <span class="pre">&gt;</span> <span class="pre">fc</span> <span class="pre">fd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">fe</span> <span class="pre">echo</span> <span class="pre">&quot;hi</span> <span class="pre">there&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">&quot;</span> <span class="pre">&gt;</span> <span class="pre">ff</span> <span class="pre">world</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ff</span> <span class="pre">echo</span> <span class="pre">hello</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">&lt;</span> <span class="pre">echo</span> <span class="pre">hello</span> <span class="pre">there</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code></p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>pay attention to how many steps you do to know what value of N to use. You should be able to do all of number 1 in your terminal.</p>
@@ -731,21 +798,6 @@ software level, that use the same hardware.</p>
 <p>If you get stuck on any of these create an issue and tag &#64;sp22instructors</p>
 </div>
 </div>
-<ol class="simple">
-<li><p>Once your PRs in your KWL are merged so that main and feedback match, pull to updates your local copy. In a new terminal window, navigate there and then move the your KWL chart to a file called <code class="docutils literal notranslate"><span class="pre">chart.md</span></code>. Create a new README files with a list of all the files in your repo. Use <code class="docutils literal notranslate"><span class="pre">history</span> <span class="pre">N</span></code> (N is the number of past commands that history will return) and redirects to write the steps you took to <code class="docutils literal notranslate"><span class="pre">reorg.md</span></code>. Review that file to make sure it doesn’t have extra steps in it and remove any if needed using nano then commit that file to your repo.</p></li>
-<li><p>find a place where there is a comment in the course notes indicating content to add and submit a PR adding that content. This could be today’s notes or a past day’s.</p></li>
-<li><p>Add a new file to your KWL repo called <code class="docutils literal notranslate"><span class="pre">stdinouterr.md</span></code> Try the following one at a time in your terminal and describe what happens and explain why or list questions for each in the file. What tips/reminders would you give a new user  (or yourself) about using redirects and <code class="docutils literal notranslate"><span class="pre">echo</span></code>?</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">world&quot;</span> <span class="pre">&gt;</span> <span class="pre">fa</span> <span class="pre">&gt;</span> <span class="pre">fb</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;a</span> <span class="pre">test&quot;</span> <span class="pre">&gt;</span> <span class="pre">fc</span> <span class="pre">fd</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">fe</span> <span class="pre">echo</span> <span class="pre">&quot;hi</span> <span class="pre">there&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;hello</span> <span class="pre">&quot;</span> <span class="pre">&gt;</span> <span class="pre">ff</span> <span class="pre">world</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;ff</span> <span class="pre">echo</span> <span class="pre">hello</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fa</span> <span class="pre">&lt;</span> <span class="pre">echo</span> <span class="pre">hello</span> <span class="pre">there</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cat</span></code></p></li>
-</ul>
-</li>
-</ol>
 </div>
 <div class="section" id="questions-after-class">
 <h2><span class="section-number">5.7. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
