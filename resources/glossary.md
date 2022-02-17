@@ -9,6 +9,10 @@ answer.
 
 ```{glossary}
 
+Blessed Repository
+ a repository which has the approval of the managers of the project, acting as the "de facto" standard
+ where all other clones are made from
+
 git
   a version control tool; it's a fully open source and always free tool, that can be hosted by anyone or used without a host, locally only.
 
@@ -31,9 +35,6 @@ shell
 terminal
   a program that makes shell visible for us and allows for interactions with it
   
-Blessed Repository
- a repository which has the approval of the managers of the project, acting as the "de facto" standard
- where all other clones are made from
 
 
 ```
