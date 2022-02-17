@@ -43,6 +43,11 @@ List the contents of the directory:
 ls
 ```
 
+Shows the differences between the index file and the current file. Git status displays the current state of the working directory.
+```
+git status
+```
+
 ## Wildcard / Kleene star
 
 The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
