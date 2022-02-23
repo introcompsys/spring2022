@@ -1,4 +1,4 @@
-jupyter-book ==0.11.1
+jupyter-book ==0.11.0a1
 matplotlib
 numpy
 pyppeteer
@@ -8,3 +8,5 @@ seaborn
 xlrd
 sklearn
 keras
+sphinx_fontawesome
+sphinx_panels

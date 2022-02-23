@@ -15,8 +15,21 @@ git
 GitHub
   a hosting service for git repositories
 
+push (changes to a repository)
+  to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
 
+pull (changes from a repository)
+  download changes from a remote repository and update the local repository with these changes.
+  
 repository
   a project folder with tracking information in it in the form of a .git file
+  
+
+shell
+  a command line interface; allows for access to an operating system
+  
+terminal
+  a program that makes shell visible for us and allows for interactions with it
+
 
 ```

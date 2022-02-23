@@ -51,7 +51,3 @@ Both notes and assignment pages will have hints from time to time. Pay attention
 ```{admonition} Think Ahead
 Think ahead boxes will guide you to start thinking about what can go into your portfolio to build on the material at hand.
 ```
-
-```{admonition} Ram Token Opportunity
-Chances to earn ram tokens are highlighted this way.
-```

@@ -8,7 +8,7 @@ work. The goal of this course is to help you understand how your computer and pr
 environment work so that you can debug and learn independently more confident.
 
 
-## Quck Facts
+## Quick Facts
 
 - **Course time:** Spring 2022, TuTh 12:30PM - 1:45PM
 - **Credits:** 4

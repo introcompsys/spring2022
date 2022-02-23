@@ -106,24 +106,24 @@ Content from above will be expanded and slotted into specific classes as we go. 
   -
 * - 2021-02-10
   - What are the hardware parts of a computer system?
-  -
-  -
+  - [practice, install h/w sim, review memory](class6prep)
+  - hardware simulation
 * - 2021-02-15
-  - How can I collaborate with git?
-  -
-  -
+  - How does git really work?
+  - [practice, begin contract, understand git](class7prep)
+  - grading contract Q&A, git diff, hash
 * - 2021-02-17
-  -
-  -
-  -
+  - What happens under the hood of git?
+  - [ things](class8prep)
+  - git plumbing and more bash (pipes and find)
 * - 2021-02-22
-  -
-  -
-  -
+  - Why are git commit numbers so long?
+  - [review, map git](class9prep)
+  - more git, number systems
 * - 2021-02-24
-  -
-  -
-  -
+  - How can git help me when I need it?
+  - [reveiw numbers and hypothesize what git could help with](class10prep)
+  - git merges
 * - 2021-03-01
   -
   -

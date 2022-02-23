@@ -1,0 +1,84 @@
+
+
+.admonition-try-it-yourself {
+    border-left-color: rgba(var(--pst-color-info), 1);
+}
+.admonition-try-it-yourself .admonition-title {
+    background-color: rgba(var(--pst-color-info), .1)
+}
+.admonition-try-it-yourself .admonition-title:before {
+    color: rgba(var(--pst-color-info), 1);
+    content: '\f121';
+}
+
+
+.admonition-further-reading {
+    border-left-color: rgba(var(--pst-color-info), 1);
+}
+.admonition-further-reading .admonition-title {
+    background-color: rgba(var(--pst-color-info), .1)
+}
+.admonition-further-reading .admonition-title:before {
+    color: rgba(var(--pst-color-info), 1);
+    content: '\f5da';
+}
+
+
+.admonition-question-from-class {
+    border-left-color: rgba(var(--pst-color-success), 1);
+}
+.admonition-question-from-class .admonition-title {
+    background-color: rgba(var(--pst-color-success), .1)
+}
+.admonition-question-from-class .admonition-title:before {
+    color: rgba(var(--pst-color-success), 1);
+    content: '\f059';
+}
+
+
+.admonition-ram-token-opportunity {
+    border-left-color: rgba(var(--pst-color-info), 1);
+}
+.admonition-ram-token-opportunity  .admonition-title {
+    background-color: rgba(var(--pst-color-info), .1)
+}
+.admonition-ram-token-opportunity  .admonition-title:before {
+    color: rgba(var(--pst-color-info), 1);
+    content: '\f51e';
+}
+
+
+
+.admonition-think-ahead {
+    border-left-color: rgba(var(--pst-color-success), 1);
+}
+.admonition-think-ahead  .admonition-title {
+    background-color: rgba(var(--pst-color-success), .1)
+}
+.admonition-think-ahead  .admonition-title:before {
+    color: rgba(var(--pst-color-success), 1);
+    content: '\f07b';
+}
+
+
+.admonition-learning-tip {
+    border-left-color: rgba(var(--pst-color-info), 1);
+}
+.admonition-learning-tip  .admonition-title {
+    background-color: rgba(var(--pst-color-info), .1)
+}
+.admonition-learning-tip  .admonition-title:before {
+    color: rgba(var(--pst-color-info), 1);
+    content: '\1f9e0';
+}
+
+.admonition-correction {
+    border-left-color: rgba(var(--pst-color-warning), 1);
+}
+.admonition-correction  .admonition-title {
+    background-color: rgba(var(--pst-color-warning), .1)
+}
+.admonition-correction  .admonition-title:before {
+    color: rgba(var(--pst-color-warning), 1);
+    content: '\26a0';
+}
