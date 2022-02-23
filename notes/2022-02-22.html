@@ -1,0 +1,985 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. How do hashes work in git? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="8. How does git work?" href="2022-02-17.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. How do hashes work in git?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-02-22.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-22.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-22.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-22.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-02-22.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-plumbing-q-a">
+   9.1. Git Plumbing Q&amp;A
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-hash">
+   9.2. What
+   <em>
+    is
+   </em>
+   a hash?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-does-hashing-occur-in-git">
+   9.3. When does hashing occur in git?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-hashing-function-does-git-use">
+   9.4. What hashing function does git use?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-number">
+   9.5. What is a number?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#number-representation">
+   9.6. Number Representation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decimal">
+     9.6.1. Decimal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary">
+     9.6.2. Binary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#octal">
+     9.6.3. Octal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hexadecimal">
+     9.6.4. Hexadecimal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roman-numerals">
+     9.6.5. Roman numerals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   9.7. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   9.8. More Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transition-questions">
+     9.8.1. transition questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   9.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-did-git-use-sha-1-isntead-of-sha-256-from-the-start">
+     9.9.1. Why did git use SHA-1 isntead of SHA 256 from the start?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-there-is-ever-a-class-cancellation-or-any-kind-of-issue-with-the-notes-again-will-that-be-emailed-to-us-or-only-sent-through-slack">
+     9.9.2. If there is ever a class cancellation or any kind of issue with the notes again, will that be emailed to us or only sent through Slack?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-both-git-and-github-switchig-from-sha1">
+     9.9.3. Are both git and github switchig from sha1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-octal-numbers-ever-used-in-computing">
+     9.9.4. Are octal numbers ever used in computing?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-left-as-an-exercise">
+     9.9.5. Questions left as an exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How do hashes work in git?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-plumbing-q-a">
+   9.1. Git Plumbing Q&amp;A
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-hash">
+   9.2. What
+   <em>
+    is
+   </em>
+   a hash?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-does-hashing-occur-in-git">
+   9.3. When does hashing occur in git?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-hashing-function-does-git-use">
+   9.4. What hashing function does git use?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-number">
+   9.5. What is a number?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#number-representation">
+   9.6. Number Representation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decimal">
+     9.6.1. Decimal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binary">
+     9.6.2. Binary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#octal">
+     9.6.3. Octal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hexadecimal">
+     9.6.4. Hexadecimal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roman-numerals">
+     9.6.5. Roman numerals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   9.7. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   9.8. More Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transition-questions">
+     9.8.1. transition questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   9.9. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-did-git-use-sha-1-isntead-of-sha-256-from-the-start">
+     9.9.1. Why did git use SHA-1 isntead of SHA 256 from the start?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-there-is-ever-a-class-cancellation-or-any-kind-of-issue-with-the-notes-again-will-that-be-emailed-to-us-or-only-sent-through-slack">
+     9.9.2. If there is ever a class cancellation or any kind of issue with the notes again, will that be emailed to us or only sent through Slack?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-both-git-and-github-switchig-from-sha1">
+     9.9.3. Are both git and github switchig from sha1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-octal-numbers-ever-used-in-computing">
+     9.9.4. Are octal numbers ever used in computing?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-left-as-an-exercise">
+     9.9.5. Questions left as an exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-do-hashes-work-in-git">
+<h1><span class="section-number">9. </span>How do hashes work in git?<a class="headerlink" href="#how-do-hashes-work-in-git" title="Permalink to this headline">¶</a></h1>
+<p>In this class we will cover:</p>
+<ul class="simple">
+<li><p>what type of hashes are used in git</p></li>
+<li><p>what a hash is</p></li>
+<li><p>number systems</p></li>
+</ul>
+<div class="section" id="git-plumbing-q-a">
+<h2><span class="section-number">9.1. </span>Git Plumbing Q&amp;A<a class="headerlink" href="#git-plumbing-q-a" title="Permalink to this headline">¶</a></h2>
+<p>Plumbing commands work with the .git directory as a file system directly.
+Porcelain commands provide higher level interactions with git as a version
+control system.</p>
+</div>
+<div class="section" id="what-is-a-hash">
+<h2><span class="section-number">9.2. </span>What <em>is</em> a hash?<a class="headerlink" href="#what-is-a-hash" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>a hash is a fixed size value that can be used to represent data of arbitrary sizes</p></li>
+<li><p>the <em>output</em> of a hashing function</p></li>
+<li><p>often fixed to a hash table</p></li>
+</ul>
+<p>A hasing function could be really simple, to read off a hash table, or it can
+be more complex.</p>
+<p>For example:</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Hash</p></td>
+<td><p>content</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Success</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Failure</p></td>
+</tr>
+</tbody>
+</table>
+<p>If we want to represent the status of a program running it has two possible
+outcomes: success or failure. We can use the following hash table and a function
+that takes in the content and returns the corresponding hash. Then we could pass
+around the 0 and 1 as a single bit of information that corresponds to the outcomes.</p>
+<p>This lookup table hash works here.</p>
+<p>In a more complex scenario, imagine trying to hash all of the new terms you learn
+in class. A table would be hard for this, because until you have seen them all, you
+do not know how many there will be.  A more effective way to hash this, is to
+derive a <em>hashing function</em> that is a general strategy.</p>
+</div>
+<div class="section" id="when-does-hashing-occur-in-git">
+<h2><span class="section-number">9.3. </span>When does hashing occur in git?<a class="headerlink" href="#when-does-hashing-occur-in-git" title="Permalink to this headline">¶</a></h2>
+<p>In git we hash both the content directly to store it in the database (.git) directory
+and the commit information.</p>
+<p>Recall, when we were working in our toy repo we created an empty repository and
+then added content directly, we all got the same hash, but when we used git
+commit our commits had different hashes because we have different names and
+made the commits at different seconds. We also saw that <em>two</em> entries were
+created in the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory for the commit.</p>
+<p>In git, 40 characters that uniquely represent either the content or a commit.</p>
+<p>Mostly, a shorter version of the commit is sufficient to be unique, so we can use those to refer to commits by just a few characters:</p>
+<ul class="simple">
+<li><p>minimum 4</p></li>
+<li><p>must be unique</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can view commits shorter with options to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">abbrev</span><span class="o">-</span><span class="n">commit</span> <span class="o">--</span><span class="n">pretty</span><span class="o">=</span><span class="n">oneline</span>
+</pre></div>
+</div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>git commits only need to be unique is <strong>per repository</strong> the git program is not searching all git repositories when we run commands that use commits, it is
+looking only in the local <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory.  You could even have two different
+projects on your computer with an identical hash and that would not be a
+conflict because git only looks within the current directory.</p>
+</div>
+</div>
+</div>
+<div class="section" id="what-hashing-function-does-git-use">
+<h2><span class="section-number">9.4. </span>What hashing function does git use?<a class="headerlink" href="#what-hashing-function-does-git-use" title="Permalink to this headline">¶</a></h2>
+<p>Git uses <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3174">SHA-1</a>. See a <a class="reference external" href="https://passwordsgenerator.net/sha1-hash-generator/">generator</a></p>
+<p>This is a Secure Hashing Algorithm that is derived from cryptography.  Because
+it is secure, no set of mathematical options can directly decrypt an SHA-1  hash.
+It is designed so that any possible content that we put in it returns a unique
+key. It uses a combination of bit level operations on the content to produce the
+unique values.</p>
+<p>The SHA-1 Algorithm hashes content into a fixed length of 160 bits. This means
+it can produce <span class="math notranslate nohighlight">\(2^160\)</span> different hashes. Which makes the probability of a collision very low.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<blockquote class="epigraph">
+<div><p>The number of randomly hashed objects needed to ensure a 50% probability of a single collision is about <span class="math notranslate nohighlight">\(2^{80}\)</span> (the formula for determining collision probability is p = (n(n-1)/2) * (1/2^160)). <span class="math notranslate nohighlight">\(2^{80}\)</span> is 1.2 x 1024 or 1 million billion billion. That’s 1,200 times the number of grains of sand on the earth.</p>
+<p class="attribution">—<a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection">A SHORT NOTE ABOUT SHA-1 in the Git Documentation</a></p>
+</div></blockquote>
+</div>
+<p>This output, 160 bits (a bit is a unit of information in base 2; a 0 or 1) can be interpreted as a number and represented in diffrent ways.  Since 160 characters is really long, git represents it as 40 characters in hexadecimal.</p>
+<p>However, SHA-1 is subjec to collision attacks.</p>
+<blockquote class="epigraph">
+<div><p>We have broken SHA-1 in practice.</p>
+<p>…</p>
+<p>It is now practically possible to craft two colliding PDF files and obtain a SHA-1 digital signature on the first PDF file which can also be abused as a valid signature on the second PDF file.</p>
+<p>…</p>
+<p>GIT strongly relies on SHA-1 for the identification and integrity checking of all file objects and commits. It is essentially possible to create two GIT repositories with the same head commit hash and different contents, say a benign source code and a backdoored one. An attacker could potentially selectively serve either repository to targeted users. This will require attackers to compute their own collision.
+— <a class="reference external" href="https://shattered.it/">shattered it</a></p>
+</div></blockquote>
+<p>Git switched to hardended SHA-1 in response to a collision</p>
+<blockquote>
+<div><p>In that case it adjusts the SHA-1 computation to result in a safe hash. This means that it will compute the regular SHA-1 hash for files without a collision attack, but produce a special hash for files with a collision attack, where both files will have a different unpredictable hash.
+<a class="reference external" href="https://crypto.stackexchange.com/questions/44141/what-is-hardened-sha-1-how-does-it-work-and-how-much-protection-does-it-offer">from</a></p>
+</div></blockquote>
+<p>and <a class="reference external" href="https://git-scm.com/docs/hash-function-transition/">they will change again soon</a></p>
+</div>
+<div class="section" id="what-is-a-number">
+<h2><span class="section-number">9.5. </span>What is a number?<a class="headerlink" href="#what-is-a-number" title="Permalink to this headline">¶</a></h2>
+<p>a mathematical object used to count, meaure and label</p>
+<p>a mathematical object used to count, meaure and label</p>
+<hr class="docutils" />
+<p>What types of numbers are you familiar with?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="number-representation">
+<h2><span class="section-number">9.6. </span>Number Representation<a class="headerlink" href="#number-representation" title="Permalink to this headline">¶</a></h2>
+<p>Numbers are a cultural  artifact:
+We use a base 10 system most commonly becuase we count with our hands and have 10 fingers. Computers use base 2 because they are digital:on &amp; off. The current representation system we use (0,1, 2, 3, 4,5,6,7,8,9) is called hindu-arabic.</p>
+<div class="section" id="decimal">
+<h3><span class="section-number">9.6.1. </span>Decimal<a class="headerlink" href="#decimal" title="Permalink to this headline">¶</a></h3>
+<p>To represent larger numbers than we have digits on we have a base (10) and then.</p>
+<div class="math notranslate nohighlight">
+\[10 = 10*1 + 1*0\]</div>
+<div class="math notranslate nohighlight">
+\[22 = 10*2 + 1*2 \]</div>
+<p>we have the ones  (<span class="math notranslate nohighlight">\(10^0) place, tens (\)</span>10^1<span class="math notranslate nohighlight">\() place, hundreds (\)</span>10^2) place etc.</p>
+</div>
+<div class="section" id="binary">
+<h3><span class="section-number">9.6.2. </span>Binary<a class="headerlink" href="#binary" title="Permalink to this headline">¶</a></h3>
+<p>uses base 2, but the same characters. So the place values are the ones(<span class="math notranslate nohighlight">\(2^0\)</span>), the twos(<span class="math notranslate nohighlight">\(2^1\)</span>), the fours(<span class="math notranslate nohighlight">\(2^2\)</span>), the eights(<span class="math notranslate nohighlight">\(2^3\)</span>), etc.</p>
+<div class="math notranslate nohighlight">
+\[ 10 =&gt; 2*1 + 1*0 = 2\]</div>
+<p>so this 10 in binary  is 2 in decimal</p>
+<div class="math notranslate nohighlight">
+\[ 1001 =&gt; 8*1 + 4*0 + 2*0 + 1*1  = 9\]</div>
+<p>Binary numbers have been discovered in ancient egyptian, chinese and Indian texts.</p>
+</div>
+<div class="section" id="octal">
+<h3><span class="section-number">9.6.3. </span>Octal<a class="headerlink" href="#octal" title="Permalink to this headline">¶</a></h3>
+<p>uses base 8, but the same characters. So the place values are the ones(<span class="math notranslate nohighlight">\(8^0\)</span>), the  eights(<span class="math notranslate nohighlight">\(8^1\)</span>), the 64s (<span class="math notranslate nohighlight">\(8^2\)</span>), etc.</p>
+<div class="math notranslate nohighlight">
+\[ 10 = &gt; 8*1 + 1*0 = 8\]</div>
+<p>so 10 in octal is 8 in decimal</p>
+<div class="math notranslate nohighlight">
+\[ 401 =&gt; 64*4 + 8*0 + 1*1 = 257\]</div>
+<p>This numbering system was popular in 6 bit and 12 bit computers, but is has origins before that. Native Americans using the Yuki Language (based in what is now California)<a class="reference external" href="https://www.jstor.org/stable/2686959?origin=crossref&amp;seq=1#metadata_info_tab_contents">used an octal system because they count using the spaces between fingers</a>
+and speakers of the
+<a class="reference external" href="http://linguistics.berkeley.edu/~avelino/Avelino_2006.pdf"> Pamean languages in Mexico </a> count on knuckles in a closed fist.
+Europeans debated using decimal vs octal in the 1600-1800s for various reasons because 8 is better for math mostly. It is also found in Chinese texts dating to 1000BC.</p>
+</div>
+<div class="section" id="hexadecimal">
+<h3><span class="section-number">9.6.4. </span>Hexadecimal<a class="headerlink" href="#hexadecimal" title="Permalink to this headline">¶</a></h3>
+<p>uses base 16, but the same characters plus letters A-F. The letters fill in for the numbers aft 9 so A is 10, B is 11, etc.   So the place values are the ones(<span class="math notranslate nohighlight">\(16^0\)</span>), the sixteens(<span class="math notranslate nohighlight">\(16^1\)</span>), the  two hundred fifty sixes(<span class="math notranslate nohighlight">\(16^2\)</span>),etc.</p>
+<div class="math notranslate nohighlight">
+\[ 10 = &gt; 16*1 + 1*0 = 16\]</div>
+<p>so 10 in hex is 16 in decimal</p>
+<div class="math notranslate nohighlight">
+\[ E =&gt; 1*14 = 14\]</div>
+<p><span class="math notranslate nohighlight">\( CD =&gt; 16*12 + 1*13 = 205\)</span>$</p>
+<p>There was debate a number of different proposals for how the characters beyond 9 should be represented.</p>
+</div>
+<div class="section" id="roman-numerals">
+<h3><span class="section-number">9.6.5. </span>Roman numerals<a class="headerlink" href="#roman-numerals" title="Permalink to this headline">¶</a></h3>
+<p>Use different representation completely. It doesn’t have places the same way. But it is still a way to represent numbers.</p>
+<p>I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M =1000</p>
+<p>This repesentation concatenates symbols and adds them if they are in desceding order and if a smaller digit before a larger then it is subtracted.</p>
+<ul class="simple">
+<li><p>III = 1 + 1 + 1= 3</p></li>
+<li><p>IX = 10 -1 = 9</p></li>
+<li><p>XL = 50 - 10 = 40</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On a lighter note: <a class="reference external" href="https://rsk0315.github.io/playground/passwordle.html">passWordle</a></p>
+</div>
+</div>
+<div class="admonition-learn-more admonition">
+<p class="admonition-title">Learn more</p>
+<p>Learning more about other number systems or the history of these number systems is a good topic for a deeper exploration.</p>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class10prep"></span><h2><span class="section-number">9.7. </span>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1970</span><span class="o">/</span><span class="mf">1475571526.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;../_prepare/2022-02-22.md&#39;</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;Markdown&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class10practice"></span><h2><span class="section-number">9.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1970</span><span class="o">/</span><span class="mf">1484559900.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;../_practice/2022-02-22.md&#39;</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;Markdown&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transition-questions">
+<h3><span class="section-number">9.8.1. </span>transition questions<a class="headerlink" href="#transition-questions" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Why is the switch important?</p></li>
+<li><p>Summarize one vulnerability of SHA-1.</p></li>
+<li><p>What impact will the swith have on how git works?</p></li>
+<li><p>If you have scripts that operate on git repos, what might you do to future proof them so that the switch won’t break your code.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">9.9. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-did-git-use-sha-1-isntead-of-sha-256-from-the-start">
+<h3><span class="section-number">9.9.1. </span>Why did git use SHA-1 isntead of SHA 256 from the start?<a class="headerlink" href="#why-did-git-use-sha-1-isntead-of-sha-256-from-the-start" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The shorter the hash the more efficient the system is and git was 12 years old when SHA-1 was determined to be meaningfully vulnerable to collsion attack.</p>
+</div>
+</div>
+<div class="section" id="if-there-is-ever-a-class-cancellation-or-any-kind-of-issue-with-the-notes-again-will-that-be-emailed-to-us-or-only-sent-through-slack">
+<h3><span class="section-number">9.9.2. </span>If there is ever a class cancellation or any kind of issue with the notes again, will that be emailed to us or only sent through Slack?<a class="headerlink" href="#if-there-is-ever-a-class-cancellation-or-any-kind-of-issue-with-the-notes-again-will-that-be-emailed-to-us-or-only-sent-through-slack" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>It will be announced on slack, but with an &#64;channel mention, you can set your <a class="reference external" href="https://slack.com/help/articles/360003868571-Manage-your-Slack-email-subscriptions">notification preferences</a> so that you get e-mails for direct messages and &#64; mentions and the &#64;channel counts as an &#64; mention for all members of the slack workspace (in this case our class). You coudl also opt for mobile notifications if you prefer.  The goal with slack is to make it so that you all can better customize how you are notified and I can post to one place.</p>
+</div>
+</div>
+<div class="section" id="are-both-git-and-github-switchig-from-sha1">
+<h3><span class="section-number">9.9.3. </span>Are both git and github switchig from sha1<a class="headerlink" href="#are-both-git-and-github-switchig-from-sha1" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>GitHub <em>uses</em> git, it is not an alternative implementation or a fork, so yes
+it will switch too. The developers at GitHub an other git hosts are among the most impacted by
+the change since they write code that directly interacts with git objects.</p>
+</div>
+</div>
+<div class="section" id="are-octal-numbers-ever-used-in-computing">
+<h3><span class="section-number">9.9.4. </span>Are octal numbers ever used in computing?<a class="headerlink" href="#are-octal-numbers-ever-used-in-computing" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will see it when we talk about file permissions in unix systems.</p>
+<p>More broadly, this would be a good topic for a deeper exploration report.</p>
+</div>
+</div>
+<div class="section" id="questions-left-as-an-exercise">
+<h3><span class="section-number">9.9.5. </span>Questions left as an exercise<a class="headerlink" href="#questions-left-as-an-exercise" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>these are for you to look up/hypothesize about and then we will discuss with you in your KWL repo</p>
+</div>
+<ul class="simple">
+<li><p>What are the possible dangers of git switching to a better encryption scheme immediately?</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-17.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>How does git work?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

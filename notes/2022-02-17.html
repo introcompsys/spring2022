@@ -1,0 +1,1345 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. How does git work? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. How do hashes work in git?" href="2022-02-22.html" />
+    <link rel="prev" title="7. What actually is git?" href="2022-02-15.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-02-17.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-17.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-17.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-17.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-02-17.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review">
+   8.1. Review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-anatomy-of-git">
+   8.2. Review: Anatomy of git
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-plumbing-in-a-fresh-repo">
+   8.3. Git Plumbing in a Fresh repo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-objects">
+   8.4. Git Objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing">
+     8.4.1. Hashing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tree-objects">
+     8.4.2. Tree Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-commit-manually">
+   8.5. Creating a Commit manually
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-git-efficient">
+   8.6. How is git efficient?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-didnt-git-cat-file-work-on-head">
+   8.7. Why didn’t git cat-file work on HEAD?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-the-lack-of-pushing-be-why">
+     8.7.1. Could the lack of pushing be why?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   8.8. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   8.9. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   8.10. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-does-the-grade-free-zone-end">
+     8.10.1. when does the grade-free zone end?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-other-uses-for-the-hashes-besides-identifying-git-files-in-our-repositories">
+     8.10.2. Are there other uses for the hashes besides identifying git files in our repositories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-print-pretty-p-mean">
+     8.10.3. what does print pretty / -p mean?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-ever-need-to-use-the-plumbing-tools-in-a-bind">
+     8.10.4. will we ever need to use the plumbing tools in a bind?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-addressed-above-integrated-into-the-narrative">
+     8.10.5. Questions addressed above integrated into the narrative
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-to-practice-with">
+     8.10.6. Questions to practice with
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-we-will-come-back-to-next">
+     8.10.7. Questions we will come back to next
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How does git work?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review">
+   8.1. Review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-anatomy-of-git">
+   8.2. Review: Anatomy of git
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-plumbing-in-a-fresh-repo">
+   8.3. Git Plumbing in a Fresh repo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-objects">
+   8.4. Git Objects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hashing">
+     8.4.1. Hashing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tree-objects">
+     8.4.2. Tree Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-commit-manually">
+   8.5. Creating a Commit manually
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-git-efficient">
+   8.6. How is git efficient?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-didnt-git-cat-file-work-on-head">
+   8.7. Why didn’t git cat-file work on HEAD?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-the-lack-of-pushing-be-why">
+     8.7.1. Could the lack of pushing be why?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   8.8. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   8.9. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   8.10. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-does-the-grade-free-zone-end">
+     8.10.1. when does the grade-free zone end?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-other-uses-for-the-hashes-besides-identifying-git-files-in-our-repositories">
+     8.10.2. Are there other uses for the hashes besides identifying git files in our repositories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-print-pretty-p-mean">
+     8.10.3. what does print pretty / -p mean?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-ever-need-to-use-the-plumbing-tools-in-a-bind">
+     8.10.4. will we ever need to use the plumbing tools in a bind?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-addressed-above-integrated-into-the-narrative">
+     8.10.5. Questions addressed above integrated into the narrative
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-to-practice-with">
+     8.10.6. Questions to practice with
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions-we-will-come-back-to-next">
+     8.10.7. Questions we will come back to next
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-does-git-work">
+<h1><span class="section-number">8. </span>How does git work?<a class="headerlink" href="#how-does-git-work" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="review">
+<h2><span class="section-number">8.1. </span>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
+<p>How can you write the history of a repo to a file?</p>
+<p>We’ll do this inside our in-class repo.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> github-in-class-brownsarahm/
+</pre></div>
+</div>
+<p>Recall, the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log
+</pre></div>
+</div>
+<p>displays it in a text editor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>commit cea6a93d576ecd042823fca24553a58a6cd6565b <span class="o">(</span>HEAD -&gt; main, origin/main, origin/HEAD<span class="o">)</span>
+Author: Sarah Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Thu Feb <span class="m">3</span> <span class="m">16</span>:42:12 <span class="m">2022</span> -0500
+
+    try to prevernt repeated running
+
+commit c15cf43b6807e172aaba7cf3b57adc7214b91082 <span class="o">(</span><span class="nb">test</span><span class="o">)</span>
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Thu Feb <span class="m">3</span> <span class="m">13</span>:38:42 <span class="m">2022</span> -0500
+
+    insclass <span class="m">2</span>-3
+
+commit 17320fc6f26806eb7d1ffc62c23b3bf1361b58b2
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">13</span>:32:46 <span class="m">2022</span> -0500
+
+    <span class="nb">complete</span> about closes <span class="c1">#2</span>
+
+commit b81cf1525e96782e868e96a20eacf6eb26e882b7
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">13</span>:20:05 <span class="m">2022</span> -0500
+</pre></div>
+</div>
+<p>use the <code class="docutils literal notranslate"><span class="pre">q</span></code> key to exit</p>
+<p>We can use a redirect <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to send that to a file instead of to where it normally goes.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log &gt; gitlog.txt
+</pre></div>
+</div>
+<p>We can confirm this is the same as we saw before with <code class="docutils literal notranslate"><span class="pre">cat</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat gitlog.txt
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>commit cea6a93d576ecd042823fca24553a58a6cd6565b
+Author: Sarah Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Thu Feb <span class="m">3</span> <span class="m">16</span>:42:12 <span class="m">2022</span> -0500
+
+    try to prevernt repeated running
+
+commit c15cf43b6807e172aaba7cf3b57adc7214b91082
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Thu Feb <span class="m">3</span> <span class="m">13</span>:38:42 <span class="m">2022</span> -0500
+
+    insclass <span class="m">2</span>-3
+
+commit 17320fc6f26806eb7d1ffc62c23b3bf1361b58b2
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">13</span>:32:46 <span class="m">2022</span> -0500
+
+    <span class="nb">complete</span> about closes <span class="c1">#2</span>
+
+commit b81cf1525e96782e868e96a20eacf6eb26e882b7
+Author: Sarah M Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">13</span>:20:05 <span class="m">2022</span> -0500
+
+    create empty about
+
+commit f707186cd978072d2888b0d2112023b5618b6414
+Author: Sarah Brown &lt;brownsarahm@uri.edu&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">12</span>:52:28 <span class="m">2022</span> -0500
+
+    create readme closes <span class="c1">#3</span>
+
+commit 611180dd89ffd8977dd9e5c502bcd4147c4980be
+Author: github-classroom<span class="o">[</span>bot<span class="o">]</span> &lt;<span class="m">66690702</span>+github-classroom<span class="o">[</span>bot<span class="o">]</span>@users.noreply.github.com&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">17</span>:45:49 <span class="m">2022</span> +0000
+
+    Setting up GitHub Classroom Feedback
+
+commit 3fbd9ee19ff64241b102fa61f279e9c4683d0e69
+Author: github-classroom<span class="o">[</span>bot<span class="o">]</span> &lt;<span class="m">66690702</span>+github-classroom<span class="o">[</span>bot<span class="o">]</span>@users.noreply.github.com&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">17</span>:45:49 <span class="m">2022</span> +0000
+
+    GitHub Classroom Feedback
+
+commit 270a43daebe1ba7bb719f141b327ca35e8e187ad
+Author: github-classroom<span class="o">[</span>bot<span class="o">]</span> &lt;<span class="m">66690702</span>+github-classroom<span class="o">[</span>bot<span class="o">]</span>@users.noreply.github.com&gt;
+Date:   Tue Feb <span class="m">1</span> <span class="m">17</span>:45:47 <span class="m">2022</span> +0000
+
+    Initial commit
+</pre></div>
+</div>
+</div>
+<div class="section" id="review-anatomy-of-git">
+<h2><span class="section-number">8.2. </span>Review: Anatomy of git<a class="headerlink" href="#review-anatomy-of-git" title="Permalink to this headline">¶</a></h2>
+<p>Recall that the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> file contains a pointer to the place in the git database that matches the current status of the directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat .git/HEAD
+</pre></div>
+</div>
+<p>in this case it points to the head ref called main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span><span class="p">:</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>This is what <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> uses, we can see that using our first git “plumbing” command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git cat-file -p refs/heads/main
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>note that it’s sort of like the bash command cat, but it <em>only</em> works on git <em>objects</em> the HEAD file is a plain text file that we can view with <code class="docutils literal notranslate"><span class="pre">cat</span></code></p>
+</div>
+</div>
+<p>Before we look at the output of this, let’s examine the command:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://git-scm.com/docs/git-cat-file">git cat-file</a>: displays git content</p></li>
+<li><p>-p (pretty print) option figure out the type of content and display it appropriately</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tree 4cbe76bea90531a07dbc8cc413de26f39994478b
+parent c15cf43b6807e172aaba7cf3b57adc7214b91082
+author Sarah Brown &lt;brownsarahm@uri.edu&gt; <span class="m">1643924532</span> -0500
+committer GitHub &lt;noreply@github.com&gt; <span class="m">1643924532</span> -0500
+gpgsig -----BEGIN PGP SIGNATURE-----
+
+ wsBcBAABCAAQBQJh/Ew0CRBK7hj4Ov3rIwAATFIIAAeEB38i/5hNr1OUfYMJ/1PA
+ RKdcQYspkvi70ISXpkLTEvTMwkFfmJO6Y12QqKdy7WJHIeD0qRsigmOv9oUCv2LJ
+ YIdd1d6m9gfe6lwrxh5QG3itURfXyhVIff0j8YHYzq0HN7gAjw+s6UHGGjJiR7u4
+ Jq01ekrQJ/OrXWmQnr6UWJNqwBx/7rSgeh0yWpx+5f8z+dFp5N57nk7MGZE04YBn
+ huJG6lDPRxTHifYwDx1Ib5C0BvrLKQO0j9TvI/86LhcFSyoDBG3/diHokrQO5bdU
+ okm+JsNZAx4prZebZ8eKcMEu5YiAX0wllQxrAEBKEUCc3EU2W4MMRFeiCOY3UNI<span class="o">=</span>
+ <span class="o">=</span>oLlf
+ -----END PGP SIGNATURE-----
+
+
+try to prevernt repeated running
+</pre></div>
+</div>
+<p>This object has the hash for the tree that this commit is in, it also has the hash of the parent commit to this commit, then author information  and the last commit message</p>
+</div>
+<div class="section" id="git-plumbing-in-a-fresh-repo">
+<h2><span class="section-number">8.3. </span>Git Plumbing in a Fresh repo<a class="headerlink" href="#git-plumbing-in-a-fresh-repo" title="Permalink to this headline">¶</a></h2>
+<p>Recall we used <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span> <span class="pre">test</span></code> to create a new repo on Tuesday, let’s got back to that.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="n">test</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> to confirm that it is completely blank</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">create</span><span class="o">/</span><span class="n">copy</span> <span class="n">files</span> <span class="ow">and</span> <span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The directory is also empty</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>Except for the <code class="docutils literal notranslate"><span class="pre">.git</span></code> database</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>	<span class="o">..</span>	<span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>And recall the different files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span>
+<span class="n">HEAD</span>		<span class="n">description</span>	<span class="n">info</span>		<span class="n">refs</span>
+<span class="n">config</span>		<span class="n">hooks</span>		<span class="n">objects</span>
+</pre></div>
+</div>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Try to remember what each of those files/directories does, make a table and try to write each one’s role. After, check your answers using <a class="reference internal" href="2022-02-15.html"><span class="doc std std-doc">Tuesday’s notes</span></a></p>
+</div>
+</div>
+<div class="section" id="git-objects">
+<h2><span class="section-number">8.4. </span>Git Objects<a class="headerlink" href="#git-objects" title="Permalink to this headline">¶</a></h2>
+<p>we noted above that the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> only works to git objects. Lets see what objects there are. Today we will see three types today:</p>
+<ul class="simple">
+<li><p>blob objects: the content of your files (data)</p></li>
+<li><p>tree objects: stores file names and groups files together (organization)</p></li>
+<li><p>Commit Objects: stores information about the sha values of the snapshots</p></li>
+</ul>
+<p>First, lets examine the <code class="docutils literal notranslate"><span class="pre">objects</span></code> directory.  This time, instead of using <code class="docutils literal notranslate"><span class="pre">ls</span></code> we’ll use the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command <code class="docutils literal notranslate"><span class="pre">find</span></code>. This pattern matches and looks for files or directories and lists the results</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>We see that it finds, the <code class="docutils literal notranslate"><span class="pre">object</span></code> directory itself and two subdirectories.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">pack</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">info</span>
+</pre></div>
+</div>
+<p>Let’s look at another option of this command, the <code class="docutils literal notranslate"><span class="pre">-type</span></code> option filters the results and only returns the ones of the desired type.  We’ll look at only files using <code class="docutils literal notranslate"><span class="pre">f</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>In this empty repository, there are no files.</p>
+<div class="section" id="hashing">
+<h3><span class="section-number">8.4.1. </span>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h3>
+<p>Let’s create an object.  We have mentioned breifely before that git stores data by hashing it, so the  plumbing command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">hash-object</span></code> does exactly that.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;text content&#39;</span> <span class="o">|</span> <span class="n">git</span> <span class="nb">hash</span><span class="o">-</span><span class="nb">object</span> <span class="o">-</span><span class="n">w</span> <span class="o">--</span><span class="n">stdin</span>
+</pre></div>
+</div>
+<p>Let’s examine this command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">hash-object</span></code> by default hashes the return the unique key to that particular content</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option then tells git to alsow write that object to the database</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">--stdin</span></code> option tells <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">hash-object</span></code> to get the content to be processed from stdin instead of a file</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">|</span></code> is called a pipe (what we saw before  was a redirect) it pipes a <em>process</em> output into the next command</p></li>
+<li><p>echo would write to stdout, with the pipe it passes that to stdin for the <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">hash-object</span></code> to use</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the key is <em>unique</em> in that there is a one to one mapping from any particular content to a single key. However, as we saw in class, if we all do the same content, we all get the key same key back</p>
+</div>
+</div>
+<p>and we see it returns the unique key to us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c182a93374d6b18a87e1f1e8a9a18812639c58c8</span>
+</pre></div>
+</div>
+<p>We can then view the file that was added to the database with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> again.  Recall the <code class="docutils literal notranslate"><span class="pre">-p</span></code> option, uses information about the file type to display it in an appropriate manner.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">c182a93374d6b18a87e1f1e8a9a18812639c58c8</span>
+<span class="n">text</span> <span class="n">content</span>
+</pre></div>
+</div>
+<p>So far, we added “text content” to the git database, but nothing in the directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>shows us that its an empty directory.</p>
+<p>Lets create a file and add that to our git database. We will create the file with echo and a redirect:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;version 1&#39;</span> <span class="o">&gt;</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>then we can hash it and write to the database from the file this time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">hash</span><span class="o">-</span><span class="nb">object</span> <span class="o">-</span><span class="n">w</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+<span class="mi">83</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+</pre></div>
+</div>
+<p>we can list the directory so and note that more directories have been made:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span>
+<span class="mi">83</span>	<span class="n">c1</span>	<span class="n">info</span>	<span class="n">pack</span>
+</pre></div>
+</div>
+<p>Even better, we can use the <code class="docutils literal notranslate"><span class="pre">find</span></code> command filtered by type that we saw earlier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">c1</span><span class="o">/</span><span class="mi">82</span><span class="n">a93374d6b18a87e1f1e8a9a18812639c58c8</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">83</span><span class="o">/</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+</pre></div>
+</div>
+<p>We see that this created an additional file for each of the two has objects that we have created.</p>
+<p>Let’s append more text to the file, recall  two <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> redirects to append instead of overwrite.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;version 2&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>We can confirm this worked as we expected:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">version</span> <span class="mi">1</span>
+<span class="n">version</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>And then has the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">hash</span><span class="o">-</span><span class="nb">object</span> <span class="o">-</span><span class="n">w</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>and view the hashed content using the key that was returned.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">0</span><span class="n">c1e7391ca4e59584f8b773ecdbbb9467eba1547</span>
+<span class="n">version</span> <span class="mi">1</span>
+<span class="n">version</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>So far, we have been adding a new hash of the whole file each time. We will see later that git <em>can</em> be more efficient than this because this would begin to take a lot of space very quickly.</p>
+</div>
+<div class="section" id="tree-objects">
+<h3><span class="section-number">8.4.2. </span>Tree Objects<a class="headerlink" href="#tree-objects" title="Permalink to this headline">¶</a></h3>
+<p>The next type of object to inspect is the tree, since the tree is a git object, we can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> again.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">main</span><span class="o">^</span><span class="p">{</span><span class="n">tree</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>but this test repo that we are working with does not have a tree yet, so it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatal</span><span class="p">:</span> <span class="n">Not</span> <span class="n">a</span> <span class="n">valid</span> <span class="nb">object</span> <span class="n">name</span> <span class="n">main</span><span class="o">^</span><span class="p">{</span><span class="n">tree</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We can confirm this using git status</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This syntax works in <code class="docutils literal notranslate"><span class="pre">bash</span></code> but has common problems in other shells:</p>
+<ul class="simple">
+<li><p>CMD on Windows: the <code class="docutils literal notranslate"><span class="pre">^</span></code> character is used for escaping, so you have to double it:<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span> <span class="pre">-p</span> <span class="pre">main^^{tree}</span></code>.</p></li>
+<li><p>PowerShell: parameters using <code class="docutils literal notranslate"><span class="pre">{}</span></code> characters have to be quoted to parse correctly, so use: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span> <span class="pre">-p</span> <span class="pre">'master^{tree}'</span></code>.</p></li>
+<li><p>ZSH: the ^ character is used for globbing, so enclose the whole expression in quotes: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span> <span class="pre">-p</span> <span class="pre">&quot;master^{tree}&quot;</span></code>.</p></li>
+</ul>
+</div>
+</div>
+<p>In a more complete repo, we can view the tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">main</span><span class="o">^</span><span class="p">{</span><span class="n">tree</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">040000</span> <span class="n">tree</span> <span class="n">c91892d93170077fea81f1d8009c4ccc91af1c29</span>	<span class="o">.</span><span class="n">github</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="n">e69de29bb2d1d6434b8b29ae775ad8c2e48c5391</span>	<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="n">e69de29bb2d1d6434b8b29ae775ad8c2e48c5391</span>	<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="mi">7987</span><span class="n">a001e70d28376129bfe0538f98f9aa281a55</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="n">b5f4fcb8f875fe33781256ebf6fdde7547188d6f</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>
+<span class="mi">040000</span> <span class="n">tree</span> <span class="mi">55651</span><span class="n">ac0763db741988f02a45842aa020a77c14d</span>	<span class="n">docs</span>
+<span class="mi">040000</span> <span class="n">tree</span> <span class="mi">3581</span><span class="n">dc38ca3929efcbbc6f7ce510ded2c7dd7309</span>	<span class="n">mymodule</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="n">e69de29bb2d1d6434b8b29ae775ad8c2e48c5391</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">040000</span> <span class="n">tree</span> <span class="mi">45</span><span class="n">fcb1dd311e5e45af759cb3627dca5f47f58f04</span>	<span class="n">tests</span>
+</pre></div>
+</div>
+<p>We see a blob for each file and a tree for each directory. The blob objects refer to the last hashed version of the file added to this branch (main)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">HEAD</span>
+<span class="n">ref</span><span class="p">:</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-a-commit-manually">
+<h2><span class="section-number">8.5. </span>Creating a Commit manually<a class="headerlink" href="#creating-a-commit-manually" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this is revised relative to in class</p>
+</div>
+<p>In class we tried to add directly to the commit tree:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;first commit&#39;</span> <span class="o">|</span> <span class="n">git</span> <span class="n">commit</span><span class="o">-</span><span class="n">tree</span> <span class="n">c182a9</span>
+</pre></div>
+</div>
+<p>but this failed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatal</span><span class="p">:</span> <span class="n">c182a93374d6b18a87e1f1e8a9a18812639c58c8</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">valid</span> <span class="s1">&#39;tree&#39;</span> <span class="nb">object</span>
+</pre></div>
+</div>
+<p>because we had skipped a step. We need to create the tree first.</p>
+<p>You use this command to artificially add the earlier version of the test.txt file to a new staging area.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">update</span><span class="o">-</span><span class="n">index</span> <span class="o">--</span><span class="n">add</span> <span class="o">--</span><span class="n">cacheinfo</span> <span class="mi">100644</span> \
+  <span class="mi">83</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>the <code class="docutils literal notranslate"><span class="pre">\</span></code> allows us to continue typing on a second visual line in one long command. this command puts the hashed object 83baae with file named <code class="docutils literal notranslate"><span class="pre">test.txt</span></code></p>
+<ul class="simple">
+<li><p>this the plumbing command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-index</span></code> updates (or in this case creates an index, the staging area of our repository)</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">--add</span></code> option is because the file doesn’t yet exist in your staging area (you don’t even have a staging area set up yet)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cacheinfo</span></code> because the file you’re adding isn’t in your directory but is in your database. Then, you specify the mode, SHA-1, and filename</p></li>
+</ul>
+<p>n this case, you’re specifying a mode of 100644, which means it’s a normal file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">new</span> <span class="n">file</span><span class="p">:</span>   <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We tried viewing the index but it did not work. <a class="reference external" href="https://git-scm.com/docs/index-format">the documentation</a> shows the specification for the index, it is not readable</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;first commit&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="p">(</span><span class="n">root</span><span class="o">-</span><span class="n">commit</span><span class="p">)</span> <span class="mi">2948028</span><span class="p">]</span> <span class="n">first</span> <span class="n">commit</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">2</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">0</span><span class="n">c</span><span class="o">/</span><span class="mf">1e7391</span><span class="n">ca4e59584f8b773ecdbbb9467eba1547</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="n">c1</span><span class="o">/</span><span class="mi">82</span><span class="n">a93374d6b18a87e1f1e8a9a18812639c58c8</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">29</span><span class="o">/</span><span class="mi">480288</span><span class="n">d80e3850d6bf7ae170bd3bea5b3164c7</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">83</span><span class="o">/</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">//</span><span class="mi">25</span><span class="o">/</span><span class="mi">8231</span><span class="n">c1cee8048eef3a8057cfbdab76261277c6</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">main</span><span class="o">^</span><span class="p">{</span><span class="n">tree</span><span class="p">}</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="mi">0</span><span class="n">c1e7391ca4e59584f8b773ecdbbb9467eba1547</span>	<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2948028</span>
+<span class="n">tree</span> <span class="mi">258231</span><span class="n">c1cee8048eef3a8057cfbdab76261277c6</span>
+<span class="n">author</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span> <span class="mi">1645121714</span> <span class="o">-</span><span class="mi">0500</span>
+<span class="n">committer</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span> <span class="mi">1645121714</span> <span class="o">-</span><span class="mi">0500</span>
+
+<span class="n">first</span> <span class="n">commit</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="mi">258231</span>
+<span class="mi">100644</span> <span class="n">blob</span> <span class="mi">0</span><span class="n">c1e7391ca4e59584f8b773ecdbbb9467eba1547</span>	<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-is-git-efficient">
+<h2><span class="section-number">8.6. </span>How is git efficient?<a class="headerlink" href="#how-is-git-efficient" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">gc</span>
+<span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">3</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">test</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">c1</span><span class="o">/</span><span class="mi">82</span><span class="n">a93374d6b18a87e1f1e8a9a18812639c58c8</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">pack</span><span class="o">/</span><span class="n">pack</span><span class="o">-</span><span class="mi">07</span><span class="n">b0c08cc0268d55d02ea62ea880c61f810956d8</span><span class="o">.</span><span class="n">idx</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">pack</span><span class="o">/</span><span class="n">pack</span><span class="o">-</span><span class="mi">07</span><span class="n">b0c08cc0268d55d02ea62ea880c61f810956d8</span><span class="o">.</span><span class="n">pack</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">commit</span><span class="o">-</span><span class="n">graph</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="n">info</span><span class="o">/</span><span class="n">packs</span>
+<span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">objects</span><span class="o">/</span><span class="mi">83</span><span class="o">/</span><span class="n">baae61804e65cc73a7201a7252750c76066a30</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">verify</span><span class="o">-</span><span class="n">pack</span>
+<span class="n">usage</span><span class="p">:</span> <span class="n">git</span> <span class="n">verify</span><span class="o">-</span><span class="n">pack</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="o">|</span> <span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">|</span> <span class="o">--</span><span class="n">stat</span><span class="o">-</span><span class="n">only</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">pack</span><span class="o">&gt;...</span>
+
+    <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>         <span class="n">verbose</span>
+    <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">stat</span><span class="o">-</span><span class="n">only</span>       <span class="n">show</span> <span class="n">statistics</span> <span class="n">only</span>
+    <span class="o">--</span><span class="nb">object</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>
+                          <span class="n">specify</span> <span class="n">the</span> <span class="nb">hash</span> <span class="n">algorithm</span> <span class="n">to</span> <span class="n">use</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">verify</span><span class="o">-</span><span class="n">pack</span> <span class="o">-</span><span class="n">s</span>
+<span class="n">usage</span><span class="p">:</span> <span class="n">git</span> <span class="n">verify</span><span class="o">-</span><span class="n">pack</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span> <span class="o">|</span> <span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">|</span> <span class="o">--</span><span class="n">stat</span><span class="o">-</span><span class="n">only</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">pack</span><span class="o">&gt;...</span>
+
+    <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">verbose</span>         <span class="n">verbose</span>
+    <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">stat</span><span class="o">-</span><span class="n">only</span>       <span class="n">show</span> <span class="n">statistics</span> <span class="n">only</span>
+    <span class="o">--</span><span class="nb">object</span><span class="o">-</span><span class="nb">format</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span>
+                          <span class="n">specify</span> <span class="n">the</span> <span class="nb">hash</span> <span class="n">algorithm</span> <span class="n">to</span> <span class="n">use</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-didnt-git-cat-file-work-on-head">
+<h2><span class="section-number">8.7. </span>Why didn’t git cat-file work on HEAD?<a class="headerlink" href="#why-didnt-git-cat-file-work-on-head" title="Permalink to this headline">¶</a></h2>
+<p>We tried:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git cat-file -p HEAD
+</pre></div>
+</div>
+<p>and saw an error</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fatal: Not a valid object name HEAD
+</pre></div>
+</div>
+<p>To confirm what it was doing wrong, we checked another repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git init test2
+hint: Using <span class="s1">&#39;master&#39;</span> as the name <span class="k">for</span> the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use <span class="k">in</span> all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch &lt;name&gt;
+hint:
+hint: Names commonly chosen instead of <span class="s1">&#39;master&#39;</span> are <span class="s1">&#39;main&#39;</span>, <span class="s1">&#39;trunk&#39;</span> and
+hint: <span class="s1">&#39;development&#39;</span>. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m &lt;name&gt;
+Initialized empty Git repository <span class="k">in</span> /Users/brownsarahm/Documents/sysinclass/test2/.git/
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">cat</span><span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">p</span> <span class="n">HEAD</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fatal</span><span class="p">:</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repository</span> <span class="p">(</span><span class="ow">or</span> <span class="nb">any</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parent</span> <span class="n">directories</span><span class="p">):</span> <span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> test2
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git cat-file -p HEAD
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fatal: Not a valid object name HEAD
+</pre></div>
+</div>
+<p>We confirmed that this does not work.</p>
+<p>This was because I made a mistake, the HEAD file does not need <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span></code> it is a plain text file, not a git blob (type) object.</p>
+<div class="section" id="could-the-lack-of-pushing-be-why">
+<h3><span class="section-number">8.7.1. </span>Could the lack of pushing be why?<a class="headerlink" href="#could-the-lack-of-pushing-be-why" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">config</span>
+</pre></div>
+</div>
+<p>lets compare the results of this across two repos first for the small test repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">core</span><span class="p">]</span>
+	<span class="n">repositoryformatversion</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">filemode</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">bare</span> <span class="o">=</span> <span class="n">false</span>
+	<span class="n">logallrefupdates</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">ignorecase</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">precomposeunicode</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>and for github-inclass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">core</span><span class="p">]</span>
+	<span class="n">repositoryformatversion</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">filemode</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">bare</span> <span class="o">=</span> <span class="n">false</span>
+	<span class="n">logallrefupdates</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">ignorecase</span> <span class="o">=</span> <span class="n">true</span>
+	<span class="n">precomposeunicode</span> <span class="o">=</span> <span class="n">true</span>
+<span class="p">[</span><span class="n">remote</span> <span class="s2">&quot;origin&quot;</span><span class="p">]</span>
+	<span class="n">url</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+	<span class="n">fetch</span> <span class="o">=</span> <span class="o">+</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/*</span><span class="p">:</span><span class="n">refs</span><span class="o">/</span><span class="n">remotes</span><span class="o">/</span><span class="n">origin</span><span class="o">/*</span>
+<span class="p">[</span><span class="n">branch</span> <span class="s2">&quot;main&quot;</span><span class="p">]</span>
+	<span class="n">remote</span> <span class="o">=</span> <span class="n">origin</span>
+	<span class="n">merge</span> <span class="o">=</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">main</span>
+<span class="p">[</span><span class="n">branch</span> <span class="s2">&quot;reset&quot;</span><span class="p">]</span>
+	<span class="n">remote</span> <span class="o">=</span> <span class="n">origin</span>
+	<span class="n">merge</span> <span class="o">=</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">reset</span>
+</pre></div>
+</div>
+<p>This is all of the difference that is caused by the lack or configuring a remote.</p>
+<p>We can view the heads by listing that directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">.</span><span class="n">git</span><span class="o">/</span><span class="n">refs</span><span class="o">/</span><span class="n">heads</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span>	<span class="n">reset</span>	<span class="n">test</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class9prep"></span><h2><span class="section-number">8.8. </span>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Review the notes</p></li>
+<li><p>For the core &quot;Porcelain&quot; git commands we have used (add, commit), make a table of which git plumbing commands they use in <code class="docutils literal notranslate"><span class="pre">gitplumbing.md</span></code> in your KWL repo</p></li>
+<li><p>In a <code class="docutils literal notranslate"><span class="pre">gitunderstanding.md</span></code> list 3-5 items from the following categories (1) things you have had trouble with in git in the past and how they relate to your new understandign (b) things that your understanding has changed based on today's class (c) things about git you still have questions about</p></li>
+<li><p>Make notes on <em>how</em> you use IDEs for the next week or so using the template <code class="docutils literal notranslate"><span class="pre">idethoughts.md</span></code> file in the course notes.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class9practice"></span><h2><span class="section-number">8.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Add to your <code class="docutils literal notranslate"><span class="pre">gitplumbing.md</span></code>  file explanations of the main git operations we have seen (add, commit, push) in your own words in a way that will either help you remember or behow you would explain it to someone else at a high level. This might be analogies or explanations using other progrmaming concepts or concepts from a hobby. Add this under a subheading <code class="docutils literal notranslate"><span class="pre">##</span></code> with a descriptive title (for example &quot;Git In terms of <hobyb>&quot;)</p></li>
+<li><p>For one thing your understanding changed or an open question you, look up or experiment to find the answer</p></li>
+</ol>
+</div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-further-reading admonition">
+<p class="admonition-title">Further Reading</p>
+<p>The goal of this exercise is to take an ethnographic approach to understanding the IDE(s) you use most often.
+We will combine this with a more formal study of them soon. Approaching a topic through multiple lenses can help you understand it better and presenting you, as a group, with multiple ways is a strategy of mine to help make sure that every one of you finds <em>at least</em> one way that works for you.</p>
+<p><a class="reference external" href="https://ieeexplore-ieee-org.uri.idm.oclc.org/stamp/stamp.jsp?tp=&amp;arnumber=7387744&amp;tag=1">More on ethnography in CS</a></p>
+</div>
+</div>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># IDE Thoughts</span>
+
+<span class="gu">## Actions Accomplished</span>
+&lt;!-- list what things you do: run code/ edit code/ create new files/ etc; no need to comment on what the code you write does --&gt;
+
+
+<span class="gu">## Features Used</span>
+&lt;!-- list features of it that you use, like a file explorer, debugger, etc --&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">8.10. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="when-does-the-grade-free-zone-end">
+<h3><span class="section-number">8.10.1. </span>when does the grade-free zone end?<a class="headerlink" href="#when-does-the-grade-free-zone-end" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>It has ended, starting with the feedback given today, there will be grading implications, but remember there are flexibility systems with most of it.</p>
+</div>
+</div>
+<div class="section" id="are-there-other-uses-for-the-hashes-besides-identifying-git-files-in-our-repositories">
+<h3><span class="section-number">8.10.2. </span>Are there other uses for the hashes besides identifying git files in our repositories<a class="headerlink" href="#are-there-other-uses-for-the-hashes-besides-identifying-git-files-in-our-repositories" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>for these particular hashes, no, they are the keys that mathc to values of items in our git database, but we can do other things with other hashes.</p>
+</div>
+</div>
+<div class="section" id="what-does-print-pretty-p-mean">
+<h3><span class="section-number">8.10.3. </span>what does print pretty / -p mean?<a class="headerlink" href="#what-does-print-pretty-p-mean" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>this option of the git cat-file command displays the contents of a blob in a human readable format.</p>
+</div>
+</div>
+<div class="section" id="will-we-ever-need-to-use-the-plumbing-tools-in-a-bind">
+<h3><span class="section-number">8.10.4. </span>will we ever need to use the plumbing tools in a bind?<a class="headerlink" href="#will-we-ever-need-to-use-the-plumbing-tools-in-a-bind" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Some of them, yes! For example, today, it was helpful to use the plumbing command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">update-ref</span></code> to create a branch from a particular past commit. They could also help you to view a commit in greater detail and some other beyond what we saw today could help you edit a commit or alter the “history” of your repo if you need to.</p>
+<p>The porcelain commands will get you through your day to day everything is going right and the most common mistakes.</p>
+</div>
+</div>
+<div class="section" id="questions-addressed-above-integrated-into-the-narrative">
+<h3><span class="section-number">8.10.5. </span>Questions addressed above integrated into the narrative<a class="headerlink" href="#questions-addressed-above-integrated-into-the-narrative" title="Permalink to this headline">¶</a></h3>
+<p>• I am still confused about the idea of the objects and what they do exactly/their purpose</p>
+<p>• so all of the plumbing commands we used today are all the parts that are wrapped up in the processes like adding/committing/pushing things to GitHub?</p>
+</div>
+<div class="section" id="questions-to-practice-with">
+<h3><span class="section-number">8.10.6. </span>Questions to practice with<a class="headerlink" href="#questions-to-practice-with" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What if we would change the file again (added 3rd line) and committed again. How many hash objects would be created? What connection would there be between the commits?</p></li>
+</ul>
+</div>
+<div class="section" id="questions-we-will-come-back-to-next">
+<h3><span class="section-number">8.10.7. </span>Questions we will come back to next<a class="headerlink" href="#questions-we-will-come-back-to-next" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>how are hash number formed?</p></li>
+<li><p>From init, first commit, to first push, what is the exact sequence of events that happens under the hood of git?</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-15.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>What actually <em>is</em> git?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2022-02-22.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>How do hashes work in git?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
