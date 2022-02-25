@@ -103,7 +103,7 @@ Content from above will be expanded and slotted into specific classes as we go. 
 * - 2021-02-08
   - What are the software parts of a computer system?
   - [practice bash, contribute to the course site, examine a software project](class5prep)
-  -
+  - hardware simulator
 * - 2021-02-10
   - What are the hardware parts of a computer system?
   - [practice, install h/w sim, review memory](class6prep)
@@ -125,21 +125,21 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - [reveiw numbers and hypothesize what git could help with](class10prep)
   - git merges
 * - 2021-03-01
-  -
-  -
-  -
+  - How do programmers build documentation?
+  - [review git recovery, practice with rebase, merge, revert, etc; confirm jupyterbook is installed](class11prep)
+  - templating, jupyterbook
 * - 2021-03-03
+  - How do programmers auotmate mundane tasks?
   -
-  -
-  -
+  - shell scripting, pipes, more redirects, grep
 * - 2021-03-08
+  - How do I work remotely ?
   -
-  -
-  -
+  - ssh/ ssh keys, sed/ awk, file permissions
 * - 2021-03-10
+  - How do programmers keep track of all these tools?
   -
-  -
-  -
+  - IDE anatomy
 * - 2021-03-22
   -
   -

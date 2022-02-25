@@ -1,0 +1,1488 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. How can git help me? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="9. How do hashes work in git?" href="2022-02-22.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. How can git help me?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-02-24.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-02-24.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-02-24.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-02-24.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-02-24.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-make-a-file-that-i-dont-want-to-commit">
+   10.1. What if I make a file that I don’t want to commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-break-my-code-and-commit-the-bad-code">
+   10.2. What if I break my code and commit the bad code?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-try-a-bunch-of-stuff-and-it-doesnt-work-but-i-notice-before-i-commit">
+   10.3. What if I try a bunch of stuff and it doesn’t work, but I notice before I commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-git-help-me-remember-what-im-working-on">
+   10.4. How can git help me remember what I’m working on?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-update-my-feature-branch-when-main-gets-updated">
+   10.5. How can update my feature branch when main gets updated?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-the-content-diverges">
+   10.6. What if the content diverges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   10.7. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10.8. More Practice
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How can git help me?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-make-a-file-that-i-dont-want-to-commit">
+   10.1. What if I make a file that I don’t want to commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-break-my-code-and-commit-the-bad-code">
+   10.2. What if I break my code and commit the bad code?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-i-try-a-bunch-of-stuff-and-it-doesnt-work-but-i-notice-before-i-commit">
+   10.3. What if I try a bunch of stuff and it doesn’t work, but I notice before I commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-git-help-me-remember-what-im-working-on">
+   10.4. How can git help me remember what I’m working on?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-update-my-feature-branch-when-main-gets-updated">
+   10.5. How can update my feature branch when main gets updated?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-the-content-diverges">
+   10.6. What if the content diverges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   10.7. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   10.8. More Practice
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-can-git-help-me">
+<h1><span class="section-number">10. </span>How can git help me?<a class="headerlink" href="#how-can-git-help-me" title="Permalink to this headline">¶</a></h1>
+<p>So far we have seen git add a bunch of steps to a workflow and worked to understand what it is doing.  I’ve <em>told</em> you tracks versions and can help you out because keeping track of versions is good.</p>
+<p>Today I will <em>show</em> you how it can help.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>we are going to work in out github-inclass repo today. Let’s reveiw its status.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">a_file</span>
+	<span class="n">b_file</span>
+	<span class="n">gitlog</span><span class="o">.</span><span class="n">txt</span>
+	<span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>In mine, I have these extra files I don’t need from testing things. How can I get rid of them since I do not want to keep them?</p>
+<p>We see that they are in the files along with the other files that we planned to be here. Remember the “scenario” of this repo is that it has a number of mostly empty files to represent a python project.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>	<span class="n">docs</span>		<span class="n">mymodule</span>	<span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>	<span class="n">a_file</span>		<span class="n">b_file</span>		<span class="n">gitlog</span><span class="o">.</span><span class="n">txt</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>	<span class="n">tests</span>
+
+</pre></div>
+</div>
+<p>Could it be git pull?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Already</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>No git pull, gets, from the origin, the most up to date version of the git database (<code class="docutils literal notranslate"><span class="pre">.git</span></code> directory) from the origin (in this case github). It does not, however do anything to untracked files.</p>
+<p>We can remove them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">*</span><span class="n">_file</span>
+<span class="n">rm</span> <span class="n">gitlog</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">rm</span> <span class="n">test_file</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then we can confirm the git status of the repo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+
+</pre></div>
+</div>
+<div class="section" id="what-if-i-make-a-file-that-i-dont-want-to-commit">
+<h2><span class="section-number">10.1. </span>What if I make a file that I don’t want to commit?<a class="headerlink" href="#what-if-i-make-a-file-that-i-dont-want-to-commit" title="Permalink to this headline">¶</a></h2>
+<p>Imagine we made a configuration file that contained some text (for example a personal key  of some sort) that we need in the directory to make our code work locally, but that we do not want to push to GitHub?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;secrets&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>The way to do that is to not put it into git at all, so that when we push it will not go.</p>
+<p>As usual, before we do anything with git, we check the status</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">config</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, we see that git has the file here, but it is untracked.</p>
+<p>Recall, git status has the git program check the <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> file to determine what in the databaes to look at and then compares the current directory status to what the corresponding last hash contained.</p>
+<p>Git provides a special file that it will check when we add, and then not add any files that match the files in.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+<p>We will add the following to the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>Then write and exit from nano.</p>
+<p>Now our status has changed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We see the config file is not in the untracked anymore (that means it will not be added if we do git add) but the gitignore file is.</p>
+<p>We want to commit this file becuase we would want collaborators to share the same ignored patterns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;ignore configs&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="mi">3</span><span class="n">c46e01</span><span class="p">]</span> <span class="n">ignore</span> <span class="n">configs</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="o">.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+<p>Now, what is the advantage of using the pattern?</p>
+<p>If we make another file that starts with “config”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;more secrets&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span>
+
+</pre></div>
+</div>
+<p>and then check the status</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">1</span> <span class="n">commit</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+
+</pre></div>
+</div>
+<p>git does not see it at all.</p>
+<p>we can see though that the files are boht there in our directory on disk.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">config</span><span class="o">.</span><span class="n">txt</span>	<span class="n">docs</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>	<span class="n">config</span><span class="o">.</span><span class="n">yml</span>	<span class="n">mymodule</span>	<span class="n">tests</span>
+</pre></div>
+</div>
+<p>What happens if we try to explicitly add it?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">config</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Let’s see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">following</span> <span class="n">paths</span> <span class="n">are</span> <span class="n">ignored</span> <span class="n">by</span> <span class="n">one</span> <span class="n">of</span> <span class="n">your</span> <span class="o">.</span><span class="n">gitignore</span> <span class="n">files</span><span class="p">:</span>
+<span class="n">config</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">Use</span> <span class="o">-</span><span class="n">f</span> <span class="k">if</span> <span class="n">you</span> <span class="n">really</span> <span class="n">want</span> <span class="n">to</span> <span class="n">add</span> <span class="n">them</span><span class="o">.</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">Turn</span> <span class="n">this</span> <span class="n">message</span> <span class="n">off</span> <span class="n">by</span> <span class="n">running</span>
+<span class="n">hint</span><span class="p">:</span> <span class="s2">&quot;git config advice.addIgnoredFile false&quot;</span>
+
+</pre></div>
+</div>
+<p>git tries to warn us.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In general, if something you are trying to do requires <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">-hard</span></code> in git or bash (or others) do not do it unless you are <strong>very</strong> confident that it is the right thing to do.</p>
+<p>These options are generally only required for things are either hard or impossible to undo.</p>
+</div>
+</div>
+<div class="section" id="what-if-i-break-my-code-and-commit-the-bad-code">
+<h2><span class="section-number">10.2. </span>What if I break my code and commit the bad code?<a class="headerlink" href="#what-if-i-break-my-code-and-commit-the-bad-code" title="Permalink to this headline">¶</a></h2>
+<p>Let’s imagine we wrote some code that does not actually work</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;bad code&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>but we forgot to test it, so we add</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<p>and commit it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;best feature ever&#39;</span>
+</pre></div>
+</div>
+<p>now it is in our repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="mi">2</span><span class="n">c1c3e2</span><span class="p">]</span> <span class="n">best</span> <span class="n">feature</span> <span class="n">ever</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we test the code, find out that it does not work. but we remember that it worked before this code we just added. We can view the commit history to get the hash of the last commit that worked.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">50</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">best</span> <span class="n">feature</span> <span class="n">ever</span>
+
+<span class="n">commit</span> <span class="mi">3</span><span class="n">c46e01c5b29ffa2ed9a76ff4e8c8f334c0c1bf2</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">12</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">ignore</span> <span class="n">configs</span>
+
+<span class="n">commit</span> <span class="n">cea6a93d576ecd042823fca24553a58a6cd6565b</span> <span class="p">(</span><span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">3</span> <span class="mi">16</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">12</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="k">try</span> <span class="n">to</span> <span class="n">prevernt</span> <span class="n">repeated</span> <span class="n">running</span>
+
+<span class="n">commit</span> <span class="n">c15cf43b6807e172aaba7cf3b57adc7214b91082</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">3</span> <span class="mi">13</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">42</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">insclass</span> <span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
+
+<span class="n">commit</span> <span class="mi">17320</span><span class="n">fc6f26806eb7d1ffc62c23b3bf1361b58b2</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Tue</span> <span class="n">Feb</span> <span class="mi">1</span> <span class="mi">13</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">46</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+
+</pre></div>
+</div>
+<p>and then we can look at the difference between that version of <code class="docutils literal notranslate"><span class="pre">important_classes.py</span></code> and the current version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">diff</span> <span class="mi">3</span><span class="n">c46e0</span> <span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Git diff is what GitHub uses on the PR files changed tab. it takes the commit reference first and then the file to look at just the one files changes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">index</span> <span class="n">e69de29</span><span class="o">.</span><span class="mf">.90</span><span class="n">baf46</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span> <span class="o">@@</span>
+<span class="o">+</span><span class="n">bad</span> <span class="n">code</span>
+
+</pre></div>
+</div>
+<p>From this, we can confirm that the only change in the most recent commit is the bad code, there is not any other good code we want to keep.</p>
+<p>We can look back our git log above to get the hash for that last commit and we can use git revert to “undo” it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">revert</span> <span class="mi">2</span><span class="n">c1c3e</span>
+</pre></div>
+</div>
+<p>Then git asks us to confirm a commit message, and
+we get output like this, which looks like after a commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="mi">8</span><span class="n">bb2df9</span><span class="p">]</span> <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">deletion</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To see how git revert works lets look at our commit history again.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="mi">8</span><span class="n">bb2df91d371ab3f9245d49aee5bd0e5f95a9294</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">50</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">best</span> <span class="n">feature</span> <span class="n">ever</span>
+
+<span class="n">commit</span> <span class="mi">3</span><span class="n">c46e01c5b29ffa2ed9a76ff4e8c8f334c0c1bf2</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">12</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">ignore</span> <span class="n">configs</span>
+
+<span class="n">commit</span> <span class="n">cea6a93d576ecd042823fca24553a58a6cd6565b</span> <span class="p">(</span><span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">3</span> <span class="mi">16</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">12</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="k">try</span> <span class="n">to</span> <span class="n">prevernt</span> <span class="n">repeated</span> <span class="n">running</span>
+
+<span class="n">commit</span> <span class="n">c15cf43b6807e172aaba7cf3b57adc7214b91082</span> <span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">3</span> <span class="mi">13</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">42</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">insclass</span> <span class="mi">2</span><span class="o">-</span><span class="mi">3</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>git did not go back in history in this case, it looked at what changes were applied in the commit we were reverting, applied the inverse of them to the current place the head points and added a new commit for that.</p>
+<p>To illustrate this more clearly, lets make two commits. First we’ll commit some code we will later realize is not good ot helper functions and then something good to alternative classes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;heleper code&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">helper_functions</span><span class="o">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;bad code&#39;</span>
+</pre></div>
+</div>
+<p>we see the message for that</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="n">e9c132f</span><span class="p">]</span> <span class="n">bad</span> <span class="n">code</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and the second change</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;something good&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">alternative_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;some code&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="n">a224c42</span><span class="p">]</span> <span class="n">some</span> <span class="n">code</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we view the commit history again and the code we want to change is one commit back.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="n">a224c42a9fd5ba19b55d1e5e4f34c411c8d519f3</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">some</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">17</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">bad</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="mi">8</span><span class="n">bb2df91d371ab3f9245d49aee5bd0e5f95a9294</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">50</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">best</span> <span class="n">feature</span> <span class="n">ever</span>
+
+<span class="n">commit</span> <span class="mi">3</span><span class="n">c46e01c5b29ffa2ed9a76ff4e8c8f334c0c1bf2</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">12</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">45</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">ignore</span> <span class="n">configs</span>
+
+
+</pre></div>
+</div>
+<p>We can use revert again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">revert</span> <span class="n">e9c132</span>
+</pre></div>
+</div>
+<p>it behaves just as before, having us write a commit message and then commiting
+the “new” changes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="n">b6437b4</span><span class="p">]</span> <span class="n">Revert</span> <span class="s2">&quot;bad code&quot;</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">deletion</span><span class="p">(</span><span class="o">-</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now when we view the commit history we see the bad code, the commit we wanted to
+keep after it and hten the reverted bad code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="n">b6437b4174f69d79e769e296c5e0db5f38c78a55</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;bad code&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="n">a224c42a9fd5ba19b55d1e5e4f34c411c8d519f3</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">some</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">17</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">bad</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="mi">8</span><span class="n">bb2df91d371ab3f9245d49aee5bd0e5f95a9294</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="mi">2</span><span class="n">c1c3e2d7bebdbd238e517e07142151cdf5256f4</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">50</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>What does this functionality tell us about how we should commit?</p>
+<div class="toggle docutils container">
+<p>we want to commit:</p>
+<ul class="simple">
+<li><p>for each “thought” that is cohesive and is a unit we might want to undo</p></li>
+<li><p>we want to use descriptive commit messages so that we can use them to pick out what to undo</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="what-if-i-try-a-bunch-of-stuff-and-it-doesnt-work-but-i-notice-before-i-commit">
+<h2><span class="section-number">10.3. </span>What if I try a bunch of stuff and it doesn’t work, but I notice before I commit?<a class="headerlink" href="#what-if-i-try-a-bunch-of-stuff-and-it-doesnt-work-but-i-notice-before-i-commit" title="Permalink to this headline">¶</a></h2>
+<p>Imagine, you tried out a new idea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;test idea&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<p>and then you test and it does not work.  You want to put your working directory
+back to match the last commit in order to start from scratch with a new idea.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>We can see that our new file is not staged for commit and the git status tells
+us how to put it back.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">6</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span></code> with the file name (path) of what to restore</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">restore</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<p>Now if we try something new again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;test idea again&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-can-git-help-me-remember-what-im-working-on">
+<h2><span class="section-number">10.4. </span>How can git help me remember what I’m working on?<a class="headerlink" href="#how-can-git-help-me-remember-what-im-working-on" title="Permalink to this headline">¶</a></h2>
+<p>Imagine you worked some then walked away and forget what you were working on.<br />
+A diff can help you see what changes you have made since your las commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">diff</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">index</span> <span class="n">e69de29</span><span class="o">..</span><span class="n">a8343bc</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span> <span class="o">@@</span>
+<span class="o">+</span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+
+</pre></div>
+</div>
+<p>Now if we add the file, to commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<p>If you are about to commit and forget what work you are about to commit or have trouble thinking of what to write as your commit message, you can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--staged</span></code> to see exactly what changes you are about to add.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">diff</span> <span class="o">--</span><span class="n">staged</span>
+</pre></div>
+</div>
+<p>this outputs a diff between the index and the last commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">index</span> <span class="n">e69de29</span><span class="o">..</span><span class="n">a8343bc</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span> <span class="o">@@</span>
+<span class="o">+</span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+
+</pre></div>
+</div>
+<p>Note that it shows you what you are comparing <code class="docutils literal notranslate"><span class="pre">e69de29</span></code> to <code class="docutils literal notranslate"><span class="pre">a8343b</span></code> and lists the files and both a summary <code class="docutils literal notranslate"><span class="pre">&#64;&#64;</span> <span class="pre">-0,0</span> <span class="pre">+1</span> <span class="pre">&#64;&#64;</span></code></p>
+<p>and the actual line by line changes.</p>
+<p>This can be more useful after we ahve made more changes after we staged some.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;doc new feature&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+</pre></div>
+</div>
+<p>and check the diff again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">diff</span> <span class="o">--</span><span class="n">staged</span>
+</pre></div>
+</div>
+<p>we get the same output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">index</span> <span class="n">e69de29</span><span class="o">..</span><span class="n">a8343bc</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span> <span class="o">@@</span>
+<span class="o">+</span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+
+</pre></div>
+</div>
+<p>Thisis the same becuase it comares the <em>staging</em> area to the last commmit, not the current directory to the last commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>This shows that only the important_classes file is staged, not the readme chagnes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">6</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-can-update-my-feature-branch-when-main-gets-updated">
+<h2><span class="section-number">10.5. </span>How can update my feature branch when main gets updated?<a class="headerlink" href="#how-can-update-my-feature-branch-when-main-gets-updated" title="Permalink to this headline">¶</a></h2>
+<p>Imagine you are working on a new feature for a the project, so you create a new
+branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">new_feature</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="s1">&#39;new_feature&#39;</span>
+
+</pre></div>
+</div>
+<p>and add your work.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;new feature&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">new_feature</span>
+<span class="n">Changes</span> <span class="n">to</span> <span class="n">be</span> <span class="n">committed</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">unstage</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+
+</pre></div>
+</div>
+<p>and we will commit the code here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;new feature&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">new_feature</span> <span class="n">e7a92d2</span><span class="p">]</span> <span class="n">new</span> <span class="n">feature</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">2</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Then you remember you had done work on the README that was supposed to be on
+main already, so we go back there and commit that file. Imagine this work is a
+bug fix that is unrelated to new feature and you want users and your co-workers
+to have before you finish the new feature.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">M</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;main&#39;</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">6</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">6</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>and commit the readme here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;update readme&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="mi">07</span><span class="n">dbc9e</span><span class="p">]</span> <span class="n">update</span> <span class="n">readme</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We can view commit history to see that these two branches have similar, but not the same history.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="mi">07</span><span class="n">dbc9e484b92cdbc7b055883fb5e1bfaee645f1</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">33</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">update</span> <span class="n">readme</span>
+
+<span class="n">commit</span> <span class="n">b6437b4174f69d79e769e296c5e0db5f38c78a55</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;good code&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="n">a224c42a9fd5ba19b55d1e5e4f34c411c8d519f3</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">some</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">17</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">good</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="mi">8</span><span class="n">bb2df91d371ab3f9245d49aee5bd0e5f95a9294</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+
+
+</pre></div>
+</div>
+<p>then to the other branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">new_feature</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;new_feature&#39;</span>
+
+</pre></div>
+</div>
+<p>and commit history again</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">commit</span> <span class="n">e7a92d24de2d70c6122e28b55cd9066b504ae8c8</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">new_feature</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">40</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">new</span> <span class="n">feature</span>
+
+<span class="n">commit</span> <span class="n">b6437b4174f69d79e769e296c5e0db5f38c78a55</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">58</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;good code&quot;</span>
+
+    <span class="n">This</span> <span class="n">reverts</span> <span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span><span class="o">.</span>
+
+<span class="n">commit</span> <span class="n">a224c42a9fd5ba19b55d1e5e4f34c411c8d519f3</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">47</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">some</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="n">e9c132f6922a4bfae5b21793a9982fe837db6643</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">17</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">good</span> <span class="n">code</span>
+
+<span class="n">commit</span> <span class="mi">8</span><span class="n">bb2df91d371ab3f9245d49aee5bd0e5f95a9294</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">Sarah</span> <span class="n">M</span> <span class="n">Brown</span> <span class="o">&lt;</span><span class="n">brownsarahm</span><span class="nd">@uri</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Thu</span> <span class="n">Feb</span> <span class="mi">24</span> <span class="mi">13</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">56</span> <span class="mi">2022</span> <span class="o">-</span><span class="mi">0500</span>
+
+    <span class="n">Revert</span> <span class="s2">&quot;best feature ever&quot;</span>
+
+
+</pre></div>
+</div>
+<p>Now we want to get the changes from main into the new feature branch because those fixes impact our ability to test the new feature to see if it works right.</p>
+<p>We can update the new_feature branch with rebase.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">main</span>
+<span class="n">Successfully</span> <span class="n">rebased</span> <span class="ow">and</span> <span class="n">updated</span> <span class="n">refs</span><span class="o">/</span><span class="n">heads</span><span class="o">/</span><span class="n">new_feature</span><span class="o">.</span>
+
+</pre></div>
+</div>
+<p>Rebase gets the current status of the main branch (which has a mostly shared commit history with <code class="docutils literal notranslate"><span class="pre">new_feature</span></code> and then applies all of the commits that are on <code class="docutils literal notranslate"><span class="pre">new_feature</span></code> but not <code class="docutils literal notranslate"><span class="pre">main</span></code> on top of the most recent version of main.</p>
+<p>We can see than now the history of new_feature is everything on main +1 one commit, where before they had shared except the last commit, where each one had a different most recent commit.</p>
+<p>Now, if we’re done with the new feature and it works, we can merge it into main.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;main&#39;</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">7</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>On main we have no current thigns to commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">7</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+
+</pre></div>
+</div>
+<p>Git <code class="docutils literal notranslate"><span class="pre">merge</span></code> allows us to apply the commits from new_feature to main.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="n">new_feature</span>
+<span class="n">Updating</span> <span class="mi">07</span><span class="n">dbc9e</span><span class="o">.</span><span class="mf">.19</span><span class="n">d30d1</span>
+<span class="n">Fast</span><span class="o">-</span><span class="n">forward</span>
+ <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="mi">2</span> <span class="o">++</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">2</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>This applies the commits to new_feature that are not on main to the end of main.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">8</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">nothing</span> <span class="n">to</span> <span class="n">commit</span><span class="p">,</span> <span class="n">working</span> <span class="n">tree</span> <span class="n">clean</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-if-the-content-diverges">
+<h2><span class="section-number">10.6. </span>What if the content diverges<a class="headerlink" href="#what-if-the-content-diverges" title="Permalink to this headline">¶</a></h2>
+<p>Let’s make a new branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">hotfix</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">a</span> <span class="n">new</span> <span class="n">branch</span> <span class="s1">&#39;hotfix&#39;</span>
+
+</pre></div>
+</div>
+<p>Then switch back to main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;main&#39;</span>
+
+</pre></div>
+</div>
+<p>and add more content to our main branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;bold commit to main&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">echo</span> <span class="s2">&quot;slow thoughtful fix&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<p>We can look at the version of the file we have here</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>we have the old content and our new two lines</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+<span class="n">bold</span> <span class="n">commit</span> <span class="n">to</span> <span class="n">main</span>
+<span class="n">slower</span> <span class="n">more</span> <span class="n">thoughtful</span> <span class="n">fix</span>
+
+</pre></div>
+</div>
+<p>and commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;working project&quot;</span>
+<span class="p">[</span><span class="n">main</span> <span class="n">b832b2a</span><span class="p">]</span> <span class="n">working</span> <span class="n">project</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">2</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now we’ll go back to the feature branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">hotfix</span>
+<span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;hotfix&#39;</span>
+
+</pre></div>
+</div>
+<p>and look at what’s there.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>we don’t have those two new lines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+
+</pre></div>
+</div>
+<p>Now we fix the old bug that’s not the new things.  (maybe this was a different person working on this branch)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;fix older bug&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<p>and commit that</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;fix other bug&quot;</span>
+<span class="o">&gt;</span> <span class="s1">&#39;</span>
+<span class="p">[</span><span class="n">hotfix</span> <span class="mi">3664</span><span class="n">aa0</span><span class="p">]</span> <span class="n">fix</span> <span class="n">other</span> <span class="n">bug</span><span class="s2">&quot;</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now we can compare the two versions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>we have 3 lines on the hotfix branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+<span class="n">fix</span> <span class="n">older</span> <span class="n">bug</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switched</span> <span class="n">to</span> <span class="n">branch</span> <span class="s1">&#39;main&#39;</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">9</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>and 4 on the main branch and the 3rd line is different on each.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+<span class="n">bold</span> <span class="n">commit</span> <span class="n">to</span> <span class="n">main</span>
+<span class="n">slower</span> <span class="n">more</span> <span class="n">thoughtful</span> <span class="n">fix</span>
+
+</pre></div>
+</div>
+<p>Now, we want to have all of those so we try to merge.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">merge</span> <span class="n">hotfix</span>
+<span class="n">Auto</span><span class="o">-</span><span class="n">merging</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">CONFLICT</span> <span class="p">(</span><span class="n">content</span><span class="p">):</span> <span class="n">Merge</span> <span class="n">conflict</span> <span class="ow">in</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Automatic</span> <span class="n">merge</span> <span class="n">failed</span><span class="p">;</span> <span class="n">fix</span> <span class="n">conflicts</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">commit</span> <span class="n">the</span> <span class="n">result</span><span class="o">.</span>
+
+</pre></div>
+</div>
+<p>but we see an error</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+</pre></div>
+</div>
+<p>in nano now we see the file looks different</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;</span> <span class="n">HEAD</span>
+<span class="n">bold</span> <span class="n">commit</span> <span class="n">to</span> <span class="n">main</span>
+<span class="n">slower</span> <span class="n">more</span> <span class="n">thoughtful</span> <span class="n">fix</span>
+<span class="o">=======</span>
+<span class="n">fix</span> <span class="n">older</span> <span class="n">bug</span>
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">hotfix</span>
+</pre></div>
+</div>
+<p>Git did not know how to merge the two files together, so it makred the part it did not know how to handle. There’s the part from the HEAD (the branch we have checked out, in this case main)</p>
+<p>to resolve the merge conflict, we edit the file to be what we want. In this casewe want both sets of changes. SO we edit to look as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="n">idea</span> <span class="n">again</span>
+<span class="n">new</span> <span class="n">feature</span>
+<span class="n">bold</span> <span class="n">commit</span> <span class="n">to</span> <span class="n">main</span>
+<span class="n">slower</span> <span class="n">more</span> <span class="n">thoughtful</span> <span class="n">fix</span>
+<span class="n">fix</span> <span class="n">older</span> <span class="n">bug</span>
+</pre></div>
+</div>
+<p>Now git tells us that we need to fix the conflicts and commit ecause we have unmerged paths.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">ahead</span> <span class="n">of</span> <span class="s1">&#39;origin/main&#39;</span> <span class="n">by</span> <span class="mi">9</span> <span class="n">commits</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git push&quot;</span> <span class="n">to</span> <span class="n">publish</span> <span class="n">your</span> <span class="n">local</span> <span class="n">commits</span><span class="p">)</span>
+
+<span class="n">You</span> <span class="n">have</span> <span class="n">unmerged</span> <span class="n">paths</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">fix</span> <span class="n">conflicts</span> <span class="ow">and</span> <span class="n">run</span> <span class="s2">&quot;git commit&quot;</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git merge --abort&quot;</span> <span class="n">to</span> <span class="n">abort</span> <span class="n">the</span> <span class="n">merge</span><span class="p">)</span>
+
+<span class="n">Unmerged</span> <span class="n">paths</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">mark</span> <span class="n">resolution</span><span class="p">)</span>
+	<span class="n">both</span> <span class="n">modified</span><span class="p">:</span>   <span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;keep all changes&quot;</span>
+<span class="n">U</span>	<span class="n">mymodule</span><span class="o">/</span><span class="n">important_classes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">Committing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">possible</span> <span class="n">because</span> <span class="n">you</span> <span class="n">have</span> <span class="n">unmerged</span> <span class="n">files</span><span class="o">.</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">Fix</span> <span class="n">them</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">work</span> <span class="n">tree</span><span class="p">,</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">use</span> <span class="s1">&#39;git add/rm &lt;file&gt;&#39;</span>
+<span class="n">hint</span><span class="p">:</span> <span class="k">as</span> <span class="n">appropriate</span> <span class="n">to</span> <span class="n">mark</span> <span class="n">resolution</span> <span class="ow">and</span> <span class="n">make</span> <span class="n">a</span> <span class="n">commit</span><span class="o">.</span>
+<span class="n">fatal</span><span class="p">:</span> <span class="n">Exiting</span> <span class="n">because</span> <span class="n">of</span> <span class="n">an</span> <span class="n">unresolved</span> <span class="n">conflict</span><span class="o">.</span>
+
+</pre></div>
+</div>
+<p>We have to add as usual</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>then we can commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;keep all changes&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span> <span class="mi">62</span><span class="n">b943f</span><span class="p">]</span> <span class="n">keep</span> <span class="nb">all</span> <span class="n">changes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class11prep"></span><h2><span class="section-number">10.7. </span>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Check that jupyter book is installed on your computer <a class="reference external" href="https://jupyterbook.org/advanced/windows.html#working-on-windows">and the windows advice</a></p></li>
+<li><p>Fix any open PRs you have that need to be rebased.</p></li>
+<li><p>In your github in class repo, create a series of commits that tell as story of how you might have made a mistake and fixed it. Use git log and redirects to write that log to a file, <code class="docutils literal notranslate"><span class="pre">gitstory.md</span></code> in your KWL repo and then annotate your story to add in any narrative that didn't fit in the commit messages. This could be that you made a mistake in your code and used git to recover or that you got your git database to an undesirable state and got it back on track.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class11practice"></span><h2><span class="section-number">10.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Find an open source repository and look at the .gitignore file. In <code class="docutils literal notranslate"><span class="pre">donotcommit.md</span></code> reflect on what types of content typically get ignored and why you think they are ignored.  If you can't figure out why, try to look it up.</p></li>
+<li><p>Create a second git story for the other type form your first (code mistake or git mistake) in <code class="docutils literal notranslate"><span class="pre">gitstory2.md</span></code></p></li>
+<li><p>add something to the glossary, cheatsheet or a history sidebar to the notes.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-22.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>How do hashes work in git?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
