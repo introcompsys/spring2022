@@ -22,6 +22,9 @@ parts:
       - file: notes/2022-02-08
       - file: notes/2022-02-10
       - file: notes/2022-02-15
+      - file: notes/2022-02-17
+      - file: notes/2022-02-22
+      - file: notes/2022-02-24
 
   - caption: Activities
     chapters:
