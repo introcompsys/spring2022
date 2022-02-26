@@ -43,7 +43,7 @@ List the contents of the directory:
 ls
 ```
 
-Shows the differences between the index file and the current file. Git status displays the current state of the working directory.
+ Git status displays the current state of the repository relative to the working directory. Shows the differences between the index file and the current directory.
 ```
 git status
 ```
