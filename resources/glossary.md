@@ -24,6 +24,9 @@ pull (changes from a repository)
 repository
   a project folder with tracking information in it in the form of a .git file
   
+git plumbing commands
+  low level git commands that allow the user to access the inner workings of git.
+  
 
 shell
   a command line interface; allows for access to an operating system
