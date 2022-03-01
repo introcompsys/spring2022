@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book settings &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-01.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-01.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Book settings
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more-at-https-jupyterbook-org-customize-config-html">
+   Learn more at https://jupyterbook.org/customize/config.html
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#force-re-execution-of-notebooks-on-each-build">
+   Force re-execution of notebooks on each build.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-https-jupyterbook-org-content-execute-html">
+   See https://jupyterbook.org/content/execute.html
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-name-of-the-latex-output-file-for-pdf-builds">
+   Define the name of the latex output file for PDF builds
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-a-bibtex-file-so-that-we-can-create-citations">
+   Add a bibtex file so that we can create citations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-about-where-the-book-exists-on-the-web">
+   Information about where the book exists on the web
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-github-buttons-to-your-book">
+   Add GitHub buttons to your book
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-https-jupyterbook-org-customize-config-html-add-a-link-to-your-repository">
+   See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more-at-https-jupyterbook-org-customize-toc-html">
+   Learn more at https://jupyterbook.org/customize/toc.html
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Book settings</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Book settings
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more-at-https-jupyterbook-org-customize-config-html">
+   Learn more at https://jupyterbook.org/customize/config.html
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#force-re-execution-of-notebooks-on-each-build">
+   Force re-execution of notebooks on each build.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-https-jupyterbook-org-content-execute-html">
+   See https://jupyterbook.org/content/execute.html
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-the-name-of-the-latex-output-file-for-pdf-builds">
+   Define the name of the latex output file for PDF builds
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-a-bibtex-file-so-that-we-can-create-citations">
+   Add a bibtex file so that we can create citations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-about-where-the-book-exists-on-the-web">
+   Information about where the book exists on the web
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-github-buttons-to-your-book">
+   Add GitHub buttons to your book
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-https-jupyterbook-org-customize-config-html-add-a-link-to-your-repository">
+   See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of contents
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-more-at-https-jupyterbook-org-customize-toc-html">
+   Learn more at https://jupyterbook.org/customize/toc.html
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p>(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( ls
+CONTRIBUTING.md	README.md	config.txt	docs		setup.py
+LICENSE.md	about.md	config.yml	mymodule	tests
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> cat .gitignore
+config.*
+(base) brownsarahm&#64;github-in-class-brownsarahm $ git status
+On branch main
+Your branch is ahead of ‘origin/main’ by 11 commits.
+(use “git push” to publish your local commits)</p>
+<p>nothing to commit, working tree clean
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( git push
+Enumerating objects: 44, done.
+Counting objects: 100% (42/42), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (32/32), done.
+Writing objects: 100% (38/38), 2.96 KiB | 1.48 MiB/s, done.
+Total 38 (delta 22), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (22/22), completed with 3 local objects.
+To https://github.com/introcompsys/github-in-class-brownsarahm.git
+   cea6a93..62b943f  main -&gt; main
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> mkdir results
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( echo &quot;results/&quot; &gt;&gt; .gitignore
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> git status
+On branch main
+Your branch is up to date with ‘origin/main’.</p>
+<p>Changes not staged for commit:
+(use “git add <file>…” to update what will be committed)
+(use “git restore <file>…” to discard changes in working directory)
+modified:   .gitignore</p>
+<p>no changes added to commit (use “git add” and/or “git commit -a”)
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( mkdir res2
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> git status
+On branch main
+Your branch is up to date with ‘origin/main’.</p>
+<p>Changes not staged for commit:
+(use “git add <file>…” to update what will be committed)
+(use “git restore <file>…” to discard changes in working directory)
+modified:   .gitignore</p>
+<p>no changes added to commit (use “git add” and/or “git commit -a”)
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( touch results/test1
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> git status
+On branch main
+Your branch is up to date with ‘origin/main’.</p>
+<p>Changes not staged for commit:
+(use “git add <file>…” to update what will be committed)
+(use “git restore <file>…” to discard changes in working directory)
+modified:   .gitignore</p>
+<p>no changes added to commit (use “git add” and/or “git commit -a”)
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( touch res2/test1
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> git status
+On branch main
+Your branch is up to date with ‘origin/main’.</p>
+<p>Changes not staged for commit:
+(use “git add <file>…” to update what will be committed)
+(use “git restore <file>…” to discard changes in working directory)
+modified:   .gitignore</p>
+<p>Untracked files:
+(use “git add <file>…” to include in what will be committed)
+res2/</p>
+<p>no changes added to commit (use “git add” and/or “git commit -a”)
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( touch res2/test2
+(base) brownsarahm&#64;github-in-class-brownsarahm \)</span> git status
+On branch main
+Your branch is up to date with ‘origin/main’.</p>
+<p>Changes not staged for commit:
+(use “git add <file>…” to update what will be committed)
+(use “git restore <file>…” to discard changes in working directory)
+modified:   .gitignore</p>
+<p>Untracked files:
+(use “git add <file>…” to include in what will be committed)
+res2/</p>
+<p>no changes added to commit (use “git add” and/or “git commit -a”)
+(base) brownsarahm&#64;github-in-class-brownsarahm <span class="math notranslate nohighlight">\( cd .. 
+(base) brownsarahm&#64;sysinclass \)</span> jupyter-book create tiny-book</p>
+<p>===============================================================================</p>
+<p>Your book template can be found at</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tiny-book/
+</pre></div>
+</div>
+<p>===============================================================================</p>
+<p>(base) brownsarahm&#64;sysinclass <span class="math notranslate nohighlight">\( ls
+github-in-class-brownsarahm	test				tiny-book
+nand2tetris			test2
+(base) brownsarahm&#64;sysinclass \)</span> cd tiny-book/
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git init .
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch &lt;name&gt;
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m &lt;name&gt;
+Initialized empty Git repository in /Users/brownsarahm/Documents/sysinclass/tiny-book/.git/
+(base) brownsarahm&#64;tiny-book \)</span> git branch -m main
+(base) brownsarahm&#64;tiny-book $ git status
+On branch main</p>
+<p>No commits yet</p>
+<p>Untracked files:
+(use “git add <file>…” to include in what will be committed)
+_config.yml
+_toc.yml
+<a class="reference external" href="http://intro.md">intro.md</a>
+logo.png
+<a class="reference external" href="http://markdown.md">markdown.md</a>
+notebooks.ipynb
+references.bib
+requirements.txt</p>
+<p>nothing added to commit but untracked files present (use “git add” to track)
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git checkout -b feedback
+Switched to a new branch 'feedback'
+(base) brownsarahm&#64;tiny-book \)</span> git chweckout main
+git: ‘chweckout’ is not a git command. See ‘git –help’.</p>
+<p>The most similar command is
+checkout
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git checkout main
+error: pathspec 'main' did not match any file(s) known to git
+(base) brownsarahm&#64;tiny-book \)</span> git branch
+(base) brownsarahm&#64;tiny-book $ git status
+On branch feedback</p>
+<p>No commits yet</p>
+<p>Untracked files:
+(use “git add <file>…” to include in what will be committed)
+_config.yml
+_toc.yml
+<a class="reference external" href="http://intro.md">intro.md</a>
+logo.png
+<a class="reference external" href="http://markdown.md">markdown.md</a>
+notebooks.ipynb
+references.bib
+requirements.txt</p>
+<p>nothing added to commit but untracked files present (use “git add” to track)
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git checkout -b main
+Switched to a new branch 'main'
+(base) brownsarahm&#64;tiny-book \)</span> git branch
+(base) brownsarahm&#64;tiny-book $ git status
+On branch main</p>
+<p>No commits yet</p>
+<p>Untracked files:
+(use “git add <file>…” to include in what will be committed)
+_config.yml
+_toc.yml
+<a class="reference external" href="http://intro.md">intro.md</a>
+logo.png
+<a class="reference external" href="http://markdown.md">markdown.md</a>
+notebooks.ipynb
+references.bib
+requirements.txt</p>
+<p>nothing added to commit but untracked files present (use “git add” to track)
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git add . 
+(base) brownsarahm&#64;tiny-book \)</span> git commit -m ‘empty template’
+[main (root-commit) a8a489e] empty template
+8 files changed, 362 insertions(+)
+create mode 100644 _config.yml
+create mode 100644 _toc.yml
+create mode 100644 <a class="reference external" href="http://intro.md">intro.md</a>
+create mode 100644 logo.png
+create mode 100644 <a class="reference external" href="http://markdown.md">markdown.md</a>
+create mode 100644 notebooks.ipynb
+create mode 100644 references.bib
+create mode 100644 requirements.txt
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( ls 
+_config.yml		intro.md		markdown.md		references.bib
+_toc.yml		logo.png		notebooks.ipynb		requirements.txt
+(base) brownsarahm&#64;tiny-book \)</span> cat _config.yml</p>
+<div class="section" id="book-settings">
+<h1>Book settings<a class="headerlink" href="#book-settings" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="learn-more-at-https-jupyterbook-org-customize-config-html">
+<h1>Learn more at <a class="reference external" href="https://jupyterbook.org/customize/config.html">https://jupyterbook.org/customize/config.html</a><a class="headerlink" href="#learn-more-at-https-jupyterbook-org-customize-config-html" title="Permalink to this headline">¶</a></h1>
+<p>title: My sample book
+author: The Jupyter Book Community
+logo: logo.png</p>
+</div>
+<div class="section" id="force-re-execution-of-notebooks-on-each-build">
+<h1>Force re-execution of notebooks on each build.<a class="headerlink" href="#force-re-execution-of-notebooks-on-each-build" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="see-https-jupyterbook-org-content-execute-html">
+<h1>See <a class="reference external" href="https://jupyterbook.org/content/execute.html">https://jupyterbook.org/content/execute.html</a><a class="headerlink" href="#see-https-jupyterbook-org-content-execute-html" title="Permalink to this headline">¶</a></h1>
+<p>execute:
+execute_notebooks: force</p>
+</div>
+<div class="section" id="define-the-name-of-the-latex-output-file-for-pdf-builds">
+<h1>Define the name of the latex output file for PDF builds<a class="headerlink" href="#define-the-name-of-the-latex-output-file-for-pdf-builds" title="Permalink to this headline">¶</a></h1>
+<p>latex:
+latex_documents:
+targetname: book.tex</p>
+</div>
+<div class="section" id="add-a-bibtex-file-so-that-we-can-create-citations">
+<h1>Add a bibtex file so that we can create citations<a class="headerlink" href="#add-a-bibtex-file-so-that-we-can-create-citations" title="Permalink to this headline">¶</a></h1>
+<p>bibtex_bibfiles:</p>
+<ul class="simple">
+<li><p>references.bib</p></li>
+</ul>
+</div>
+<div class="section" id="information-about-where-the-book-exists-on-the-web">
+<h1>Information about where the book exists on the web<a class="headerlink" href="#information-about-where-the-book-exists-on-the-web" title="Permalink to this headline">¶</a></h1>
+<p>repository:
+url: <a class="reference external" href="https://github.com/executablebooks/jupyter-book">https://github.com/executablebooks/jupyter-book</a>  # Online location of your book
+path_to_book: docs  # Optional path to your book, relative to the repository root
+branch: master  # Which branch of the repository should be used when creating links (optional)</p>
+</div>
+<div class="section" id="add-github-buttons-to-your-book">
+<h1>Add GitHub buttons to your book<a class="headerlink" href="#add-github-buttons-to-your-book" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="see-https-jupyterbook-org-customize-config-html-add-a-link-to-your-repository">
+<h1>See <a class="reference external" href="https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository">https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository</a><a class="headerlink" href="#see-https-jupyterbook-org-customize-config-html-add-a-link-to-your-repository" title="Permalink to this headline">¶</a></h1>
+<p>html:
+use_issues_button: true
+use_repository_button: true
+(base) brownsarahm&#64;tiny-book $ cat _toc.yml</p>
+</div>
+<div class="section" id="table-of-contents">
+<h1>Table of contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="learn-more-at-https-jupyterbook-org-customize-toc-html">
+<h1>Learn more at <a class="reference external" href="https://jupyterbook.org/customize/toc.html">https://jupyterbook.org/customize/toc.html</a><a class="headerlink" href="#learn-more-at-https-jupyterbook-org-customize-toc-html" title="Permalink to this headline">¶</a></h1>
+<p>format: jb-book
+root: intro
+chapters:</p>
+<ul class="simple">
+<li><p>file: markdown</p></li>
+<li><p>file: notebooks
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( ls
+_config.yml		intro.md		markdown.md		references.bib
+_toc.yml		logo.png		notebooks.ipynb		requirements.txt
+(base) brownsarahm&#64;tiny-book \)</span> cat requirements.txt
+jupyter-book
+matplotlib
+numpy
+(base) brownsarahm&#64;tiny-book $ jupyter-book build .
+Running Jupyter-Book v0.11.1
+Source Folder: /Users/brownsarahm/Documents/sysinclass/tiny-book
+Config Path: /Users/brownsarahm/Documents/sysinclass/tiny-book/_config.yml
+Output Path: /Users/brownsarahm/Documents/sysinclass/tiny-book/_build/html
+Running Sphinx v3.2.1
+making output directory… done
+[etoc] Changing master_doc to ‘intro’
+checking for /Users/brownsarahm/Documents/sysinclass/tiny-book/references.bib in bibtex cache… not found
+parsing bibtex file /Users/brownsarahm/Documents/sysinclass/tiny-book/references.bib… parsed 5 entries
+myst v0.13.7: MdParserConfig(renderer=‘sphinx’, commonmark_only=False, dmath_allow_labels=True, dmath_allow_space=True, dmath_allow_digits=True, update_mathjax=True, enable_extensions=[‘colon_fence’, ‘dollarmath’, ‘linkify’, ‘substitution’], disable_syntax=[], url_schemes=[‘mailto’, ‘http’, ‘https’], heading_anchors=None, html_meta=[], footnote_transition=True, substitutions=[], sub_delimiters=[‘{’, ‘}’])
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 3 source files that are out of date
+updating environment: [new config] 3 added, 0 changed, 0 removed
+Executing: notebooks in: /Users/brownsarahm/Documents/sysinclass/tiny-book</p></li>
+</ul>
+<p>looking for now-outdated files… none found
+pickling environment… done
+checking consistency… done
+preparing documents… done
+writing output… [100%] notebooks<br />
+generating indices…  genindexdone
+writing additional pages…  searchdone
+copying images… [100%] _build/jupyter_execute/notebooks_2_0.png<br />
+copying static files… … done
+copying extra files… done
+dumping search index in English (code: en)… done
+dumping object inventory… done
+build succeeded.</p>
+<p>The HTML pages are in _build/html.
+[etoc] missing index.html written as redirect to ‘intro.html’</p>
+<p>===============================================================================</p>
+<p>Finished generating HTML for book.
+Your book’s HTML pages are here:
+_build/html/
+You can look at your book by opening this file in a browser:
+_build/html/index.html
+Or paste this line directly into your browser bar:
+file:///Users/brownsarahm/Documents/sysinclass/tiny-book/_build/html/index.html</p>
+<p>===============================================================================</p>
+<p>(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( ls
+_build			intro.md		notebooks.ipynb
+_config.yml		logo.png		references.bib
+_toc.yml		markdown.md		requirements.txt
+(base) brownsarahm&#64;tiny-book \)</span> cd _build/
+(base) brownsarahm&#64;_build <span class="math notranslate nohighlight">\( ls
+html		jupyter_execute
+(base) brownsarahm&#64;_build \)</span> cd html/
+(base) brownsarahm&#64;html <span class="math notranslate nohighlight">\( ls
+_images		_sources	genindex.html	intro.html	notebooks.html	search.html
+_panels_static	_static		index.html	markdown.html	objects.inv	searchindex.js
+(base) brownsarahm&#64;html \)</span> ls _static/
+<strong>init</strong>.py
+<strong>pycache</strong>
+basic.css
+clipboard.min.js
+copy-button.svg
+copybutton.css
+copybutton.js
+copybutton_funcs.js
+css
+doctools.js
+documentation_options.js
+file.png
+images
+jquery-3.5.1.js
+jquery.js
+js
+language_data.js
+logo.png
+minus.png
+mystnb.css
+panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css
+panels-variables.06eb56fa6e07937060861dad626602ad.css
+plus.png
+pygments.css
+searchtools.js
+sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js
+sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css
+sphinx-book-theme.css
+sphinx-thebe.css
+sphinx-thebe.js
+togglebutton.css
+togglebutton.js
+underscore-1.3.1.js
+underscore.js
+vendor
+webpack-macros.html
+(base) brownsarahm&#64;html <span class="math notranslate nohighlight">\( cd ../../
+(base) brownsarahm&#64;tiny-book \)</span> ls
+_build			<a class="reference external" href="http://intro.md">intro.md</a>		notebooks.ipynb
+_config.yml		logo.png		references.bib
+_toc.yml		<a class="reference external" href="http://markdown.md">markdown.md</a>		requirements.txt
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( echo &quot;_build/&quot; &gt; .gitignore
+(base) brownsarahm&#64;tiny-book \)</span> git status
+On branch main
+Untracked files:
+(use “git add <file>…” to include in what will be committed)
+.gitignore</p>
+<p>nothing added to commit but untracked files present (use “git add” to track)
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git add .
+(base) brownsarahm&#64;tiny-book \)</span> git commit -m ‘ignroe build’
+[main 3e249ce] ignroe build
+1 file changed, 1 insertion(+)
+create mode 100644 .gitignore
+(base) brownsarahm&#64;tiny-book <span class="math notranslate nohighlight">\( git remote add origin https://github.com/introcompsys/tiny-book-brownsarahm.git
+(base) brownsarahm&#64;tiny-book \)</span> git branch -M main
+(base) brownsarahm&#64;tiny-book $ git push -u origin main
+\Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 16.07 KiB | 8.03 MiB/s, done.
+Total 13 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To <a class="reference external" href="https://github.com/introcompsys/tiny-book-brownsarahm.git">https://github.com/introcompsys/tiny-book-brownsarahm.git</a></p>
+<ul class="simple">
+<li><p>[new branch]      main -&gt; main
+Branch ‘main’ set up to track remote branch ‘main’ from ‘origin’.
+(base) brownsarahm&#64;tiny-book $</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
