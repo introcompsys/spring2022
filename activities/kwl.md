@@ -45,18 +45,117 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 ## Minimum Rows
 
 
-```{important}
-This is not currently complete but will contain a listing with links to recommendations
+
+
+```Markdown
+# KWL Chart
+
+
+<!-- replace the  _ in the table or add new rows as needed -->
+
+| Topic | Know | Want to Know | Learned |
+| ------| ------- | ------ | ------- |
+| Git | _ | _ | _ |
+| GitHub | _ | _ | _ |
+| Terminal | _ | _ | _ |
+| IDE | _ | _ | _ |
+| text editors | _ | _ | _ |
+|file system | _ | _ |_ |
+|bash | _ | _ | _ |
+|abstraction | _ | _ | _ |
+|programming languages | _ | _ | _ |
+|git workflows | _ | _ | _ |
+| git branches | _ | _ | _ |
+| bash redirects | _ | _ | _ |
+|number systems | _ | _ | _ |
+| merge conflicts | _ | _ | _ |
+| documentation | _ | _ | _ |
+| templating | _ | _ | _ |
+|bash scripting | _ | _ | _ |
+| developer tools | _ | _ | _ |
+| networking | _ | _ | _ |
+|ssh | _ | _ | _ |
+| ssh keys | _ | _ | _ |
 ```
+
+
 
 ## Added Files
 
 ```{list-table}
 
 * - file
-  - content
+  - content (link to instructions)
+  - type (prepare/practice)
+  - zone
 * - README
-  - the chart, (or toc)
+  - the chart, (or usage)
+  - default
+  - all
+* -  gitoffline.md
+  - [reflection (extra exercises, add & commit out of order)](2022-02-01)
+  - prepare (and practice)
+  - grade free
+* -  terminal.md
+  - [reflection](2022-02-03)
+  - prepare
+  - grade free
+* -  software.md
+  - [examine a software project](2022-02-03)
+  - prepare
+  - grade free
+* -  abstraction.md
+  - [how you think about abstraction](2022-02-08)
+  - prepare
+  - grade free
+* -  chart.md
+  - [your chart (from README)](2022-02-08)
+  - practice
+  - grade free
+* -  reorg.md
+  - [ntoes/troubleshooting ](2022-02-08)
+  - practice
+  - grade free  
+* -  stdinouterr.md
+  - [ echo and redirect practice](2022-02-08)
+  - practice
+  - grade free  
+* - hardwaresurvey.md
+  - [challenges & reminders](2022-02-10) [reflection](2022-02-10)
+  - prepare
+  - grade free
+* - gitlog.txt
+  - [git log output](2022-02-15)
+  - prepare
+  - graded
+* -  gitplumbing.md
+  - [map plumbing to porcelain](2022-02-17)
+  - prepare
+  - graded
+* -  gitunderstanding.md
+  - [how your undersanding has changed](2022-02-17)
+  - prepare
+  - graded
+* -  idethoughts.md
+  - [notes on ide usage](2022-02-17)
+  - prepare
+  - graded
+* -  numbers.md
+  - [usage of nondecimal number systems](2022-02-22)
+  - prepare
+  - graded
+* -  hexspeak.md
+  - [summarize & generate](2022-02-22)
+  - prepare
+  - graded
+* -  gitstory.md
+  - [tutorial of using git for a challenge](2022-02-24)
+  - prepare
+  - graded
+* -  jupyterbooktroubleshooting.md
+  - [problems with jupyterbook](2022-02-01)
+  - prepare
+  - graded
 * - workflows.md
   - [workflow]
 
