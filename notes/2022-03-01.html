@@ -1,0 +1,1254 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11. How do we build Documenation? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="10. How can git help me?" href="2022-02-24.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Course Communications
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   11. How do we build Documenation?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-01.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-01.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-from-getting-unstuck-with-git">
+   11.1. Review from getting unstuck with git
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-a-results-folder-and-prevent-its-content-from-being-committed">
+     11.1.1. Add a results folder and prevent its content from being committed.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-it-mean-to-build-documentation">
+   11.2. What does it mean to build documentation?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-build">
+     11.2.1. What is a build?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-documentation-so-important">
+     11.2.2. Why is documentation so important?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-documentation-with-jupyter-book">
+   11.3. Building Documentation with Jupyter book
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-jupyterbook-from-the-template">
+     11.3.1. Creating a Jupyterbook from the template
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strucutre-of-a-jupyter-book">
+     11.3.2. Strucutre of a Jupyter book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-i-get-output">
+     11.3.3. How do I get output?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-push-a-repo-that-i-made-locally-to-github">
+   11.4. How do I push a repo that I made locally to GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   11.5. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   11.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   11.7. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-i-use-jupyterbook-to-put-a-resume-online">
+     11.7.1. Could I use jupyterbook to put a resume online?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How do we build Documenation?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-from-getting-unstuck-with-git">
+   11.1. Review from getting unstuck with git
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-a-results-folder-and-prevent-its-content-from-being-committed">
+     11.1.1. Add a results folder and prevent its content from being committed.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-it-mean-to-build-documentation">
+   11.2. What does it mean to build documentation?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-build">
+     11.2.1. What is a build?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-documentation-so-important">
+     11.2.2. Why is documentation so important?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-documentation-with-jupyter-book">
+   11.3. Building Documentation with Jupyter book
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-jupyterbook-from-the-template">
+     11.3.1. Creating a Jupyterbook from the template
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strucutre-of-a-jupyter-book">
+     11.3.2. Strucutre of a Jupyter book
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-i-get-output">
+     11.3.3. How do I get output?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-i-push-a-repo-that-i-made-locally-to-github">
+   11.4. How do I push a repo that I made locally to GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   11.5. Prepare for next Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   11.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   11.7. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-i-use-jupyterbook-to-put-a-resume-online">
+     11.7.1. Could I use jupyterbook to put a resume online?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="how-do-we-build-documenation">
+<h1><span class="section-number">11. </span>How do we build Documenation?<a class="headerlink" href="#how-do-we-build-documenation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="review-from-getting-unstuck-with-git">
+<h2><span class="section-number">11.1. </span>Review from getting unstuck with git<a class="headerlink" href="#review-from-getting-unstuck-with-git" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-a-results-folder-and-prevent-its-content-from-being-committed">
+<h3><span class="section-number">11.1.1. </span>Add a results folder and prevent its content from being committed.<a class="headerlink" href="#add-a-results-folder-and-prevent-its-content-from-being-committed" title="Permalink to this headline">¶</a></h3>
+<p>Recall, this is our GitHub inclass repo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTRIBUTING</span><span class="o">.</span><span class="n">md</span>	<span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">config</span><span class="o">.</span><span class="n">txt</span>	<span class="n">docs</span>		<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">md</span>	<span class="n">about</span><span class="o">.</span><span class="n">md</span>	<span class="n">config</span><span class="o">.</span><span class="n">yml</span>	<span class="n">mymodule</span>	<span class="n">tests</span>
+</pre></div>
+</div>
+<p>We saw last week to use the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file to ignore files that match a pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+<p>we used a very simple pattern</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.*</span>
+</pre></div>
+</div>
+<p>to ignore any config file in this repository.</p>
+<p>If we push</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recall here that it is compressing before pushing</p>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">42</span><span class="o">/</span><span class="mi">42</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">8</span> <span class="n">threads</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">32</span><span class="o">/</span><span class="mi">32</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">38</span><span class="o">/</span><span class="mi">38</span><span class="p">),</span> <span class="mf">2.96</span> <span class="n">KiB</span> <span class="o">|</span> <span class="mf">1.48</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">38</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">22</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">22</span><span class="o">/</span><span class="mi">22</span><span class="p">),</span> <span class="n">completed</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">local</span> <span class="n">objects</span><span class="o">.</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+   <span class="n">cea6a93</span><span class="o">.</span><span class="mf">.62</span><span class="n">b943f</span>  <span class="n">main</span> <span class="o">-&gt;</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>and view online, we can see that the two config files we have locally are not pushed, becuase they were not added to the .git</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is another example of how <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> does not push the files in the directory, but instead the <code class="docutils literal notranslate"><span class="pre">.git</span></code> directory (compressed) and then
+GitHub (and other git hosts) use git operations to show us the contents
+of the files based on the repository database.</p>
+</div>
+<p>Now, back to our task we first create the directory and then append a new line to it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">results</span>
+<span class="n">echo</span> <span class="s2">&quot;results/&quot;</span> <span class="o">&gt;&gt;</span> <span class="o">.</span><span class="n">gitignore</span>
+</pre></div>
+</div>
+<p>Note that the two <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> is needed, not one so tht we append instead of erase.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>What could you do if you had used only one and overwritten the .gitignore file instead of appending to it?</p>
+</div>
+<p>How can we tell that worked? As usual, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> is a good place to start.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When we do git status, we see that we changed the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file but this does not show us that what we put in there actually matches the directory we want to ignore <em>yet</em>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>git does not track empty directories.</p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If we want to track an “empty” directory a common practice is to add an hidden, often empty file (<code class="docutils literal notranslate"><span class="pre">.gitkeep</span></code> is also hidden) so that it is not really empty anymore, but is empty-looking when we use, eg <code class="docutils literal notranslate"><span class="pre">ls</span></code></p>
+</div>
+</div>
+<p>If we create another empty directory we can see that this is also not showing as an untracked file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">res2</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We can add an empty file to test that our ignore actually worked.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">results</span><span class="o">/</span><span class="n">test1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>and compare to what hapens if we add an empty file to the directory that does not match our pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">res2</span><span class="o">/</span><span class="n">test1</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">res2</span><span class="o">/</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>a directory where all files are untracked  stays as just the directory no matter how many files it is, until you add at least one.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">touch</span> <span class="n">res2</span><span class="o">/</span><span class="n">test2</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">up</span> <span class="n">to</span> <span class="n">date</span> <span class="k">with</span> <span class="s1">&#39;origin/main&#39;</span><span class="o">.</span>
+
+<span class="n">Changes</span> <span class="ow">not</span> <span class="n">staged</span> <span class="k">for</span> <span class="n">commit</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git restore &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">discard</span> <span class="n">changes</span> <span class="ow">in</span> <span class="n">working</span> <span class="n">directory</span><span class="p">)</span>
+	<span class="n">modified</span><span class="p">:</span>   <span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">res2</span><span class="o">/</span>
+
+<span class="n">no</span> <span class="n">changes</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="s2">&quot;git commit -a&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>merge conflict file explanation to be added later</p>
+</div>
+</div>
+</div>
+<div class="section" id="what-does-it-mean-to-build-documentation">
+<h2><span class="section-number">11.2. </span>What does it mean to build documentation?<a class="headerlink" href="#what-does-it-mean-to-build-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For now, see the prismia transcript for an outline here</p>
+</div>
+<div class="section" id="what-is-a-build">
+<h3><span class="section-number">11.2.1. </span>What is a build?<a class="headerlink" href="#what-is-a-build" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="why-is-documentation-so-important">
+<h3><span class="section-number">11.2.2. </span>Why is documentation so important?<a class="headerlink" href="#why-is-documentation-so-important" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://link.springer.com/article/10.1007/s10606-018-9333-1/tables/1">documentation types table</a></p>
+<p><a class="reference external" href="https://link.springer.com/article/10.1007/s10606-018-9333-1">ethnography of docuemtnation data science</a></p>
+</div>
+</div>
+<div class="section" id="building-documentation-with-jupyter-book">
+<h2><span class="section-number">11.3. </span>Building Documentation with Jupyter book<a class="headerlink" href="#building-documentation-with-jupyter-book" title="Permalink to this headline">¶</a></h2>
+<p>There are many <a class="reference external" href="https://docathon.github.io/docathon/pages/resources.html#documentation-tools">Documenation Tools</a> because we (programmers) don’t like</p>
+<p><a class="reference external" href="https://lwn.net/Articles/705224/">linux kernel uses sphinx</a></p>
+<p><a class="reference external" href="https://lwn.net/Articles/692704/">why</a> and <a class="reference external" href="https://lwn.net/Articles/692705/">how it works</a></p>
+<p><a class="reference external" href="https://jupyterbook.org/intro.html">Jupyterbook</a> wraps sphinx and uses markdown instead of restructured text</p>
+<div class="section" id="creating-a-jupyterbook-from-the-template">
+<h3><span class="section-number">11.3.1. </span>Creating a Jupyterbook from the template<a class="headerlink" href="#creating-a-jupyterbook-from-the-template" title="Permalink to this headline">¶</a></h3>
+<p>We’ll naviate out of the github in class repo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>and use jupyterbook to create a new book from the template</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">create</span> <span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
+</pre></div>
+</div>
+<p>We see this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="o">===============================================================================</span>
+
+<span class="n">Your</span> <span class="n">book</span> <span class="n">template</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="n">at</span>
+
+    <span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span>
+
+<span class="o">===============================================================================</span>
+</pre></div>
+</div>
+<p>and that it created a new directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">github</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">class</span><span class="o">-</span><span class="n">brownsarahm</span>	<span class="n">test</span>				<span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
+<span class="n">nand2tetris</span>			<span class="n">test2</span>
+
+</pre></div>
+</div>
+<p>If we navigate to that directory we can create a new repo here as well</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span>
+<span class="n">git</span> <span class="n">init</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hint</span><span class="p">:</span> <span class="n">Using</span> <span class="s1">&#39;master&#39;</span> <span class="k">as</span> <span class="n">the</span> <span class="n">name</span> <span class="k">for</span> <span class="n">the</span> <span class="n">initial</span> <span class="n">branch</span><span class="o">.</span> <span class="n">This</span> <span class="n">default</span> <span class="n">branch</span> <span class="n">name</span>
+<span class="n">hint</span><span class="p">:</span> <span class="ow">is</span> <span class="n">subject</span> <span class="n">to</span> <span class="n">change</span><span class="o">.</span> <span class="n">To</span> <span class="n">configure</span> <span class="n">the</span> <span class="n">initial</span> <span class="n">branch</span> <span class="n">name</span> <span class="n">to</span> <span class="n">use</span> <span class="ow">in</span> <span class="nb">all</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">of</span> <span class="n">your</span> <span class="n">new</span> <span class="n">repositories</span><span class="p">,</span> <span class="n">which</span> <span class="n">will</span> <span class="n">suppress</span> <span class="n">this</span> <span class="n">warning</span><span class="p">,</span> <span class="n">call</span><span class="p">:</span>
+<span class="n">hint</span><span class="p">:</span>
+<span class="n">hint</span><span class="p">:</span> 	<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">init</span><span class="o">.</span><span class="n">defaultBranch</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="n">hint</span><span class="p">:</span>
+<span class="n">hint</span><span class="p">:</span> <span class="n">Names</span> <span class="n">commonly</span> <span class="n">chosen</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">&#39;master&#39;</span> <span class="n">are</span> <span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="s1">&#39;trunk&#39;</span> <span class="ow">and</span>
+<span class="n">hint</span><span class="p">:</span> <span class="s1">&#39;development&#39;</span><span class="o">.</span> <span class="n">The</span> <span class="n">just</span><span class="o">-</span><span class="n">created</span> <span class="n">branch</span> <span class="n">can</span> <span class="n">be</span> <span class="n">renamed</span> <span class="n">via</span> <span class="n">this</span> <span class="n">command</span><span class="p">:</span>
+<span class="n">hint</span><span class="p">:</span>
+<span class="n">hint</span><span class="p">:</span> 	<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="n">Initialized</span> <span class="n">empty</span> <span class="n">Git</span> <span class="n">repository</span> <span class="ow">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/.</span><span class="n">git</span><span class="o">/</span>
+
+</pre></div>
+</div>
+<p>and again we’ll change our default branch to main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">m</span> <span class="n">main</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+
+<span class="n">No</span> <span class="n">commits</span> <span class="n">yet</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+	<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>
+	<span class="n">intro</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+	<span class="n">markdown</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">notebooks</span><span class="o">.</span><span class="n">ipynb</span>
+	<span class="n">references</span><span class="o">.</span><span class="n">bib</span>
+	<span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>and we will commit the template.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;empty template&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="p">(</span><span class="n">root</span><span class="o">-</span><span class="n">commit</span><span class="p">)</span> <span class="n">a8a489e</span><span class="p">]</span> <span class="n">empty</span> <span class="n">template</span>
+ <span class="mi">8</span> <span class="n">files</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">362</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">intro</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">markdown</span><span class="o">.</span><span class="n">md</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">notebooks</span><span class="o">.</span><span class="n">ipynb</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">references</span><span class="o">.</span><span class="n">bib</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="strucutre-of-a-jupyter-book">
+<h3><span class="section-number">11.3.2. </span>Strucutre of a Jupyter book<a class="headerlink" href="#strucutre-of-a-jupyter-book" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">intro</span><span class="o">.</span><span class="n">md</span>		<span class="n">markdown</span><span class="o">.</span><span class="n">md</span>		<span class="n">references</span><span class="o">.</span><span class="n">bib</span>
+<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">logo</span><span class="o">.</span><span class="n">png</span>		<span class="n">notebooks</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>A jupyter book has two required files (<code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code>)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jupyterbook.org/customize/config.html#configuration-defaults">config defaults</a></p></li>
+<li><p><a class="reference external" href="https://jupyterbook.org/structure/toc.html#structure-of-a-book">toc file formatting rules</a></p></li>
+</ul>
+<p>the extention (<code class="docutils literal notranslate"><span class="pre">.yml</span></code>) is <a class="reference external" href="https://yaml.org/">yaml</a>, which stands for “YAML Ain’t Markup Language”. It consists of key, value pairs and is deigned to be a human-friendly way to encode data for use in any programming language.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat _config.yml
+</pre></div>
+</div>
+<p>The configuration file, tells it basic iformation about the book, it provides all of the settings that jupyterbook and sphinx need to render the content as whatever output format we want.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Book settings</span><span class="w"></span>
+<span class="c1"># Learn more at https://jupyterbook.org/customize/config.html</span><span class="w"></span>
+
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My sample book</span><span class="w"></span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The Jupyter Book Community</span><span class="w"></span>
+<span class="nt">logo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logo.png</span><span class="w"></span>
+
+<span class="c1"># Force re-execution of notebooks on each build.</span><span class="w"></span>
+<span class="c1"># See https://jupyterbook.org/content/execute.html</span><span class="w"></span>
+<span class="nt">execute</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">execute_notebooks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">force</span><span class="w"></span>
+
+<span class="c1"># Define the name of the latex output file for PDF builds</span><span class="w"></span>
+<span class="nt">latex</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">latex_documents</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">targetname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">book.tex</span><span class="w"></span>
+
+<span class="c1"># Add a bibtex file so that we can create citations</span><span class="w"></span>
+<span class="nt">bibtex_bibfiles</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">references.bib</span><span class="w"></span>
+
+<span class="c1"># Information about where the book exists on the web</span><span class="w"></span>
+<span class="nt">repository</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/executablebooks/jupyter-book</span><span class="w">  </span><span class="c1"># Online location of your book</span><span class="w"></span>
+<span class="w">  </span><span class="nt">path_to_book</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span><span class="w">  </span><span class="c1"># Optional path to your book, relative to the repository root</span><span class="w"></span>
+<span class="w">  </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w">  </span><span class="c1"># Which branch of the repository should be used when creating links (optional)</span><span class="w"></span>
+
+<span class="c1"># Add GitHub buttons to your book</span><span class="w"></span>
+<span class="c1"># See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository</span><span class="w"></span>
+<span class="nt">html</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">use_issues_button</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">use_repository_button</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The table of contents file describe how to put the other files in order.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat _toc.yml
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Table of contents</span><span class="w"></span>
+<span class="c1"># Learn more at https://jupyterbook.org/customize/toc.html</span><span class="w"></span>
+
+<span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jb-book</span><span class="w"></span>
+<span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">intro</span><span class="w"></span>
+<span class="nt">chapters</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">markdown</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">notebooks</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it yourself</p>
+<p>Which files created by the template are not included in the rendered output? How could you tell?</p>
+</div>
+<p>The other files are optional, but common. <a class="reference external" href="https://pip.pypa.io/en/stable/user_guide/#requirements-files">Requirements.txt</a> is the format for pip to install python depndencies. There are different standards in other languages for how</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+<span class="n">matplotlib</span>
+<span class="n">numpy</span>
+
+</pre></div>
+</div>
+<p>the .bib file allows you to put structured data in <a class="reference external" href="http://www.bibtex.org/">bibtex</a> format and then jupyterbook can write a bibliography for you.</p>
+</div>
+<div class="section" id="how-do-i-get-output">
+<h3><span class="section-number">11.3.3. </span>How do I get output?<a class="headerlink" href="#how-do-i-get-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">Jupyter</span><span class="o">-</span><span class="n">Book</span> <span class="n">v0</span><span class="mf">.11.1</span>
+<span class="n">Source</span> <span class="n">Folder</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span>
+<span class="n">Config</span> <span class="n">Path</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span><span class="n">_config</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">Output</span> <span class="n">Path</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+<span class="n">Running</span> <span class="n">Sphinx</span> <span class="n">v3</span><span class="mf">.2.1</span>
+<span class="n">making</span> <span class="n">output</span> <span class="n">directory</span><span class="o">...</span> <span class="n">done</span>
+<span class="p">[</span><span class="n">etoc</span><span class="p">]</span> <span class="n">Changing</span> <span class="n">master_doc</span> <span class="n">to</span> <span class="s1">&#39;intro&#39;</span>
+<span class="n">checking</span> <span class="k">for</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span><span class="n">references</span><span class="o">.</span><span class="n">bib</span> <span class="ow">in</span> <span class="n">bibtex</span> <span class="n">cache</span><span class="o">...</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="n">parsing</span> <span class="n">bibtex</span> <span class="n">file</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span><span class="n">references</span><span class="o">.</span><span class="n">bib</span><span class="o">...</span> <span class="n">parsed</span> <span class="mi">5</span> <span class="n">entries</span>
+<span class="n">myst</span> <span class="n">v0</span><span class="mf">.13.7</span><span class="p">:</span> <span class="n">MdParserConfig</span><span class="p">(</span><span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;sphinx&#39;</span><span class="p">,</span> <span class="n">commonmark_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dmath_allow_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dmath_allow_space</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dmath_allow_digits</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">update_mathjax</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">enable_extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;colon_fence&#39;</span><span class="p">,</span> <span class="s1">&#39;dollarmath&#39;</span><span class="p">,</span> <span class="s1">&#39;linkify&#39;</span><span class="p">,</span> <span class="s1">&#39;substitution&#39;</span><span class="p">],</span> <span class="n">disable_syntax</span><span class="o">=</span><span class="p">[],</span> <span class="n">url_schemes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mailto&#39;</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;https&#39;</span><span class="p">],</span> <span class="n">heading_anchors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">html_meta</span><span class="o">=</span><span class="p">[],</span> <span class="n">footnote_transition</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">substitutions</span><span class="o">=</span><span class="p">[],</span> <span class="n">sub_delimiters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">])</span>
+<span class="n">building</span> <span class="p">[</span><span class="n">mo</span><span class="p">]:</span> <span class="n">targets</span> <span class="k">for</span> <span class="mi">0</span> <span class="n">po</span> <span class="n">files</span> <span class="n">that</span> <span class="n">are</span> <span class="n">out</span> <span class="n">of</span> <span class="n">date</span>
+<span class="n">building</span> <span class="p">[</span><span class="n">html</span><span class="p">]:</span> <span class="n">targets</span> <span class="k">for</span> <span class="mi">3</span> <span class="n">source</span> <span class="n">files</span> <span class="n">that</span> <span class="n">are</span> <span class="n">out</span> <span class="n">of</span> <span class="n">date</span>
+<span class="n">updating</span> <span class="n">environment</span><span class="p">:</span> <span class="p">[</span><span class="n">new</span> <span class="n">config</span><span class="p">]</span> <span class="mi">3</span> <span class="n">added</span><span class="p">,</span> <span class="mi">0</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">0</span> <span class="n">removed</span>
+<span class="n">Executing</span><span class="p">:</span> <span class="n">notebooks</span> <span class="ow">in</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span>                             
+
+<span class="n">looking</span> <span class="k">for</span> <span class="n">now</span><span class="o">-</span><span class="n">outdated</span> <span class="n">files</span><span class="o">...</span> <span class="n">none</span> <span class="n">found</span>
+<span class="n">pickling</span> <span class="n">environment</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">checking</span> <span class="n">consistency</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">preparing</span> <span class="n">documents</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">writing</span> <span class="n">output</span><span class="o">...</span> <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span> <span class="n">notebooks</span>                                                                     
+<span class="n">generating</span> <span class="n">indices</span><span class="o">...</span>  <span class="n">genindexdone</span>
+<span class="n">writing</span> <span class="n">additional</span> <span class="n">pages</span><span class="o">...</span>  <span class="n">searchdone</span>
+<span class="n">copying</span> <span class="n">images</span><span class="o">...</span> <span class="p">[</span><span class="mi">100</span><span class="o">%</span><span class="p">]</span> <span class="n">_build</span><span class="o">/</span><span class="n">jupyter_execute</span><span class="o">/</span><span class="n">notebooks_2_0</span><span class="o">.</span><span class="n">png</span>                                      
+<span class="n">copying</span> <span class="n">static</span> <span class="n">files</span><span class="o">...</span> <span class="o">...</span> <span class="n">done</span>
+<span class="n">copying</span> <span class="n">extra</span> <span class="n">files</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">dumping</span> <span class="n">search</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">English</span> <span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="n">en</span><span class="p">)</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">dumping</span> <span class="nb">object</span> <span class="n">inventory</span><span class="o">...</span> <span class="n">done</span>
+<span class="n">build</span> <span class="n">succeeded</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">HTML</span> <span class="n">pages</span> <span class="n">are</span> <span class="ow">in</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">.</span>
+<span class="p">[</span><span class="n">etoc</span><span class="p">]</span> <span class="n">missing</span> <span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="n">written</span> <span class="k">as</span> <span class="n">redirect</span> <span class="n">to</span> <span class="s1">&#39;intro.html&#39;</span>
+
+<span class="o">===============================================================================</span>
+
+<span class="n">Finished</span> <span class="n">generating</span> <span class="n">HTML</span> <span class="k">for</span> <span class="n">book</span><span class="o">.</span>
+<span class="n">Your</span> <span class="n">book</span><span class="s1">&#39;s HTML pages are here:</span>
+    <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">look</span> <span class="n">at</span> <span class="n">your</span> <span class="n">book</span> <span class="n">by</span> <span class="n">opening</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">browser</span><span class="p">:</span>
+    <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="n">Or</span> <span class="n">paste</span> <span class="n">this</span> <span class="n">line</span> <span class="n">directly</span> <span class="n">into</span> <span class="n">your</span> <span class="n">browser</span> <span class="n">bar</span><span class="p">:</span>
+    <span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">/</span><span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>            
+
+<span class="o">===============================================================================</span>
+</pre></div>
+</div>
+<p>Then we can see in browser what the output looks like.</p>
+<p>we can also see that a _build directory was created and examine that</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">_build</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<p>it has some cache (jupyter_execute) and our output (html).  <a class="reference external" href="https://jupyterbook.org/basics/build.html">Building</a> to
+html is the default, but there are many <a class="reference external" href="https://jupyterbook.org/basics/build.html#types-of-build-outputs">types of buils output</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">html</span>		<span class="n">jupyter_execute</span>
+</pre></div>
+</div>
+<p>We can see in the html folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">html</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<p>that there are <code class="docutils literal notranslate"><span class="pre">html</span></code> files for each input file, plus some extra (genindex) and ther is javascript for searching the site</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_images</span>		<span class="n">_sources</span>	<span class="n">genindex</span><span class="o">.</span><span class="n">html</span>	<span class="n">intro</span><span class="o">.</span><span class="n">html</span>	<span class="n">notebooks</span><span class="o">.</span><span class="n">html</span>	<span class="n">search</span><span class="o">.</span><span class="n">html</span>
+<span class="n">_panels_static</span>	<span class="n">_static</span>		<span class="n">index</span><span class="o">.</span><span class="n">html</span>	<span class="n">markdown</span><span class="o">.</span><span class="n">html</span>	<span class="n">objects</span><span class="o">.</span><span class="n">inv</span>	<span class="n">searchindex</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>the static folder contains the rest of the formatting</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">_static</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="n">__pycache__</span>
+<span class="n">basic</span><span class="o">.</span><span class="n">css</span>
+<span class="n">clipboard</span><span class="o">.</span><span class="n">min</span><span class="o">.</span><span class="n">js</span>
+<span class="n">copy</span><span class="o">-</span><span class="n">button</span><span class="o">.</span><span class="n">svg</span>
+<span class="n">copybutton</span><span class="o">.</span><span class="n">css</span>
+<span class="n">copybutton</span><span class="o">.</span><span class="n">js</span>
+<span class="n">copybutton_funcs</span><span class="o">.</span><span class="n">js</span>
+<span class="n">css</span>
+<span class="n">doctools</span><span class="o">.</span><span class="n">js</span>
+<span class="n">documentation_options</span><span class="o">.</span><span class="n">js</span>
+<span class="n">file</span><span class="o">.</span><span class="n">png</span>
+<span class="n">images</span>
+<span class="n">jquery</span><span class="o">-</span><span class="mf">3.5.1</span><span class="o">.</span><span class="n">js</span>
+<span class="n">jquery</span><span class="o">.</span><span class="n">js</span>
+<span class="n">js</span>
+<span class="n">language_data</span><span class="o">.</span><span class="n">js</span>
+<span class="n">logo</span><span class="o">.</span><span class="n">png</span>
+<span class="n">minus</span><span class="o">.</span><span class="n">png</span>
+<span class="n">mystnb</span><span class="o">.</span><span class="n">css</span>
+<span class="n">panels</span><span class="o">-</span><span class="n">main</span><span class="o">.</span><span class="n">c949a650a448cc0ae9fd3441c0e17fb0</span><span class="o">.</span><span class="n">css</span>
+<span class="n">panels</span><span class="o">-</span><span class="n">variables</span><span class="mf">.06</span><span class="n">eb56fa6e07937060861dad626602ad</span><span class="o">.</span><span class="n">css</span>
+<span class="n">plus</span><span class="o">.</span><span class="n">png</span>
+<span class="n">pygments</span><span class="o">.</span><span class="n">css</span>
+<span class="n">searchtools</span><span class="o">.</span><span class="n">js</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">book</span><span class="o">-</span><span class="n">theme</span><span class="mf">.12</span><span class="n">a9622fbb08dcb3a2a40b2c02b83a57</span><span class="o">.</span><span class="n">js</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">book</span><span class="o">-</span><span class="n">theme</span><span class="o">.</span><span class="n">acff12b8f9c144ce68a297486a2fa670</span><span class="o">.</span><span class="n">css</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">book</span><span class="o">-</span><span class="n">theme</span><span class="o">.</span><span class="n">css</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">thebe</span><span class="o">.</span><span class="n">css</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">thebe</span><span class="o">.</span><span class="n">js</span>
+<span class="n">togglebutton</span><span class="o">.</span><span class="n">css</span>
+<span class="n">togglebutton</span><span class="o">.</span><span class="n">js</span>
+<span class="n">underscore</span><span class="o">-</span><span class="mf">1.3.1</span><span class="o">.</span><span class="n">js</span>
+<span class="n">underscore</span><span class="o">.</span><span class="n">js</span>
+<span class="n">vendor</span>
+<span class="n">webpack</span><span class="o">-</span><span class="n">macros</span><span class="o">.</span><span class="n">html</span>
+
+</pre></div>
+</div>
+<p>We didn’t have to write any html and we got a responsive site!</p>
+<p>If you wanted to change the styling with sphinx you can use built in
+<a class="reference external" href="https://sphinx-themes.org/">themes</a> which tell sphinx to put different
+files in the <code class="docutils literal notranslate"><span class="pre">_static</span></code> folder when it builds your site, but you don’t have to change any of your content!  If you like working on front end things (which is great! it’s just not alwasy the goal) you can even
+build <a class="reference external" href="https://www.sphinx-doc.org/en/master/development/theming.html">your own theme</a> that can work with sphinx.</p>
+<p>Jupyterbook is pretty opinionated on the styling, but for more general
+documenation websites the options are good</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">_build</span>			<span class="n">intro</span><span class="o">.</span><span class="n">md</span>		<span class="n">notebooks</span><span class="o">.</span><span class="n">ipynb</span>
+<span class="n">_config</span><span class="o">.</span><span class="n">yml</span>		<span class="n">logo</span><span class="o">.</span><span class="n">png</span>		<span class="n">references</span><span class="o">.</span><span class="n">bib</span>
+<span class="n">_toc</span><span class="o">.</span><span class="n">yml</span>		<span class="n">markdown</span><span class="o">.</span><span class="n">md</span>		<span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+</pre></div>
+</div>
+<p>We’re going to ignore the built files and use this later to automatically build them on GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;_build/&quot;</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">gitignore</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
+<span class="n">On</span> <span class="n">branch</span> <span class="n">main</span>
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="o">.</span><span class="n">gitignore</span>
+
+<span class="n">nothing</span> <span class="n">added</span> <span class="n">to</span> <span class="n">commit</span> <span class="n">but</span> <span class="n">untracked</span> <span class="n">files</span> <span class="n">present</span> <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add&quot;</span> <span class="n">to</span> <span class="n">track</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>and then add and commit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;ignroe build&#39;</span>
+<span class="p">[</span><span class="n">main</span> <span class="mf">3e249</span><span class="n">ce</span><span class="p">]</span> <span class="n">ignroe</span> <span class="n">build</span>
+ <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">1</span> <span class="n">insertion</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="o">.</span><span class="n">gitignore</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-do-i-push-a-repo-that-i-made-locally-to-github">
+<h2><span class="section-number">11.4. </span>How do I push a repo that I made locally to GitHub<a class="headerlink" href="#how-do-i-push-a-repo-that-i-made-locally-to-github" title="Permalink to this headline">¶</a></h2>
+<p>For today, create an <a class="reference external" href="https://classroom.github.com/a/KUYVBeb8"> empty github repo shared with me</a>.</p>
+<p>More generally, you can <a class="reference external" href="https://docs.github.com/en/get-started/quickstart/create-a-repo">create a repo</a></p>
+<p>That default page for an empty repo if you do not initiate it with any files will give you the instructions for what remote to add.</p>
+<p>THen we add the remote</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">tiny</span><span class="o">-</span><span class="n">book</span><span class="o">-</span><span class="n">brownsarahm</span><span class="o">.</span><span class="n">git</span>
+
+</pre></div>
+</div>
+<p>and push to origin main.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git push -u origin main
+\Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (13/13), 16.07 KiB | 8.03 MiB/s, done.
+Total 13 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/introcompsys/tiny-book-brownsarahm.git
+ * [new branch]      main -&gt; main
+Branch &#39;main&#39; set up to track remote branch &#39;main&#39; from &#39;origin&#39;.
+(base) brownsarahm@tiny-book $
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class12prep"></span><h2><span class="section-number">11.5. </span>Prepare for next Class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2015</span><span class="o">/</span><span class="mf">3761777448.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;../_prepare/2022-02-24.md&#39;</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;Markdown&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class12practice"></span><h2><span class="section-number">11.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2015</span><span class="o">/</span><span class="mf">483276660.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s1">&#39;../_practice/2022-02-24.md&#39;</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;Markdown&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">11.7. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="could-i-use-jupyterbook-to-put-a-resume-online">
+<h3><span class="section-number">11.7.1. </span>Could I use jupyterbook to put a resume online?<a class="headerlink" href="#could-i-use-jupyterbook-to-put-a-resume-online" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>In theory, yes. However there are other tools that work similar in the sense of separating content from HTML/CSS/javascript in order to generate a website. Sphinx is more customizable, as noted above, but also, <a class="reference external" href="https://jamstack.org/generators/">Static site generators</a> are a whole category of software tools.</p>
+<p>GitHub <a class="reference external" href="https://pages.github.com/">pages</a> is free hosting, which by default uses <a class="reference external" href="http://jekyllrb.com/">jekyll</a> however, that is no longer very active, due to the <a class="reference external" href="https://www.bridgetownrb.com/future/rip-jekyll/">death of one of the core maintainers</a>.</p>
+<p>Some are centered on blog type sites (like jekyll) others are not. There are even ways to use a <a class="reference external" href="https://revealjs.com/">javascript slide tool</a> to write in <a class="reference external" href="https://revealjs.com/markdown/">markdown</a> but render for the web.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-02-24.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>How can git help me?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
