@@ -105,8 +105,8 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - prepare
   - grade free
 * -  abstraction.md
-  - [how you think about abstraction](2022-02-08)
-  - prepare
+  - [how you think about abstraction](2022-02-08) and [updates (and reconcilation)](2022-02-10)
+  - prepare (practice)
   - grade free
 * -  chart.md
   - [your chart (from README)](2022-02-08)
@@ -121,16 +121,20 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - practice
   - grade free  
 * - hardwaresurvey.md
-  - [challenges & reminders](2022-02-10) [reflection](2022-02-10)
-  - prepare
+  - [challenges & reminders (more exercises)](2022-02-10) [reflection](2022-02-10)
+  - prepare and (practice)
   - grade free
 * - gitlog.txt
   - [git log output](2022-02-15)
   - prepare
   - graded
+* - workflows.md
+  - [compare git workflows](2022-02-15)
+  - practice
+  - graded
 * -  gitplumbing.md
-  - [map plumbing to porcelain](2022-02-17)
-  - prepare
+  - [map plumbing to porcelain (and memory device)](2022-02-17)
+  - prepare (and practice)
   - graded
 * -  gitunderstanding.md
   - [how your undersanding has changed](2022-02-17)
@@ -141,22 +145,32 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - prepare
   - graded
 * -  numbers.md
-  - [usage of nondecimal number systems](2022-02-22)
+  - [usage of nondecimal number systems (and number conversions)](2022-02-22)
   - prepare
   - graded
 * -  hexspeak.md
   - [summarize & generate](2022-02-22)
   - prepare
   - graded
-* -  gitstory.md
+* -  gitstory.md (and gitstory2.md)
+  - [tutorial of using git for a challenge](2022-02-24)
+  - prepare
+  - graded
+* -  donotcommit.md
   - [tutorial of using git for a challenge](2022-02-24)
   - prepare
   - graded
 * -  jupyterbooktroubleshooting.md
-  - [problems with jupyterbook](2022-02-01)
+  - [problems with jupyterbook](2022-03-01)
   - prepare
   - graded
-* - workflows.md
-  - [workflow]
+* - templating.md
+  - [how template based engines work](2022-03-01)
+  - prepare
+  - graded
+* - docs.md
+  - [documentation ecosystem of a language other than python](2022-03-01)
+  - prepare
+  - graded
 
 ```
