@@ -32,6 +32,8 @@ parts:
     - file: activities/kwl
     - file: activities/prepare
     - file: activities/practice
+    - file: activities/explore
+    - file: activities/projects
   - caption: FAQ
     chapters:
     - file: faq/syllabus
