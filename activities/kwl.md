@@ -83,6 +83,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 ## Added Files
 
 ```{list-table}
+:header-rows: 1
 
 * - file
   - content (link to instructions)
@@ -93,83 +94,83 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - default
   - all
 * -  gitoffline.md
-  - [reflection (extra exercises, add & commit out of order)](2022-02-01)
+  - [reflection (extra exercises, add & commit out of order)](../notes/2022-02-01)
   - prepare (and practice)
   - grade free
 * -  terminal.md
-  - [reflection](2022-02-03)
+  - [reflection](../notes/2022-02-03)
   - prepare
   - grade free
 * -  software.md
-  - [examine a software project](2022-02-03)
+  - [examine a software project](../notes/2022-02-03)
   - prepare
   - grade free
 * -  abstraction.md
-  - [how you think about abstraction](2022-02-08) and [updates (and reconcilation)](2022-02-10)
+  - [how you think about abstraction](../notes/2022-02-08) and [updates (and reconcilation)](../notes/2022-02-10)
   - prepare (practice)
   - grade free
 * -  chart.md
-  - [your chart (from README)](2022-02-08)
+  - [your chart (from README)](../notes/2022-02-08)
   - practice
   - grade free
 * -  reorg.md
-  - [ntoes/troubleshooting ](2022-02-08)
+  - [ntoes/troubleshooting ](../notes/2022-02-08)
   - practice
   - grade free  
 * -  stdinouterr.md
-  - [ echo and redirect practice](2022-02-08)
+  - [ echo and redirect practice](../notes/2022-02-08)
   - practice
   - grade free  
 * - hardwaresurvey.md
-  - [challenges & reminders (more exercises)](2022-02-10) [reflection](2022-02-10)
+  - [challenges & reminders (more exercises)](../notes/2022-02-10) [reflection](../notes/2022-02-10)
   - prepare and (practice)
   - grade free
 * - gitlog.txt
-  - [git log output](2022-02-15)
+  - [git log output](../notes/2022-02-15)
   - prepare
   - graded
 * - workflows.md
-  - [compare git workflows](2022-02-15)
+  - [compare git workflows](../notes/2022-02-15)
   - practice
   - graded
 * -  gitplumbing.md
-  - [map plumbing to porcelain (and memory device)](2022-02-17)
+  - [map plumbing to porcelain (and memory device)](../notes/2022-02-17)
   - prepare (and practice)
   - graded
 * -  gitunderstanding.md
-  - [how your undersanding has changed](2022-02-17)
+  - [how your undersanding has changed](../notes/2022-02-17)
   - prepare
   - graded
 * -  idethoughts.md
-  - [notes on ide usage](2022-02-17)
+  - [notes on ide usage](../notes/2022-02-17)
   - prepare
   - graded
 * -  numbers.md
-  - [usage of nondecimal number systems (and number conversions)](2022-02-22)
+  - [usage of nondecimal number systems (and number conversions)](../notes/2022-02-22)
   - prepare
   - graded
 * -  hexspeak.md
-  - [summarize & generate](2022-02-22)
+  - [summarize & generate](../notes/2022-02-22)
   - prepare
   - graded
 * -  gitstory.md (and gitstory2.md)
-  - [tutorial of using git for a challenge](2022-02-24)
+  - [tutorial of using git for a challenge](../notes/2022-02-24)
   - prepare
   - graded
 * -  donotcommit.md
-  - [tutorial of using git for a challenge](2022-02-24)
+  - [tutorial of using git for a challenge](../notes/2022-02-24)
   - prepare
   - graded
 * -  jupyterbooktroubleshooting.md
-  - [problems with jupyterbook](2022-03-01)
+  - [problems with jupyterbook](../notes/2022-03-01)
   - prepare
   - graded
 * - templating.md
-  - [how template based engines work](2022-03-01)
+  - [how template based engines work](../notes/2022-03-01)
   - prepare
   - graded
 * - docs.md
-  - [documentation ecosystem of a language other than python](2022-03-01)
+  - [documentation ecosystem of a language other than python](../notes/2022-03-01)
   - prepare
   - graded
 
