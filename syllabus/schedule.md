@@ -130,15 +130,15 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - templating, jupyterbook
 * - 2021-03-03
   - How do programmers auotmate mundane tasks?
-  -
+  - [convert your kwlrepo](class12prep)
   - shell scripting, pipes, more redirects, grep
 * - 2021-03-08
   - How do I work remotely ?
-  -
+  - [install reqs]
   - ssh/ ssh keys, sed/ awk, file permissions
 * - 2021-03-10
   - How do programmers keep track of all these tools?
-  -
+  - [rest, reflect on IDE]
   - IDE anatomy
 * - 2021-03-22
   -
