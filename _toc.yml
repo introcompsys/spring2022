@@ -22,11 +22,18 @@ parts:
       - file: notes/2022-02-08
       - file: notes/2022-02-10
       - file: notes/2022-02-15
+      - file: notes/2022-02-17
+      - file: notes/2022-02-22
+      - file: notes/2022-02-24
+      - file: notes/2022-03-01
 
-  # - caption: Assignments
-  #   numbered: True
-  #   chapters:
-  #   - file: assignments/
+  - caption: Activities
+    chapters:
+    - file: activities/kwl
+    - file: activities/prepare
+    - file: activities/practice
+    - file: activities/explore
+    - file: activities/projects
   - caption: FAQ
     chapters:
     - file: faq/syllabus

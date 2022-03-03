@@ -2,12 +2,9 @@
 
 
 
-## How much does assignment x, class participation, or a portfolio check weigh in my grade?
+## How much does activity x weigh in my grade?
 ```{toggle}
-There is no specific weight for any activities, because your grade is based on earning achievements for the skills listed in the [skills rubric](achievement-definitions).
-
-However, if you do not submit (or earn no achievements from) assignments or portfolios, the maximum grade you can earn is a C.
-If you do not submit (or earn no achievements from) your portfolio, the maximum grade you can earn is a B.
+There is no specific weight for any activities, because your grade is based on fulfilling your contract. If all items are completed to a satisfactory level, then you earn that grade, if not, then you will be prompted to revise the contract to signal that you are aware you have complted fewer items.
 ```
 
 
@@ -34,5 +31,5 @@ excerpts or screenshots embedded in it.
 
 [an example of heavily annotated code](https://rhodyprog4ds.github.io/BrownFall21/notes/2021-09-17.html)
 
-They should be markdown files in your KWL repo.  I recommend myst markdown. 
+They should be markdown files in your KWL repo.  I recommend myst markdown.
 ```
