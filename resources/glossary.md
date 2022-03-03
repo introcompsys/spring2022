@@ -34,5 +34,8 @@ terminal
 directory 
   a collection of files typically created for organizational purposes
 
+.gitignore
+  a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
+  
 
 ```

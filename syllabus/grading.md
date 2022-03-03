@@ -61,3 +61,15 @@ In about the third week you will complete, from a provided template, a grading c
 The finalized grading contract will include the specification that each piece of work has to adhere to.
 
 All contracts will include maintaining a KWL Chart for the duration of the semester and consistent responses in class.  
+
+### Notes
+
+
+- Keep your deeper explorations and more practice task content in your KWL chart repository.
+- Link approved PRs to your grading contract for record keeping.
+
+### Grading Contract Instructions
+
+```{important}
+this includes minor corrections relative to the readme in the template provided
+```
