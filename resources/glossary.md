@@ -31,7 +31,7 @@ shell
 terminal
   a program that makes shell visible for us and allows for interactions with it
   
- directory 
+directory 
   a collection of files typically created for organizational purposes
 
 
