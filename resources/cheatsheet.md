@@ -105,6 +105,11 @@ List the contents of the directory:
 ls
 ```
 
+Shows the differences between the index file and the current file. Git status displays the current state of the working directory.
+```
+git status
+```
+
 Redirect Output:
   to overwrite an existing file or a create a new file with the given file name:
 ``
@@ -114,7 +119,7 @@ echo "send output to file.txt" > file.txt
   ```
   echo "append output to file.txt >> file.txt
   ```
-
+  
 ## Wildcard / Kleene star
 
 The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
