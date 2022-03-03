@@ -153,9 +153,13 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [summarize & generate](../notes/2022-02-22)
   - prepare
   - graded
-* -  gitstory.md (and gitstory2.md)
+* -  gitstory.md
   - [tutorial of using git for a challenge](../notes/2022-02-24)
   - prepare
+  - graded
+* - gitstory2.md
+  - [tutorial of using git for a challenge](../notes/2022-02-24)
+  - practice
   - graded
 * -  donotcommit.md
   - [tutorial of using git for a challenge](../notes/2022-02-24)
