@@ -231,6 +231,16 @@
    More Practice
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="projects.html">
+   Project Information
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -388,6 +398,18 @@
   <a class="reference internal nav-link" href="#working-with-this-repo">
    Working with this repo
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#workflow-1">
+     Workflow 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#workflow-2">
+     Workflow 2
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#minimum-rows">
@@ -423,6 +445,18 @@
   <a class="reference internal nav-link" href="#working-with-this-repo">
    Working with this repo
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#workflow-1">
+     Workflow 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#workflow-2">
+     Workflow 2
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#minimum-rows">
@@ -449,34 +483,200 @@
 This is not currently complete but will contain a listing with links to recommendations
 ``` -->
 <div class="section" id="working-with-this-repo">
-<h2>Working with this repo<a class="headerlink" href="#working-with-this-repo" title="Permalink to this headline">¶</a></h2>
-<p>When you are working on things that are not ready for feedback make a new branch to work on them.</p>
-<p>If you are working on things that you want feedback on right away you can work directly on main.</p>
-<p>When work is ready for feedback merge it into main and create a pull request from main into feedback.</p>
+<span id="kwlworkflows"></span><h2>Working with this repo<a class="headerlink" href="#working-with-this-repo" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>Treat your main branch as what will “published” if you choose to use this as a portoflio of sorts.</p></li>
+<li><p>The feedback branch should only contain material that has been reviewed and approved by the instructors.</p></li>
+</ul>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You could apply branch protections on your feedback branch if you like</p>
+</div>
+</div>
+<p>You may mix these workflows as long as feedback only contains work that has been reviewed and approved.</p>
+<div class="section" id="workflow-1">
+<h3>Workflow 1<a class="headerlink" href="#workflow-1" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>When you are working on things that are not ready for feedback make a
+new branch to work on them.</p></li>
+<li><p>If you are working on things that you want feedback on right away you can work directly on main.</p></li>
+<li><p>When work is ready for feedback merge it into main</p></li>
+<li><p>Create a pull request from main into feedback.</p></li>
+<li><p>When PRs are approved, merge them into feedback</p></li>
+</ol>
+</div>
+<div class="section" id="workflow-2">
+<h3>Workflow 2<a class="headerlink" href="#workflow-2" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>work on a specific branch</p></li>
+<li><p>when it is ready for review, create a PR from the item-specifc branch to feedback.</p></li>
+<li><p>when it is approved, merge into feedback, then merge feedback into main.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>After your KWL repo is a jupyterbook, you may want to move your chart into a <a class="reference external" href="http://chart.md">chart.md</a> from the README. You could then put content from this section in the README to have an in-place reminder.</p>
+</div>
+</div>
 </div>
 <div class="section" id="minimum-rows">
 <h2>Minimum Rows<a class="headerlink" href="#minimum-rows" title="Permalink to this headline">¶</a></h2>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>This is not currently complete but will contain a listing with links to recommendations</p>
+<div class="highlight-Markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># KWL Chart</span>
+
+
+&lt;!-- replace the  _ in the table or add new rows as needed --&gt;
+
+| Topic | Know | Want to Know | Learned |
+| ------| ------- | ------ | ------- |
+| Git | _ | _ | _ |
+| GitHub | _ | _ | _ |
+| Terminal | _ | _ | _ |
+| IDE | _ | _ | _ |
+| text editors | _ | _ | _ |
+|file system | _ | _ |_ |
+|bash | _ | _ | _ |
+|abstraction | _ | _ | _ |
+|programming languages | _ | _ | _ |
+|git workflows | _ | _ | _ |
+| git branches | _ | _ | _ |
+| bash redirects | _ | _ | _ |
+|number systems | _ | _ | _ |
+| merge conflicts | _ | _ | _ |
+| documentation | _ | _ | _ |
+| templating | _ | _ | _ |
+|bash scripting | _ | _ | _ |
+| developer tools | _ | _ | _ |
+| networking | _ | _ | _ |
+|ssh | _ | _ | _ |
+| ssh keys | _ | _ | _ |
+</pre></div>
 </div>
 </div>
 <div class="section" id="added-files">
 <h2>Added Files<a class="headerlink" href="#added-files" title="Permalink to this headline">¶</a></h2>
 <table class="table">
 <colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>file</p></th>
+<th class="head"><p>content (link to instructions)</p></th>
+<th class="head"><p>type (prepare/practice)</p></th>
+<th class="head"><p>zone</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>file</p></td>
-<td><p>content</p></td>
-</tr>
 <tr class="row-even"><td><p>README</p></td>
-<td><p>the chart, (or toc)</p></td>
+<td><p>the chart, (or usage)</p></td>
+<td><p>default</p></td>
+<td><p>all</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="http://workflows.md">workflows.md</a></p></td>
-<td><p>[workflow]</p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="http://gitoffline.md">gitoffline.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-01.html"><span class="doc std std-doc">reflection (extra exercises, add &amp; commit out of order)</span></a></p></td>
+<td><p>prepare (and practice)</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://terminal.md">terminal.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-03.html"><span class="doc std std-doc">reflection</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://software.md">software.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-03.html"><span class="doc std std-doc">examine a software project</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://abstraction.md">abstraction.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-08.html"><span class="doc std std-doc">how you think about abstraction</span></a> and <a class="reference internal" href="../notes/2022-02-10.html"><span class="doc std std-doc">updates (and reconcilation)</span></a></p></td>
+<td><p>prepare (practice)</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://chart.md">chart.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-08.html"><span class="doc std std-doc">your chart (from README)</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://reorg.md">reorg.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-08.html"><span class="doc std std-doc">ntoes/troubleshooting </span></a></p></td>
+<td><p>practice</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://stdinouterr.md">stdinouterr.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-08.html"><span class="doc std std-doc"> echo and redirect practice</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://hardwaresurvey.md">hardwaresurvey.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-10.html"><span class="doc std std-doc">challenges &amp; reminders (more exercises)</span></a> <a class="reference internal" href="../notes/2022-02-10.html"><span class="doc std std-doc">reflection</span></a></p></td>
+<td><p>prepare and (practice)</p></td>
+<td><p>grade free</p></td>
+</tr>
+<tr class="row-odd"><td><p>gitlog.txt</p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-15.html"><span class="doc std std-doc">git log output</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://workflows.md">workflows.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-15.html"><span class="doc std std-doc">compare git workflows</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://gitplumbing.md">gitplumbing.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-17.html"><span class="doc std std-doc">map plumbing to porcelain (and memory device)</span></a></p></td>
+<td><p>prepare (and practice)</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://gitunderstanding.md">gitunderstanding.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-17.html"><span class="doc std std-doc">how your undersanding has changed</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://idethoughts.md">idethoughts.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-17.html"><span class="doc std std-doc">notes on ide usage</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://numbers.md">numbers.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-22.html"><span class="doc std std-doc">usage of nondecimal number systems (and number conversions)</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://hexspeak.md">hexspeak.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-22.html"><span class="doc std std-doc">summarize &amp; generate</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://gitstory.md">gitstory.md</a> (and <a class="reference external" href="http://gitstory2.md">gitstory2.md</a>)</p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-24.html"><span class="doc std std-doc">tutorial of using git for a challenge</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://donotcommit.md">donotcommit.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-02-24.html"><span class="doc std std-doc">tutorial of using git for a challenge</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://jupyterbooktroubleshooting.md">jupyterbooktroubleshooting.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-01.html"><span class="doc std std-doc">problems with jupyterbook</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://templating.md">templating.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-01.html"><span class="doc std std-doc">how template based engines work</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://docs.md">docs.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-01.html"><span class="doc std std-doc">documentation ecosystem of a language other than python</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
 </tr>
 </tbody>
 </table>
