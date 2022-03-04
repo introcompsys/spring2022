@@ -37,5 +37,6 @@ directory
 .gitignore
   a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
   
-
+templating
+  idea of using code that someone else wrote so that you do not have to rewrite it (for instance, the jupyter book allows us to create a website without working on HTML; does all of the work in the background, all we have to do is provide the HTML).
 ```
