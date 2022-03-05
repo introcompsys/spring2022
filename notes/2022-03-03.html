@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12. Shell Scripting &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="11. How do we build Documentation?" href="2022-03-01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   12. Shell Scripting
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-03.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-03.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-03.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-03.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback">
+   12.1. Feedback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#request-posted-videos">
+   12.2. Request: posted videos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-more-clear-instructions">
+     12.2.1. Request: more clear instructions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slack-can-be-annoying">
+     12.2.2. Slack can be annoying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installations-are-hard">
+     12.2.3. Installations are hard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-more-direction-for-extensions">
+     12.2.4. Request: More direction for extensions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-repositories-is-hard-to-manage">
+     12.2.5. Multiple repositories is hard to manage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#this-should-be-a-200-level-course-required">
+     12.2.6. This should be a 200 level course/ required
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-things-only-work-on-mac">
+     12.2.7. Some things only work on mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-lecture-slides-would-be-helpful">
+     12.2.8. More lecture/slides would be helpful
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-book">
+   12.3. Jupyter Book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bash-has-programming-language-features">
+   12.4. Bash has programming language features
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     12.4.1. Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loops">
+     12.4.2. Loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals">
+     12.4.3. Conditionals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-scripts">
+   12.5. Shell Scripts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-from-source">
+   12.6. Installing from source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   12.7. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   12.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extension-ideas">
+   12.9. Extension Ideas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   12.10. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-create-bash-programs-from-scratch">
+     12.10.1. Will we create bash programs from scratch?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-some-applications-of-bash-scripting">
+     12.10.2. What are some applications of bash scripting?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Shell Scripting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback">
+   12.1. Feedback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#request-posted-videos">
+   12.2. Request: posted videos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-more-clear-instructions">
+     12.2.1. Request: more clear instructions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slack-can-be-annoying">
+     12.2.2. Slack can be annoying
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installations-are-hard">
+     12.2.3. Installations are hard
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#request-more-direction-for-extensions">
+     12.2.4. Request: More direction for extensions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-repositories-is-hard-to-manage">
+     12.2.5. Multiple repositories is hard to manage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#this-should-be-a-200-level-course-required">
+     12.2.6. This should be a 200 level course/ required
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#some-things-only-work-on-mac">
+     12.2.7. Some things only work on mac
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-lecture-slides-would-be-helpful">
+     12.2.8. More lecture/slides would be helpful
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-book">
+   12.3. Jupyter Book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bash-has-programming-language-features">
+   12.4. Bash has programming language features
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     12.4.1. Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loops">
+     12.4.2. Loops
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditionals">
+     12.4.3. Conditionals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shell-scripts">
+   12.5. Shell Scripts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-from-source">
+   12.6. Installing from source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   12.7. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   12.8. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extension-ideas">
+   12.9. Extension Ideas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   12.10. Questions after class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-create-bash-programs-from-scratch">
+     12.10.1. Will we create bash programs from scratch?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-some-applications-of-bash-scripting">
+     12.10.2. What are some applications of bash scripting?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="shell-scripting">
+<h1><span class="section-number">12. </span>Shell Scripting<a class="headerlink" href="#shell-scripting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="feedback">
+<h2><span class="section-number">12.1. </span>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="request-posted-videos">
+<h2><span class="section-number">12.2. </span>Request: posted videos<a class="headerlink" href="#request-posted-videos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>videos are a lot of work for them to be high quality and accessible</p></li>
+<li><p>even just a basic zoom is one more thing to manage</p></li>
+<li><p>the notes have a <em>complete</em> transcript of every action on the terminal</p></li>
+<li><p>I will pilot using <a class="reference external" href="https://webcaptioner.com/">webcaptioner</a> to produce a transcript of more detail. I will then use these to fill in the notes and/or post them on slack (in a dedicated channel)</p></li>
+</ul>
+<div class="section" id="request-more-clear-instructions">
+<h3><span class="section-number">12.2.1. </span>Request: more clear instructions<a class="headerlink" href="#request-more-clear-instructions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sorry, I’m adapting based on how far we get, so I don’t have time to get iterative feedback on them.</p></li>
+<li><p>I will try to expand on them and add examples, also some patterns will emerge so you’ll get used to the type of thing that’s expected.</p></li>
+<li><p>also <em>always</em> feel free to ask more questions (slack or github issue to class repo)</p></li>
+<li><p>you <em>always</em> can revise your work, so it’s also okay, espeically for more practice to put in the place of a response a question or try re-interpreting the instructions to check if they’re correct.</p></li>
+<li><p><a class="reference external" href="https://github.com/introcompsys/spring2022/commit/53c43e381f4752e589a562a998f46d11cc4cd001">recent updates commit</a></p></li>
+</ul>
+</div>
+<div class="section" id="slack-can-be-annoying">
+<h3><span class="section-number">12.2.2. </span>Slack can be annoying<a class="headerlink" href="#slack-can-be-annoying" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>check your notification settings!!</p></li>
+<li><p>use e-mail notifications if you prefer</p></li>
+</ul>
+</div>
+<div class="section" id="installations-are-hard">
+<h3><span class="section-number">12.2.3. </span>Installations are hard<a class="headerlink" href="#installations-are-hard" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>this is sort of generally true, sorry</p></li>
+<li><p>the download part makes them not good for in class</p></li>
+<li><p>always ask in slack</p></li>
+<li><p>we might be done with most for a while</p></li>
+<li><p>I will try to link to more detaled instructions if i can find them.</p></li>
+</ul>
+</div>
+<div class="section" id="request-more-direction-for-extensions">
+<h3><span class="section-number">12.2.4. </span>Request: More direction for extensions<a class="headerlink" href="#request-more-direction-for-extensions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>instructions on site</p></li>
+<li><p>Will start to add notes with a marker</p></li>
+</ul>
+</div>
+<div class="section" id="multiple-repositories-is-hard-to-manage">
+<h3><span class="section-number">12.2.5. </span>Multiple repositories is hard to manage<a class="headerlink" href="#multiple-repositories-is-hard-to-manage" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>try to think of them as separate directories and have an offline copy of each.  We sort files often.</p></li>
+<li><p>The reason for multiple is because that’s actually somewhat more realistic, partially and partially becuase of how templates work</p></li>
+</ul>
+</div>
+<div class="section" id="this-should-be-a-200-level-course-required">
+<h3><span class="section-number">12.2.6. </span>This should be a 200 level course/ required<a class="headerlink" href="#this-should-be-a-200-level-course-required" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>the goal is for it to eventually be required and for most students to take it at the same time as 212. I’m glad (and other faculty will be too!) that you seem to agree</p></li>
+</ul>
+</div>
+<div class="section" id="some-things-only-work-on-mac">
+<h3><span class="section-number">12.2.7. </span>Some things only work on mac<a class="headerlink" href="#some-things-only-work-on-mac" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>I <em>think</em> everything essential can be done on any OS, but there are different ways.</p></li>
+<li><p>I try  to check everything and we are through the most tricky parts.</p></li>
+<li><p>If i miss something</p></li>
+</ul>
+</div>
+<div class="section" id="more-lecture-slides-would-be-helpful">
+<h3><span class="section-number">12.2.8. </span>More lecture/slides would be helpful<a class="headerlink" href="#more-lecture-slides-would-be-helpful" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>I probably shouldn’t have offered “slides” I will use prismia so that I can stay adaptive and swap the order in response</p></li>
+<li><p>I will try to prepare diagrams for topics in advance and/or use the prismia drawing tool,</p></li>
+<li><p><em>feel free to ask me to draw or explain</em> either by raising your hand or on prismia during class</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="jupyter-book">
+<h2><span class="section-number">12.3. </span>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h2>
+<p>To make your KWL repo a jupyterbook, you need to:</p>
+<ul class="simple">
+<li><p>add the required files (<code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>)</p></li>
+<li><p>add your files to <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code></p></li>
+<li><p>customize meta-data and settings in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code></p></li>
+</ul>
+<p>To add images, you add the file to the repository <em>and</em> mention it in a markdown file using the following syntax.</p>
+<div class="highlight-Markdown notranslate"><div class="highlight"><pre><span></span>![<span class="nt">mandatory alt text</span>](<span class="na">relative/path/to/image</span>)
+</pre></div>
+</div>
+<p>also, <a class="reference external" href="https://jupyterbook.org/reference/cheatsheet.html#figures-and-images">myst cheatsheet</a> from jupyterbook docs</p>
+</div>
+<div class="section" id="bash-has-programming-language-features">
+<h2><span class="section-number">12.4. </span>Bash has programming language features<a class="headerlink" href="#bash-has-programming-language-features" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html">Bash</a> includes most common basic programming language features:</p>
+<ul class="simple">
+<li><p>conditional <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html">expressions</a> and <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html">constructs</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html">loops</a></p></li>
+<li><p>variables and <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Variables">builtin varialbes</a></p></li>
+<li><p>comments <code class="docutils literal notranslate"><span class="pre">#</span></code></p></li>
+</ul>
+<div class="section" id="variables">
+<h3><span class="section-number">12.4.1. </span>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo $SHELL
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loops">
+<h3><span class="section-number">12.4.2. </span>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h3>
+<p>The syntax for a loop is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for name [ [in [words …] ] ; ] do commands; done
+</pre></div>
+</div>
+<p>or, with more spacing for readability</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> item <span class="k">in</span> <span class="o">[</span>LIST<span class="o">]</span>
+<span class="k">do</span>
+  <span class="o">[</span>COMMANDS<span class="o">]</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Note in this syntax, we do not need a counter variable. In each iteration through the loop the next item from <code class="docutils literal notranslate"><span class="pre">[LIST]</span></code> becomes the value of <code class="docutils literal notranslate"><span class="pre">item</span></code>.</p>
+<p>In our case, we can use this like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> file <span class="k">in</span> README.md gitoffline.md terminal.md software.md abstraction.md chart.md reorg.md stdinouterr.md hardwaresurvey.md gitlog.txt workflows.md gitplumbing.md gitunderstanding.md idethoughts.md numbers.md hexspeak.md gitstory.md gitstory2.md donotcommit.md jupyterbooktroubleshooting.md templating.md docs.md
+&gt; <span class="k">do</span>
+&gt; <span class="nb">echo</span> <span class="nv">$file</span>
+&gt; <span class="k">done</span>
+</pre></div>
+</div>
+<p>To send all of the file names to STDOUT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitoffline</span><span class="o">.</span><span class="n">md</span>
+<span class="n">terminal</span><span class="o">.</span><span class="n">md</span>
+<span class="n">software</span><span class="o">.</span><span class="n">md</span>
+<span class="n">abstraction</span><span class="o">.</span><span class="n">md</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">md</span>
+<span class="n">reorg</span><span class="o">.</span><span class="n">md</span>
+<span class="n">stdinouterr</span><span class="o">.</span><span class="n">md</span>
+<span class="n">hardwaresurvey</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitlog</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">workflows</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitplumbing</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitunderstanding</span><span class="o">.</span><span class="n">md</span>
+<span class="n">idethoughts</span><span class="o">.</span><span class="n">md</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">md</span>
+<span class="n">hexspeak</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitstory</span><span class="o">.</span><span class="n">md</span>
+<span class="n">gitstory2</span><span class="o">.</span><span class="n">md</span>
+<span class="n">donotcommit</span><span class="o">.</span><span class="n">md</span>
+<span class="n">jupyterbooktroubleshooting</span><span class="o">.</span><span class="n">md</span>
+<span class="n">templating</span><span class="o">.</span><span class="n">md</span>
+<span class="n">docs</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="conditionals">
+<h3><span class="section-number">12.4.3. </span>Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> file <span class="k">in</span> README.md gitoffline.md terminal.md software.md abstraction.md chart.md reorg.md stdinouterr.md hardwaresurvey.md gitlog.txt workflows.md gitplumbing.md gitunderstanding.md idethoughts.md numbers.md hexspeak.md gitstory.md gitstory2.md donotcommit.md jupyterbooktroubleshooting.md templating.md docs.md
+&gt; <span class="k">do</span>
+&gt; <span class="k">if</span> <span class="nb">test</span> -f <span class="nv">$file</span><span class="p">;</span> <span class="k">then</span>
+&gt; <span class="nb">echo</span> <span class="nv">$file</span>
+&gt; <span class="k">fi</span>
+&gt; <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="shell-scripts">
+<h2><span class="section-number">12.5. </span>Shell Scripts<a class="headerlink" href="#shell-scripts" title="Permalink to this headline">¶</a></h2>
+<p>So, now we have checked your repository, but for you to use this on a regular basis there are two challenges.</p>
+<ol class="simple">
+<li><p>You would have to type (or copy paste) those lines every time</p></li>
+<li><p>the list of files will expand but the list in that will not update.</p></li>
+</ol>
+<p>We will address the first with a bash script.
+Bash scripts allow you to make programs, including small utiltiies that help you with little tasks.</p>
+<!-- this is a good place to link a glossary entry -->
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">checker</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>And we can paste this into the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> file <span class="k">in</span> README.md gitoffline.md terminal.md software.md abstraction.md chart.md reorg.md stdinouterr.md hardwaresurvey.md gitlog.txt workflows.md gitplumbing.md gitunderstanding.md idethoughts.md numbers.md hexspeak.md gitstory.md gitstory2.md donotcommit.md jupyterbooktroubleshooting.md templating.md docs.md
+&gt; <span class="k">do</span>
+&gt; <span class="k">if</span> ! <span class="nb">test</span> -f <span class="nv">$file</span><span class="p">;</span> <span class="k">then</span>
+&gt; <span class="nb">echo</span> <span class="nv">$file</span>
+&gt; <span class="k">fi</span>
+&gt; <span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-from-source">
+<h2><span class="section-number">12.6. </span>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h2>
+<p>We have used programs that we installed from their installation tools. Today we will use a small program I wrote for class, that we install from source.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">courseutils</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cloning</span> <span class="n">into</span> <span class="s1">&#39;courseutils&#39;</span><span class="o">...</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">16</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">13</span><span class="o">/</span><span class="mi">13</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Total</span> <span class="mi">16</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">5</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">6</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">Receiving</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">16</span><span class="o">/</span><span class="mi">16</span><span class="p">),</span> <span class="mf">4.03</span> <span class="n">KiB</span> <span class="o">|</span> <span class="mf">4.03</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>First we can look at what this contains.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">courseutils</span><span class="o">/</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<p>It is very lightweight:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LICENSE</span>		<span class="n">README</span><span class="o">.</span><span class="n">md</span>	<span class="n">kwltracking</span><span class="o">.</span><span class="n">py</span>	<span class="n">setup</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Let’s review the purpose of each</p>
+<ul class="simple">
+<li><p>This repo is public, so it has a license to describe how it is pertmitted to be used</p></li>
+<li><p>The README is information about the repository; currently it has the documentation</p></li>
+<li><p><a class="reference external" href="http://kwltracking.py">kwltracking.py</a> is the actual code of the program</p></li>
+<li><p><a class="reference external" href="http://setup.py">setup.py</a> is instructions for python’s <code class="docutils literal notranslate"><span class="pre">pip</span></code> on how to install the program.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This output is truncated</p>
+</div>
+</div>
+<p>If it works, there will be along output that ends like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">Successfully</span> <span class="n">installed</span> <span class="n">syscourseutils</span><span class="o">-</span><span class="mf">0.1.0</span>
+</pre></div>
+</div>
+<p>After you install, you will need to open a new terminal window (or otherwise restart bash, which varies on a lot of parameters)</p>
+<p>Making it <em>installable</em> changes how we can run and use the program. In particular, it makes it a bash command.</p>
+<p>So, on the terminal, we can use it like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kwlfilecheck</span>
+</pre></div>
+</div>
+<p>This program scrapes the course website and echos to stdout the list of files expected in the KWL chart repo.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span> <span class="n">gitoffline</span><span class="o">.</span><span class="n">md</span> <span class="n">terminal</span><span class="o">.</span><span class="n">md</span> <span class="n">software</span><span class="o">.</span><span class="n">md</span> <span class="n">abstraction</span><span class="o">.</span><span class="n">md</span> <span class="n">chart</span><span class="o">.</span><span class="n">md</span> <span class="n">reorg</span><span class="o">.</span><span class="n">md</span> <span class="n">stdinouterr</span><span class="o">.</span><span class="n">md</span> <span class="n">hardwaresurvey</span><span class="o">.</span><span class="n">md</span> <span class="n">gitlog</span><span class="o">.</span><span class="n">txt</span> <span class="n">workflows</span><span class="o">.</span><span class="n">md</span> <span class="n">gitplumbing</span><span class="o">.</span><span class="n">md</span> <span class="n">gitunderstanding</span><span class="o">.</span><span class="n">md</span> <span class="n">idethoughts</span><span class="o">.</span><span class="n">md</span> <span class="n">numbers</span><span class="o">.</span><span class="n">md</span> <span class="n">hexspeak</span><span class="o">.</span><span class="n">md</span> <span class="n">gitstory</span><span class="o">.</span><span class="n">md</span> <span class="n">gitstory2</span><span class="o">.</span><span class="n">md</span> <span class="n">donotcommit</span><span class="o">.</span><span class="n">md</span> <span class="n">jupyterbooktroubleshooting</span><span class="o">.</span><span class="n">md</span> <span class="n">templating</span><span class="o">.</span><span class="n">md</span> <span class="n">docs</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Now, back in your KWL repo, we want to change our script to use this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>We can edit the script, with nano</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">checker</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>We can edit it so that it calls that process, assigns its output to a variable, and then uses that variable as our list output like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for file in $(kwlfilechecker)
+do
+ if ! test -f $file; then
+  echo $file
+ fi
+done
+</pre></div>
+</div>
+<p>Now you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="n">checker</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>To see what, if any files you are missing.</p>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class13prep"></span><h2><span class="section-number">12.7. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Check that jupyter book is installed on your computer <a class="reference external" href="https://jupyterbook.org/advanced/windows.html#working-on-windows">and the windows advice</a></p></li>
+<li><p>Fix any open PRs you have that need to be rebased.</p></li>
+<li><p>In your github in class repo, create a series of commits that tell as story of how you might have made a mistake and fixed it. Use git log and redirects to write that log to a file, <code class="docutils literal notranslate"><span class="pre">gitstory.md</span></code> in your KWL repo and then annotate your story to add in any narrative that didn't fit in the commit messages. This could be that you made a mistake in your code and used git to recover or that you got your git database to an undesirable state and got it back on track.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class13practice"></span><h2><span class="section-number">12.8. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Find an open source repository and look at the .gitignore file. In <code class="docutils literal notranslate"><span class="pre">donotcommit.md</span></code> reflect on what types of content typically get ignored and why you think they are ignored.  If you can't figure out why, try to look it up.</p></li>
+<li><p>Create a second git story for the other type form your first (code mistake or git mistake) in <code class="docutils literal notranslate"><span class="pre">gitstory2.md</span></code></p></li>
+<li><p>add something to the glossary, cheatsheet or a history sidebar to the notes.</p></li>
+</ol>
+</div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>See documentation on <a class="reference external" href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">shell arithmetic</a> for counting</p>
+</div>
+</div>
+</div>
+<div class="section" id="extension-ideas">
+<h2><span class="section-number">12.9. </span>Extension Ideas<a class="headerlink" href="#extension-ideas" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>document or add course scripts to the courseutils repo</p></li>
+<li><p>write a similar util for another context and document it</p></li>
+<li><p>turn your bash script above (if not the toy counting one) into a longer tutorial that explains its components piece by piece, how they work together.</p></li>
+<li><p>use the jupyter book <a class="reference external" href="https://jupyterbook.org/advanced/developers.html?highlight=api">api referencing capability</a> to document a side project or code from a different course, eg 110 (keep it in a separate private repo so as to not put solutions to a course on the public internet)</p></li>
+</ol>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">12.10. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="will-we-create-bash-programs-from-scratch">
+<h3><span class="section-number">12.10.1. </span>Will we create bash programs from scratch?<a class="headerlink" href="#will-we-create-bash-programs-from-scratch" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>At least small ones, we probably will not write large programs though.</p>
+</div>
+</div>
+<div class="section" id="what-are-some-applications-of-bash-scripting">
+<h3><span class="section-number">12.10.2. </span>What are some applications of bash scripting?<a class="headerlink" href="#what-are-some-applications-of-bash-scripting" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We will see its use in HPC in the next class, but also for small utilities like this.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-03-01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">11. </span>How do we build Documentation?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
