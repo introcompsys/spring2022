@@ -14,6 +14,9 @@ git
 
 GitHub
   a hosting service for git repositories
+  
+Git Workflow
+  a recipe or recommendation for how to use Git to accomplish work in a consistent and productive manner
 
 push (changes to a repository)
   to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
@@ -33,6 +36,12 @@ shell
   
 terminal
   a program that makes shell visible for us and allows for interactions with it
+  
+directory 
+  a collection of files typically created for organizational purposes
 
+.gitignore
+  a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
+  
 
 ```

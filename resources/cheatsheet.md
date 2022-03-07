@@ -105,6 +105,23 @@ List the contents of the directory:
 ls
 ```
 
+
+ Git status displays the current state of the repository relative to the working directory. Shows the differences between the index file and the current directory.
+```
+git status
+```
+
+Redirect Output:
+  to overwrite an existing file or a create a new file with the given file name:
+``
+echo "send output to file.txt" > file.txt
+``
+  to append the output to already existing file or create a new file with the given file name:
+  ```
+  echo "append output to file.txt >> file.txt
+  ```
+
+
 ## Wildcard / Kleene star
 
 The wildcard character in bash `*` works by expanding in place to separate arguments that match whatever pattern you're writing. 
