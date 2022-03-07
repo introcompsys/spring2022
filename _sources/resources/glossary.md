@@ -14,6 +14,9 @@ git
 
 GitHub
   a hosting service for git repositories
+  
+Git Workflow
+  a recipe or recommendation for how to use Git to accomplish work in a consistent and productive manner
 
 push (changes to a repository)
   to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
