@@ -40,5 +40,8 @@ directory
 .gitignore
   a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
   
+shell scripting
+  a type of programming in bash that allows you to use basic programming language features like loops and variables to view and modify things in the file system, such as counting or printing files in a folder using a loop.
+  
 
 ```
