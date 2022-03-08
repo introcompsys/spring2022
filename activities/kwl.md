@@ -163,7 +163,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - graded
 * -  donotcommit.md
   - [tutorial of using git for a challenge](../notes/2022-02-24)
-  - prepare
+  - practice
   - graded
 * -  jupyterbooktroubleshooting.md
   - [problems with jupyterbook](../notes/2022-03-01)
