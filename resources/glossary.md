@@ -36,8 +36,6 @@ terminal
 ROM (Read-Only Memory)
   Memory that only gets read by the CPU
   
-
-
 directory 
   a collection of files typically created for organizational purposes
 
@@ -45,5 +43,6 @@ directory
   a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
   
 templating
-  idea of using code that someone else wrote so that you do not have to rewrite it (for instance, the jupyter book allows us to create a website without working on HTML; does all of the work in the background, all we have to do is provide the HTML).
+  templating is the idea of changing the input or output of a system. For instance, the Jupyter book, instead of outputting the markdown files as markdown files, displays them as HTML pages (with the contents of the markdown file).
+  
 ```
