@@ -1,0 +1,1194 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13. How can I work on a remote server? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="12. Shell Scripting" href="2022-03-03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-08.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-08.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-08.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-08.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-remote-servers-and-hpc-systems">
+   13.1. What are remote servers and HPC systems?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-seawulf">
+   13.2. Connecting to Seawulf
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-files">
+   13.3. Downloading files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-large-files">
+   13.4. Working with large files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-permissions">
+   13.5. File permissions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-a-batch-file">
+   13.6. Making a batch file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactive-mode">
+   13.7. Interactive mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging-off">
+   13.8. Logging off
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   13.9. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   13.10. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   13.11. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-sbatch-used">
+     13.11.1. When is sbatch used?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-sbatch-kick-out-your-job-after-a-certain-amount-of-time-what-if-your-job-was-indefinite-like-hosting-a-website">
+     13.11.2. will sbatch kick out your job after a certain amount of time? what if your job was indefinite like hosting a website.
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How can I work on a remote server?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-remote-servers-and-hpc-systems">
+   13.1. What are remote servers and HPC systems?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-seawulf">
+   13.2. Connecting to Seawulf
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-files">
+   13.3. Downloading files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-large-files">
+   13.4. Working with large files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#file-permissions">
+   13.5. File permissions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#making-a-batch-file">
+   13.6. Making a batch file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactive-mode">
+   13.7. Interactive mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logging-off">
+   13.8. Logging off
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   13.9. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   13.10. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   13.11. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-is-sbatch-used">
+     13.11.1. When is sbatch used?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-sbatch-kick-out-your-job-after-a-certain-amount-of-time-what-if-your-job-was-indefinite-like-hosting-a-website">
+     13.11.2. will sbatch kick out your job after a certain amount of time? what if your job was indefinite like hosting a website.
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="how-can-i-work-on-a-remote-server">
+<h1><span class="section-number">13. </span>How can I work on a remote server?<a class="headerlink" href="#how-can-i-work-on-a-remote-server" title="Permalink to this headline">¶</a></h1>
+<p>Today we will connect to a remote server, use an HPC system with scheduleer, and learn new bash commands for working with the <em>content</em> of files.</p>
+<div class="section" id="what-are-remote-servers-and-hpc-systems">
+<h2><span class="section-number">13.1. </span>What are remote servers and HPC systems?<a class="headerlink" href="#what-are-remote-servers-and-hpc-systems" title="Permalink to this headline">¶</a></h2>
+<p><img alt="diagram illustrating a remot connection to a login node and compute cluster" src="../_images/hpcsketch.svg" /></p>
+</div>
+<div class="section" id="connecting-to-seawulf">
+<h2><span class="section-number">13.2. </span>Connecting to Seawulf<a class="headerlink" href="#connecting-to-seawulf" title="Permalink to this headline">¶</a></h2>
+<p>We connect with secure shell or <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from our terminal (GitBash or Putty on windows) to URI’s teaching High Performance Computing (HPC) Cluster <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/">Seawulf</a>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This cluster is for course related purposes at URI, if you want to use a HPC system of some sort for a side project, consider Amazon Web Services, Google Cloud, or Microsoft Azul services, you can get some allocation for free a a student.</p>
+<p>If you are doing research supervised by a URI professor, there are other servers on campus and URI participates in a regional HPC resource as well.</p>
+</div>
+</div>
+<p>Our login is the part of your uri e-mail address before the &#64; and I will tell you how to find your default password if you missed class.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">l</span> <span class="n">brownsarahm</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>When it logs in it looks like this and requires you to change your password.  They configure it with a default and with it past expired.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The authenticity of host &#39;seawulf.uri.edu (131.128.217.210)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:RwhTUyjWLqwohXiRw+tYlTiJEbqX2n/drCpkIwQVCro.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? y
+Please type &#39;yes&#39;, &#39;no&#39; or the fingerprint: yes
+Warning: Permanently added &#39;seawulf.uri.edu,131.128.217.210&#39; (ECDSA) to the list of known hosts.
+brownsarahm@seawulf.uri.edu&#39;s password:
+You are required to change your password immediately (root enforced)
+WARNING: Your password has expired.
+You must change your password now and login again!
+Changing password for user brownsarahm.
+Changing password for brownsarahm.
+(current) UNIX password:
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+Connection to seawulf.uri.edu closed.
+</pre></div>
+</div>
+<p>after you give it a new password, then it logs you out and you have to log back in.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>brownsarahm@~ $ ssh -l brownsarahm seawulf.uri.edu
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span><span class="s1">&#39;s password:</span>
+<span class="n">Last</span> <span class="n">login</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Mar</span>  <span class="mi">8</span> <span class="mi">12</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">38</span> <span class="mi">2022</span> <span class="kn">from</span> <span class="mf">172.20.133.152</span>
+</pre></div>
+</div>
+<p>We have logged into our home directory which is empty</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ pwd
+/home/brownsarahm
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ whoami
+brownsarahm
+</pre></div>
+</div>
+<p>Notice that the prompt says <code class="docutils literal notranslate"><span class="pre">uriusername&#64;seawulf</span></code> to indicate that you are logged into the server, not working locally.</p>
+</div>
+<div class="section" id="downloading-files">
+<h2><span class="section-number">13.3. </span>Downloading files<a class="headerlink" href="#downloading-files" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ wget http://www.hpc-carpentry.org/hpc-shell/files/bash-lesson.tar.gz
+--2022-03-08 12:58:09--  http://www.hpc-carpentry.org/hpc-shell/files/bash-lesson.tar.gz
+Resolving www.hpc-carpentry.org (www.hpc-carpentry.org)... 104.21.33.152, 172.67.146.136
+Connecting to www.hpc-carpentry.org (www.hpc-carpentry.org)|104.21.33.152|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12534006 (12M) [application/gzip]
+Saving to: ‘bash-lesson.tar.gz’
+
+100%[======================================&gt;] 12,534,006  4.19MB/s   in 2.9s   
+
+2022-03-08 12:58:12 (4.19 MB/s) - ‘bash-lesson.tar.gz’ saved [12534006/12534006]
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls
+bash-lesson.tar.gz
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ tar -xvf bash-lesson.tar.gz
+dmel-all-r6.19.gtf
+dmel_unique_protein_isoforms_fb_2016_01.tsv
+gene_association.fb
+SRR307023_1.fastq
+SRR307023_2.fastq
+SRR307024_1.fastq
+SRR307024_2.fastq
+SRR307025_1.fastq
+SRR307025_2.fastq
+SRR307026_1.fastq
+SRR307026_2.fastq
+SRR307027_1.fastq
+SRR307027_2.fastq
+SRR307028_1.fastq
+SRR307028_2.fastq
+SRR307029_1.fastq
+SRR307029_2.fastq
+SRR307030_1.fastq
+SRR307030_2.fastq
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls
+bash-lesson.tar.gz                           SRR307026_1.fastq
+dmel-all-r6.19.gtf                           SRR307026_2.fastq
+dmel_unique_protein_isoforms_fb_2016_01.tsv  SRR307027_1.fastq
+gene_association.fb                          SRR307027_2.fastq
+SRR307023_1.fastq                            SRR307028_1.fastq
+SRR307023_2.fastq                            SRR307028_2.fastq
+SRR307024_1.fastq                            SRR307029_1.fastq
+SRR307024_2.fastq                            SRR307029_2.fastq
+SRR307025_1.fastq                            SRR307030_1.fastq
+SRR307025_2.fastq                            SRR307030_2.fastq
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-large-files">
+<h2><span class="section-number">13.4. </span>Working with large files<a class="headerlink" href="#working-with-large-files" title="Permalink to this headline">¶</a></h2>
+<p>One of these files, contains the entire genome for the common fruitfly, let’s take a look at it: \</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ cat dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">gene</span>	<span class="mi">19961297</span>	<span class="mi">19969323</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="mi">3</span><span class="n">UTR</span>	<span class="mi">782825</span>	<span class="mi">782885</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>this output is truncated for display purposes</p>
+</div>
+<p>We see that this actually take a long time to output and is way tooo much information to actually read.  In fact, in order to make the website work, I had to cut that content using command line tools, my text editor couldn’t open the file and GitHub was unhappy when I pushed it.</p>
+<p>For a file like this, we don’t really want to read the whole file but we do need to know what it’s strucutred like in order to design programs to work with it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">head</span></code> lets us look at the first 10 lines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ head dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">gene</span>	<span class="mi">19961297</span>	<span class="mi">19969323</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">mRNA</span>	<span class="mi">19961689</span>	<span class="mi">19968479</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="mi">5</span><span class="n">UTR</span>	<span class="mi">19961689</span>	<span class="mi">19961845</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19961689</span>	<span class="mi">19961845</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19963955</span>	<span class="mi">19964071</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19964782</span>	<span class="mi">19964944</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19965006</span>	<span class="mi">19965126</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19965197</span>	<span class="mi">19965511</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19965577</span>	<span class="mi">19966071</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">19966183</span>	<span class="mi">19967012</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">-n</span></code> parameter to change the number.</p>
+<p>And, tails shows the last few.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ tail dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<p>which in this case looks mostly the same</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">782124</span>	<span class="mi">782181</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">782238</span>	<span class="mi">782441</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">exon</span>	<span class="mi">782495</span>	<span class="mi">782885</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">start_codon</span>	<span class="mi">781297</span>	<span class="mi">781299</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">0</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">CDS</span>	<span class="mi">781297</span>	<span class="mi">782048</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">0</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">CDS</span>	<span class="mi">782124</span>	<span class="mi">782181</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">1</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">CDS</span>	<span class="mi">782238</span>	<span class="mi">782441</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">0</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">CDS</span>	<span class="mi">782495</span>	<span class="mi">782821</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">0</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">stop_codon</span>	<span class="mi">782822</span>	<span class="mi">782824</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="mi">0</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="mi">3</span><span class="n">UTR</span>	<span class="mi">782825</span>	<span class="mi">782885</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We can also see how much content is in the file <code class="docutils literal notranslate"><span class="pre">wc</span></code> give a word count and with its <code class="docutils literal notranslate"><span class="pre">-l</span></code> parameter gives us the number of lines.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ wc -l dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">542048</span> <span class="n">dmel</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">r6</span><span class="mf">.19</span><span class="o">.</span><span class="n">gtf</span>
+</pre></div>
+</div>
+<p>Over five hundred forty thousand lines is a lot.</p>
+<p>How can we get the number of lines in each of the <code class="docutils literal notranslate"><span class="pre">.fastq</span></code> files?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ wc -l *.fastw
+wc: *.fastw: No such file or directory
+</pre></div>
+</div>
+<p>note that in my typo, it tells me no files matched my pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ wc -l *.fastq
+   20000 SRR307023_1.fastq
+   20000 SRR307023_2.fastq
+   20000 SRR307024_1.fastq
+   20000 SRR307024_2.fastq
+   20000 SRR307025_1.fastq
+   20000 SRR307025_2.fastq
+   20000 SRR307026_1.fastq
+   20000 SRR307026_2.fastq
+   20000 SRR307027_1.fastq
+   20000 SRR307027_2.fastq
+   20000 SRR307028_1.fastq
+   20000 SRR307028_2.fastq
+   20000 SRR307029_1.fastq
+   20000 SRR307029_2.fastq
+   20000 SRR307030_1.fastq
+   20000 SRR307030_2.fastq
+  320000 total
+</pre></div>
+</div>
+<p>when it does work, we also get the total.</p>
+<p>We can use redirects as before to save these to a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ wc -l *.fastq &gt; linecounts.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ cat linecounts.txt
+   20000 SRR307023_1.fastq
+   20000 SRR307023_2.fastq
+   20000 SRR307024_1.fastq
+   20000 SRR307024_2.fastq
+   20000 SRR307025_1.fastq
+   20000 SRR307025_2.fastq
+   20000 SRR307026_1.fastq
+   20000 SRR307026_2.fastq
+   20000 SRR307027_1.fastq
+   20000 SRR307027_2.fastq
+   20000 SRR307028_1.fastq
+   20000 SRR307028_2.fastq
+   20000 SRR307029_1.fastq
+   20000 SRR307029_2.fastq
+   20000 SRR307030_1.fastq
+   20000 SRR307030_2.fastq
+  320000 total
+</pre></div>
+</div>
+<p>We can also search files, without loading them all into memory or displaying them, with <code class="docutils literal notranslate"><span class="pre">grep</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ grep Act5c dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ grep mRNA dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<p>this output a lot, so the output is truncated here</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>	<span class="n">FlyBase</span>	<span class="n">mRNA</span>	<span class="mi">19961689</span>	<span class="mi">19968479</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0031081&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Nep3&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0070000&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Nep3-RA&quot;</span><span class="p">;</span>
+<span class="mi">2</span><span class="n">L</span>	<span class="n">FlyBase</span>	<span class="n">mRNA</span>	<span class="mi">781276</span>	<span class="mi">782885</span>	<span class="o">.</span>	<span class="o">+</span>	<span class="o">.</span>	<span class="n">gene_id</span> <span class="s2">&quot;FBgn0041250&quot;</span><span class="p">;</span> <span class="n">gene_symbol</span> <span class="s2">&quot;Gr21a&quot;</span><span class="p">;</span> <span class="n">transcript_id</span> <span class="s2">&quot;FBtr0331651&quot;</span><span class="p">;</span> <span class="n">transcript_symbol</span> <span class="s2">&quot;Gr21a-RB&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and we can combine <code class="docutils literal notranslate"><span class="pre">grep</span></code> with <code class="docutils literal notranslate"><span class="pre">wc</span></code> to count occurences.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ grep mRNA dmel-all-r6.19.gtf | wc -l
+34025
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-permissions">
+<h2><span class="section-number">13.5. </span>File permissions<a class="headerlink" href="#file-permissions" title="Permalink to this headline">¶</a></h2>
+<p>Let’s make a small script, recalling what we have learned so far:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ echo &quot;echo &#39;script works&#39;&quot; &gt;&gt; demo.sh
+</pre></div>
+</div>
+<p>We can confirm that the script looks like a we expected</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ cat demo.sh
+echo &#39;script works&#39;
+</pre></div>
+</div>
+<p>One thing we could do is to run the script using <code class="docutils literal notranslate"><span class="pre">./</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ./demo.sh
+</pre></div>
+</div>
+<p>but we get a permission denied error</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">bash</span><span class="p">:</span> <span class="o">./</span><span class="n">demo</span><span class="o">.</span><span class="n">sh</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+</pre></div>
+</div>
+<p>By default, files have different types of permissions: read, write, and execute for different users that can access them. To view the permissions, we can use the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option of <code class="docutils literal notranslate"><span class="pre">ls</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l
+total 138452
+-rw-r--r--. 1 brownsarahm spring2022-csc392 12534006 Apr 18  2021 bash-lesson.tar.gz
+-rw-r--r--. 1 brownsarahm spring2022-csc392       20 Mar  8 13:12 demo.sh
+-rw-r--r--. 1 brownsarahm spring2022-csc392 77426528 Jan 16  2018 dmel-all-r6.19.gtf
+-rw-r--r--. 1 brownsarahm spring2022-csc392   721242 Jan 25  2016 dmel_unique_protein_isoforms_fb_2016_01.tsv
+-rw-r--r--. 1 brownsarahm spring2022-csc392 25056938 Jan 25  2016 gene_association.fb
+-rw-r--r--. 1 brownsarahm spring2022-csc392      447 Mar  8 13:07 linecounts.txt
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_2.fastq
+</pre></div>
+</div>
+<p>For each file we get 10 characters in the first column that describe the permissions.  The 3rd column is the username of the owner, the fourth is the group, then size date revised and the file name.</p>
+<p>We are most interested in the 10 character permissions. The fist column indicates if any are directories with a <code class="docutils literal notranslate"><span class="pre">d</span></code> or a <code class="docutils literal notranslate"><span class="pre">-</span></code> for files. We have no directories, but we can create one to see this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ mkdir results
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l
+total 138452
+-rw-r--r--. 1 brownsarahm spring2022-csc392 12534006 Apr 18  2021 bash-lesson.tar.gz
+-rw-r--r--. 1 brownsarahm spring2022-csc392       20 Mar  8 13:12 demo.sh
+-rw-r--r--. 1 brownsarahm spring2022-csc392 77426528 Jan 16  2018 dmel-all-r6.19.gtf
+-rw-r--r--. 1 brownsarahm spring2022-csc392   721242 Jan 25  2016 dmel_unique_protein_isoforms_fb_2016_01.tsv
+-rw-r--r--. 1 brownsarahm spring2022-csc392 25056938 Jan 25  2016 gene_association.fb
+-rw-r--r--. 1 brownsarahm spring2022-csc392      447 Mar  8 13:07 linecounts.txt
+**drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results**
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_2.fastq
+</pre></div>
+</div>
+<p>We can see in the bold line, that the first character is a d.</p>
+<p>The next nine characters indicate permission to <strong>R</strong>ead, <strong>W</strong>rite, and e<strong>X</strong>ecute a file. With either the letter or a <code class="docutils literal notranslate"><span class="pre">-</span></code> for permissions not granted, they appear in three groups of three, three characters each for owner, group, anyone with access.</p>
+<p>If we want to run the file, we <em>can</em> instead use <code class="docutils literal notranslate"><span class="pre">bash</span></code> directly, but this is limited relative to calling our script in other ways.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ bash demo.sh
+script works
+</pre></div>
+</div>
+<p>Instead, to add execute permission, we can use <code class="docutils literal notranslate"><span class="pre">chmod</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ chmod +x demo.sh
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l
+total 138452
+-rw-r--r--. 1 brownsarahm spring2022-csc392 12534006 Apr 18  2021 bash-lesson.tar.gz
+-rwxr-xr-x. 1 brownsarahm spring2022-csc392       20 Mar  8 13:12 demo.sh
+-rw-r--r--. 1 brownsarahm spring2022-csc392 77426528 Jan 16  2018 dmel-all-r6.19.gtf
+-rw-r--r--. 1 brownsarahm spring2022-csc392   721242 Jan 25  2016 dmel_unique_protein_isoforms_fb_2016_01.tsv
+-rw-r--r--. 1 brownsarahm spring2022-csc392 25056938 Jan 25  2016 gene_association.fb
+-rw-r--r--. 1 brownsarahm spring2022-csc392      447 Mar  8 13:07 linecounts.txt
+drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_2.fastq
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ./demo.sh
+script works
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ nano demo.sh
+</pre></div>
+</div>
+<p>We can add a bit more to our script to make it more interesting</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for VAR in *.gz
+do
+  echo $VAR
+done
+
+
+echo &#39;script works&#39;
+</pre></div>
+</div>
+<p>and note that tht does not change the permission.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ ls -l
+total 138452
+-rw-r--r--. 1 brownsarahm spring2022-csc392 12534006 Apr 18  2021 bash-lesson.tar.gz
+-rwxr-xr-x. 1 brownsarahm spring2022-csc392       60 Mar  8 13:27 demo.sh
+-rw-r--r--. 1 brownsarahm spring2022-csc392 77426528 Jan 16  2018 dmel-all-r6.19.gtf
+-rw-r--r--. 1 brownsarahm spring2022-csc392   721242 Jan 25  2016 dmel_unique_protein_isoforms_fb_2016_01.tsv
+-rw-r--r--. 1 brownsarahm spring2022-csc392 25056938 Jan 25  2016 gene_association.fb
+-rw-r--r--. 1 brownsarahm spring2022-csc392      447 Mar  8 13:07 linecounts.txt
+drwxr-xr-x. 2 brownsarahm spring2022-csc392       10 Mar  8 13:16 results
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625262 Jan 25  2016 SRR307023_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625376 Jan 25  2016 SRR307024_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625286 Jan 25  2016 SRR307025_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625302 Jan 25  2016 SRR307026_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625312 Jan 25  2016 SRR307027_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625338 Jan 25  2016 SRR307028_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625390 Jan 25  2016 SRR307029_2.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_1.fastq
+-rw-r--r--. 1 brownsarahm spring2022-csc392  1625318 Jan 25  2016 SRR307030_2.fastq
+</pre></div>
+</div>
+</div>
+<div class="section" id="making-a-batch-file">
+<h2><span class="section-number">13.6. </span>Making a batch file<a class="headerlink" href="#making-a-batch-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ nano my_job.sh
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ sbatch my_job.sh
+Submitted batch job 23950
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ squeue --job 23950
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+</pre></div>
+</div>
+</div>
+<div class="section" id="interactive-mode">
+<h2><span class="section-number">13.7. </span>Interactive mode<a class="headerlink" href="#interactive-mode" title="Permalink to this headline">¶</a></h2>
+<p>So far we have worked on the login node which has very little computational power and submitted a job to a compute node through the scheduler for it to run asynchronously.  We can also use a compute node interactively if we have a computationally intensive task that we need to work with in real time, instead of it being fully automated.</p>
+<p>We’ll talk after the break about how this might look, but for example if our <code class="docutils literal notranslate"><span class="pre">grep</span></code> commands needed more power where we need the resutl back right away in order to then decide what the next calculation could be.</p>
+<p>We can request a node to be allocated to our user and have a direct <code class="docutils literal notranslate"><span class="pre">ssh</span></code> connection to compute node using <code class="docutils literal notranslate"><span class="pre">interactive</span></code>.  Interactive by default calls a specific script that is configured by the system administrators for the particular cluster that you are logged into.</p>
+<p>For seawulf, <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/#interactive">interactive</a> opens a default of 8 hgours, but you can use parameters to request more or less time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ interactive
+</pre></div>
+</div>
+<p>When we run this interactive submits a “job” to the schedule, but instead of then passing a script to the compute node it connects us to that node via ssh</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span><span class="p">:</span> <span class="n">Granted</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">23963</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">resource</span> <span class="n">configuration</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Nodes</span> <span class="n">n005</span> <span class="n">are</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">job</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="nb">id</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">name</span> <span class="k">for</span> <span class="n">user</span> <span class="n">ID</span> <span class="mi">1168</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="nb">id</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">name</span> <span class="k">for</span> <span class="n">group</span> <span class="n">ID</span> <span class="mi">1111</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="nb">id</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">name</span> <span class="k">for</span> <span class="n">user</span> <span class="n">ID</span> <span class="mi">1168</span>
+</pre></div>
+</div>
+<p>We can see that we are connected to a system with more resources using this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[I have no name!@n005 ~]$ lshw
+WARNING: you should run this program as super-user.
+          configuration: driver=system
+WARNING: output may be incomplete or inaccurate, you should run this program as super-user.
+</pre></div>
+</div>
+<p>I truncataed the long output.</p>
+<p>We can then exit the compute node and go back to the login node with <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[I have no name!@n005 ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">salloc</span><span class="p">:</span> <span class="n">Relinquishing</span> <span class="n">job</span> <span class="n">allocation</span> <span class="mi">23963</span>
+</pre></div>
+</div>
+<p>Note tht it says the job has ended.</p>
+</div>
+<div class="section" id="logging-off">
+<h2><span class="section-number">13.8. </span>Logging off<a class="headerlink" href="#logging-off" title="Permalink to this headline">¶</a></h2>
+<p>You can log off with <code class="docutils literal notranslate"><span class="pre">exit</span></code> it is important to do so to not use resources you do not need. However, note tht if your laptop loses internet connection your session will also be disconnected.  This is another advantage of the scheduler, you don’t need to maintain a connection for it to run your code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[brownsarahm@seawulf ~]$ exit
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logout</span>
+<span class="n">Connection</span> <span class="n">to</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span> <span class="n">closed</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Note that when you are back to your computer the prompt changes. And that using the up arrow, the last command your computer’s shell knows is the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> line.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>brownsarahm@~ $ ssh -l brownsarahm seawulf.uri.edu
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class14prep"></span><h2><span class="section-number">13.9. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Review the notes (to reinforce ideas and improve your memory of them)</p></li>
+<li><p><strong>priority</strong> add a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">summary</span></code> section to your IDE notes where you summarize what you observed in your IDE usage and what questions or what features (we will work with this after break and I want you to prepare before break)</p></li>
+<li><p>Modify the sbatch job we made in class so that you get files back for any errors and output from the script. <a class="reference external" href="https://web.uri.edu/hpc-research-computing/using-seawulf/#sbatch">see the options</a> (to review/practice what we did)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class14practice"></span><h2><span class="section-number">13.10. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>use <a class="reference external" href="https://man7.org/linux/man-pages/man1/scp.1.html">scp</a> to download the files generated to your local computer and add them to your kwl chart.  (a possible extenstion idea to practice reading the official documentation to learn a new tool that is similar to ones you have seen before)</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol>
+<li><p><strong>priority</strong> write a script that outputs the first 3 lines of each <code class="docutils literal notranslate"><span class="pre">.fastq</span></code> line and sbatch script that runs it and saves the output to files and e-mails you when it is done. Submit the job. (to reinforce /practice what we saw in class)</p></li>
+<li><p>File permissions are represented numerically often in octal, by transforming the permissions for each level (owner, group, all) as binary into a number. Add <code class="docutils literal notranslate"><span class="pre">octal.md</span></code> to your KWL repo and answer the following. Try to think through it on your own, but you may look up the answers, as long as you link to (or ideally cite using jupyterbook citations) a high quality source.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Transform the permissions [`r--`, `rw-`, `rwx`] to octal, by treating it as three bits.
+1. Transform the permission we changed our script to `rwxr-xr-x` to octal.
+1. Which of the following would prevent a file from being edited by other people 777 or 755? 
+</pre></div>
+</div>
+</li>
+<li><p>Answer the following in <code class="docutils literal notranslate"><span class="pre">hpc.md</span></code> of your KWL repo:  (to think about how the design of the system we used in class impacts programming and connect it to other ideas taught in CS)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What kinds of things would your code need to do if you were going to run it on an HPC system?
+1. What Sbatch options seem the most helpful?
+1. How might you go about setting the time limits for a script? How could you estimate how long it will take?
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">13.11. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="when-is-sbatch-used">
+<h3><span class="section-number">13.11.1. </span>When is sbatch used?<a class="headerlink" href="#when-is-sbatch-used" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Sbatch is one type of scheduler, that manages the resource of a high performance computing system</p>
+</div>
+</div>
+<div class="section" id="will-sbatch-kick-out-your-job-after-a-certain-amount-of-time-what-if-your-job-was-indefinite-like-hosting-a-website">
+<h3><span class="section-number">13.11.2. </span>will sbatch kick out your job after a certain amount of time? what if your job was indefinite like hosting a website.<a class="headerlink" href="#will-sbatch-kick-out-your-job-after-a-certain-amount-of-time-what-if-your-job-was-indefinite-like-hosting-a-website" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>High performance computing systems, like the cluster that we logged into in class are ued for computationally expensive programs that might require more RAM and/or more CPUs in order to run and/or to run for a longer time than your laptop makes sense to leave it in one place.</p>
+<p>For example, this is often used in research data analysis, like the genomics data we used today or for training machine learning models.</p>
+<p>HPCs are a specifc type of remote resource, for indefinite jobs, we use different types of servers.  However, <code class="docutils literal notranslate"><span class="pre">ssh</span></code> can still be used to log into those sytems.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-03-03.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>Shell Scripting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
