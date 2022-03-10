@@ -29,12 +29,15 @@ pull (changes from a repository)
   
 repository
   a project folder with tracking information in it in the form of a .git file
-  
+
 shell
   a command line interface; allows for access to an operating system
   
 terminal
   a program that makes shell visible for us and allows for interactions with it
+  
+ROM (Read-Only Memory)
+  Memory that only gets read by the CPU
   
 directory 
   a collection of files typically created for organizational purposes
@@ -42,5 +45,7 @@ directory
 .gitignore
   a file in a git repo that will not add the files that are included in this .gitignore file. Used to prevent files from being unnecessarily committed.
   
-
+templating
+  templating is the idea of changing the input or output of a system. For instance, the Jupyter book, instead of outputting the markdown files as markdown files, displays them as HTML pages (with the contents of the markdown file).
+  
 ```
