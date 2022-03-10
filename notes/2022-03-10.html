@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14. How does ssh really work? how can I be more secure? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="13. How can I work on a remote server?" href="2022-03-08.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-10.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-10.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-10.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-10.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-ssh-keys-to-authenticated">
+   14.1. Using ssh keys to authenticated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-a-key-pair">
+   14.2. Generating a Key Pair
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sending-the-public-key-to-a-server">
+   14.3. Sending the public key to a server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-undoing-half-a-commit">
+   14.4. Review: Undoing half a commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-grep-head-and-tail-to-keep-excerpts-of-a-file">
+   14.5. Review: Grep, head, and tail to keep excerpts of a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   14.6. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   14.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   14.8. Questions after class
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How does ssh really work? how can I be more secure?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-ssh-keys-to-authenticated">
+   14.1. Using ssh keys to authenticated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-a-key-pair">
+   14.2. Generating a Key Pair
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sending-the-public-key-to-a-server">
+   14.3. Sending the public key to a server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-undoing-half-a-commit">
+   14.4. Review: Undoing half a commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review-grep-head-and-tail-to-keep-excerpts-of-a-file">
+   14.5. Review: Grep, head, and tail to keep excerpts of a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   14.6. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   14.7. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   14.8. Questions after class
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="how-does-ssh-really-work-how-can-i-be-more-secure">
+<h1><span class="section-number">14. </span>How does ssh really work? how can I be more secure?<a class="headerlink" href="#how-does-ssh-really-work-how-can-i-be-more-secure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-ssh-keys-to-authenticated">
+<h2><span class="section-number">14.1. </span>Using ssh keys to authenticated<a class="headerlink" href="#using-ssh-keys-to-authenticated" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>generate a key pair</p></li>
+<li><p>store the public key on the server</p></li>
+<li><p>Request to login, tell server your public key, get back a session ID from the server</p></li>
+<li><p>if it has that public key, then it generates a random string, encrypts it with your public key and sends it back to your computer</p></li>
+<li><p>On your computer, it decrypts the message + the session ID with your private key then hashes the message and sends it back</p></li>
+<li><p>the server then hashes its copy of the message and session ID and if the hash received and calculated match, then you are loggied in</p></li>
+</ol>
+<p><a class="reference external" href="https://thatsmaths.com/2016/08/11/a-toy-example-of-rsa-encryption/">a toy example</a></p>
+<p><img alt="cheatsheet on ssh from julia evans" src="https://wizardzines.com/comics/ssh/ssh.png" /></p>
+<p><a class="reference external" href="https://wizardzines.com/comics/ssh/">from wizardzines</a></p>
+<p>Lots more networking detals in the <a class="reference external" href="https://wizardzines.com/zines/bite-size-networking/">full zine</a> available for purchase or I have a copy if you want to borrow it.</p>
+<p>this <em>free zine</em> describes networks at a lower level <a class="reference external" href="https://jvns.ca/networking-zine.pdf">full zine</a> but does not include ssh</p>
+</div>
+<div class="section" id="generating-a-key-pair">
+<h2><span class="section-number">14.2. </span>Generating a Key Pair<a class="headerlink" href="#generating-a-key-pair" title="Permalink to this headline">¶</a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code> to create a keys.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">b</span> <span class="mi">4096</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-f</span></code> option allows us to specify the file name of the keys.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Generating</span> <span class="n">public</span><span class="o">/</span><span class="n">private</span> <span class="n">rsa</span> <span class="n">key</span> <span class="n">pair</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">passphrase</span> <span class="p">(</span><span class="n">empty</span> <span class="k">for</span> <span class="n">no</span> <span class="n">passphrase</span><span class="p">):</span>
+<span class="n">Enter</span> <span class="n">same</span> <span class="n">passphrase</span> <span class="n">again</span><span class="p">:</span>
+<span class="n">Your</span> <span class="n">identification</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="ow">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span><span class="o">.</span>
+<span class="n">Your</span> <span class="n">public</span> <span class="n">key</span> <span class="n">has</span> <span class="n">been</span> <span class="n">saved</span> <span class="ow">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">brownsarahm</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">key</span> <span class="n">fingerprint</span> <span class="ow">is</span><span class="p">:</span>
+<span class="n">SHA256</span><span class="p">:</span><span class="n">e1g1ZJA3nlIvMs0mpFG8Sca9z9DQl02N14</span><span class="o">/</span><span class="n">Z6Y9Xj70</span> <span class="n">brownsarahm</span><span class="o">@</span><span class="mf">152.133.20.172</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">wireless</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+<span class="n">The</span> <span class="n">key</span><span class="s1">&#39;s randomart image is:</span>
+<span class="o">+---</span><span class="p">[</span><span class="n">RSA</span> <span class="mi">4096</span><span class="p">]</span><span class="o">----+</span>
+<span class="o">|</span>         <span class="o">+</span><span class="n">o</span><span class="o">+</span><span class="n">o</span><span class="o">.</span> <span class="n">o</span><span class="o">*|</span>
+<span class="o">|</span>        <span class="o">.</span> <span class="n">Bo</span><span class="o">*</span> <span class="n">o</span><span class="o">.*|</span>
+<span class="o">|</span>         <span class="o">*</span> <span class="n">OoB</span> <span class="o">*</span><span class="n">o</span><span class="o">|</span>
+<span class="o">|</span>        <span class="o">.</span> <span class="n">B</span><span class="o">.</span><span class="n">X</span><span class="o">.=.</span><span class="n">o</span><span class="o">|</span>
+<span class="o">|</span>        <span class="n">S</span> <span class="o">.*</span> <span class="o">=.</span>  <span class="o">|</span>
+<span class="o">|</span>         <span class="o">+</span>    <span class="n">o</span><span class="o">..|</span>
+<span class="o">|</span>        <span class="n">o</span> <span class="o">.</span>    <span class="o">++|</span>
+<span class="o">|</span>         <span class="o">.</span>    <span class="n">o</span> <span class="o">=|</span>
+<span class="o">|</span>               <span class="n">E</span><span class="o">.|</span>
+<span class="o">+----</span><span class="p">[</span><span class="n">SHA256</span><span class="p">]</span><span class="o">-----+</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sending-the-public-key-to-a-server">
+<h2><span class="section-number">14.3. </span>Sending the public key to a server<a class="headerlink" href="#sending-the-public-key-to-a-server" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span> <span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>and we see it working :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Source</span> <span class="n">of</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span><span class="p">:</span> <span class="s2">&quot;/Users/brownsarahm/.ssh/seawulf.pub&quot;</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">log</span> <span class="ow">in</span> <span class="k">with</span> <span class="n">the</span> <span class="n">new</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">out</span> <span class="nb">any</span> <span class="n">that</span> <span class="n">are</span> <span class="n">already</span> <span class="n">installed</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span> <span class="n">INFO</span><span class="p">:</span> <span class="mi">1</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">remain</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span> <span class="o">--</span> <span class="k">if</span> <span class="n">you</span> <span class="n">are</span> <span class="n">prompted</span> <span class="n">now</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">install</span> <span class="n">the</span> <span class="n">new</span> <span class="n">keys</span>
+</pre></div>
+</div>
+<p>Then you have to authenticate with your password, because that is what was
+set up before.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">of</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">added</span><span class="p">:</span>        <span class="mi">1</span>
+
+<span class="n">Now</span> <span class="k">try</span> <span class="n">logging</span> <span class="n">into</span> <span class="n">the</span> <span class="n">machine</span><span class="p">,</span> <span class="k">with</span><span class="p">:</span>   <span class="s2">&quot;ssh &#39;brownsarahm@seawulf.uri.edu&#39;&quot;</span>
+<span class="ow">and</span> <span class="n">check</span> <span class="n">to</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">only</span> <span class="n">the</span> <span class="n">key</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">you</span> <span class="n">wanted</span> <span class="n">were</span> <span class="n">added</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>To login without usng a password you have to tell ssh which key to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span> <span class="n">brownsarahm</span><span class="nd">@seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<p>Or you can add the following to your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="n">seawulf</span>
+  <span class="n">Hostname</span> <span class="n">seawulf</span><span class="o">.</span><span class="n">uri</span><span class="o">.</span><span class="n">edu</span>
+  <span class="n">Username</span> <span class="n">brownsarahm</span>
+  <span class="n">IdentityFile</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">seawulf</span>
+</pre></div>
+</div>
+<p>and then use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">seawulf</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="review-undoing-half-a-commit">
+<h2><span class="section-number">14.4. </span>Review: Undoing half a commit<a class="headerlink" href="#review-undoing-half-a-commit" title="Permalink to this headline">¶</a></h2>
+<p>We can undo a commit using revert, but that applies the opposite of all changes made with that commit.  What can we do to undo one of the changes, but not the others?</p>
+<p>We need a new commit that has only the changes we actually want to revert.</p>
+<p>We can checkout the new commit and then reset the head. Then we have the changes in question in the staging area ready for commit.  Now we can commit only the one we want to do in a new commit.</p>
+<p>Then we can checkout the main branch, and use git revert to appy the opposite of the thing we want to undo.</p>
+</div>
+<div class="section" id="review-grep-head-and-tail-to-keep-excerpts-of-a-file">
+<h2><span class="section-number">14.5. </span>Review: Grep, head, and tail to keep excerpts of a file<a class="headerlink" href="#review-grep-head-and-tail-to-keep-excerpts-of-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;export&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">nots38</span> <span class="mi">3831319</span><span class="p">]</span> <span class="n">export</span>
+<span class="n">g</span> <span class="mi">1</span> <span class="n">file</span> <span class="n">changed</span><span class="p">,</span> <span class="mi">579569</span> <span class="n">insertions</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
+ <span class="n">create</span> <span class="n">mode</span> <span class="mi">100644</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>When I pushed it though, is where I realized my problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git push --set-upstream origin nots38
+</pre></div>
+</div>
+<p>It looked normal at first</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Enumerating</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Counting</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">6</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Delta</span> <span class="n">compression</span> <span class="n">using</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">8</span> <span class="n">threads</span>
+<span class="n">Compressing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Writing</span> <span class="n">objects</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="mf">4.43</span> <span class="n">MiB</span> <span class="o">|</span> <span class="mf">4.17</span> <span class="n">MiB</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="n">done</span><span class="o">.</span>
+<span class="n">Total</span> <span class="mi">4</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">2</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">pack</span><span class="o">-</span><span class="n">reused</span> <span class="mi">0</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Resolving</span> <span class="n">deltas</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">completed</span> <span class="k">with</span> <span class="mi">2</span> <span class="n">local</span> <span class="n">objects</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">See</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">iEPt8g</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">File</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span> <span class="ow">is</span> <span class="mf">78.68</span> <span class="n">MB</span><span class="p">;</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">larger</span> <span class="n">than</span> <span class="n">GitHub</span><span class="s1">&#39;s recommended maximum file size of 50.00 MB</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">GH001</span><span class="p">:</span> <span class="n">Large</span> <span class="n">files</span> <span class="n">detected</span><span class="o">.</span> <span class="n">You</span> <span class="n">may</span> <span class="n">want</span> <span class="n">to</span> <span class="k">try</span> <span class="n">Git</span> <span class="n">Large</span> <span class="n">File</span> <span class="n">Storage</span> <span class="o">-</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="o">-</span><span class="n">lfs</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
+<span class="n">remote</span><span class="p">:</span>
+<span class="n">remote</span><span class="p">:</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">pull</span> <span class="n">request</span> <span class="k">for</span> <span class="s1">&#39;nots38&#39;</span> <span class="n">on</span> <span class="n">GitHub</span> <span class="n">by</span> <span class="n">visiting</span><span class="p">:</span>
+<span class="n">remote</span><span class="p">:</span>      <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">spring2022</span><span class="o">/</span><span class="n">pull</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">nots38</span>
+<span class="n">remote</span><span class="p">:</span>
+<span class="n">To</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">spring2022</span><span class="o">.</span><span class="n">git</span>
+ <span class="o">*</span> <span class="p">[</span><span class="n">new</span> <span class="n">branch</span><span class="p">]</span>      <span class="n">nots38</span> <span class="o">-&gt;</span> <span class="n">nots38</span>
+<span class="n">Branch</span> <span class="s1">&#39;nots38&#39;</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">to</span> <span class="n">track</span> <span class="n">remote</span> <span class="n">branch</span> <span class="s1">&#39;nots38&#39;</span> <span class="kn">from</span> <span class="s1">&#39;origin&#39;</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>but the message reminds me that I added a very large file and it took longer than normal.  That file is 78.68 MB and GitHub prefers that you not track files larger than 50MB.</p>
+<p>However, I knew that the large output was caused by a specific command, so I used <code class="docutils literal notranslate"><span class="pre">grep</span></code> to find what line of the file that occured.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;cat dmel-all-r6.19.gtf&quot;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>76:[brownsarahm@seawulf ~]$ cat dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<p>So then I used <code class="docutils literal notranslate"><span class="pre">head</span></code> to take the lines above that plus one below it into a new file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">77</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">1.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then I found the first time we used <code class="docutils literal notranslate"><span class="pre">head</span></code> in class because I knew that was next</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;head&quot;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>542125:[brownsarahm@seawulf ~]$ head dmel-all-r6.19.gtf
+542194:[brownsarahm@seawulf ~]$ head dmel-all-r6.19.gtf
+</pre></div>
+</div>
+<p>ANd used tail to write the file from that line to the end to a new file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span><span class="mi">542124</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">tail</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>the <code class="docutils literal notranslate"><span class="pre">-n</span></code> parameter allows you to say how manny lines, but if you put a + before the number it starts <em>from</em> that line to end instead of specifying how many lines.</p>
+<p>Then I knew that the next long thing was when we used grep on mRNA, so I found that line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;grep&quot;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">tail</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Since I didn’t use mrna in the grep, I got three results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>70:[brownsarahm@seawulf ~]$ grep Act5c dmel-all-r6.19.gtf
+82:[brownsarahm@seawulf ~]$ grep mRNA dmel-all-r6.19.gtf
+34108:[brownsarahm@seawulf ~]$ grep mRNA dmel-all-r6.19.gtf | wc -l
+</pre></div>
+</div>
+<p>And again I cna take the head of the file and write it to a new file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">83</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">tail</span><span class="o">.</span><span class="n">md</span> <span class="o">&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">2.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>From that same last grep I also knew what the new end of file was:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span><span class="mi">34107</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">tail</span><span class="o">.</span><span class="n">md</span> <span class="o">&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>I thought this might be done, but I checked:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+    <span class="mi">3340</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>that was still a lot of lines, and then I remembered we had a lot of output from <code class="docutils literal notranslate"><span class="pre">lshw</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="n">lshw</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>which gave one result</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>152:[I have no name!@n005 ~]$ lshw
+</pre></div>
+</div>
+<p>that told me the third section f the file I wanted:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">153</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span> <span class="o">&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">3.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>And I knew after <code class="docutils literal notranslate"><span class="pre">lshw</span></code> we exited the compute node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="n">exit</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>3323:[I have no name!@n005 ~]$ exit
+3337:[brownsarahm@seawulf ~]$ exit
+</pre></div>
+</div>
+<p>Which allowed me to create the fourth section that I needed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span><span class="mi">3321</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span> <span class="o">&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">4.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Next I removed the original file from git without deleting it locally</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">mixed</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">1</span>
+<span class="n">git</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>git <code class="docutils literal notranslate"><span class="pre">rm</span></code> did not work because that left the file hashed into the git directory and I wanted to fully remove it. SO I reset the head back on setup, to undo the last commit. <code class="docutils literal notranslate"><span class="pre">--mixed</span></code> makes it delete from the repo for real, but not delete locally.</p>
+<p>Now I see that it doesn’t know anything about that file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">On</span> <span class="n">branch</span> <span class="n">nots38</span>
+<span class="n">Your</span> <span class="n">branch</span> <span class="ow">is</span> <span class="n">behind</span> <span class="s1">&#39;origin/nots38&#39;</span> <span class="n">by</span> <span class="mi">1</span> <span class="n">commit</span><span class="p">,</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">fast</span><span class="o">-</span><span class="n">forwarded</span><span class="o">.</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git pull&quot;</span> <span class="n">to</span> <span class="n">update</span> <span class="n">your</span> <span class="n">local</span> <span class="n">branch</span><span class="p">)</span>
+
+<span class="n">Untracked</span> <span class="n">files</span><span class="p">:</span>
+  <span class="p">(</span><span class="n">use</span> <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> <span class="n">to</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">what</span> <span class="n">will</span> <span class="n">be</span> <span class="n">committed</span><span class="p">)</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">1.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">2.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">3.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">4.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">t2</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="n">tail</span><span class="o">.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+	<span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="n">cmdonly</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then I renamed the original file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>I tried combinging them with echo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">1.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">echo</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">2.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">echo</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">3.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">echo</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">4.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>And confirmed the number of lines in the combined file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Which is how I learned that did not works</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="mi">4</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then I remembered to use <code class="docutils literal notranslate"><span class="pre">cat</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">1.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">cat</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">2.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">cat</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">3.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+<span class="n">cat</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mf">4.</span><span class="n">md</span> <span class="o">&gt;&gt;</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Again checking the number of lines to show that it worked:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="mi">333</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mf">08.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>and for rference comapred to the original</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>and we see the original length</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="mi">579569</span> <span class="n">notes</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p>Then I looked at the compiled file and deleted the others once I was sure I had what I needed.</p>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class15prep"></span><h2><span class="section-number">14.6. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Do what you need to do to finish the semester well: eg rest, catchup on work, both (breaks are important)</p></li>
+<li><p>Review your IDE thoughts right before class on Tuesday March 22 (so you're ready for the activity in class)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class15practice"></span><h2><span class="section-number">14.7. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p><strong>optional</strong> Configure ssh keys to your <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub account</a> (this is actually GitHub's preferred terminal authentication method)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">14.8. </span>Questions after class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-03-08.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>How can I work on a remote server?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
