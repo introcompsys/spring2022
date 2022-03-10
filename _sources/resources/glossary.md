@@ -15,6 +15,9 @@ git
 GitHub
   a hosting service for git repositories
   
+Git Plumbing commands
+  low level git commands that allow the user to access the inner workings of git.
+  
 Git Workflow
   a recipe or recommendation for how to use Git to accomplish work in a consistent and productive manner
 
@@ -27,7 +30,6 @@ pull (changes from a repository)
 repository
   a project folder with tracking information in it in the form of a .git file
   
-
 shell
   a command line interface; allows for access to an operating system
   
