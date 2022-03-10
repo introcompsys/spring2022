@@ -9,6 +9,10 @@ answer.
 
 ```{glossary}
 
+
+add (new files in a repository)
+  the step that stages/prepares files to be committed to a repository from a local branch
+
 git
   a version control tool; it's a fully open source and always free tool, that can be hosted by anyone or used without a host, locally only.
 
@@ -20,6 +24,7 @@ Git Plumbing commands
   
 Git Workflow
   a recipe or recommendation for how to use Git to accomplish work in a consistent and productive manner
+
 
 push (changes to a repository)
   to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
