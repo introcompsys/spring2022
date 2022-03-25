@@ -121,6 +121,11 @@ echo "send output to file.txt" > file.txt
   echo "append output to file.txt >> file.txt
   ```
 
+Git log allows you to see all of the hashes of your previous commits in your branch:
+```
+git log
+  ```
+
 
 ## Wildcard / Kleene star
 
