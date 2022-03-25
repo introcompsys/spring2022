@@ -25,7 +25,9 @@ Git Plumbing commands
 Git Workflow
   a recipe or recommendation for how to use Git to accomplish work in a consistent and productive manner
 
-
+git init name_of_repo
+  used to create a git repo in a directory (which can then be uploaded to github or another online directory
+  
 push (changes to a repository)
   to put whatever you were working on from your local machine onto a remote copy of the repository in a version control system.
 
@@ -52,5 +54,32 @@ directory
   
 templating
   templating is the idea of changing the input or output of a system. For instance, the Jupyter book, instead of outputting the markdown files as markdown files, displays them as HTML pages (with the contents of the markdown file).
+  
+ssh keygen
+  allows computers to safely connect to networks (such as when we used an ssh key to clone our github repos)
+  
+hashing
+  putting an input through a function and getting a different output for every input (the output is called a hash; used in hash tables and when git hashes commits).
+  
+hash function
+  the actual function that does the hashing of the input (a key, an object, etc.)
+  
+SHA 1
+  the hashing function that git uses to hash its functions (found to have very serious collisions (two different inputs have same hashes), so a lot of software is switching to SHA 256)
+  
+git objects
+  something (a file, directory) that is used in git; has a hash associated with it
+  
+tree objects
+  type of git object in git that helps store multiple files with their hashes (similar to directories in a file system)
+  
+HEAD
+  the branch that is currently being checked out (think of the current branch)
+  
+merge
+  putting two branches together so that you can access files in another branch that are not available in yours
+  
+
+
   
 ```
