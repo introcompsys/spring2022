@@ -189,5 +189,5 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [Creating ssh keys and using them](../notes/2022-03-10)
   - prepare
   - graded
-  
+
 ```
