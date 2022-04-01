@@ -29,6 +29,7 @@ parts:
       - file: notes/2022-03-03
       - file: notes/2022-03-08
       - file: notes/2022-03-10
+      - file: notes/2022-03-31
 
   - caption: Activities
     chapters:
