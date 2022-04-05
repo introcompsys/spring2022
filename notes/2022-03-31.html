@@ -1,0 +1,1676 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15. What happens when I build code in C? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="14. How does ssh really work? how can I be more secure?" href="2022-03-10.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-10.html">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   15. What happens when I build code in C?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-31.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-31.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-31.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-31.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-31.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   15.1. Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing">
+   15.2. Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling">
+   15.3. Compiling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assembling">
+   15.4. Assembling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linking">
+   15.5. Linking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-it-all-together">
+   15.6. Putting it all together
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-multiple-files">
+   15.7. Working with multiple files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   15.8. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   15.9. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   15.10. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
+     15.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-flags-are-order-sensitive-when-compiling-in-c">
+     15.10.2. what flags are order sensitive when compiling in C?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-g-flag-work-for-all-debuggers">
+     15.10.3. how does the -g flag work for all debuggers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
+     15.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-apple-try-to-make-the-object-file-make-sense">
+     15.10.5. Why does Apple try to make the object file make sense?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>What happens when I build code in C?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup">
+   15.1. Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing">
+   15.2. Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compiling">
+   15.3. Compiling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assembling">
+   15.4. Assembling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linking">
+   15.5. Linking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-it-all-together">
+   15.6. Putting it all together
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-multiple-files">
+   15.7. Working with multiple files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   15.8. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   15.9. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   15.10. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
+     15.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-flags-are-order-sensitive-when-compiling-in-c">
+     15.10.2. what flags are order sensitive when compiling in C?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-the-g-flag-work-for-all-debuggers">
+     15.10.3. how does the -g flag work for all debuggers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
+     15.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-apple-try-to-make-the-object-file-make-sense">
+     15.10.5. Why does Apple try to make the object file make sense?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="what-happens-when-i-build-code-in-c">
+<h1><span class="section-number">15. </span>What happens when I build code in C?<a class="headerlink" href="#what-happens-when-i-build-code-in-c" title="Permalink to this headline">¶</a></h1>
+<p>We came across the term build before.</p>
+<p>We sometimes say that compiling takes code from source to executable, but this process is actually multiple stages and compiling is <em>one</em> of those steps.</p>
+<p>We will focus on <em>what</em> has to happen more than <em>how</em> it all happens.</p>
+<p>CSC301, 402, 501, 502 go into greater detail on how languages work.</p>
+<p>Our goal is to:</p>
+<ul class="simple">
+<li><p>(where applicable) give you a preview</p></li>
+<li><p>get enough understanding of what happens to know where to look when debugging</p></li>
+</ul>
+<p><img alt="flowchart of prepreproces, compile, assemble, link" src="https://miro.medium.com/max/1036/1*wHKe6W4opLmk6pb7sxZz6w.png" /></p>
+<p><a class="reference external" href="https://medium.com/&#64;laura.derohan/compiling-c-files-with-gcc-step-by-step-8e78318052">source</a></p>
+<div class="section" id="setup">
+<h2><span class="section-number">15.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Let’s setup by creating an empty folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="n">compilec</span>
+<span class="n">cd</span> <span class="n">compilec</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>and then create a small program in C.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>and then we can look at the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h2><span class="section-number">15.2. </span>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>First we handle the preprocessing which pulls in headers that are included.  We will use the compiler
+<a class="reference external" href="https://man7.org/linux/man-pages/man1/gcc.1.html">gcc</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">E</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+</pre></div>
+</div>
+<p>If it succeeds, we see no output, but we can check the folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>now we have a new file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>	<span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+</pre></div>
+</div>
+<p>This gives us a version with the header file’s contents literally pasted in to replace the original <code class="docutils literal notranslate"><span class="pre">#include</span></code> statement</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp"># 1 &quot;hello.c&quot;</span>
+<span class="cp"># 1 &quot;&lt;built-in&gt;&quot; 1</span>
+<span class="cp"># 1 &quot;&lt;built-in&gt;&quot; 3</span>
+<span class="cp"># 366 &quot;&lt;built-in&gt;&quot; 3</span>
+<span class="cp"># 1 &quot;&lt;command line&gt;&quot; 1</span>
+<span class="cp"># 1 &quot;&lt;built-in&gt;&quot; 2</span>
+<span class="cp"># 1 &quot;hello.c&quot; 2</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 1 3 4</span>
+<span class="cp"># 64 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 1 3 4</span>
+<span class="cp"># 68 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h&quot; 1 3 4</span>
+<span class="cp"># 630 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_symbol_aliasing.h&quot; 1 3 4</span>
+<span class="cp"># 631 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h&quot; 2 3 4</span>
+<span class="cp"># 696 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_posix_availability.h&quot; 1 3 4</span>
+<span class="cp"># 697 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/cdefs.h&quot; 2 3 4</span>
+<span class="cp"># 69 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h&quot; 1 3 4</span>
+<span class="cp"># 259 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/AvailabilityInternal.h&quot; 1 3 4</span>
+<span class="cp"># 260 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h&quot; 2 3 4</span>
+<span class="cp"># 70 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h&quot; 1 3 4</span>
+<span class="cp"># 27 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h&quot; 1 3 4</span>
+<span class="cp"># 33 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h&quot; 1 3 4</span>
+<span class="cp"># 32 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_types.h&quot; 1 3 4</span>
+<span class="cp"># 37 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_types.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">signed</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__int8_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__uint8_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">__int16_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">__uint16_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__int32_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__uint32_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__int64_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__uint64_t</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__darwin_intptr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_natural_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 70 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/_types.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_ct_rune_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__mbstate8</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">_mbstateL</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">__mbstate_t</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__mbstate_t</span><span class="w"> </span><span class="n">__darwin_mbstate_t</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_ptrdiff_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_size_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__builtin_va_list</span><span class="w"> </span><span class="n">__darwin_va_list</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_wchar_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_wchar_t</span><span class="w"> </span><span class="n">__darwin_rune_t</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_wint_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__darwin_clock_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_socklen_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__darwin_ssize_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__darwin_time_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 33 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/_types.h&quot; 2 3 4</span>
+<span class="cp"># 34 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h&quot; 2 3 4</span>
+<span class="cp"># 55 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int64_t</span><span class="w"> </span><span class="n">__darwin_blkcnt_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int32_t</span><span class="w"> </span><span class="n">__darwin_blksize_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int32_t</span><span class="w"> </span><span class="n">__darwin_dev_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_fsblkcnt_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_fsfilcnt_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_gid_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_id_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint64_t</span><span class="w"> </span><span class="n">__darwin_ino64_t</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_ino64_t</span><span class="w"> </span><span class="n">__darwin_ino_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_natural_t</span><span class="w"> </span><span class="n">__darwin_mach_port_name_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_mach_port_name_t</span><span class="w"> </span><span class="n">__darwin_mach_port_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint16_t</span><span class="w"> </span><span class="n">__darwin_mode_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int64_t</span><span class="w"> </span><span class="n">__darwin_off_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int32_t</span><span class="w"> </span><span class="n">__darwin_pid_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_sigset_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__int32_t</span><span class="w"> </span><span class="n">__darwin_suseconds_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_uid_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_useconds_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__darwin_uuid_t</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__darwin_uuid_string_t</span><span class="p">[</span><span class="mi">37</span><span class="p">];</span><span class="w"></span>
+
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h&quot; 1 3 4</span>
+<span class="cp"># 57 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_pthread/_pthread_types.h&quot; 3 4</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">__darwin_pthread_handler_rec</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">__routine</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">__arg</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__darwin_pthread_handler_rec</span><span class="w"> </span><span class="o">*</span><span class="n">__next</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_attr_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">56</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_cond_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">40</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_condattr_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_mutex_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">56</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_mutexattr_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_once_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_rwlock_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">192</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_rwlockattr_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_t</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__sig</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__darwin_pthread_handler_rec</span><span class="w"> </span><span class="o">*</span><span class="n">__cleanup_stack</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">__opaque</span><span class="p">[</span><span class="mi">8176</span><span class="p">];</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_attr_t</span><span class="w"> </span><span class="n">__darwin_pthread_attr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_cond_t</span><span class="w"> </span><span class="n">__darwin_pthread_cond_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_condattr_t</span><span class="w"> </span><span class="n">__darwin_pthread_condattr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">__darwin_pthread_key_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_mutex_t</span><span class="w"> </span><span class="n">__darwin_pthread_mutex_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_mutexattr_t</span><span class="w"> </span><span class="n">__darwin_pthread_mutexattr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_once_t</span><span class="w"> </span><span class="n">__darwin_pthread_once_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_rwlock_t</span><span class="w"> </span><span class="n">__darwin_pthread_rwlock_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_rwlockattr_t</span><span class="w"> </span><span class="n">__darwin_pthread_rwlockattr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">_opaque_pthread_t</span><span class="w"> </span><span class="o">*</span><span class="n">__darwin_pthread_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 81 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types.h&quot; 2 3 4</span>
+<span class="cp"># 28 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h&quot; 2 3 4</span>
+<span class="cp"># 40 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_types.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_nl_item</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__darwin_wctrans_t</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__uint32_t</span><span class="w"> </span><span class="n">__darwin_wctype_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 72 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+
+
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h&quot; 1 3 4</span>
+<span class="cp"># 35 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 1 3 4</span>
+<span class="cp"># 76 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int8_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">signed</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="kt">int8_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 77 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int16_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="kt">int16_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 78 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int32_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="kt">int32_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 79 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_int64_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">int64_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 80 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int8_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">u_int8_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 82 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int16_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">u_int16_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 83 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int32_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">u_int32_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 84 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_u_int64_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">u_int64_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 85 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">register_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_intptr_t.h&quot; 2 3 4</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_intptr_t</span><span class="w"> </span><span class="kt">intptr_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 93 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h&quot; 1 3 4</span>
+<span class="cp"># 30 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_uintptr_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">uintptr_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 94 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/types.h&quot; 2 3 4</span>
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">u_int64_t</span><span class="w"> </span><span class="n">user_addr_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">u_int64_t</span><span class="w"> </span><span class="n">user_size_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">user_ssize_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">user_long_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">u_int64_t</span><span class="w"> </span><span class="n">user_ulong_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">user_time_t</span><span class="p">;</span><span class="w"></span>
+<span class="k">typedef</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">user_off_t</span><span class="p">;</span><span class="w"></span>
+
+
+
+
+
+
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">u_int64_t</span><span class="w"> </span><span class="n">syscall_arg_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 36 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/machine/types.h&quot; 2 3 4</span>
+<span class="cp"># 32 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_va_list.h&quot; 2 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_va_list</span><span class="w"> </span><span class="kt">va_list</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 76 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_size_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_size_t</span><span class="w"> </span><span class="kt">size_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 77 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_null.h&quot; 1 3 4</span>
+<span class="cp"># 78 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h&quot; 1 3 4</span>
+<span class="cp"># 39 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/stdio.h&quot; 3 4</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">renameat</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.10</span><span class="p">)));</span><span class="w"></span>
+
+
+
+
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">renamex_np</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.12</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">ios</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">tvos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">watchos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">renameatx_np</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.12</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">ios</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">tvos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">watchos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)));</span><span class="w"></span>
+<span class="cp"># 80 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 2 3 4</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_off_t</span><span class="w"> </span><span class="kt">fpos_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 92 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 3 4</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">__sbuf</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">_base</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_size</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">__sFILEX</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 126 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__sFILE</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">_p</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_r</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_w</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">_flags</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="n">_file</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__sbuf</span><span class="w"> </span><span class="n">_bf</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_lbfsize</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">_cookie</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">_close</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">_read</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">_seek</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="w"> </span><span class="n">_write</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__sbuf</span><span class="w"> </span><span class="n">_ub</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__sFILEX</span><span class="w"> </span><span class="o">*</span><span class="n">_extra</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_ur</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_ubuf</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_nbuf</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__sbuf</span><span class="w"> </span><span class="n">_lb</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_blksize</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="n">_offset</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="kt">FILE</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 65 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 2 3 4</span>
+
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">__stdinp</span><span class="p">;</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">__stdoutp</span><span class="p">;</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">__stderrp</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 142 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">clearerr</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">feof</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ferror</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fflush</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fgetc</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fgetpos</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">fgets</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+
+
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__filename</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__mode</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;fopen&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fputc</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fputs</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;fputs&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">fread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__nitems</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__stream</span><span class="p">);</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">freopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"></span>
+<span class="w">                 </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;freopen&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fscanf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fseek</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fsetpos</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">fpos_t</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">long</span><span class="w"> </span><span class="nf">ftell</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">size_t</span><span class="w"> </span><span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__size</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__nitems</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__stream</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;fwrite&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getc</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getchar</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">gets</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">perror</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__cold__</span><span class="p">));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">printf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">putc</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">putchar</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">puts</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">rename</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">__old</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">__new</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">rewind</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">scanf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">setvbuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use snprintf instead.&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">sscanf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">tmpfile</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use mkstemp(3) instead.&quot;</span><span class="p">)))</span><span class="w"></span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">__deprecated__</span><span class="p">(</span><span class="s">&quot;This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tmpnam(3), it is highly recommended that you use mkstemp(3) instead.&quot;</span><span class="p">)))</span><span class="w"></span>
+
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">tmpnam</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ungetc</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vfprintf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vprintf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vsprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use vsnprintf instead.&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="cp"># 205 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h&quot; 1 3 4</span>
+<span class="cp"># 26 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_ctermid.h&quot; 3 4</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">ctermid</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="cp"># 206 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 2 3 4</span>
+
+
+
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fdopen</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;fdopen&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fileno</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="cp"># 228 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">pclose</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use posix_spawn APIs or NSTask instead.&quot;</span><span class="p">)));</span><span class="w"></span>
+
+
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">popen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;popen&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use posix_spawn APIs or NSTask instead.&quot;</span><span class="p">)));</span><span class="w"></span>
+<span class="cp"># 249 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">__srget</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">__svfscanf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">__swbuf</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="cp"># 260 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="kr">inline</span><span class="w"> </span><span class="n">__attribute__</span><span class="w"> </span><span class="p">((</span><span class="n">__always_inline__</span><span class="p">))</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__sputc</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">_c</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">_p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">_p</span><span class="o">-&gt;</span><span class="n">_w</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">_p</span><span class="o">-&gt;</span><span class="n">_w</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">_p</span><span class="o">-&gt;</span><span class="n">_lbfsize</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">_c</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">_p</span><span class="o">-&gt;</span><span class="n">_p</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_c</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="k">else</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">__swbuf</span><span class="p">(</span><span class="n">_c</span><span class="p">,</span><span class="w"> </span><span class="n">_p</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="cp"># 286 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">flockfile</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">ftrylockfile</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">funlockfile</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getc_unlocked</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">getchar_unlocked</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">putc_unlocked</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">putchar_unlocked</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">getw</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">putw</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">__availability__</span><span class="p">(</span><span class="n">swift</span><span class="p">,</span><span class="w"> </span><span class="n">unavailable</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="o">=</span><span class="s">&quot;Use mkstemp(3) instead.&quot;</span><span class="p">)))</span><span class="w"></span>
+
+<span class="n">__attribute__</span><span class="p">((</span><span class="n">__deprecated__</span><span class="p">(</span><span class="s">&quot;This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tempnam(3), it is highly recommended that you use mkstemp(3) instead.&quot;</span><span class="p">)))</span><span class="w"></span>
+
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">tempnam</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">__dir</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">__prefix</span><span class="p">)</span><span class="w"> </span><span class="kr">__asm</span><span class="p">(</span><span class="s">&quot;_&quot;</span><span class="w"> </span><span class="s">&quot;tempnam&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="cp"># 324 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_off_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_off_t</span><span class="w"> </span><span class="kt">off_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 325 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 2 3 4</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fseeko</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">__stream</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">__offset</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__whence</span><span class="p">);</span><span class="w"></span>
+<span class="kt">off_t</span><span class="w"> </span><span class="nf">ftello</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">__stream</span><span class="p">);</span><span class="w"></span>
+
+
+
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">snprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__str</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__format</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vfscanf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__stream</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vscanf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vsnprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__str</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vsscanf</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__str</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__format</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__scanf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="cp"># 349 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/sys/_types/_ssize_t.h&quot; 3 4</span>
+<span class="k">typedef</span><span class="w"> </span><span class="n">__darwin_ssize_t</span><span class="w"> </span><span class="kt">ssize_t</span><span class="p">;</span><span class="w"></span>
+<span class="cp"># 350 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 2 3 4</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">dprintf</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.7</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vdprintf</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.7</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="nf">getdelim</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__linep</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__linecapp</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__delimiter</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__stream</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.7</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="nf">getline</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__linep</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__linecapp</span><span class="p">,</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__stream</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macosx</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.7</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">fmemopen</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__buf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">__size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="w"> </span><span class="n">__mode</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.13</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">ios</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">11.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">tvos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">11.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">watchos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">open_memstream</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">__bufp</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="n">__sizep</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">macos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">10.13</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">ios</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">11.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">tvos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">11.0</span><span class="p">)))</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">availability</span><span class="p">(</span><span class="n">watchos</span><span class="p">,</span><span class="n">introduced</span><span class="o">=</span><span class="mf">4.0</span><span class="p">)));</span><span class="w"></span>
+<span class="cp"># 367 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sys_nerr</span><span class="p">;</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">sys_errlist</span><span class="p">[];</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">asprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">ctermid_r</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">fgetln</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="nf">fmtcheck</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">fpurge</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setbuffer</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">setlinebuf</span><span class="p">(</span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">vasprintf</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">)</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__format__</span><span class="w"> </span><span class="p">(</span><span class="n">__printf__</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">zopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
+
+
+
+
+
+<span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="nf">funopen</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"></span>
+<span class="w">                 </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">),</span><span class="w"></span>
+<span class="w">                 </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">),</span><span class="w"></span>
+<span class="w">                 </span><span class="kt">fpos_t</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">fpos_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">),</span><span class="w"></span>
+<span class="w">                 </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="w"> </span><span class="n">_Nullable</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span><span class="w"></span>
+<span class="cp"># 407 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h&quot; 1 3 4</span>
+<span class="cp"># 31 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h&quot; 3 4</span>
+<span class="cp"># 1 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_common.h&quot; 1 3 4</span>
+<span class="cp"># 32 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h&quot; 2 3 4</span>
+<span class="cp"># 42 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h&quot; 3 4</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">__sprintf_chk</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+<span class="cp"># 52 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/secure/_stdio.h&quot; 3 4</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">__snprintf_chk</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span><span class="w"></span>
+
+
+
+
+
+
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">__vsprintf_chk</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">);</span><span class="w"></span>
+
+
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">__vsnprintf_chk</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">restrict</span><span class="p">,</span><span class="w"> </span><span class="kt">va_list</span><span class="p">);</span><span class="w"></span>
+<span class="cp"># 408 &quot;/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h&quot; 2 3 4</span>
+<span class="cp"># 2 &quot;hello.c&quot; 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>At the bottom of the file, we see the orignal code with an extra bit of informaiton that helps the compiler write better error messages, by saying where contents came from.</p>
+</div>
+<div class="section" id="compiling">
+<h2><span class="section-number">15.3. </span>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
+<p>Next we take our preprocessed file and compile it to get assembly code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">S</span> <span class="o">-</span><span class="n">c</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">change</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^~~~</span>
+<span class="nb">int</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">c</span>	<span class="n">hello</span><span class="o">.</span><span class="n">i</span>	<span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat hello.s
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 10, 15, 6	sdk_version 10, 15, 6
+	.globl	_main                   ## -- Begin function main
+	.p2align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	leaq	L_.str(%rip), %rdi
+	movb	$0, %al
+	callq	_printf
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	&quot;Hello world\n&quot;
+
+.subsections_via_symbols
+</pre></div>
+</div>
+</div>
+<div class="section" id="assembling">
+<h2><span class="section-number">15.4. </span>Assembling<a class="headerlink" href="#assembling" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">c</span> <span class="n">hello</span><span class="o">.</span><span class="n">s</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>now we see a new file, the <code class="docutils literal notranslate"><span class="pre">.o</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span>	<span class="n">hello</span><span class="o">.</span><span class="n">i</span>	<span class="n">hello</span><span class="o">.</span><span class="n">o</span>	<span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>let’s look at it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<p>This is not machine readable, though</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;__compact_unwind__LD( P?__eh_frame__TEXTH@p
+                                            h2
+
+??
+  PUH??H?=	??]?Hello world
+zRx
+-_main_printf```
+
+</pre></div>
+</div>
+<p>MacOS tried to help a little but it’s still not very readable.</p>
+</div>
+<div class="section" id="linking">
+<h2><span class="section-number">15.5. </span>Linking<a class="headerlink" href="#linking" title="Permalink to this headline">¶</a></h2>
+<p>Now we can link it all together; in this program there are not a lot of other depdencies, but this fills in anything from libraries and outputs an executble</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">lm</span>
+</pre></div>
+</div>
+<p>the <code class="docutils literal notranslate"><span class="pre">-o</span></code> flag specifie the name for output and -lm tells it t link from the.o file.</p>
+<p>again we can look at the directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>we have a new executable file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>	<span class="n">hello</span><span class="o">.</span><span class="n">c</span>	<span class="n">hello</span><span class="o">.</span><span class="n">i</span>	<span class="n">hello</span><span class="o">.</span><span class="n">o</span>	<span class="n">hello</span><span class="o">.</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>Finally we can run our program</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">hello</span>
+</pre></div>
+</div>
+<p>and see that it works!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">world</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="putting-it-all-together">
+<h2><span class="section-number">15.6. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>We can also do all of it at once, to see how it’s different let’s clean up the directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span> <span class="n">hello</span><span class="o">.</span><span class="n">s</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<p>and now we can tell it to compile and link</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">lm</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">change</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^~~~</span>
+<span class="nb">int</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">hello</span>		<span class="n">hello</span><span class="o">.</span><span class="n">c</span>		<span class="n">hello</span><span class="o">.</span><span class="n">dSYM</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-multiple-files">
+<h2><span class="section-number">15.7. </span>Working with multiple files<a class="headerlink" href="#working-with-multiple-files" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">help</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation.</span>
+
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please enter a small positive integer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The product of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">help</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation</span>
+
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+
+<span class="cm">*/</span><span class="w"></span>
+
+
+<span class="cm">/* Requires that &quot;n&quot; be positive. Returns the sum of the</span>
+<span class="cm">  first &quot;n&quot; integers. */</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">return</span><span class="p">(</span><span class="n">total</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="cm">/* Requires that &quot;n&quot; be positive. Returns the product of the</span>
+<span class="cm">  first &quot;n&quot; integers. */</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">product</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">total</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">return</span><span class="p">(</span><span class="n">total</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We can first compile to object the helper functions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">c</span> <span class="n">help</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>and then main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">c</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>but here we get an error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^</span>
+<span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">change</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^~~~</span>
+<span class="nb">int</span>
+<span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">implicit</span> <span class="n">declaration</span> <span class="n">of</span> <span class="n">function</span> <span class="s1">&#39;sum&#39;</span> <span class="ow">is</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="n">C99</span>
+      <span class="p">[</span><span class="o">-</span><span class="n">Werror</span><span class="p">,</span><span class="o">-</span><span class="n">Wimplicit</span><span class="o">-</span><span class="n">function</span><span class="o">-</span><span class="n">declaration</span><span class="p">]</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;The sum of the first n integers is </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+                                                   <span class="o">^</span>
+<span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">implicit</span> <span class="n">declaration</span> <span class="n">of</span> <span class="n">function</span> <span class="s1">&#39;product&#39;</span> <span class="ow">is</span> <span class="n">invalid</span> <span class="ow">in</span> <span class="n">C99</span>
+      <span class="p">[</span><span class="o">-</span><span class="n">Werror</span><span class="p">,</span><span class="o">-</span><span class="n">Wimplicit</span><span class="o">-</span><span class="n">function</span><span class="o">-</span><span class="n">declaration</span><span class="p">]</span>
+ <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;The product of the first n integers is </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">product</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+                                                       <span class="o">^</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="ow">and</span> <span class="mi">2</span> <span class="n">errors</span> <span class="n">generated</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>We can get around this, by telling main about the functions by adding</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">product</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>to the <code class="docutils literal notranslate"><span class="pre">main.c</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+<span class="n">cat</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>to Review what we added, we can look at it</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Used to illustrate separate compilation.</span>
+
+<span class="cm">Created: Joe Zachary, October 22, 1992</span>
+<span class="cm">Modified:</span>
+
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">product</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Please enter a small positive integer: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The sum of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The product of the first n integers is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">product</span><span class="p">(</span><span class="n">n</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Now that we have added those lines, we can build again :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span>  <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>As before we get the warning, but we also get an error.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^</span>
+<span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">change</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^~~~</span>
+<span class="nb">int</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+<span class="n">Undefined</span> <span class="n">symbols</span> <span class="k">for</span> <span class="n">architecture</span> <span class="n">x86_64</span><span class="p">:</span>
+  <span class="s2">&quot;_product&quot;</span><span class="p">,</span> <span class="n">referenced</span> <span class="n">from</span><span class="p">:</span>
+      <span class="n">_main</span> <span class="ow">in</span> <span class="n">main</span><span class="o">-</span><span class="n">aaba11</span><span class="o">.</span><span class="n">o</span>
+  <span class="s2">&quot;_sum&quot;</span><span class="p">,</span> <span class="n">referenced</span> <span class="n">from</span><span class="p">:</span>
+      <span class="n">_main</span> <span class="ow">in</span> <span class="n">main</span><span class="o">-</span><span class="n">aaba11</span><span class="o">.</span><span class="n">o</span>
+<span class="n">ld</span><span class="p">:</span> <span class="n">symbol</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">not</span> <span class="n">found</span> <span class="k">for</span> <span class="n">architecture</span> <span class="n">x86_64</span>
+<span class="n">clang</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">linker</span> <span class="n">command</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">exit</span> <span class="n">code</span> <span class="mi">1</span> <span class="p">(</span><span class="n">use</span> <span class="o">-</span><span class="n">v</span> <span class="n">to</span> <span class="n">see</span> <span class="n">invocation</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since the we got a linker error, but we didn’t intend to link, we know that we ran the command incorrectly by adding the <code class="docutils literal notranslate"><span class="pre">-c</span></code> option we can get it to compile and produce the object file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">c</span>  <span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>we now get only the warning as before</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^</span>
+<span class="n">main</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">note</span><span class="p">:</span> <span class="n">change</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">to</span> <span class="s1">&#39;int&#39;</span>
+<span class="n">void</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>
+<span class="o">^~~~</span>
+<span class="nb">int</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>We can again see what happened</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>Now we have the <code class="docutils literal notranslate"><span class="pre">.o</span></code> file for main</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span>		<span class="n">hello</span><span class="o">.</span><span class="n">dSYM</span>	<span class="n">help</span><span class="o">.</span><span class="n">o</span>		<span class="n">main</span><span class="o">.</span><span class="n">o</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">c</span>		<span class="n">help</span><span class="o">.</span><span class="n">c</span>		<span class="n">main</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>We can link everythng togther, finally by passing it both object files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">demo</span> <span class="n">main</span><span class="o">.</span><span class="n">o</span> <span class="n">help</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">lm</span>
+</pre></div>
+</div>
+<p>Now we see what is there</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls
+</pre></div>
+</div>
+<p>and we see tht there is a new file, the executable named demo</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">demo</span>		<span class="n">hello</span><span class="o">.</span><span class="n">c</span>		<span class="n">help</span><span class="o">.</span><span class="n">c</span>		<span class="n">main</span><span class="o">.</span><span class="n">c</span>
+<span class="n">hello</span>		<span class="n">hello</span><span class="o">.</span><span class="n">dSYM</span>	<span class="n">help</span><span class="o">.</span><span class="n">o</span>		<span class="n">main</span><span class="o">.</span><span class="n">o</span>
+</pre></div>
+</div>
+<p>Now we can run our program</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">demo</span>
+</pre></div>
+</div>
+<p>and we see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Please</span> <span class="n">enter</span> <span class="n">a</span> <span class="n">small</span> <span class="n">positive</span> <span class="n">integer</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">The</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">10</span>
+<span class="n">The</span> <span class="n">product</span> <span class="n">of</span> <span class="n">the</span> <span class="n">first</span> <span class="n">n</span> <span class="n">integers</span> <span class="ow">is</span> <span class="mi">24</span>
+</pre></div>
+</div>
+<p>it works!</p>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class17prep"></span><h2><span class="section-number">15.8. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol>
+<li><p>Practice using gcc.  Repeat steps we did in class, change the order of parameters. Then in <code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code> summarize what you learned as a list of tips and reminders on what the parameters do/why/when you would need them (or not).  (to reinforce what we learned)</p></li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">operators.md</span></code> and make some notes about what you know about operators.  What kinds of operators are you familiar with? Which have you seen in programming? math?</p></li>
+<li><p>Add the following to your kwl chart</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span><span class="n">compiling</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">linking</span>   <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">building</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">machine</span> <span class="n">representation</span>  <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">integers</span>   <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+<span class="o">|</span> <span class="n">floating</span> <span class="n">point</span>  <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span> <span class="n">_</span> <span class="o">|</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class17practice"></span><h2><span class="section-number">15.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>(priority) Write two short programs that do the same thing in different ways and compile them both to assembly (eg using a for vs while loop to sum numbers up to a number). Check the assembly to see if they produce the same thing or if it's different.</p></li>
+<li><p>Add (or link)  a glossary term, cheatsheet tip, or historical context to note on the course website.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">15.10. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
+<h3><span class="section-number">15.10.1. </span>In the .o files, how does the computer interpret the gibberish? What does it actually do?<a class="headerlink" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>This is machine code, it is binary that is designed for your hardware to interpret as instructions.</p>
+<p>When we display it to the terminal, your computer tries to interpret that binary as text, so it ends up as weird characters mostly.</p>
+</div>
+</div>
+<div class="section" id="what-flags-are-order-sensitive-when-compiling-in-c">
+<h3><span class="section-number">15.10.2. </span>what flags are order sensitive when compiling in C?<a class="headerlink" href="#what-flags-are-order-sensitive-when-compiling-in-c" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>This is a practice task to try out.</p>
+</div>
+</div>
+<div class="section" id="how-does-the-g-flag-work-for-all-debuggers">
+<h3><span class="section-number">15.10.3. </span>how does the -g flag work for all debuggers<a class="headerlink" href="#how-does-the-g-flag-work-for-all-debuggers" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>the <code class="docutils literal notranslate"><span class="pre">-g</span></code> option leaves additional information in the object file as informtion for the debugger to use.</p>
+</div>
+</div>
+<div class="section" id="when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
+<h3><span class="section-number">15.10.4. </span>When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)<a class="headerlink" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The object file is specifically not human readable, you would never really look at it.  The advantage of <em>having</em> it is so that you can only re-compile some parts of the code when you make small changes.</p>
+<p>You might need to look at the assembly if you are working on very low level code, like a driver that helps a peripheral talk to the computer.</p>
+</div>
+</div>
+<div class="section" id="why-does-apple-try-to-make-the-object-file-make-sense">
+<h3><span class="section-number">15.10.5. </span>Why does Apple try to make the object file make sense?<a class="headerlink" href="#why-does-apple-try-to-make-the-object-file-make-sense" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Have not yet found this answer</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-03-10.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">14. </span>How does ssh really work? how can I be more secure?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
