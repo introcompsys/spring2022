@@ -8,6 +8,9 @@ answer.
 
 
 ```{glossary}
+Bash
+  a command line tool that is used to manipulate files and directories
+
 
 
 add (new files in a repository)
@@ -36,6 +39,7 @@ pull (changes from a repository)
   
 repository
   a project folder with tracking information in it in the form of a .git file
+  
 
 shell
   a command line interface; allows for access to an operating system
