@@ -84,6 +84,9 @@ Compiled Code
 interpreted code
   code that is directly executed from a high level language. more expensive and takes up more time.
   
+Linker
+  a program that links together the object files and libraries to output an executable file.
+  
 integreated development environment
   also known as an IDE, puts together all of the tools a developer would need to produce code (source code editor, debugger, ability to run code) into one application so that everything can be done in one place. can also have extra features such as showing your file tree and connecting to git and/or github.
 
