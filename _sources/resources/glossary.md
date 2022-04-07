@@ -6,7 +6,6 @@ know, create an issue to ask for help, or contribute a PR after you find the
 answer.
 ```
 
-
 ```{glossary}
 
 
@@ -88,5 +87,6 @@ interpreted code
 integreated development environment
   also known as an IDE, puts together all of the tools a developer would need to produce code (source code editor, debugger, ability to run code) into one application so that everything can be done in one place. can also have extra features such as showing your file tree and connecting to git and/or github.
 
-  
+bitwise operator
+  an operation that happens on a bit string (sequence of 1s and 0s). They are typically faster than operations on whole integers. 
 ```
