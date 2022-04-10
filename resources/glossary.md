@@ -6,12 +6,15 @@ know, create an issue to ask for help, or contribute a PR after you find the
 answer.
 ```
 
-
 ```{glossary}
 
 
 add (new files in a repository)
   the step that stages/prepares files to be committed to a repository from a local branch
+
+
+bitwise operator
+  an operation that happens on a bit string (sequence of 1s and 0s). They are typically faster than operations on whole integers. 
 
 
 git
