@@ -231,6 +231,16 @@ const thebe_selector_output = ".output, .cell_output"
    15. What happens when I build code in C?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-04-05.html">
+   16. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-04-07.html">
+   17. How do represent non integer numbers?
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -453,8 +463,8 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Prepare for the next class<a class="headerlink" href="#prepare-for-the-next-class" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>these are listed byt the date they were <em>posted</em> (eg the content here under Feb 1, was posted Feb 1, and shoudl be done before the Feb 3 class)</p>
-<p><em>below</em> refers to followingin the notes</p>
+<p>these are listed by the date they were <em>posted</em> (eg the content here under Feb 1, was posted Feb 1, and should be done before the Feb 3 class)</p>
+<p><em>below</em> refers to following in the notes</p>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -603,6 +613,39 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </li>
+</ol>
+<p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">2022-04-05</span></a></p>
+<ol>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">bitwise.md</span></code> to your kwl and write the bitwise operations required for the following transformations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">128</span>
+<span class="mi">12493</span> <span class="o">-</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">12494</span>
+<span class="mi">127</span> <span class="o">-&gt;</span> <span class="mi">15</span>
+<span class="mi">7</span> <span class="o">-&gt;</span> <span class="mi">56</span>
+<span class="mi">4</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">5</span>
+</pre></div>
+</div>
+</li>
+<li><p>For the following figure out the bitwise operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">45</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">37</span> <span class="o">=</span> <span class="mi">37</span>
+<span class="mi">45</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">37</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="mi">3</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="mi">6</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">8</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">10</span> <span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">15</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code> and answer the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. if a file had the following binary contents, what would it display in the terminal? Describe how you can figure this out manually and check it using C or Python. &#39;01110011011110010111001101110100011001010110110101110011&#39;
+1. What is the contents of the `sample.bn` if `cat sample.bn` is: ` ¢¶&quot;*`
+</pre></div>
+</div>
+</li>
+<li><p>Read about integer overflow and in <code class="docutils literal notranslate"><span class="pre">overflow.md</span></code> describe what it is, use an example assuming an 8 bit system.</p></li>
+</ol>
+<p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">2022-04-07</span></a></p>
+<ol class="simple">
+<li><p>Write a C program to compare values as doubles and as float (single precision/32bit) to see that this comparison issue is related to the IEEE standard and is not language specific.  Make notes and comparison around its behavior and include it in a code cell in  <code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code>(to practice)</p></li>
+<li><p>(priority) confirm that you can run the hardware simulator <code class="docutils literal notranslate"><span class="pre">HardwareSimulator</span></code> not <code class="docutils literal notranslate"><span class="pre">CPUEmulator</span></code> that we used before (we will use this in class )</p></li>
 </ol>
 </div>
 </div>

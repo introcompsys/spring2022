@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Prepare for the next class" href="prepare.html" />
-    <link rel="prev" title="15. What happens when I build code in C?" href="../notes/2022-03-31.html" />
+    <link rel="prev" title="17. How do represent non integer numbers?" href="../notes/2022-04-07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -229,6 +229,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../notes/2022-03-31.html">
    15. What happens when I build code in C?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-04-05.html">
+   16. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-04-07.html">
+   17. How do represent non integer numbers?
   </a>
  </li>
 </ul>
@@ -715,9 +725,64 @@ new branch to work on them.</p></li>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://octal.md">octal.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-08.html"><span class="doc std std-doc">pracitce with octal numbers in file permissions</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://hpc.md.md">hpc.md.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-08.html"><span class="doc std std-doc">reflect on HPC systems</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
 <tr class="row-even"><td><p>ssh_basics.md</p></td>
 <td><p><a class="reference internal" href="../notes/2022-03-10.html"><span class="doc std std-doc">Creating ssh keys and using them</span></a></p></td>
 <td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-31.html"><span class="doc std std-doc">c compilation notes</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">operators.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-31.html"><span class="doc std std-doc">operators in programming and math</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bitwise.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">practice with bitwise operations</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">review how reading bytes works</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">compare integer overflow</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">compare integer overflow</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">floatexp.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
+<td><p>practice</p></td>
 <td><p>graded</p></td>
 </tr>
 </tbody>
@@ -750,11 +815,11 @@ new branch to work on them.</p></li>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../notes/2022-03-31.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../notes/2022-04-07.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">15. </span>What happens when I build code in C?</p>
+            <p class="prev-next-title"><span class="section-number">17. </span>How do represent non integer numbers?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="prepare.html" title="next page">

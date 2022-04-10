@@ -231,6 +231,16 @@ const thebe_selector_output = ".output, .cell_output"
    15. What happens when I build code in C?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-05.html">
+   16. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-07.html">
+   17. How do represent non integer numbers?
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -603,7 +613,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="how-can-i-work-on-a-remote-server">
 <h1><span class="section-number">13. </span>How can I work on a remote server?<a class="headerlink" href="#how-can-i-work-on-a-remote-server" title="Permalink to this headline">¶</a></h1>
-<p>Today we will connect to a remote server, use an HPC system with scheduleer, and learn new bash commands for working with the <em>content</em> of files.</p>
+<p>Today we will connect to a remote server, use an HPC system with scheduler, and learn new bash commands for working with the <em>content</em> of files.</p>
 <div class="section" id="what-are-remote-servers-and-hpc-systems">
 <h2><span class="section-number">13.1. </span>What are remote servers and HPC systems?<a class="headerlink" href="#what-are-remote-servers-and-hpc-systems" title="Permalink to this headline">¶</a></h2>
 <p><img alt="diagram illustrating a remot connection to a login node and compute cluster" src="../_images/hpcsketch.svg" /></p>
@@ -1109,7 +1119,7 @@ WARNING: output may be incomplete or inaccurate, you should run this program as 
 <li><p>File permissions are represented numerically often in octal, by transforming the permissions for each level (owner, group, all) as binary into a number. Add <code class="docutils literal notranslate"><span class="pre">octal.md</span></code> to your KWL repo and answer the following. Try to think through it on your own, but you may look up the answers, as long as you link to (or ideally cite using jupyterbook citations) a high quality source.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Transform the permissions [`r--`, `rw-`, `rwx`] to octal, by treating it as three bits.
 1. Transform the permission we changed our script to `rwxr-xr-x` to octal.
-1. Which of the following would prevent a file from being edited by other people 777 or 755? 
+1. Which of the following would prevent a file from being edited by other people 777 or 755?
 </pre></div>
 </div>
 </li>

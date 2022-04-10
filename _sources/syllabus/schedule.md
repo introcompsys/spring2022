@@ -138,38 +138,38 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - ssh/ ssh keys, sed/ awk, file permissions
 * - 2021-03-10
   - How do programmers keep track of all these tools?
-  - [summarize IDE reflections]
+  - [summarize IDE reflections](class14prep)
   - IDE anatomy
 * - 2021-03-22
-  -
+  - Skipped
   -
   -
 * - 2021-03-24
-  -
-  -
+  - How do Developers keep track of all these tools?
+  - [compare languages you know]
   -
 * - 2021-03-29
-  -
-  -
+  - How do we choose among different programming languages?
+  - [install c compiler]
   -
 * - 2021-03-31
-  -
+  - What happens when I compile code?
   -
   -
 * - 2021-04-05
-  -
-  -
-  -
+  - Why is the object file unreadable?
+  - [what are operators]
+  - bits, bytes, and integers/character representtion
 * - 2021-04-07
+  - What about non integer numbers?
   -
-  -
-  -
+  - floating point representation
 * - 2021-04-12
-  -
-  -
-  -
+  - Where do those bitwise operations come from?
+  - [review simulator]
+  - gates, registers
 * - 2021-04-14
-  -
+  - How do those components add up to the higher level components in a computer
   -
   -
 * - 2021-04-19
