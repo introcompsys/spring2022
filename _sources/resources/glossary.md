@@ -116,4 +116,13 @@ integreated development environment
   also known as an IDE, puts together all of the tools a developer would need to produce code (source code editor, debugger, ability to run code) into one application so that everything can be done in one place. can also have extra features such as showing your file tree and connecting to git and/or github.
 
 
+bitwise operator
+  an operation that happens on a bit string (sequence of 1s and 0s). They are typically faster than operations on whole integers. 
+  
+floating point number
+  the concept that the decimal can move within the number (ex. scientific notation; you move the decimal based on the exponent on the 10). can represent more numbers than a fixed point number.
+  
+fixed point number
+  the concept that the decimal point does not move in the number (the example in the notes where if we split up a bit in the middle and one half was for the decimal and the other half was for the whole number. Cannot represent as many numbers as a floating point number.
+
 ```
