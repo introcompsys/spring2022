@@ -143,7 +143,7 @@ stuff/
 ```
 If we were to run `ls *.py` while in the `stuff/` directory, the command actually run by the computer is `ls a.py b.py c.py`. This also works for commands like `mv`. I.e. `mv *.py nested_folder/` runs `mv a.py b.py c.py nested_folder/`
 
-This is a great video that explains what a [half-adder is](https://www.youtube.com/watch?v=thkTzdnkL5U)
+This is video explains what a [half-adder is](https://www.youtube.com/watch?v=thkTzdnkL5U)
 
 
 
