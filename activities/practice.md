@@ -14,7 +14,7 @@ kernelspec:
 # More Practice
 
 ```{note}
-these are listed byt the date they were *posted*
+these are listed by the date they were *posted*
 ```
 
 ```{code-cell} ipython3

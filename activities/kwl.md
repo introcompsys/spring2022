@@ -185,9 +185,52 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [How to access and work on a remote server](../notes/2022-03-08)
   - prepare
   - graded
+* - octal.md
+  - [pracitce with octal numbers in file permissions](../notes/2022-03-08)
+  - practice
+  - graded
+* - hpc.md.md
+  - [reflect on HPC systems](../notes/2022-03-08)
+  - practice
+  - graded
 * - ssh_basics.md
   - [Creating ssh keys and using them](../notes/2022-03-10)
   - prepare
   - graded
-  
+* - `gcctips.md`
+  - [c compilation notes](../notes/2022-03-31)
+  - prepare
+  - graded
+* - `operators.md`
+  - [operators in programming and math](../notes/2022-03-31)
+  - prepare
+  - graded
+* - `bitwise.md`
+  - [practice with bitwise operations](../notes/2022-04-05)
+  - prepare
+  - graded
+* - `readingbytes.md`
+  - [review how reading bytes works](../notes/2022-04-05)
+  - prepare
+  - graded
+* - `overflow.md`
+  - [compare integer overflow](../notes/2022-04-05)
+  - prepare
+  - graded
+* - `cdouble.md`
+  - [c program with double comparison](../notes/2022-04-07)
+  - prepare
+  - graded
+* - `overflow.md`
+  - [compare integer overflow](../notes/2022-04-05)
+  - practice
+  - graded
+* - `readingbytes.md`
+  - [c program with double comparison](../notes/2022-04-07)
+  - practice
+  - graded
+* - `floatexp.md`
+  - [c program with double comparison](../notes/2022-04-07)
+  - practice
+  - graded
 ```
