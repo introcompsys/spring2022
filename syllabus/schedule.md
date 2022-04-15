@@ -167,13 +167,13 @@ Content from above will be expanded and slotted into specific classes as we go. 
 * - 2021-04-12
   - Where do those bitwise operations come from?
   - [review simulator]
-  - gates, registers
+  - gates, registers, more integer
 * - 2021-04-14
   - How do those components add up to the higher level components in a computer
   -
   -
 * - 2021-04-19
-  -
+  - How do computers work together?
   -
   -
 * - 2021-04-21
