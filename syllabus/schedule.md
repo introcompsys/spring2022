@@ -169,13 +169,13 @@ Content from above will be expanded and slotted into specific classes as we go. 
   - [review simulator]
   - gates, registers, more integer
 * - 2021-04-14
-  - How do those components add up to the higher level components in a computer
+  - What actually is a gate?
   -
-  -
+  - physics, history
 * - 2021-04-19
-  - How do computers work together?
+  - How do components work together?
   -
-  -
+  - memmory, IO, bus, clocks,
 * - 2021-04-21
   -
   -
