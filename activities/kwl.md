@@ -41,7 +41,7 @@ new branch to work on them.
 After your KWL repo is a jupyterbook, you may want to move your chart into a chart.md from the README. You could then put content from this section in the README to have an in-place reminder.
 ```
 
-
+(kwlmin)=
 ## Minimum Rows
 
 
@@ -76,6 +76,20 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 | networking | _ | _ | _ |
 |ssh | _ | _ | _ |
 | ssh keys | _ | _ | _ |
+|compiling | _ | _ | _ |
+| linking   | _ | _ | _ |
+| building | _ | _ | _ |
+| machine representation  | _ | _ | _ |
+| integers   | _ | _ | _ |
+| floating point  | _ | _ | _ |
+|logic gates | _ | _ | _ |
+| ALU | _ | _ | _ |
+| binary operations | _ | _ | _ |
+| memory | _ | _ | _ |
+| cache | _ | _ | _ |
+| register | _ | _ | _ |
+| clock | _ | _ | _ |
+| Concurrency | _ | _ | _ |
 ```
 
 
@@ -197,6 +211,18 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [Creating ssh keys and using them](../notes/2022-03-10)
   - prepare
   - graded
+* - ide.md
+  - [featrures in most used ide](../notes/2022-03-24)
+  - prepare
+  - graded
+* - languages.md
+  - [compare two languages](../notes/2022-03-24)
+  - prepare
+  - graded
+* - favoriteide.md
+  - [compare three ides](../notes/2022-03-24)
+  - practice
+  - graded
 * - `gcctips.md`
   - [c compilation notes](../notes/2022-03-31)
   - prepare
@@ -232,5 +258,25 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 * - `floatexp.md`
   - [c program with double comparison](../notes/2022-04-07)
   - practice
+  - graded
+* - `mulitplication.md`
+  - [interpret mulitplication as addition](../notes/2022-04-12)
+  - prepare
+  - graded
+* - `addertypes.md`
+  - [compare adders](../notes/2022-04-12)
+  - practice
+  - graded
+* - `systemsabstractions.md.md`
+  - [reflect on an article](../notes/2022-04-14)
+  - prepare
+  - graded
+* - `history-<event>.md`
+  - [summarize and evaluate an aspect of computer history](../notes/2022-04-14)
+  - practice
+  - graded
+* - `hardwaremp.md`
+  - [visualize current hardware knowledge](../notes/2022-04-14)
+  - pracite
   - graded
 ```
