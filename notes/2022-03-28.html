@@ -1,0 +1,1047 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16. How do we pick programming languages? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="17. What happens when I build code in C?" href="2022-03-31.html" />
+    <link rel="prev" title="15. What is an IDE" href="2022-03-24.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-10.html">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-31.html">
+   17. What happens when I build code in C?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-05.html">
+   18. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-07.html">
+   19. How do represent non integer numbers?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-12.html">
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-03-28.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-03-28.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-03-28.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-03-28.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-03-28.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#admin">
+   16.1. Admin
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-pull-request">
+     16.1.1. What
+     <em>
+      is
+     </em>
+     a pull request ?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ide-review">
+   16.2. IDE Review
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-ide-stand-for">
+     16.2.1. What does IDE stand for?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-do-we-use-them">
+     16.2.2. Why do we use them?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-we-compare-different-programming-languages">
+   16.3. How can we compare Different Programming Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-you-decided-to-pick-one-language-vs-another">
+   16.4. how do you decided to pick one language vs another?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   16.5. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   16.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   16.7. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-pandas">
+     16.7.1. What is pandas?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-you-implement-programs-projects-which-depend-on-multiple-languages-like-a-web-browser-that-uses-javascript-but-does-calculations-in-python">
+     16.7.2. How do you implement programs/projects which depend on multiple languages, like a web browser that uses javascript but does calculations in python.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-might-one-person-go-to-find-out-which-programming-languages-is-best-for-their-project-is-it-through-personal-research">
+     16.7.3. Where might one person go to find out which programming languages is best for their project? Is it through personal research?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-the-languages-used-for-classes-arbitrarily-chosen-or-is-there-a-process-that-the-professor-goes-through-when-picking-the-language-for-a-class">
+     16.7.4. Are the languages used for classes arbitrarily chosen or is there a process that the professor goes through when picking the language for a class?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-kind-of-non-technical-questions-should-i-be-asking-when-developing">
+     16.7.5. What kind of non technical questions should I be asking when developing?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How do we pick programming languages?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#admin">
+   16.1. Admin
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-pull-request">
+     16.1.1. What
+     <em>
+      is
+     </em>
+     a pull request ?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ide-review">
+   16.2. IDE Review
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-ide-stand-for">
+     16.2.1. What does IDE stand for?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-do-we-use-them">
+     16.2.2. Why do we use them?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-can-we-compare-different-programming-languages">
+   16.3. How can we compare Different Programming Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-you-decided-to-pick-one-language-vs-another">
+   16.4. how do you decided to pick one language vs another?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   16.5. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   16.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   16.7. Questions After class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-pandas">
+     16.7.1. What is pandas?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-do-you-implement-programs-projects-which-depend-on-multiple-languages-like-a-web-browser-that-uses-javascript-but-does-calculations-in-python">
+     16.7.2. How do you implement programs/projects which depend on multiple languages, like a web browser that uses javascript but does calculations in python.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-might-one-person-go-to-find-out-which-programming-languages-is-best-for-their-project-is-it-through-personal-research">
+     16.7.3. Where might one person go to find out which programming languages is best for their project? Is it through personal research?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-the-languages-used-for-classes-arbitrarily-chosen-or-is-there-a-process-that-the-professor-goes-through-when-picking-the-language-for-a-class">
+     16.7.4. Are the languages used for classes arbitrarily chosen or is there a process that the professor goes through when picking the language for a class?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-kind-of-non-technical-questions-should-i-be-asking-when-developing">
+     16.7.5. What kind of non technical questions should I be asking when developing?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-do-we-pick-programming-languages">
+<h1><span class="section-number">16. </span>How do we pick programming languages?<a class="headerlink" href="#how-do-we-pick-programming-languages" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="admin">
+<h2><span class="section-number">16.1. </span>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>make sure you have a PR open for any work you have not received feedback on</p></li>
+</ul>
+<div class="section" id="what-is-a-pull-request">
+<h3><span class="section-number">16.1.1. </span>What <em>is</em> a pull request ?<a class="headerlink" href="#what-is-a-pull-request" title="Permalink to this headline">¶</a></h3>
+<p>like what say you were working on something you made some changes and then</p>
+<p>you merge before class but then you made new changes on that Branch then you can make a Newport I sent the request from that bridge is closed but you have to it like</p>
+<p>you can always do that right so you have to just keep things kind of separate so until it branches merged you can’t make an additional per request from it because it’s it’s like</p>
+<p>but it’s not like a part of us isn’t the thing that exists inside repository right branches exist inside their policies when you download with get clone like I’m working out so you can see all the branches you have but the poor West isn’t there the poor of us is just</p>
+<p>it’s like a helper for a person to do it once a mergency branches or merge this one into the other like we talked about get work clothes right and there was like an iteration manager version on so get its actual Source forget itself</p>
+<p>is actually mirrored on</p>
+<p>right to have an organization the mirror that store still here but this is just a publish only depository that they don’t actually use pull requests to hear people don’t follow instructions and make them but they don’t actually use the four of us to decide what it says yet to submit which of these approaches to the mailing list so if you want to submit a pull request to submit changes to the get source code that actually have an email</p>
+<p>yes I do know there’s that’s their way of kind of limiting who’s going to do it and who’s changes are going to consider seriously because get invented like GitHub cannot exist until so get predates GitHub</p>
+</div>
+</div>
+<div class="section" id="ide-review">
+<h2><span class="section-number">16.2. </span>IDE Review<a class="headerlink" href="#ide-review" title="Permalink to this headline">¶</a></h2>
+<p>so last week I had you read about IDEs is it going to see will come back in touch and reinforce some of those things in different classes of you talk about how like what actually happens to code cuz that’s what’s going to happen to the rest of the month or so the first part we talked a lot about the tools we use</p>
+<p>but we we just been playing with text files because they’re easy and they can do we can treat them just like weird code files what</p>
+<p>happens with a code when you bought it starting from like how does comp compilation work all the way down to</p>
+<p>like how our numbers are presented in computers machine representation. so</p>
+<p>Wii U read about ideas but let’s just a quick review to make sure they’re paying attention and you’re awake and here so first question or piss me off just what is it stand for</p>
+<div class="section" id="what-does-ide-stand-for">
+<h3><span class="section-number">16.2.1. </span>What does IDE stand for?<a class="headerlink" href="#what-does-ide-stand-for" title="Permalink to this headline">¶</a></h3>
+<p>Integrated Development Environment</p>
+</div>
+<div class="section" id="why-do-we-use-them">
+<h3><span class="section-number">16.2.2. </span>Why do we use them?<a class="headerlink" href="#why-do-we-use-them" title="Permalink to this headline">¶</a></h3>
+<p>To keep all of the tools together, increase ease of using multiple together.</p>
+<p>Also provide additional features when it’s a development focused environment:</p>
+<ul class="simple">
+<li><p>easier path handling in terminal</p></li>
+<li><p>developer friendly features in text editor  (mulitple cursors; copy+ paste at once; tab completion; syntax checking )</p></li>
+<li><p>having to file explorer panel while you’re looking at your code helps you see what’s going on and see for example a function definition at the same time as where you’re calling it.</p></li>
+</ul>
+<p>The More practice from last week is expected to be a longer one.</p>
+<p>yeah right if it combines two things are copy and paste and do just one thing</p>
+<p>well right. Really sophisticated phone replaced if I can see mine is here</p>
+<p>this is what I was doing when I was editing notes after class cuz my nose when I export them have like the it has electronic don’t like the brown there I’m at whatever for my criminals I don’t take that other line but you can also</p>
+</div>
+</div>
+<div class="section" id="how-can-we-compare-different-programming-languages">
+<h2><span class="section-number">16.3. </span>How can we compare Different Programming Languages<a class="headerlink" href="#how-can-we-compare-different-programming-languages" title="Permalink to this headline">¶</a></h2>
+<p>matter they very what are they share what sort of a structure a level not like any specific language in detail but like what is it what do you think about your choosing a program or you’re trying to understand what happens cuz we need to think about this talk a little bit to set the stage for what happens in a in a specific case of how do we go from high-level code that’s read of relative. What you don’t see might be a little at the lower-level still have a really good but it’s lower than that to the zeros and ones that are computers going to run out eventually</p>
+<p>so let’s start brainstorming and what are some different things you could use to compare</p>
+<ul class="simple">
+<li><p>Garbage collection</p></li>
+</ul>
+<p>if you stop using something or you you don’t need it anymore does it keep using resources until you manully, in your code tells it okay it’s not that bad or does your the language know to okay this is we’re done using this let’s stop what’s another thing</p>
+<ul class="simple">
+<li><p>static vs dynamic typing and memory allocation</p></li>
+</ul>
+<p>number yeah so can you change the type of a variable on the fly or do you have to Define it like you to declare what type of variable is going to be so that it can allocate the memory in the right format for that variable and then it’s stuck is that type you can’t change it until you unless you re initiating are you can’t it’s not going to be there what else Christian</p>
+<ul class="simple">
+<li><p>syntax</p></li>
+</ul>
+<p>white space use syntax specifically other like what type of bracket to use what types of whatever you use and I tried to add more things to my list and instead I sent it so now my list is there but we can keep going what are you doing</p>
+<ul class="simple">
+<li><p>programming Paradigm</p></li>
+</ul>
+<p>whether you’re focusing on like everything has to be declared as an object whether it’s just like you have some functions and some scripting type things do some programming that support sort of really sophisticated data mapping structures or language is coming with you. I like python you can do however you want like it has a lot of functional features it has object-oriented it can find a support doing a lot of the different things in Python is added more functional feature support right there making it more supportive of those actions because they’re they’re powerful and they’re really good for the type of thing to do would like to use Python for what else</p>
+</div>
+<div class="section" id="how-do-you-decided-to-pick-one-language-vs-another">
+<h2><span class="section-number">16.4. </span>how do you decided to pick one language vs another?<a class="headerlink" href="#how-do-you-decided-to-pick-one-language-vs-another" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>API support to access necessary resources/hardware</p></li>
+<li><p>specialization of the language (some are built for specific purposes)</p></li>
+</ul>
+<p>yeah so why don’t you talk about so far have been really technical details like does it actually do the thing you wanted to do but there’s also could be easier to learn the new language or there’s also star in community aspects are the amount of users of language so there’s a language called Julia that I think it came out like in like late 2010 2011 is somewhere around there maybe even a little bit later it was very very very powerful to do the types of research like the types of work that I was doing my butt is very very new so didn’t have a lot of documentation it didn’t have a lot of people using it</p>
+<p>even though it was like quite appealing for a lot of things I was going to do it would have been more performance they were doing better before his life than python I will not let that up to that I ended up using I just not usually up because there are no libraries like I was going to implement basic things that I did not have to implement in Python because I could use libraries and python</p>
+<p>1/2</p>
+<p>what</p>
+<p>actually do that with the Limitless</p>
+<p>is that is having her list that is that is about choice so I’m going to</p>
+<p>have you review this developer survey after I send I want you to read through for a couple minutes and pick the one thing you most you find most interesting you want to discuss and I will be right back</p>
+<p>all right what is the most interesting thing you found on this Saturday</p>
+<p>going to wait till someone else that has not spoken yet wants this week I’ll get to the three of you but Tyler</p>
+<p>looking for</p>
+<p>that was really not that bad</p>
+<p>so it’s good that you’re not loud is what it’s supposed to be used for if you’re doing linear algebra nothing else like all the rest of these are terrible but yes so there could be some explanations are what else</p>
+<p>45% Windows users I don’t know what text what section are they in</p>
+<p>are there that’s okay yeah a lot of surprising</p>
+<p>you don’t know</p>
+<p>to the equal when it’s Mason. OS a very small percentage of people using this what album is this what if we switch from all respondents to professional golfers it’s all just a little bit to get more math less less than a Caesars</p>
+<p>and this is still 57,000 people so it’s not like a smaller number but not his number this is still what</p>
+<p>most corporations is just what they give you if you work at a big Corporate Place like that’s what they give you so you’re not really this is really getting to choose so even though like and I could be me and you won’t see as much people do people sell Windows 7 starter it’s still realistic like that’s what people get also if you want your stuff to run on Windows you have to make it work there</p>
+<p>there has to be some amount of thought this Sabrina</p>
+<p>yeah so it’s been for a long time most loud but people actually using it as is smaller yeah some people that use it love it also if we will get people that want to use it it’s still pretty high right through the do not use it but wish they could like would like to you so pretty high</p>
+<p>Christian</p>
+<p>send the next question</p>
+<p>I’m just trying to find it so yeah this is this is a good thing obviously this was a good thing for us to be learning cuz don’t have a version of the schedule and get is by far the most everyone using it of the respond to the survey this is so this is which is students as well</p>
+<p>especially about the same does it mean when I smile doctors</p>
+<p>sounds like a very hyper standardized it’s kind of like a virtual machine almost so I’m guessing more of your views</p>
+<p>so, basically</p>
+<p>avocado pie what when you use it so</p>
+<p>let’s say you’re doing with the reason the way I come into contact with people who are doing who produce the project maybe they designs project they use a whole bunch of libraries a whole bunch of installed that got everything working and then they want someone else to be able to use it to how many times have you set up a programming environment and there’s a lot of insulation possibly as much insulation is trying to use the place actually build your thing at all</p>
+<p>Rite insulation give me really hard and really annoying so doctor makes that easy to the doctor container specifies all of the requirements and stuff them all up it also allows you to have some multiple containers on your computer so you can have one environment for doing this project another event for doing a project that don’t interact with each other and to doctors like a standard and a technology to help support that</p>
+<p>badass more than 100</p>
+<p>yeah so that the people could check more than one so it’s just like</p>
+<p>they allowed people to check as many as they want and they could even check both of they use it and they want to use Technologies</p>
+<p>these are computers just like these are the most popular things at all communities is another like platform tool for like spitting things out separately I think he’s going to take a package I think it’s a package manager as well I have a feeling it might be related to</p>
+<p>are or like publishing but clearly not crapping</p>
+<p>yeah and install it’s idiot Auntie I’m so it’s a Java Java Java I forgot those 10 I don’t either then when I choose to do so but it allows you to packaging and what else</p>
+<p>you can get paid to go to school</p>
+<p>oh yeah if you like probably like it so if you’re like a managing service systems also we have a bunch of a do those kind of things different trying to hire someone who’s going to manage their servers they’ll be doing other things but only programming are probably doing it on his way back type things</p>
+<p>I cannot this family was supposed to be there but the faster you don’t know about it it’s probably directly related to why it pays higher cuz things that people don’t know get paid more</p>
+<p>yeah</p>
+<p>and then things on there so this is an artifact of a large percentage of people doing this or grad students</p>
+<p>once you’ve done enough times with no longer that little crisis here at this is just what it is we truncate the list</p>
+<p>eventually so we don’t put every possible cuz out of 80 thousand people I’m sure unless it was other things arranged thing</p>
+<p>why is it useful to read through these results why is it something that is worth spending time on a glass Tyler</p>
+<p>yep he’s a home from other developers you get to know kind of what’s out there</p>
+<p>yeah if you’re trying to decide what things you want to run outside of time that’s important also knowing kind of how different programming languages compared we saw we saw a list of Unforgiven images Nancy hadn’t heard of the four of us out there and if you don’t know it in great detail helps you kind of get the landscape of what’s out there and how different things are changing and how they interact with another also this sets the stage for the fact that we’re not talking about things that are just like cuz I feel like it</p>
+<p>or like giving things are actually important that that are used in industry and that are that are useful so</p>
+<p>it was another question so if you go back to that list of</p>
+<p>difference things we can compare foreign languages on we’re trying to start thinking about using a project</p>
+<p>how</p>
+<p>what would your first step be if you were trying to pick what language to use for new project</p>
+<p>figure out what your needs are for you what’s there</p>
+<p>writing a what labor jobs</p>
+<p>so when</p>
+<p>but for example</p>
+<p>if we talked about a linkage being compiled versus interpreted so a compiled language you write your code you hand it over to compiler and then it gets a machine code I’m about 100 over and over again and interpreted language you write your coat and head to The Interpreter The Interpreter runs and gives you the results back you can run one line at a time you can kind of you but each time you want to run it it’s doing any work that’s compilation like sort of on the flight as you run it right</p>
+<p>when would you want one or the other</p>
+<p>okay so</p>
+<p>which one of those like if you so you’re saying whether the data that the program is going to use is going to be variable you might want to choose</p>
+<p>okay so what’s on tap at typing with python although it is and then there’s static typing which see Elsa is but separate from that she has compiled do it like you get a bill to do that and then python is interpreted so you give him the code of The Interpreter and it runs right one at a time either of those could actually handle a large amount of data or variable size data right cuz you can</p>
+<p>always</p>
+<p>like Rita file and get the information then allocate besides that’s not going to change that but would be different</p>
+<p><a class="reference external" href="http://indeed.com">indeed.com</a></p>
+<p>python</p>
+<p>I don’t know what it is</p>
+<p>oh oh cuz you can’t like use a class object inside of a class definition okay</p>
+<p>yeah</p>
+<p>okay so that would be a case for if you need to make kind of that type of nothing but a compiled language can do that but interpreted</p>
+<p>I didn’t cannot that’s good example okay what else would you want one with the other compiled verse Jeopardy Sabrina</p>
+<p>so if you mean something resource-intensive you want to be compiled so if you’re reading something that’s going to run like on a small device like a Fitbit or a smartwatch write those don’t have a lot of memory didn’t have a lot of things he’s going to find out where do I have a person I know who works at</p>
+<p>did he propose in libraries part of NASA her job for awhile was too during the 17-minute window that happens twice a day send code to the Mars rover they can’t send pythons are there right they can’t let you know the river is is very far away that was 70 minute window to transmit things over a slow satellite link they have like KB a day they can send</p>
+<p>price of a need cuz it’s going to compress down to the thing also the how long ago to the Rover leave Earth I don’t know if you know but as long as you know the actual time</p>
+<p>great it’s been gone for a long time so Hardware that we have now is very different than what was available and able to end amount of time before it actually left is what it was designed</p>
+<p>so the hardware that has is very old for a computer hardware so they’re very stress and strain but they’re still want to like do scientific data analysis on another planet which is when</p>
+<p>oh okay yeah there’s everyone has been gone for a while</p>
+<p>okay the last time I talk to this person was an in-person conference which was definitely in 2019 or early 2018 so</p>
+<p>okay</p>
+<p>I thought everything was old has a very resources and environment they still need to be able to do real things right it’s not a toy problem is not a we’re just playing with an Arduino because we feel like it it’s a real thing right it’s a real real where they had actual Hardware constraints they had to have very a pin code to decide how to collect the data and then how to get it back they know that 17 minute window to happen twice a day they can send its also receive other data back about her experiments in that time but if you really want to send and want to get data back</p>
+<p>so we had to have really efficient code to get in the house so we’ve got some cases for when you would want them piled what made you want interpreted language</p>
+<p>when does it become better for you</p>
+<p>I mean you have to have you might have to have that but what would what would give you the advantage out of it</p>
+<p>you’re saying</p>
+<p>you have to do is lovely all right cuz you don’t to wait for it to compile and when would you why would you not want to wait for some pile you need to physically Tyler</p>
+<p>program</p>
+<p>yeah so with four examples for every type of Hardware that you want to run on right but interpreted language</p>
+<p>someone has to make The Interpreter compiled for every single part where you want to run on but you the developer that language don’t have to make your hair different right there’s a few things for gambling python you can’t use you can’t hardcore pads with boards lashes because Windows use the other / but other than that you can run your code on everything you want your language help you out a lot</p>
+<p>and you have made changes and I looked and test it and you’re going to it’s going to be a lot harder to take a little while tomorrow and you put her in it</p>
+<p>yeah when you’re experimenting or take ring or the reason I use Python is that you did an outfit I need to I don’t know what the third step is going to be in till I see the results on the 2nd</p>
+<p>so I need to run over s up get the results and then decide what to do next cuz I’m looking at the data processing and I’m calculating deciding what to do next so since I can’t plan on my advance</p>
+<p>compiled language doesn’t make sense right</p>
+<p>Oso</p>
+<p>Sophia pass in San Antonio not Windows uses for it in Windows uses backsplashes and pads so you have to not talk with your path and python dissolution is there’s a library called OS and you use OS taco joint</p>
+<p>that join to put them together instead of typing the splashes because that it makes it Go your problems go away that is a problem that I learned through a lot of pain and suffering so isn’t that I know well</p>
+<p>what else am I to you</p>
+<p>or any other reasons you might want to choose interpreted first compiled</p>
+<p>all right so if you were complaining that you would want to use which kind interpret it right cuz you’re trying to see if the thing can work you just want to get a really good result and you’re not trying to package it up into everywhere</p>
+<p>another case for when people would prefer compiled languages is if you want your source code to be private if you don’t want to distribute your source code you have to use a compiled language I got to give it compiled down to the binaries and distribute the binaries right</p>
+<p>that’s my knowledge now</p>
+<p>you can like</p>
+<p>I’m just kidding I think but I don’t think like is actually private</p>
+<p>what you cannot see the code the source code to recover the source code from the banners I mean you can’t recover it precisely because like you could write code lots of different ways that results in the same binary straight like you could write an arbitrary number of different thing that got to the same thing</p>
+<p>there’s a certain amount of you can like</p>
+<p>pack together things but it’s not true it’s not trivial and not easy I believe that’s a thing that like a certain type of researcher like attempted to do but it’s not something I ever has drama divisions to do</p>
+<p>so becomes really really hard to trace out the Kodak Center like recover at a high-level from the binary is because everything is compiled down in Pacific cases</p>
+<p>right so yeah it is very good but you might be able to cover a certain amount of it</p>
+<p>I know there’s like Steps intermediate steps that that can help cuz like I had</p>
+<p>a friend who was</p>
+<p>Miss Universe that are working with a professor to help right auto traders because I thought my situation is a thousand students and their and their horses so I think they were doing what they want the cluster student Solutions in group all the teams that made the same mistake together so they could send the same advices is it doesn’t seem the same as they were doing sort of like partial compilation to the who record you could tell when seems like even if they use different variable names they can if they have the same sort of bad structure in their Loop or whatever you can tell so there’s things that you can do with different languages depending on what it is but that’s not</p>
+<p>generally easy or like a common thing to do</p>
+<p>yeah so people that people do try to prove sort of like that things are the same or equivalent or like comparable to the stop now you’re right up the front of the edge of like state-of-the-art kinds of things</p>
+<p>Okay so</p>
+<p>we talked about what’s it like to build and run the environment</p>
+<p>we’ve been to the garbage collection how hard do I tell if it is is a programming language the typing of the static or dynamic availability of like libraries in apis and excessive has access to whatever it is you’re trying to enter access</p>
+<p>and I touched down briefly but there could be this this factor of Life Community amount of user so other people like how do you actually get help for that language can you understand it like is it written in your human spoken language right some languages have some programming languages have documentation in a lot of different human spoken languages so I’m only in English so if you don’t speak English well you can’t use of languages</p>
+<p>Okay so now that we’ve</p>
+<p>talk about this a little bit let’s go through something else so</p>
+<p>you</p>
+<p>we’re going to do a project with</p>
+<p>robotics what would you look for in an English</p>
+<p>what kinds of things do you look for what would you want it to be like</p>
+<p>the speed that needs will run fast on whatever the hardware the robot has cuz your robot may or may not have a powerful like computer or a lot of memory depending on the size and location is going to go</p>
+<p>does he like does it have instructions that support the library or Library support like did the people that build that robot give you an API I’d like that to control it</p>
+<p>it was a day when you’d like a compiled language you can give the results you give the robot the program you just let it go you don’t want to be interacting with the robot sort of like one step at a time necessarily you might want to be able to do that sometimes but really most the time you want to let it go usually</p>
+<p>probably able to make me to delete data so you want a language it’s not going to like have a lot of bugs cuz you don’t want someone accidentally like inserting code and like a feeling you’re about to go do bad things that you didn’t like to do you want to interact with any data that the robot is using</p>
+<p>what about</p>
+<p>what kind of language is you think people might use what types of what examples of languages.</p>
+<p>Christian</p>
+<p>and I think I thought would be good for that because I’ve heard that it’s just like just the kind of thing and also it’s easy to like them since August atticly type of language</p>
+<p>okay so if your robot was going to do the day that I was just like in the field you might want to use Python what other cuz we talked about it you might want something that’s going to be fast and packed I have good libraries for the robots itself what other languages you think you might use with a iRobot</p>
+<p>Rikers Island so</p>
+<p>its popularity has recent so the disadvantage of the reason I may not work is cuz the the hardware for the robot may not have support for rust</p>
+<p>why</p>
+<p>but it also</p>
+<p>Boulder so compiled languages both good for that CD holders, in another sneaky language in common robotics because</p>
+<p>not loud is not open source Wright was willing to do you talk about open source are developed by community of whoever else whatever Matt love is not / coming to go math works and MathWorks works very closely with Hardware manufacturers to make sure that Matlab can work with your Hardware because I want the Dave want people to pay to use their language so they work with people who sell expensive things to make their expensive things compatible with their language</p>
+<p>rights to these other kinds of artifacts like a lot of Engineers use Matlab because all of their like different things you plug in that work really well with that right I speak cameras will have an API with Matlab all of these kind of hard because it’s like we want to get people to use our language so they lock people into or what will make it easier for you cuz it’s going to be easier than C</p>
+<p>right it’s maybe not as nice as like python but it’s going to be way easier than see if you would want to buy that will go up that way to get these weird</p>
+<p>MathWorks the company</p>
+<p>I mean they can’t they can’t prevent that in that sounds like it’s any damn sure is there and in fact you can actually it’s relatively easy to integrate Matlab code whiskey cuz also most other thing a lot of other things are like written with the your compatibility so you’ll start to see what a big project actually have multiple project multiple languages involved</p>
+<p>Wright’s like one of my club jobs I was doing signal processing I was like doing like real time radio stuff so to make the real time part work I had to use could I would you like Siri but for the early for gpus so to write the code to paralyze my functions cuz this was 2010 and no one has written libraries it did that for you and then the main part of the analysis and not lie but I was hoping to be in my life cuz I was working with you is awesome cleaner doing because if you have a really big project just probably going to be different parts of it that different languages are going to be better for and so sometimes it’s not worth sacrificing one part for the other part you just right in both languages and select the data back and forth</p>
+<p>like other examples are</p>
+<p>python is way better at doing like date analysis calculations and like JavaScript write like you don’t want to do a lot of math</p>
+<p>browser than python you also don’t want to like right to be 75 on like no one wants to do that so there’s whole framework take data from the browser give it the python get the results back from Python and put them in the browser so they run little web servers just to do that right there makes passing back and forth so you can write in the most the best language for the specific tasks in your project and then he’s like packages I’ll help you tie it all together to make it work so</p>
+<p>was he a machine-learning that’s good</p>
+<p>so</p>
+<p>we’re talking about doing</p>
+<p>data analysis with python code on because I wanted to do another language really, information on and get as far as the language made by statisticians for statisticians right so</p>
+<p>I don’t know why someone would want to choose if you’re doing something to get analysis when you might want to use Python A R</p>
+<p>Library</p>
+<p>just talked to your comment and it will calculate you even like my normal distribution table something else cuz it’s too many things like specific first a decision that very very pretty close to fix the article will be like half as many lines even in Python with them because I was more powerful things are in Python but if you’re trying to do like if you’re an ecologist or a biologist try to do that goes those comments at 264 them to me way better does a port there then you get the snacks level where because most likely I’ll just call just that her up use are when they develop new techniques novel data analysis techniques there specific strategies for analyzing genetic data for example</p>
+<p>they’re going to use our to do it they’re going to release it as an AR Library do you start having used a virgin Obviously good the specific type of thing you’re doing is going to be between which one you’re going to use some kind of understanding what the community is and who likes that language often becomes useful and so beaver not that super think technical details we tend to talk about but they’re really important things to know about languages and understand so</p>
+<p>we will start wrapping up now</p>
+<p>one thing you learn today</p>
+<p>and 1 questions have you do something your cares about or something you wanted you want Clarity on</p>
+<p>see a quick question about internal pandas is a library in Python and it’s sort of an acronym</p>
+<p>but it’s</p>
+<p>data analyst for data analysis so</p>
+<p>the main thing that pandas does is a python you have like other data types right you have lists and pandas gives you a dataframe or like a table</p>
+<p>all the data structure is amazing provides and then all of the methods to do like a lot of basic analysis and plotting so they supposed to just fix I’m plotting and all of those kinds of things like on your I’m grabbing a little about a lot of things it’s not so easy to read and write that people don’t care that it’s actually like very slow because like human time is way more valuable than her time computers have a lot of time people know</p>
+<p>ready like undo a part of a carrot yeah actually time to do that actually I had to do it on my device like I do it locally and then push to go and back</p>
+<p>I was working on something but the fire was like over 100 MB and I skip up because you can’t put that yeah</p>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class17prep"></span><h2><span class="section-number">16.5. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>For 2 languages from the loved vs dreaded list (one top 5; one bottom 5) read 2-3 posts about why people love/hate that language and summaries the key points on each side. Add this to your kwl repo in <code class="docutils literal notranslate"><span class="pre">language_love_dread.md</span></code></p></li>
+<li><p>Make sure that you have a C compiler installed on your computer. <a class="reference external" href="https://gcc.gnu.org/install/">ideally gcc</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class17practice"></span><h2><span class="section-number">16.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>use <a class="reference external" href="https://man7.org/linux/man-pages/man1/scp.1.html">scp</a> to download the files generated to your local computer and add them to your kwl chart.  (a possible extenstion idea to practice reading the official documentation to learn a new tool that is similar to ones you have seen before)</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol>
+<li><p>(priority) Describe a type of project where it would be worth it for you to learn a language you have never used before in <code class="docutils literal notranslate"><span class="pre">newlanguage.md</span></code> This should be based in what types of features for the language your project would require and/or what would contribute to the long term health of the project.</p></li>
+<li><p>Try out/learn about one of the following languages that you have not used before, do something small that is typical of that language (eg a toy data analysis in R or ): <a class="reference external" href="https://www.r-project.org/">R</a>, <a class="reference external" href="https://julialang.org/">Julia</a>, <a class="reference external" href="https://clojure.org/guides/getting_started">Clojure</a>, <a class="reference external" href="https://mc-stan.org/">Stan</a>, <a class="reference external" href="https://go.dev/">Go</a>, . Answer the following questions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. What is this language designed for?
+1. What Progrmaming paradigm(s) does it support?
+1. What about it makes it easy to learn for someone who already knows some other language (name that language)?
+1. What about it is hard to larn for (pick a language) prgorammers?
+1. What is its most unique feature(s)?
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">16.7. </span>Questions After class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-pandas">
+<h3><span class="section-number">16.7.1. </span>What is pandas?<a class="headerlink" href="#what-is-pandas" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>pandas is python data analysis library</p>
+</div>
+</div>
+<div class="section" id="how-do-you-implement-programs-projects-which-depend-on-multiple-languages-like-a-web-browser-that-uses-javascript-but-does-calculations-in-python">
+<h3><span class="section-number">16.7.2. </span>How do you implement programs/projects which depend on multiple languages, like a web browser that uses javascript but does calculations in python.<a class="headerlink" href="#how-do-you-implement-programs-projects-which-depend-on-multiple-languages-like-a-web-browser-that-uses-javascript-but-does-calculations-in-python" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>You keep all of the files together and set up build tools to build as needed</p>
+</div>
+</div>
+<div class="section" id="where-might-one-person-go-to-find-out-which-programming-languages-is-best-for-their-project-is-it-through-personal-research">
+<h3><span class="section-number">16.7.3. </span>Where might one person go to find out which programming languages is best for their project? Is it through personal research?<a class="headerlink" href="#where-might-one-person-go-to-find-out-which-programming-languages-is-best-for-their-project-is-it-through-personal-research" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>It is through learning about through networking and keeping up with trends.  It’s also through trying new things. As you know more, you build intuition about what to do and sometimes just talking to others.</p>
+</div>
+</div>
+<div class="section" id="are-the-languages-used-for-classes-arbitrarily-chosen-or-is-there-a-process-that-the-professor-goes-through-when-picking-the-language-for-a-class">
+<h3><span class="section-number">16.7.4. </span>Are the languages used for classes arbitrarily chosen or is there a process that the professor goes through when picking the language for a class?<a class="headerlink" href="#are-the-languages-used-for-classes-arbitrarily-chosen-or-is-there-a-process-that-the-professor-goes-through-when-picking-the-language-for-a-class" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>We, as faculty choose together a lot actually, based on the concepts we want to teach and what language features that requires.</p>
+<p>We also keep up to date with CS Education literature which studies how different languages impact learning.</p>
+</div>
+</div>
+<div class="section" id="what-kind-of-non-technical-questions-should-i-be-asking-when-developing">
+<h3><span class="section-number">16.7.5. </span>What kind of non technical questions should I be asking when developing?<a class="headerlink" href="#what-kind-of-non-technical-questions-should-i-be-asking-when-developing" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>This is a <em>great</em> question, but beyond the scope of this course to cover it entirely. CSC 320 would help give you more ideas and context for this.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-03-24.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">15. </span>What is an IDE</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2022-03-31.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>What happens when I build code in C?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

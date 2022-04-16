@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>18. How can we use logical operations? &#8212; Introduction to Computer Systems</title>
+    <title>20. How can we use logical operations? &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
-    <link rel="prev" title="17. How do represent non integer numbers?" href="2022-04-07.html" />
+    <link rel="next" title="22. What is a computer?" href="2022-04-14.html" />
+    <link rel="prev" title="19. How do represent non integer numbers?" href="2022-04-07.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -229,23 +229,42 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="2022-03-31.html">
-   15. What happens when I build code in C?
+   17. What happens when I build code in C?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-05.html">
-   16. Why is the object file not human readable?
+   18. Why is the object file not human readable?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-07.html">
-   17. How do represent non integer numbers?
+   19. How do represent non integer numbers?
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   18. How can we use logical operations?
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
   </a>
  </li>
 </ul>
@@ -455,76 +474,76 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   18. How can we use logical operations?
+   20. How can we use logical operations?
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#admin">
-     18.1. Admin
+     20.1. Admin
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#grading-contract-updates">
-       18.1.1. Grading Contract Updates
+       20.1.1. Grading Contract Updates
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#deadlines">
-       18.1.2. Deadlines
+       20.1.2. Deadlines
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#review">
-     18.2. Review
+     20.2. Review
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">
-   19. Why do we need to think about bitwise operations?
+   21. Why do we need to think about bitwise operations?
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bitwise-operators">
-     19.1. Bitwise operators
+     21.1. Bitwise operators
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-with-gates">
-     19.2. Adding with gates
+     21.2. Adding with gates
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-can-we-choose-between-things">
-     19.3. How can we choose between things?
+     21.3. How can we choose between things?
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prepare-for-next-class">
-     19.4. Prepare for next class
+     21.4. Prepare for next class
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#more-practice">
-     19.5. More Practice
+     21.5. More Practice
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-after-class">
-     19.6. Questions After Class
+     21.6. Questions After Class
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-we-know-to-use-the-selector-in-a-mux">
-       19.6.1. How do we know to use the selector in a mux?
+       21.6.1. How do we know to use the selector in a mux?
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-other-mediums-besides-water-could-these-be-implemented-with">
-       19.6.2. What other mediums besides water could these be implemented with?
+       21.6.2. What other mediums besides water could these be implemented with?
       </a>
      </li>
     </ul>
@@ -553,76 +572,76 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   18. How can we use logical operations?
+   20. How can we use logical operations?
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#admin">
-     18.1. Admin
+     20.1. Admin
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#grading-contract-updates">
-       18.1.1. Grading Contract Updates
+       20.1.1. Grading Contract Updates
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#deadlines">
-       18.1.2. Deadlines
+       20.1.2. Deadlines
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#review">
-     18.2. Review
+     20.2. Review
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-do-we-need-to-think-about-bitwise-operations">
-   19. Why do we need to think about bitwise operations?
+   21. Why do we need to think about bitwise operations?
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bitwise-operators">
-     19.1. Bitwise operators
+     21.1. Bitwise operators
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-with-gates">
-     19.2. Adding with gates
+     21.2. Adding with gates
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-can-we-choose-between-things">
-     19.3. How can we choose between things?
+     21.3. How can we choose between things?
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#prepare-for-next-class">
-     19.4. Prepare for next class
+     21.4. Prepare for next class
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#more-practice">
-     19.5. More Practice
+     21.5. More Practice
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#questions-after-class">
-     19.6. Questions After Class
+     21.6. Questions After Class
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#how-do-we-know-to-use-the-selector-in-a-mux">
-       19.6.1. How do we know to use the selector in a mux?
+       21.6.1. How do we know to use the selector in a mux?
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#what-other-mediums-besides-water-could-these-be-implemented-with">
-       19.6.2. What other mediums besides water could these be implemented with?
+       21.6.2. What other mediums besides water could these be implemented with?
       </a>
      </li>
     </ul>
@@ -639,13 +658,13 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="how-can-we-use-logical-operations">
-<h1><span class="section-number">18. </span>How can we use logical operations?<a class="headerlink" href="#how-can-we-use-logical-operations" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">20. </span>How can we use logical operations?<a class="headerlink" href="#how-can-we-use-logical-operations" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="admin">
-<h2><span class="section-number">18.1. </span>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.1. </span>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="grading-contract-updates">
-<h3><span class="section-number">18.1.1. </span>Grading Contract Updates<a class="headerlink" href="#grading-contract-updates" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">20.1.1. </span>Grading Contract Updates<a class="headerlink" href="#grading-contract-updates" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>You can reduce your more practice days completed by 2.</p></li>
 <li><p>You can reduce the number of deeper exploration by 1.</p></li>
@@ -656,7 +675,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="deadlines">
-<h3><span class="section-number">18.1.2. </span>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">20.1.2. </span>Deadlines<a class="headerlink" href="#deadlines" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Things submitted by May 5 you can revise again.</p></li>
 <li><p>I will hold office hours for your last chance to do final touches during our exam time May 10, 11:30-1:30.</p></li>
@@ -666,7 +685,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="review">
-<h2><span class="section-number">18.2. </span>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">20.2. </span>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>git revert applies a new commit that does the opposite of the reverted commit. <a class="reference internal" href="2022-02-22.html"><span class="doc std std-doc">review</span></a></p></li>
 <li><p>A file with permissions 644 is rw-r–r–, so only the owner, not other members of the group, can write to the file. <a class="reference internal" href="2022-03-08.html"><span class="doc std std-doc">review</span></a></p></li>
@@ -674,7 +693,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="why-do-we-need-to-think-about-bitwise-operations">
-<h1><span class="section-number">19. </span>Why do we need to think about bitwise operations?<a class="headerlink" href="#why-do-we-need-to-think-about-bitwise-operations" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">21. </span>Why do we need to think about bitwise operations?<a class="headerlink" href="#why-do-we-need-to-think-about-bitwise-operations" title="Permalink to this headline">¶</a></h1>
 <p>Understanding them is prereq to what we will see today and that will help you understand hardware overall.</p>
 <p>You of course will not <em>need</em> every single thing we teach you in every single class.</p>
 <ul class="simple">
@@ -682,7 +701,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Seeing a topic in more detail than you will use all the time actually helps you build intuition, or deep understanding, of the topic overall, and help you remember what you need to remember</p></li>
 </ul>
 <div class="section" id="bitwise-operators">
-<h2><span class="section-number">19.1. </span>Bitwise operators<a class="headerlink" href="#bitwise-operators" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.1. </span>Bitwise operators<a class="headerlink" href="#bitwise-operators" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>&amp; : and</p></li>
 <li><p>| : or</p></li>
@@ -698,7 +717,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>Let’s review truth tables for and, or, and xor.</p>
 <table class="table" id="truth-and">
-<caption><span class="caption-number">Table 19.1 </span><span class="caption-text">AND</span><a class="headerlink" href="#truth-and" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 21.1 </span><span class="caption-text">AND</span><a class="headerlink" href="#truth-and" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -730,7 +749,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <table class="table" id="truth-or">
-<caption><span class="caption-number">Table 19.2 </span><span class="caption-text">OR</span><a class="headerlink" href="#truth-or" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 21.2 </span><span class="caption-text">OR</span><a class="headerlink" href="#truth-or" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -762,7 +781,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <table class="table" id="truth-xor">
-<caption><span class="caption-number">Table 19.3 </span><span class="caption-text">XOR</span><a class="headerlink" href="#truth-xor" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 21.3 </span><span class="caption-text">XOR</span><a class="headerlink" href="#truth-xor" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -797,7 +816,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are more gate operations; you can see a simulation for <a class="reference external" href="https://lodev.org/logicemu/#id=gates16">16 gates</a></p>
 </div>
 <div class="section" id="adding-with-gates">
-<h2><span class="section-number">19.2. </span>Adding with gates<a class="headerlink" href="#adding-with-gates" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.2. </span>Adding with gates<a class="headerlink" href="#adding-with-gates" title="Permalink to this headline">¶</a></h2>
 <p>Let’s review adding binary numbers</p>
 <ul class="simple">
 <li><p>add the two bits</p></li>
@@ -811,7 +830,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In this case in the ones place we add 0 + 1 to get one, the two ones add to 0 with carry then 1 + 0 + 0 gives another 1.</p>
 <p>let’s make a truth table for adding two bits.</p>
 <table class="table" id="truth-add">
-<caption><span class="caption-number">Table 19.4 </span><span class="caption-text">Add</span><a class="headerlink" href="#truth-add" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 21.4 </span><span class="caption-text">Add</span><a class="headerlink" href="#truth-add" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -858,11 +877,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Alternatively, we can “lookahead” with the carry bit, passing it forward multiple places all at once, as shown in this <a class="reference external" href="https://lodev.org/logicemu/#id=cla_adder">4 bit carry lookahead adder</a>.</p>
 </div>
 <div class="section" id="how-can-we-choose-between-things">
-<h2><span class="section-number">19.3. </span>How can we choose between things?<a class="headerlink" href="#how-can-we-choose-between-things" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.3. </span>How can we choose between things?<a class="headerlink" href="#how-can-we-choose-between-things" title="Permalink to this headline">¶</a></h2>
 <p>A <a class="reference external" href="https://lodev.org/logicemu/#id=mux">mux</a> (multiplexer) is a component (like a gate is a component) that allows us to select one operation out of a circuit.</p>
 </div>
 <div class="section" id="prepare-for-next-class">
-<h2><span class="section-number">19.4. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<span id="class21prep"></span><h2><span class="section-number">21.4. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -881,7 +900,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="more-practice">
-<h2><span class="section-number">19.5. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<span id="class21practice"></span><h2><span class="section-number">21.5. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ol>
@@ -898,15 +917,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="questions-after-class">
-<h2><span class="section-number">19.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.6. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-do-we-know-to-use-the-selector-in-a-mux">
-<h3><span class="section-number">19.6.1. </span>How do we know to use the selector in a mux?<a class="headerlink" href="#how-do-we-know-to-use-the-selector-in-a-mux" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.6.1. </span>How do we know to use the selector in a mux?<a class="headerlink" href="#how-do-we-know-to-use-the-selector-in-a-mux" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>This comes from the instruction itself.</p>
 </div>
 </div>
 <div class="section" id="what-other-mediums-besides-water-could-these-be-implemented-with">
-<h3><span class="section-number">19.6.2. </span>What other mediums besides water could these be implemented with?<a class="headerlink" href="#what-other-mediums-besides-water-could-these-be-implemented-with" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.6.2. </span>What other mediums besides water could these be implemented with?<a class="headerlink" href="#what-other-mediums-besides-water-could-these-be-implemented-with" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>We will talk more about different ways to physically create gates in the next few classes</p>
 </div>
@@ -943,13 +962,13 @@ const thebe_selector_output = ".output, .cell_output"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">17. </span>How do represent non integer numbers?</p>
+            <p class="prev-next-title"><span class="section-number">19. </span>How do represent non integer numbers?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <a class='right-next' id="next-link" href="2022-04-14.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">KWL Chart</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>What <em>is</em> a computer?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Prepare for the next class" href="prepare.html" />
-    <link rel="prev" title="18. How can we use logical operations?" href="../notes/2022-04-12.html" />
+    <link rel="prev" title="22. What is a computer?" href="../notes/2022-04-14.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -227,23 +227,42 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../notes/2022-03-31.html">
-   15. What happens when I build code in C?
+   17. What happens when I build code in C?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../notes/2022-04-05.html">
-   16. Why is the object file not human readable?
+   18. Why is the object file not human readable?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../notes/2022-04-07.html">
-   17. How do represent non integer numbers?
+   19. How do represent non integer numbers?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../notes/2022-04-12.html">
-   18. How can we use logical operations?
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
   </a>
  </li>
 </ul>
@@ -561,7 +580,7 @@ new branch to work on them.</p></li>
 </div>
 </div>
 <div class="section" id="minimum-rows">
-<h2>Minimum Rows<a class="headerlink" href="#minimum-rows" title="Permalink to this headline">¶</a></h2>
+<span id="kwlmin"></span><h2>Minimum Rows<a class="headerlink" href="#minimum-rows" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-Markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># KWL Chart</span>
 
 
@@ -590,6 +609,20 @@ new branch to work on them.</p></li>
 | networking | _ | _ | _ |
 |ssh | _ | _ | _ |
 | ssh keys | _ | _ | _ |
+|compiling | _ | _ | _ |
+| linking   | _ | _ | _ |
+| building | _ | _ | _ |
+| machine representation  | _ | _ | _ |
+| integers   | _ | _ | _ |
+| floating point  | _ | _ | _ |
+|logic gates | _ | _ | _ |
+| ALU | _ | _ | _ |
+| binary operations | _ | _ | _ |
+| memory | _ | _ | _ |
+| cache | _ | _ | _ |
+| register | _ | _ | _ |
+| clock | _ | _ | _ |
+| Concurrency | _ | _ | _ |
 </pre></div>
 </div>
 </div>
@@ -745,49 +778,89 @@ new branch to work on them.</p></li>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="http://ide.md">ide.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-24.html"><span class="doc std std-doc">featrures in most used ide</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="http://languages.md">languages.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-24.html"><span class="doc std std-doc">compare two languages</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="http://favoriteide.md">favoriteide.md</a></p></td>
+<td><p><a class="reference internal" href="../notes/2022-03-24.html"><span class="doc std std-doc">compare three ides</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcctips.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-03-31.html"><span class="doc std std-doc">c compilation notes</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">operators.md</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">operators.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-03-31.html"><span class="doc std std-doc">operators in programming and math</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bitwise.md</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bitwise.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">practice with bitwise operations</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">review how reading bytes works</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">compare integer overflow</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cdouble.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
 <td><p>prepare</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overflow.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-05.html"><span class="doc std std-doc">compare integer overflow</span></a></p></td>
 <td><p>practice</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">readingbytes.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
 <td><p>practice</p></td>
 <td><p>graded</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">floatexp.md</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">floatexp.md</span></code></p></td>
 <td><p><a class="reference internal" href="../notes/2022-04-07.html"><span class="doc std std-doc">c program with double comparison</span></a></p></td>
 <td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mulitplication.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-12.html"><span class="doc std std-doc">interpret mulitplication as addition</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">addertypes.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-12.html"><span class="doc std std-doc">compare adders</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">systemsabstractions.md.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-14.html"><span class="doc std std-doc">reflect on an article</span></a></p></td>
+<td><p>prepare</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history-&lt;event&gt;.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-14.html"><span class="doc std std-doc">summarize and evaluate an aspect of computer history</span></a></p></td>
+<td><p>practice</p></td>
+<td><p>graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hardwaremp.md</span></code></p></td>
+<td><p><a class="reference internal" href="../notes/2022-04-14.html"><span class="doc std std-doc">visualize current hardware knowledge</span></a></p></td>
+<td><p>pracite</p></td>
 <td><p>graded</p></td>
 </tr>
 </tbody>
@@ -820,11 +893,11 @@ new branch to work on them.</p></li>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../notes/2022-04-12.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../notes/2022-04-14.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">18. </span>How can we use logical operations?</p>
+            <p class="prev-next-title"><span class="section-number">22. </span>What <em>is</em> a computer?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="prepare.html" title="next page">

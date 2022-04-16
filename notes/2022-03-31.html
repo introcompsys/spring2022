@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. What happens when I build code in C? &#8212; Introduction to Computer Systems</title>
+    <title>17. What happens when I build code in C? &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="16. Why is the object file not human readable?" href="2022-04-05.html" />
-    <link rel="prev" title="14. How does ssh really work? how can I be more secure?" href="2022-03-10.html" />
+    <link rel="next" title="18. Why is the object file not human readable?" href="2022-04-05.html" />
+    <link rel="prev" title="16. How do we pick programming languages?" href="2022-03-28.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -226,24 +226,43 @@ const thebe_selector_output = ".output, .cell_output"
    14. How does ssh really work? how can I be more secure?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   15. What happens when I build code in C?
+   17. What happens when I build code in C?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-05.html">
-   16. Why is the object file not human readable?
+   18. Why is the object file not human readable?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-07.html">
-   17. How do represent non integer numbers?
+   19. How do represent non integer numbers?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-12.html">
-   18. How can we use logical operations?
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
   </a>
  </li>
 </ul>
@@ -453,77 +472,77 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
-   15.1. Setup
+   17.1. Setup
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preprocessing">
-   15.2. Preprocessing
+   17.2. Preprocessing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compiling">
-   15.3. Compiling
+   17.3. Compiling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assembling">
-   15.4. Assembling
+   17.4. Assembling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linking">
-   15.5. Linking
+   17.5. Linking
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#putting-it-all-together">
-   15.6. Putting it all together
+   17.6. Putting it all together
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-multiple-files">
-   15.7. Working with multiple files
+   17.7. Working with multiple files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   15.8. Prepare for next class
+   17.8. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   15.9. More Practice
+   17.9. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   15.10. Questions After Class
+   17.10. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
-     15.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
+     17.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-flags-are-order-sensitive-when-compiling-in-c">
-     15.10.2. what flags are order sensitive when compiling in C?
+     17.10.2. what flags are order sensitive when compiling in C?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-does-the-g-flag-work-for-all-debuggers">
-     15.10.3. how does the -g flag work for all debuggers
+     17.10.3. how does the -g flag work for all debuggers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
-     15.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
+     17.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-does-apple-try-to-make-the-object-file-make-sense">
-     15.10.5. Why does Apple try to make the object file make sense?
+     17.10.5. Why does Apple try to make the object file make sense?
     </a>
    </li>
   </ul>
@@ -550,77 +569,77 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#setup">
-   15.1. Setup
+   17.1. Setup
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preprocessing">
-   15.2. Preprocessing
+   17.2. Preprocessing
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compiling">
-   15.3. Compiling
+   17.3. Compiling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assembling">
-   15.4. Assembling
+   17.4. Assembling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linking">
-   15.5. Linking
+   17.5. Linking
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#putting-it-all-together">
-   15.6. Putting it all together
+   17.6. Putting it all together
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#working-with-multiple-files">
-   15.7. Working with multiple files
+   17.7. Working with multiple files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   15.8. Prepare for next class
+   17.8. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   15.9. More Practice
+   17.9. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   15.10. Questions After Class
+   17.10. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
-     15.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
+     17.10.1. In the .o files, how does the computer interpret the gibberish? What does it actually do?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-flags-are-order-sensitive-when-compiling-in-c">
-     15.10.2. what flags are order sensitive when compiling in C?
+     17.10.2. what flags are order sensitive when compiling in C?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-does-the-g-flag-work-for-all-debuggers">
-     15.10.3. how does the -g flag work for all debuggers
+     17.10.3. how does the -g flag work for all debuggers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
-     15.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
+     17.10.4. When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-does-apple-try-to-make-the-object-file-make-sense">
-     15.10.5. Why does Apple try to make the object file make sense?
+     17.10.5. Why does Apple try to make the object file make sense?
     </a>
    </li>
   </ul>
@@ -637,7 +656,7 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="cell tag_remove-input docutils container">
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="what-happens-when-i-build-code-in-c">
-<h1><span class="section-number">15. </span>What happens when I build code in C?<a class="headerlink" href="#what-happens-when-i-build-code-in-c" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">17. </span>What happens when I build code in C?<a class="headerlink" href="#what-happens-when-i-build-code-in-c" title="Permalink to this headline">¶</a></h1>
 <p>We came across the term build before.</p>
 <p>We sometimes say that compiling takes code from source to executable, but this process is actually multiple stages and compiling is <em>one</em> of those steps.</p>
 <p>We will focus on <em>what</em> has to happen more than <em>how</em> it all happens.</p>
@@ -650,7 +669,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="flowchart of prepreproces, compile, assemble, link" src="https://miro.medium.com/max/1036/1*wHKe6W4opLmk6pb7sxZz6w.png" /></p>
 <p><a class="reference external" href="https://medium.com/&#64;laura.derohan/compiling-c-files-with-gcc-step-by-step-8e78318052">source</a></p>
 <div class="section" id="setup">
-<h2><span class="section-number">15.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.1. </span>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
 <p>Let’s setup by creating an empty folder</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Documents</span><span class="o">/</span><span class="n">sysinclass</span><span class="o">/</span>
 <span class="n">mkdir</span> <span class="n">compilec</span>
@@ -674,7 +693,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="preprocessing">
-<h2><span class="section-number">15.2. </span>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.2. </span>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
 <p>First we handle the preprocessing which pulls in headers that are included.  We will use the compiler
 <a class="reference external" href="https://man7.org/linux/man-pages/man1/gcc.1.html">gcc</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">E</span> <span class="n">hello</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
@@ -1235,7 +1254,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>At the bottom of the file, we see the orignal code with an extra bit of informaiton that helps the compiler write better error messages, by saying where contents came from.</p>
 </div>
 <div class="section" id="compiling">
-<h2><span class="section-number">15.3. </span>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.3. </span>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
 <p>Next we take our preprocessed file and compile it to get assembly code.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">S</span> <span class="o">-</span><span class="n">c</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span>
 <span class="n">hello</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="k">return</span> <span class="nb">type</span> <span class="n">of</span> <span class="s1">&#39;main&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wmain</span><span class="o">-</span><span class="k">return</span><span class="o">-</span><span class="nb">type</span><span class="p">]</span>
@@ -1281,7 +1300,7 @@ L_.str:                                 ## @.str
 </div>
 </div>
 <div class="section" id="assembling">
-<h2><span class="section-number">15.4. </span>Assembling<a class="headerlink" href="#assembling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.4. </span>Assembling<a class="headerlink" href="#assembling" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">c</span> <span class="n">hello</span><span class="o">.</span><span class="n">s</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
 </pre></div>
 </div>
@@ -1310,7 +1329,7 @@ zRx
 <p>MacOS tried to help a little but it’s still not very readable.</p>
 </div>
 <div class="section" id="linking">
-<h2><span class="section-number">15.5. </span>Linking<a class="headerlink" href="#linking" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.5. </span>Linking<a class="headerlink" href="#linking" title="Permalink to this headline">¶</a></h2>
 <p>Now we can link it all together; in this program there are not a lot of other depdencies, but this fills in anything from libraries and outputs an executble</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span> <span class="o">-</span><span class="n">lm</span>
 </pre></div>
@@ -1334,7 +1353,7 @@ zRx
 </div>
 </div>
 <div class="section" id="putting-it-all-together">
-<h2><span class="section-number">15.6. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.6. </span>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h2>
 <p>We can also do all of it at once, to see how it’s different let’s clean up the directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">hello</span><span class="o">.</span><span class="n">i</span> <span class="n">hello</span><span class="o">.</span><span class="n">s</span> <span class="n">hello</span><span class="o">.</span><span class="n">o</span>
 </pre></div>
@@ -1359,7 +1378,7 @@ zRx
 </div>
 </div>
 <div class="section" id="working-with-multiple-files">
-<h2><span class="section-number">15.7. </span>Working with multiple files<a class="headerlink" href="#working-with-multiple-files" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.7. </span>Working with multiple files<a class="headerlink" href="#working-with-multiple-files" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">main</span><span class="o">.</span><span class="n">c</span>
 </pre></div>
 </div>
@@ -1553,7 +1572,7 @@ zRx
 <p>it works!</p>
 </div>
 <div class="section" id="prepare-for-next-class">
-<span id="class17prep"></span><h2><span class="section-number">15.8. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<span id="class18prep"></span><h2><span class="section-number">17.8. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition tip">
@@ -1581,7 +1600,7 @@ zRx
 </div>
 </div>
 <div class="section" id="more-practice">
-<span id="class17practice"></span><h2><span class="section-number">15.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<span id="class18practice"></span><h2><span class="section-number">17.9. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ol class="simple">
@@ -1592,35 +1611,35 @@ zRx
 </div>
 </div>
 <div class="section" id="questions-after-class">
-<h2><span class="section-number">15.10. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.10. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do">
-<h3><span class="section-number">15.10.1. </span>In the .o files, how does the computer interpret the gibberish? What does it actually do?<a class="headerlink" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.10.1. </span>In the .o files, how does the computer interpret the gibberish? What does it actually do?<a class="headerlink" href="#in-the-o-files-how-does-the-computer-interpret-the-gibberish-what-does-it-actually-do" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>This is machine code, it is binary that is designed for your hardware to interpret as instructions.</p>
 <p>When we display it to the terminal, your computer tries to interpret that binary as text, so it ends up as weird characters mostly.</p>
 </div>
 </div>
 <div class="section" id="what-flags-are-order-sensitive-when-compiling-in-c">
-<h3><span class="section-number">15.10.2. </span>what flags are order sensitive when compiling in C?<a class="headerlink" href="#what-flags-are-order-sensitive-when-compiling-in-c" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.10.2. </span>what flags are order sensitive when compiling in C?<a class="headerlink" href="#what-flags-are-order-sensitive-when-compiling-in-c" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>This is a practice task to try out.</p>
 </div>
 </div>
 <div class="section" id="how-does-the-g-flag-work-for-all-debuggers">
-<h3><span class="section-number">15.10.3. </span>how does the -g flag work for all debuggers<a class="headerlink" href="#how-does-the-g-flag-work-for-all-debuggers" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.10.3. </span>how does the -g flag work for all debuggers<a class="headerlink" href="#how-does-the-g-flag-work-for-all-debuggers" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>the <code class="docutils literal notranslate"><span class="pre">-g</span></code> option leaves additional information in the object file as informtion for the debugger to use.</p>
 </div>
 </div>
 <div class="section" id="when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code">
-<h3><span class="section-number">15.10.4. </span>When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)<a class="headerlink" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.10.4. </span>When would there be a time where you would have to look in a lower-level file (for instance, maybe something can be fixed only by going into the assembly or object code?)<a class="headerlink" href="#when-would-there-be-a-time-where-you-would-have-to-look-in-a-lower-level-file-for-instance-maybe-something-can-be-fixed-only-by-going-into-the-assembly-or-object-code" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>The object file is specifically not human readable, you would never really look at it.  The advantage of <em>having</em> it is so that you can only re-compile some parts of the code when you make small changes.</p>
 <p>You might need to look at the assembly if you are working on very low level code, like a driver that helps a peripheral talk to the computer.</p>
 </div>
 </div>
 <div class="section" id="why-does-apple-try-to-make-the-object-file-make-sense">
-<h3><span class="section-number">15.10.5. </span>Why does Apple try to make the object file make sense?<a class="headerlink" href="#why-does-apple-try-to-make-the-object-file-make-sense" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.10.5. </span>Why does Apple try to make the object file make sense?<a class="headerlink" href="#why-does-apple-try-to-make-the-object-file-make-sense" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>Have not yet found this answer</p>
 </div>
@@ -1653,17 +1672,17 @@ zRx
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="2022-03-10.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="2022-03-28.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">14. </span>How does ssh really work? how can I be more secure?</p>
+            <p class="prev-next-title"><span class="section-number">16. </span>How do we pick programming languages?</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="2022-04-05.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Why is the object file not human readable?</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Why is the object file not human readable?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
