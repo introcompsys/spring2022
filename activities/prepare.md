@@ -14,9 +14,9 @@ kernelspec:
 # Prepare for the next class
 
 ```{warning}
-these are listed byt the date they were *posted* (eg the content here under Feb 1, was posted Feb 1, and shoudl be done before the Feb 3 class)
+these are listed by the date they were *posted* (eg the content here under Feb 1, was posted Feb 1, and should be done before the Feb 3 class)
 
-*below* refers to followingin the notes
+*below* refers to following in the notes
 ```
 
 ```{code-cell} ipython3
