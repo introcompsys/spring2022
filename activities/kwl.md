@@ -275,7 +275,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [summarize and evaluate an aspect of computer history](../notes/2022-04-14)
   - practice
   - graded
-* - `hardwaremp.md`
+* - `hardwaremap.md`
   - [visualize current hardware knowledge](../notes/2022-04-14)
   - pracite
   - graded
