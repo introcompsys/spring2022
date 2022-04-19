@@ -203,7 +203,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [pracitce with octal numbers in file permissions](../notes/2022-03-08)
   - practice
   - graded
-* - hpc.md.md
+* - hpc.md
   - [reflect on HPC systems](../notes/2022-03-08)
   - practice
   - graded
@@ -259,7 +259,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [c program with double comparison](../notes/2022-04-07)
   - practice
   - graded
-* - `mulitplication.md`
+* - `multiplication.md`
   - [interpret mulitplication as addition](../notes/2022-04-12)
   - prepare
   - graded
@@ -267,7 +267,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [compare adders](../notes/2022-04-12)
   - practice
   - graded
-* - `systemsabstractions.md.md`
+* - `systemsabstractions.md`
   - [reflect on an article](../notes/2022-04-14)
   - prepare
   - graded
@@ -275,7 +275,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [summarize and evaluate an aspect of computer history](../notes/2022-04-14)
   - practice
   - graded
-* - `hardwaremp.md`
+* - `hardwaremap.md`
   - [visualize current hardware knowledge](../notes/2022-04-14)
   - pracite
   - graded
