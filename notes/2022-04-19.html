@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How do clocks impact computing? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-10.html">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-31.html">
+   17. What happens when I build code in C?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-05.html">
+   18. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-07.html">
+   19. How do represent non integer numbers?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-12.html">
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-04-19.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-04-19.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-04-19.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-04-19.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-04-19.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recall-our-model-computer">
+   Recall our model Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-unit">
+   Control Unit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-signals">
+     What signals?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-timing-signals">
+     Why Timing signals?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-clock">
+   What is a clock?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution-times">
+   Execution Times
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-are-the-registers">
+     where are the registers?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-model-of-cpu-without-an-alu">
+     Is there a model of CPU without an ALU?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-core">
+     What is a core
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
+     Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-do-the-different-times-matter">
+     Why do the different times matter?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-side-effects-of-overclocking-the-computer">
+     What are the side effects of overclocking the computer?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
+     Is there a good intro to this stuff online? Or will we go over it in 411?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
+     What are the pieces of a kernel and what does it actually do for the computer?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How do clocks impact computing?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recall-our-model-computer">
+   Recall our model Computer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-unit">
+   Control Unit
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-signals">
+     What signals?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-timing-signals">
+     Why Timing signals?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-clock">
+   What is a clock?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#execution-times">
+   Execution Times
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-are-the-registers">
+     where are the registers?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-model-of-cpu-without-an-alu">
+     Is there a model of CPU without an ALU?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-core">
+     What is a core
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
+     Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-do-the-different-times-matter">
+     Why do the different times matter?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-side-effects-of-overclocking-the-computer">
+     What are the side effects of overclocking the computer?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
+     Is there a good intro to this stuff online? Or will we go over it in 411?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
+     What are the pieces of a kernel and what does it actually do for the computer?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell tag_remove-input docutils container">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="how-do-clocks-impact-computing">
+<h1>How do clocks impact computing?<a class="headerlink" href="#how-do-clocks-impact-computing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="recall-our-model-computer">
+<h2>Recall our model Computer<a class="headerlink" href="#recall-our-model-computer" title="Permalink to this headline">¶</a></h2>
+<p><img alt="von Neumann Architecture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Von_Neumann_Architecture.svg/2560px-Von_Neumann_Architecture.svg.png" /></p>
+<p>We have talked about the ALU at length and we have touched on memory, but next we will start to focus on the Control unit.</p>
+<p>We discussed that the operations we need to carry out is mostly</p>
+</div>
+<div class="section" id="control-unit">
+<h2>Control Unit<a class="headerlink" href="#control-unit" title="Permalink to this headline">¶</a></h2>
+<p>The control unit converts binary instructions to signals and timing to direct the other components.</p>
+<div class="section" id="what-signals">
+<h3>What signals?<a class="headerlink" href="#what-signals" title="Permalink to this headline">¶</a></h3>
+<p>We will go to the ALU again since the control unit serves it to figure out what it needs.<br />
+Remember in the ALU, has input signals that determine which calculation it will execute based on the input.</p>
+</div>
+<div class="section" id="why-timing-signals">
+<h3>Why Timing signals?<a class="headerlink" href="#why-timing-signals" title="Permalink to this headline">¶</a></h3>
+<p>Again, the ALU itself tells us why we need this, we saw that different calculations the ALU does take different amount of times to propagate through the circuit.</p>
+<p>Even adding numbers of different numbers that require different number of carries can take different amount of times.</p>
+<p>So the control unit waits an amount of time, that’s longer than the slowest calculation before sending the next instruction.  It also has to wait that long before reading the output of the ALU and sending that result to memory as needed.</p>
+</div>
+</div>
+<div class="section" id="what-is-a-clock">
+<h2>What is a clock?<a class="headerlink" href="#what-is-a-clock" title="Permalink to this headline">¶</a></h2>
+<p>In a computer the clock refers to a clock signal, historically this was called a logic beat. This is represented by a sinusoidal (sine wave) or square (on, off, on, off) signal that operates with a constant frequency.</p>
+<p>This has changed a lot over time.</p>
+<p>The first mechanical analog computer, the Z1 operated at 1 Hz, or one cycle per second; its most direct successor moved up to 5-10Hz; later there were computers at 100kHz or 100,000Hz, but where one instruction took 20 cycles, so it had an effective rate at 5kHz.</p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>Look up the CPU speed of your computer and your phone. How do they compare.</p>
+</div>
+</div>
+<div class="section" id="execution-times">
+<h2>Execution Times<a class="headerlink" href="#execution-times" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">kwlfilecheck</span>
+</pre></div>
+</div>
+<p>We get three times:</p>
+<ul class="simple">
+<li><p>real: wall clock time, the total time that you wait for the the process to execute</p></li>
+<li><p>user: CPU time in user mode within the the process, the time the CPU spends executing the process itself</p></li>
+<li><p>sys: CPU time spent in the kernel within the process, the time CPU spends doing operating system interactions associated with the process</p></li>
+</ul>
+<p>The real time includes the user time, the system time, and any scheduling or waiting time that that occurs.</p>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class22prep"></span><h2>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Check that your KWL is up to date with all <a class="reference internal" href="../activities/kwl.html#kwlmin"><span class="std std-ref">required rows</span></a> and add a section (<code class="docutils literal notranslate"><span class="pre">##</span></code>) below your chart in the same file (either <code class="docutils literal notranslate"><span class="pre">README</span></code> or <code class="docutils literal notranslate"><span class="pre">chart.md</span></code>) that summarizes what you think about computer systems.</p></li>
+<li><p>(priorty) Read about <a class="reference external" href="https://www.geeksforgeeks.org/difference-between-system-software-and-application-software/">systems vs applications</a> programming. Create <code class="docutils literal notranslate"><span class="pre">systemsprogramming.md</span></code> to summarize the difference and what skills would be diffrent. Which do you have more experience with? What experience do you have with the other?  (we will address this in class Thursday)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class22practice"></span><h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-try-it-yourself admonition">
+<p class="admonition-title">Try it Yourself</p>
+<p>use <a class="reference external" href="https://man7.org/linux/man-pages/man1/scp.1.html">scp</a> to download the files generated to your local computer and add them to your kwl chart.  (a possible extenstion idea to practice reading the official documentation to learn a new tool that is similar to ones you have seen before)</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol>
+<li><p>(priority) Compare the time of the following operations, investigate what the different operations do/not do, how do the three times compare? and hypothesize explanations in <code class="docutils literal notranslate"><span class="pre">timing.md</span></code>. Which times are constant vs variable? Which vary the most? least? Tip: use a script with loops and <a class="reference external" href="https://man7.org/linux/man-pages/man1/time.1.html">see the options</a>and write output to a file (to test how these impact your work. <em>extension idea:</em> expand the level of detail to include more analysis on this, Try to find operations that increase the user vs system time.   You can use basic bash operations or programs you have from other courses )</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">spring2022</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="n">mental_model_advanced</span><span class="o">.</span><span class="n">svg</span>
+<span class="mf">2.</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">introcompsys</span><span class="o">/</span><span class="n">spring2022</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">img</span><span class="o">/</span><span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="n">mental_model_advanced</span><span class="o">.</span><span class="n">svg</span>
+<span class="mf">3.</span> <span class="n">kwlcheck</span>
+<span class="mf">4.</span> <span class="n">kwlfilecheck</span>
+<span class="mf">5.</span> <span class="n">hello</span> <span class="n">world</span> <span class="n">compiled</span> <span class="kn">from</span> <span class="nn">C</span>
+</pre></div>
+</div>
+</li>
+<li><p>Practice exploring the list of processes running on your computer and investigate how much resources different things you do on a regular basis use. Make some general observations In <code class="docutils literal notranslate"><span class="pre">kernelproc.md</span></code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="where-are-the-registers">
+<h3>where are the registers?<a class="headerlink" href="#where-are-the-registers" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The registers are a part of the CPU.</p>
+</div>
+</div>
+<div class="section" id="is-there-a-model-of-cpu-without-an-alu">
+<h3>Is there a model of CPU without an ALU?<a class="headerlink" href="#is-there-a-model-of-cpu-without-an-alu" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The term CPU specifically refers to combining an ALU with a control unit and registers. Modern CPUs use integrated circuits, so multiple components are etched into silicone instead of having separate components that are, for example, soldered onto a board.</p>
+</div>
+</div>
+<div class="section" id="what-is-a-core">
+<h3>What is a core<a class="headerlink" href="#what-is-a-core" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>A core is an execution unit: a control unit, an ALU, and the necessary registers.  Traditionally a CPU had one core, so the model CPU we saw is the same as a core.  A modern, multi-core CPU has multiple execution units and additional circuitry to coordinate.</p>
+</div>
+</div>
+<div class="section" id="will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
+<h3>Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?<a class="headerlink" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>This is what office hours are for. I added more office hours, the link to the times are in slack and will be shared in class.</p>
+<p>Please, please! come to office hours or ask for an additional appointment.</p>
+</div>
+</div>
+<div class="section" id="why-do-the-different-times-matter">
+<h3>Why do the different times matter?<a class="headerlink" href="#why-do-the-different-times-matter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="what-are-the-side-effects-of-overclocking-the-computer">
+<h3>What are the side effects of overclocking the computer?<a class="headerlink" href="#what-are-the-side-effects-of-overclocking-the-computer" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>It gets hotter, so that it causes more stress and strain on the</p>
+</div>
+</div>
+<div class="section" id="is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
+<h3>Is there a good intro to this stuff online? Or will we go over it in 411?<a class="headerlink" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>More detail on this will be in 411 and the OS/ process side will be in 412.</p>
+</div>
+</div>
+<div class="section" id="what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
+<h3>What are the pieces of a kernel and what does it actually do for the computer?<a class="headerlink" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>The kernel is software, not a physical component.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
