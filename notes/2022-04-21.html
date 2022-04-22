@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24. Systems Programming and threading &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="23. How do clocks impact computing?" href="2022-04-19.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-10.html">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-31.html">
+   17. What happens when I build code in C?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-05.html">
+   18. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-07.html">
+   19. How do represent non integer numbers?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-12.html">
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-19.html">
+   23. How do clocks impact computing?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   24. Systems Programming and threading
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-04-21.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-04-21.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-04-21.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-04-21.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-04-21.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-vs-application-programming">
+   24.1. Systems vs Application Programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-interaction-in-python">
+   24.2. System interaction in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threading">
+   24.3. Threading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#locking">
+   24.4. Locking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   24.5. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   24.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   24.7. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-certain-languages-or-systems-that-lock-for-you">
+     24.7.1. Are there certain languages or systems that lock for you?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-you-recommend-any-extra-readings-about-this">
+     24.7.2. Could you recommend any extra readings about this?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-this-cause-a-deadlock">
+     24.7.3. Can this cause a deadlock?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-kinda-of-signs-would-be-visible-that-we-need-to-make-our-program-multithreaded">
+     24.7.4. What kinda of signs would be visible that we need to make our program multithreaded?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-question-i-have-is-why-would-you-want-to-split-up-your-problem-among-different-computers-is-it-just-so-that-more-parts-of-your-problem-can-get-done-at-the-same-time">
+     24.7.5. One question I have is why would you want to split up your problem among different computers? Is it just so that more parts of your problem can get done at the same time?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Systems Programming and threading</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#systems-vs-application-programming">
+   24.1. Systems vs Application Programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-interaction-in-python">
+   24.2. System interaction in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#threading">
+   24.3. Threading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#locking">
+   24.4. Locking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   24.5. Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   24.6. More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   24.7. Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#are-there-certain-languages-or-systems-that-lock-for-you">
+     24.7.1. Are there certain languages or systems that lock for you?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#could-you-recommend-any-extra-readings-about-this">
+     24.7.2. Could you recommend any extra readings about this?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#can-this-cause-a-deadlock">
+     24.7.3. Can this cause a deadlock?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-kinda-of-signs-would-be-visible-that-we-need-to-make-our-program-multithreaded">
+     24.7.4. What kinda of signs would be visible that we need to make our program multithreaded?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-question-i-have-is-why-would-you-want-to-split-up-your-problem-among-different-computers-is-it-just-so-that-more-parts-of-your-problem-can-get-done-at-the-same-time">
+     24.7.5. One question I have is why would you want to split up your problem among different computers? Is it just so that more parts of your problem can get done at the same time?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="systems-programming-and-threading">
+<h1><span class="section-number">24. </span>Systems Programming and threading<a class="headerlink" href="#systems-programming-and-threading" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="systems-vs-application-programming">
+<h2><span class="section-number">24.1. </span>Systems vs Application Programming<a class="headerlink" href="#systems-vs-application-programming" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>most of you will do a lot more application programming than systems programming</p></li>
+<li><p>knowing how the systems stuff works is important because you will need to interact with it.</p></li>
+</ul>
+</div>
+<div class="section" id="system-interaction-in-python">
+<h2><span class="section-number">24.2. </span>System interaction in Python<a class="headerlink" href="#system-interaction-in-python" title="Permalink to this headline">¶</a></h2>
+<p>We’ll use the python interpreter a bit again today.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.8.6</span> <span class="p">(</span><span class="n">v3</span><span class="mf">.8.6</span><span class="p">:</span><span class="n">db455296be</span><span class="p">,</span> <span class="n">Sep</span> <span class="mi">23</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">39</span><span class="p">)</span>
+<span class="p">[</span><span class="n">Clang</span> <span class="mf">6.0</span> <span class="p">(</span><span class="n">clang</span><span class="o">-</span><span class="mf">600.0.57</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In order to interact with the system in a Python program, we use the <a class="reference external" href="https://docs.python.org/3/library/os.html">python os library</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+<p>It has methods that look a lot like a lot of the bash commands we have used.</p>
+<p>For example <code class="docutils literal notranslate"><span class="pre">listdir</span></code> is like <code class="docutils literal notranslate"><span class="pre">ls</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;tiny-book&#39;</span><span class="p">,</span> <span class="s1">&#39;checker.sh&#39;</span><span class="p">,</span> <span class="s1">&#39;compilec&#39;</span><span class="p">,</span> <span class="s1">&#39;README&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-04-07.md&#39;</span><span class="p">,</span> <span class="s1">&#39;nand2tetris&#39;</span><span class="p">,</span> <span class="s1">&#39;.ipynb_checkpoints&#39;</span><span class="p">,</span> <span class="s1">&#39;courseutils&#39;</span><span class="p">,</span> <span class="s1">&#39;test2&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-04-07.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;github-in-class-brownsarahm&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>We could then use this as a python list object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+<span class="n">file_list</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;tiny-book&#39;</span><span class="p">,</span> <span class="s1">&#39;checker.sh&#39;</span><span class="p">,</span> <span class="s1">&#39;compilec&#39;</span><span class="p">,</span> <span class="s1">&#39;README&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-04-07.md&#39;</span><span class="p">,</span> <span class="s1">&#39;nand2tetris&#39;</span><span class="p">,</span> <span class="s1">&#39;.ipynb_checkpoints&#39;</span><span class="p">,</span> <span class="s1">&#39;courseutils&#39;</span><span class="p">,</span> <span class="s1">&#39;test2&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-04-07.ipynb&#39;</span><span class="p">,</span> <span class="s1">&#39;github-in-class-brownsarahm&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This library can also help us interact with the system in a more abstract way, for example it can hide what varies per operating system.</p>
+<p>For example the following works on Linux and MacOS, but would not work on Windows.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tiny-book/intro.md&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">path</span></code> module within the library will join parts of a path together with the right delimiter.  The following will output differently depending on what operating system you run it on</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;tiny-book&#39;</span><span class="p">,</span><span class="s1">&#39;intro.md&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>On Unix-based systems</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;tiny-book/intro.md&#39;</span>
+</pre></div>
+</div>
+<p>on Windows it would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;tiny-book</span><span class="se">\\</span><span class="s1">intro.md&#39;</span>
+</pre></div>
+</div>
+<p>Knowing that tools like this exist allows you to interface with the system and write different types of programs.</p>
+<p>This is an important type of library to know exists so that you can look up the specific functions and modules you would need in any given scenario.</p>
+<p>and we can exit Python now.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="threading">
+<h2><span class="section-number">24.3. </span>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h2>
+<p>We are going to pretend that summing squares of numbers is expensive computation and we want to spread it across different multiple cores.  To do that, we spread it into separate threads.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="n">sq_sum_threaded</span><span class="o">.</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>The program will be:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pthread.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* single global variable */</span><span class="w"></span>
+<span class="cm">/* shared, accessible, modifiable by all threads */</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">accum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">accum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xi</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="cm">/* nothing to return, prevent warning */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pthread_t</span><span class="w"> </span><span class="n">ths</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">square</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">pthread_join</span><span class="p">(</span><span class="n">ths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">res</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;accum = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">accum</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this activity is from <a class="reference external" href="https://www.classes.cs.uchicago.edu/archive/2018/spring/12300-1/lab6.html">Matthew Wachs lecture notes</a></p>
+</div>
+</div>
+<p>Then we can build the program.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="o">-</span><span class="n">pthread</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">g</span> <span class="o">-</span><span class="n">o</span> <span class="n">sqsum</span> <span class="n">sq_sum_threaded</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">lm</span>
+</pre></div>
+</div>
+<p>We can both compile and link it at once and we get just a warning</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sq_sum_threaded</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">cast</span> <span class="n">to</span> <span class="s1">&#39;void *&#39;</span> <span class="kn">from</span> <span class="nn">smaller</span> <span class="n">integer</span> <span class="nb">type</span>
+      <span class="s1">&#39;int&#39;</span> <span class="p">[</span><span class="o">-</span><span class="n">Wint</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">void</span><span class="o">-</span><span class="n">pointer</span><span class="o">-</span><span class="n">cast</span><span class="p">]</span>
+    <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">)(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+                                          <span class="o">^</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+
+</pre></div>
+</div>
+<p>and we can run the program</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">sqsum</span>
+</pre></div>
+</div>
+<p>I got the wrong answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">accum</span> <span class="o">=</span> <span class="mi">2833</span>
+
+</pre></div>
+</div>
+<p>We saw that different students got different answers.</p>
+<p>We can use a for loop in bash to explore this further and figure out why.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">{</span><span class="mf">1..1000</span><span class="p">};</span> <span class="n">do</span> <span class="o">./</span><span class="n">sqsum</span><span class="p">;</span> <span class="n">done</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>this also uses some new bash commands:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sort</span></code> orders all of the outputs of the 1000 runs of our program</p></li>
+<li><p>and <code class="docutils literal notranslate"><span class="pre">uniq</span></code> with the <code class="docutils literal notranslate"><span class="pre">-c</span></code> option counts how many times any given result appeart multiple times</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2701</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2726</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2749</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2770</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2814</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2820</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2821</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2833</span>
+   <span class="mi">4</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2834</span>
+   <span class="mi">1</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2841</span>
+   <span class="mi">8</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2845</span>
+   <span class="mi">8</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2854</span>
+  <span class="mi">10</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2861</span>
+   <span class="mi">4</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2866</span>
+   <span class="mi">2</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2869</span>
+ <span class="mi">955</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2870</span>
+
+</pre></div>
+</div>
+<p>So, this time I got the right answer most of the times 955 out of 1000, but lots of other answers at least once.</p>
+<p>To understand what happens, lets look at the following program, which should be an equivalent way to implement the body of the <code class="docutils literal notranslate"><span class="pre">square</span></code> function.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accum</span><span class="p">;</span><span class="w"></span>
+<span class="n">temp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="n">accum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this one, we first copy the <code class="docutils literal notranslate"><span class="pre">accum</span></code> value to a temporary variable, then square the value and add that to <code class="docutils literal notranslate"><span class="pre">temp</span></code>, and then finally add that value back to <code class="docutils literal notranslate"><span class="pre">accum</span></code>. This should be equivalent to the program above, result wise.</p>
+<p>Even though this is not how we wrote our program, this is actually what it has to do, as we spin out each process.</p>
+<p>This table traces through what occurs in two threads.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>// Thread 1</p></td>
+<td><p>// Thread 2</p></td>
+<td><p>Status</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">temp1</span> <span class="pre">=</span> <span class="pre">accum;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">temp2</span> <span class="pre">=</span> <span class="pre">accum;</span></code></p></td>
+<td><p>now <code class="docutils literal notranslate"><span class="pre">temp1</span> <span class="pre">=</span> <span class="pre">temp2</span> <span class="pre">=</span> <span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>`temp2 += 2 * 2;</p></td>
+<td><p>now temp2 = 4</p></td>
+</tr>
+<tr class="row-even"><td><p>temp1 += 1 * 1;</p></td>
+<td></td>
+<td><p>// temp1 = 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>accum = temp1;</p></td>
+<td></td>
+<td><p>// accum = 1</p></td>
+</tr>
+<tr class="row-even"><td><p>accum = temp2;</p></td>
+<td></td>
+<td><p>// accum = 4</p></td>
+</tr>
+</tbody>
+</table>
+<p>So, what happens is each thread looks at the current value of <code class="docutils literal notranslate"><span class="pre">accum</span></code> and stores it to a thread-specific temporary variable. Each thread has its own memory, but they do all share the global variables.</p>
+<p>Then thread 2 completes its calculation and updates <code class="docutils literal notranslate"><span class="pre">temp2</span></code> and thread 1 updates <code class="docutils literal notranslate"><span class="pre">temp1</span></code>.  So far everything is okay, but next thread 1 writes to <code class="docutils literal notranslate"><span class="pre">accum</span></code> and sets it to 1, and finally thread to writes to <code class="docutils literal notranslate"><span class="pre">accum</span></code> and makes it 4.  The two values from the threads did not get added together, because thread 2 started before thread 1 finished.</p>
+<p>So, we end up losing some of the values.</p>
+</div>
+<div class="section" id="locking">
+<h2><span class="section-number">24.4. </span>Locking<a class="headerlink" href="#locking" title="Permalink to this headline">¶</a></h2>
+<p>We can instead change our <code class="docutils literal notranslate"><span class="pre">square</span></code> function as follows:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">accum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">accum_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">xi</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">accum_mutex</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">accum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">accum_mutex</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="cm">/* nothing to return, prevent warning */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>and save this to a new file <code class="docutils literal notranslate"><span class="pre">sq_sum_threaded_m.c</span></code></p>
+<p>This version uses something from the pthread library, to create a lock.</p>
+<p>Now when it executes each thread will do the calculation part on it’s own time, possibly simultaneously. Then the lock part means that they will each take turns to add their value to the global variable <code class="docutils literal notranslate"><span class="pre">accum</span></code>.</p>
+<p>We can the build it</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc -pthread -Wall -g -o sqsum_m sq_sum_threaded_m.c -lm
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sq_sum_threaded_m</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">cast</span> <span class="n">to</span> <span class="s1">&#39;void *&#39;</span> <span class="kn">from</span> <span class="nn">smaller</span> <span class="n">integer</span> <span class="nb">type</span> <span class="s1">&#39;int&#39;</span>
+      <span class="p">[</span><span class="o">-</span><span class="n">Wint</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">void</span><span class="o">-</span><span class="n">pointer</span><span class="o">-</span><span class="n">cast</span><span class="p">]</span>
+    <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="p">(</span><span class="n">void</span><span class="o">*</span><span class="p">)(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+                                          <span class="o">^</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="n">generated</span><span class="o">.</span>
+
+</pre></div>
+</div>
+<p>we get the same warning</p>
+<p>Now we can run it again, using our loop</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">{</span><span class="mf">1..1000</span><span class="p">};</span> <span class="n">do</span> <span class="o">./</span><span class="n">sqsum_m</span><span class="p">;</span> <span class="n">done</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>and now we get the same result all 1000 times.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1000</span> <span class="n">accum</span> <span class="o">=</span> <span class="mi">2870</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class24prep"></span><h2><span class="section-number">24.5. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>(<strong>Priority</strong>) Work with a partner to add &quot;advice to future students&quot; testimonials to <a class="reference external" href="https://introcompsys.github.io/spring2022">website for this offering</a> and &quot;why take this class&quot; testimonials to the <a class="reference external" href="https://introcompsys.github.io/">main course site</a> using an integration manager like workflow. Coordinate to determine who's fork will be used for integration of each  . Each of you should clone that fork and add your contribution to <a class="reference external" href="https://github.com/introcompsys/spring2022/blob/main/resources/testimonials.md"><code class="docutils literal notranslate"><span class="pre">resources/testimonials.md</span></code></a> and <a class="reference external" href="https://github.com/introcompsys/introcompsys.github.io/blob/main/fromstudents.md"><code class="docutils literal notranslate"><span class="pre">fromstudents.md</span></code></a> on a branch, <code class="docutils literal notranslate"><span class="pre">&lt;initials&gt;_testimonial</span></code> eg Professor Brown's would be <code class="docutils literal notranslate"><span class="pre">smb_testimnial</span></code>. Then merge the two contributions to a single <code class="docutils literal notranslate"><span class="pre">testimonial</span></code> branch.  (both to help future students <em>and</em> to practice with branches and collaboration, we will work with these further in class next week)</p></li>
+<li><p>Review the notes.</p></li>
+<li><p>Update your KWL chart. Check that all rows are included.</p></li>
+<li><p>Simulate a more computationally intensive program using the <code class="docutils literal notranslate"><span class="pre">sleep</span></code> function in C and compare the time of a threaded vs single threaded version of the program.  (to better illustrate the impact of the threads)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class24practice"></span><h2><span class="section-number">24.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Learn about the system libraries in two languages (one can be C or Python, one must be something else). Find the name(s) of the library or libraries. In <code class="docutils literal notranslate"><span class="pre">systeminteraction.md</span></code> make notes for each language about what categories of functions they provide.</p></li>
+<li><p>(<strong>priority</strong>) Research examples of programs using multi-threading besides splitting up a single calculation for time reasons, include three examples in <code class="docutils literal notranslate"><span class="pre">whymultithread.md</span></code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2><span class="section-number">24.7. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="are-there-certain-languages-or-systems-that-lock-for-you">
+<h3><span class="section-number">24.7.1. </span>Are there certain languages or systems that lock for you?<a class="headerlink" href="#are-there-certain-languages-or-systems-that-lock-for-you" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Different languages handle threading different ways.  I do not know all of them.  I would expect that there are some libraries and frameworks that help handle it for you.</p>
+<p>The important reason to use a lower level language like C to explore this, where things are not handled for you, to learn the concepts and see all of the steps that have to occur.  This helps you when it is supposed to be handled, but something goes wrong.</p>
+</div>
+</div>
+<div class="section" id="could-you-recommend-any-extra-readings-about-this">
+<h3><span class="section-number">24.7.2. </span>Could you recommend any extra readings about this?<a class="headerlink" href="#could-you-recommend-any-extra-readings-about-this" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>You will learn more about threading in CSC412 and you can optionally take CSC415 parallel programming.</p>
+<p>Threading and concurrency is a generally hard to grasp topic, so there are lots of tutorials and examples online in lots of different languages.</p>
+<p><a class="reference external" href="https://carpentries-incubator.github.io/hpc-intro/11-hpc-intro/index.html">High Performance Computing Carpentry</a> has a workshop. It begins with why you would use parallel computing and then shows how to do some operations on a cluster. You could work through this on the cluster we used in class.</p>
+</div>
+</div>
+<div class="section" id="can-this-cause-a-deadlock">
+<h3><span class="section-number">24.7.3. </span>Can this cause a deadlock?<a class="headerlink" href="#can-this-cause-a-deadlock" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Yes, deadlock is a possible outcome of having multiple threads.  The particular program we wrote today, would not, but using threads for more co-dependent components of a program could.</p>
+</div>
+</div>
+<div class="section" id="what-kinda-of-signs-would-be-visible-that-we-need-to-make-our-program-multithreaded">
+<h3><span class="section-number">24.7.4. </span>What kinda of signs would be visible that we need to make our program multithreaded?<a class="headerlink" href="#what-kinda-of-signs-would-be-visible-that-we-need-to-make-our-program-multithreaded" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Researching more examples and then brainstorming a few based on the ones you find is actually a part of the more practice for today’s class.</p>
+<p>The general case is just when there are two or more things that need to happen “at the same time” not in sequence, even if they can sort of take turns.</p>
+</div>
+</div>
+<div class="section" id="one-question-i-have-is-why-would-you-want-to-split-up-your-problem-among-different-computers-is-it-just-so-that-more-parts-of-your-problem-can-get-done-at-the-same-time">
+<h3><span class="section-number">24.7.5. </span>One question I have is why would you want to split up your problem among different computers? Is it just so that more parts of your problem can get done at the same time?<a class="headerlink" href="#one-question-i-have-is-why-would-you-want-to-split-up-your-problem-among-different-computers-is-it-just-so-that-more-parts-of-your-problem-can-get-done-at-the-same-time" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p><a class="reference external" href="https://carpentries-incubator.github.io/hpc-intro/11-hpc-intro/index.html">High Performance Computing Carpentry</a>  has a good description of why you would want to split a program across multiple computers.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-04-19.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">23. </span>How do clocks impact computing?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

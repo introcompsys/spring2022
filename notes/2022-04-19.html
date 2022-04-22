@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How do clocks impact computing? &#8212; Introduction to Computer Systems</title>
+    <title>23. How do clocks impact computing? &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="24. Systems Programming and threading" href="2022-04-21.html" />
+    <link rel="prev" title="22. What is a computer?" href="2022-04-14.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -149,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-01-25.html">
    1. Introduction
@@ -261,6 +263,16 @@ const thebe_selector_output = ".output, .cell_output"
     is
    </em>
    a computer?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   23. How do clocks impact computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-21.html">
+   24. Systems Programming and threading
   </a>
  </li>
 </ul>
@@ -470,89 +482,89 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recall-our-model-computer">
-   Recall our model Computer
+   23.1. Recall our model Computer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#control-unit">
-   Control Unit
+   23.2. Control Unit
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-signals">
-     What signals?
+     23.2.1. What signals?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-timing-signals">
-     Why Timing signals?
+     23.2.2. Why Timing signals?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-a-clock">
-   What is a clock?
+   23.3. What is a clock?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#execution-times">
-   Execution Times
+   23.4. Execution Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next class
+   23.5. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   23.6. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   23.7. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#where-are-the-registers">
-     where are the registers?
+     23.7.1. where are the registers?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-model-of-cpu-without-an-alu">
-     Is there a model of CPU without an ALU?
+     23.7.2. Is there a model of CPU without an ALU?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-core">
-     What is a core
+     23.7.3. What is a core
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
-     Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
+     23.7.4. Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-do-the-different-times-matter">
-     Why do the different times matter?
+     23.7.5. Why do the different times matter?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-are-the-side-effects-of-overclocking-the-computer">
-     What are the side effects of overclocking the computer?
+     23.7.6. What are the side effects of overclocking the computer?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
-     Is there a good intro to this stuff online? Or will we go over it in 411?
+     23.7.7. Is there a good intro to this stuff online? Or will we go over it in 411?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
-     What are the pieces of a kernel and what does it actually do for the computer?
+     23.7.8. What are the pieces of a kernel and what does it actually do for the computer?
     </a>
    </li>
   </ul>
@@ -579,89 +591,89 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#recall-our-model-computer">
-   Recall our model Computer
+   23.1. Recall our model Computer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#control-unit">
-   Control Unit
+   23.2. Control Unit
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-signals">
-     What signals?
+     23.2.1. What signals?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-timing-signals">
-     Why Timing signals?
+     23.2.2. Why Timing signals?
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-a-clock">
-   What is a clock?
+   23.3. What is a clock?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#execution-times">
-   Execution Times
+   23.4. Execution Times
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next class
+   23.5. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   23.6. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   23.7. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#where-are-the-registers">
-     where are the registers?
+     23.7.1. where are the registers?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-model-of-cpu-without-an-alu">
-     Is there a model of CPU without an ALU?
+     23.7.2. Is there a model of CPU without an ALU?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-core">
-     What is a core
+     23.7.3. What is a core
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
-     Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
+     23.7.4. Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#why-do-the-different-times-matter">
-     Why do the different times matter?
+     23.7.5. Why do the different times matter?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-are-the-side-effects-of-overclocking-the-computer">
-     What are the side effects of overclocking the computer?
+     23.7.6. What are the side effects of overclocking the computer?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
-     Is there a good intro to this stuff online? Or will we go over it in 411?
+     23.7.7. Is there a good intro to this stuff online? Or will we go over it in 411?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
-     What are the pieces of a kernel and what does it actually do for the computer?
+     23.7.8. What are the pieces of a kernel and what does it actually do for the computer?
     </a>
    </li>
   </ul>
@@ -678,30 +690,30 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="cell tag_remove-input docutils container">
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="how-do-clocks-impact-computing">
-<h1>How do clocks impact computing?<a class="headerlink" href="#how-do-clocks-impact-computing" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">23. </span>How do clocks impact computing?<a class="headerlink" href="#how-do-clocks-impact-computing" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="recall-our-model-computer">
-<h2>Recall our model Computer<a class="headerlink" href="#recall-our-model-computer" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.1. </span>Recall our model Computer<a class="headerlink" href="#recall-our-model-computer" title="Permalink to this headline">¶</a></h2>
 <p><img alt="von Neumann Architecture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Von_Neumann_Architecture.svg/2560px-Von_Neumann_Architecture.svg.png" /></p>
 <p>We have talked about the ALU at length and we have touched on memory, but next we will start to focus on the Control unit.</p>
 <p>We discussed that the operations we need to carry out is mostly</p>
 </div>
 <div class="section" id="control-unit">
-<h2>Control Unit<a class="headerlink" href="#control-unit" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.2. </span>Control Unit<a class="headerlink" href="#control-unit" title="Permalink to this headline">¶</a></h2>
 <p>The control unit converts binary instructions to signals and timing to direct the other components.</p>
 <div class="section" id="what-signals">
-<h3>What signals?<a class="headerlink" href="#what-signals" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.2.1. </span>What signals?<a class="headerlink" href="#what-signals" title="Permalink to this headline">¶</a></h3>
 <p>We will go to the ALU again since the control unit serves it to figure out what it needs.<br />
 Remember in the ALU, has input signals that determine which calculation it will execute based on the input.</p>
 </div>
 <div class="section" id="why-timing-signals">
-<h3>Why Timing signals?<a class="headerlink" href="#why-timing-signals" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.2.2. </span>Why Timing signals?<a class="headerlink" href="#why-timing-signals" title="Permalink to this headline">¶</a></h3>
 <p>Again, the ALU itself tells us why we need this, we saw that different calculations the ALU does take different amount of times to propagate through the circuit.</p>
 <p>Even adding numbers of different numbers that require different number of carries can take different amount of times.</p>
 <p>So the control unit waits an amount of time, that’s longer than the slowest calculation before sending the next instruction.  It also has to wait that long before reading the output of the ALU and sending that result to memory as needed.</p>
 </div>
 </div>
 <div class="section" id="what-is-a-clock">
-<h2>What is a clock?<a class="headerlink" href="#what-is-a-clock" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.3. </span>What is a clock?<a class="headerlink" href="#what-is-a-clock" title="Permalink to this headline">¶</a></h2>
 <p>In a computer the clock refers to a clock signal, historically this was called a logic beat. This is represented by a sinusoidal (sine wave) or square (on, off, on, off) signal that operates with a constant frequency.</p>
 <p>This has changed a lot over time.</p>
 <p>The first mechanical analog computer, the Z1 operated at 1 Hz, or one cycle per second; its most direct successor moved up to 5-10Hz; later there were computers at 100kHz or 100,000Hz, but where one instruction took 20 cycles, so it had an effective rate at 5kHz.</p>
@@ -711,7 +723,7 @@ Remember in the ALU, has input signals that determine which calculation it will 
 </div>
 </div>
 <div class="section" id="execution-times">
-<h2>Execution Times<a class="headerlink" href="#execution-times" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.4. </span>Execution Times<a class="headerlink" href="#execution-times" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="n">kwlfilecheck</span>
 </pre></div>
 </div>
@@ -724,7 +736,7 @@ Remember in the ALU, has input signals that determine which calculation it will 
 <p>The real time includes the user time, the system time, and any scheduling or waiting time that that occurs.</p>
 </div>
 <div class="section" id="prepare-for-next-class">
-<span id="class22prep"></span><h2>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<span id="class23prep"></span><h2><span class="section-number">23.5. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -742,14 +754,7 @@ Remember in the ALU, has input signals that determine which calculation it will 
 </div>
 </div>
 <div class="section" id="more-practice">
-<span id="class22practice"></span><h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition-try-it-yourself admonition">
-<p class="admonition-title">Try it Yourself</p>
-<p>use <a class="reference external" href="https://man7.org/linux/man-pages/man1/scp.1.html">scp</a> to download the files generated to your local computer and add them to your kwl chart.  (a possible extenstion idea to practice reading the official documentation to learn a new tool that is similar to ones you have seen before)</p>
-</div>
-</div>
+<span id="class23practice"></span><h2><span class="section-number">23.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <ol>
@@ -768,49 +773,52 @@ Remember in the ALU, has input signals that determine which calculation it will 
 </div>
 </div>
 <div class="section" id="questions-after-class">
-<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.7. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="where-are-the-registers">
-<h3>where are the registers?<a class="headerlink" href="#where-are-the-registers" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.1. </span>where are the registers?<a class="headerlink" href="#where-are-the-registers" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>The registers are a part of the CPU.</p>
 </div>
 </div>
 <div class="section" id="is-there-a-model-of-cpu-without-an-alu">
-<h3>Is there a model of CPU without an ALU?<a class="headerlink" href="#is-there-a-model-of-cpu-without-an-alu" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.2. </span>Is there a model of CPU without an ALU?<a class="headerlink" href="#is-there-a-model-of-cpu-without-an-alu" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>The term CPU specifically refers to combining an ALU with a control unit and registers. Modern CPUs use integrated circuits, so multiple components are etched into silicone instead of having separate components that are, for example, soldered onto a board.</p>
 </div>
 </div>
 <div class="section" id="what-is-a-core">
-<h3>What is a core<a class="headerlink" href="#what-is-a-core" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.3. </span>What is a core<a class="headerlink" href="#what-is-a-core" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>A core is an execution unit: a control unit, an ALU, and the necessary registers.  Traditionally a CPU had one core, so the model CPU we saw is the same as a core.  A modern, multi-core CPU has multiple execution units and additional circuitry to coordinate.</p>
 </div>
 </div>
 <div class="section" id="will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you">
-<h3>Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?<a class="headerlink" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.4. </span>Will we get time in class this week / next week to use as like a workshop to finish things we need to with help from you?<a class="headerlink" href="#will-we-get-time-in-class-this-week-next-week-to-use-as-like-a-workshop-to-finish-things-we-need-to-with-help-from-you" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>This is what office hours are for. I added more office hours, the link to the times are in slack and will be shared in class.</p>
 <p>Please, please! come to office hours or ask for an additional appointment.</p>
 </div>
 </div>
 <div class="section" id="why-do-the-different-times-matter">
-<h3>Why do the different times matter?<a class="headerlink" href="#why-do-the-different-times-matter" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.5. </span>Why do the different times matter?<a class="headerlink" href="#why-do-the-different-times-matter" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>the different times demonstrate different parts of what has to happen, there is scheduling and waiting; there is the actual executing and there are kernel (OS) steps.</p>
+</div>
 </div>
 <div class="section" id="what-are-the-side-effects-of-overclocking-the-computer">
-<h3>What are the side effects of overclocking the computer?<a class="headerlink" href="#what-are-the-side-effects-of-overclocking-the-computer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.6. </span>What are the side effects of overclocking the computer?<a class="headerlink" href="#what-are-the-side-effects-of-overclocking-the-computer" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>It gets hotter, so that it causes more stress and strain on the</p>
 </div>
 </div>
 <div class="section" id="is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411">
-<h3>Is there a good intro to this stuff online? Or will we go over it in 411?<a class="headerlink" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.7. </span>Is there a good intro to this stuff online? Or will we go over it in 411?<a class="headerlink" href="#is-there-a-good-intro-to-this-stuff-online-or-will-we-go-over-it-in-411" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>More detail on this will be in 411 and the OS/ process side will be in 412.</p>
 </div>
 </div>
 <div class="section" id="what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer">
-<h3>What are the pieces of a kernel and what does it actually do for the computer?<a class="headerlink" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">23.7.8. </span>What are the pieces of a kernel and what does it actually do for the computer?<a class="headerlink" href="#what-are-the-pieces-of-a-kernel-and-what-does-it-actually-do-for-the-computer" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>The kernel is software, not a physical component.</p>
 </div>
@@ -842,7 +850,21 @@ Remember in the ALU, has input signals that determine which calculation it will 
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-04-14.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">22. </span>What <em>is</em> a computer?</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2022-04-21.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Systems Programming and threading</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
