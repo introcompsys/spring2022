@@ -1,1 +1,6 @@
 # Advice to future students
+1. Ask questions about the material if you are lost because things from previous lessons will come back up later in the year so it is important that you know the fundamentals.
+2. Do not fall behind in class (in other words, follow what the professor is doing) because some of the things that we do in class come up on homeworks/extra practices so it is crucial that you know where you are in the course.
+3. If you have something wrong with anything (repository, file, programs, etc.) get that fixed as soon as possible (go to office hours, ask during class) because you will be using those tools later in the year so if they do not work then you may be at a disadvantage
+4. Plan your time accordingly because there is a lot of work to be done in this class and it is important that you get everything done in a timely manner so that you are not scrambling at the end of the semester trying to get things done.
+5. Make sure that your Grading Contracts' goals are feasible so that you are not stressing yourself out (this class is not made to be stressful) and if you have questions on what you should put in your contract, let the professor know and they can help you draft one up.
