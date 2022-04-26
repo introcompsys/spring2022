@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How does this all come together? &#8212; Introduction to Computer Systems</title>
+    <title>25. How does this all come together? &#8212; Introduction to Computer Systems</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,6 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="KWL Chart" href="../activities/kwl.html" />
+    <link rel="prev" title="24. Systems Programming and threading" href="2022-04-21.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -149,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="2022-01-25.html">
    1. Introduction
@@ -271,6 +273,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="2022-04-21.html">
    24. Systems Programming and threading
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   25. How does this all come together?
   </a>
  </li>
 </ul>
@@ -480,42 +487,42 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistics-and-grading">
-   Logistics and Grading
+   25.1. Logistics and Grading
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#contract-checkin">
-   Contract Checkin
+   25.2. Contract Checkin
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing-integration-manager-workflow">
-   Testing Integration manager workflow
+   25.3. Testing Integration manager workflow
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#end-of-semester-wrap-up">
-   End of Semester Wrap up
+   25.4. End of Semester Wrap up
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next class
+   25.5. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   25.6. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   25.7. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
-     What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
+     25.7.1. What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
     </a>
    </li>
   </ul>
@@ -542,42 +549,42 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistics-and-grading">
-   Logistics and Grading
+   25.1. Logistics and Grading
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#contract-checkin">
-   Contract Checkin
+   25.2. Contract Checkin
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing-integration-manager-workflow">
-   Testing Integration manager workflow
+   25.3. Testing Integration manager workflow
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#end-of-semester-wrap-up">
-   End of Semester Wrap up
+   25.4. End of Semester Wrap up
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prepare-for-next-class">
-   Prepare for next class
+   25.5. Prepare for next class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-practice">
-   More Practice
+   25.6. More Practice
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#questions-after-class">
-   Questions After Class
+   25.7. Questions After Class
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
-     What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
+     25.7.1. What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
     </a>
    </li>
   </ul>
@@ -592,11 +599,11 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="how-does-this-all-come-together">
-<h1>How does this all come together?<a class="headerlink" href="#how-does-this-all-come-together" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">25. </span>How does this all come together?<a class="headerlink" href="#how-does-this-all-come-together" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="section" id="logistics-and-grading">
-<h2>Logistics and Grading<a class="headerlink" href="#logistics-and-grading" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.1. </span>Logistics and Grading<a class="headerlink" href="#logistics-and-grading" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>I’m a little behind on feedback, will catch up</p></li>
 <li><p><a class="reference external" href="https://calendar.google.com/calendar/u/0/embed?src=c_cdqkelouqa82ckeipig58au0es&#64;group.calendar.google.com&amp;ctz=America/New_York">Extra Office Hours</a></p></li>
@@ -606,7 +613,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </div>
 <div class="section" id="contract-checkin">
-<h2>Contract Checkin<a class="headerlink" href="#contract-checkin" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.2. </span>Contract Checkin<a class="headerlink" href="#contract-checkin" title="Permalink to this headline">¶</a></h2>
 <p>Create an issue on your grading contract repo using the following as a template.</p>
 <p>Edit so that it applies to you, including deleting any sections that do not apply to you and assign or tag &#64;brownsarahm on the issue so that I can get to it easily.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am (not) on track to complete my contract as agreed.
@@ -647,7 +654,7 @@ I have the following questions about my grade/grading in this course:
 </div>
 </div>
 <div class="section" id="testing-integration-manager-workflow">
-<h2>Testing Integration manager workflow<a class="headerlink" href="#testing-integration-manager-workflow" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.3. </span>Testing Integration manager workflow<a class="headerlink" href="#testing-integration-manager-workflow" title="Permalink to this headline">¶</a></h2>
 <p>See the <a class="reference external" href="https://introcompsys.github.io/spring2022/notes/2022-04-21.html#prepare-for-next-class">prepare for next class</a> number 1.</p>
 <p><i class="fa-solid fa-circle-question"></i> Why are merge conflicts expected here?</p>
 <ol class="simple">
@@ -662,7 +669,7 @@ I have the following questions about my grade/grading in this course:
 </div>
 </div>
 <div class="section" id="end-of-semester-wrap-up">
-<h2>End of Semester Wrap up<a class="headerlink" href="#end-of-semester-wrap-up" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.4. </span>End of Semester Wrap up<a class="headerlink" href="#end-of-semester-wrap-up" title="Permalink to this headline">¶</a></h2>
 <p>Instead of introducing new big ideas this week, we will reivew and work on tying ideas together.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -707,7 +714,7 @@ D. a cloud protocol for collaborating on code</p>
 </div>
 </div>
 <div class="section" id="prepare-for-next-class">
-<span id="class25prep"></span><h2>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<span id="class25prep"></span><h2><span class="section-number">25.5. </span>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -728,7 +735,7 @@ D. a cloud protocol for collaborating on code</p>
 </div>
 </div>
 <div class="section" id="more-practice">
-<span id="class25practice"></span><h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<span id="class25practice"></span><h2><span class="section-number">25.6. </span>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <ul class="simple">
@@ -747,9 +754,9 @@ D. a cloud protocol for collaborating on code</p>
 </div>
 </div>
 <div class="section" id="questions-after-class">
-<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">25.7. </span>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
-<h3>What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?<a class="headerlink" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">25.7.1. </span>What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?<a class="headerlink" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other" title="Permalink to this headline">¶</a></h3>
 <div class="toggle docutils container">
 <p>Feature-wise they’re relatively comparable, they all do core git and provide hosting.  The details of features are somewhat different.  The deciding factor though, usually comes down to price and/or a moral position on GitHub being owned by Microsoft and having US Immigration and Customs Enforcement (ICE) as a customer.</p>
 </div>
@@ -781,7 +788,21 @@ D. a cloud protocol for collaborating on code</p>
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2022-04-21.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">24. </span>Systems Programming and threading</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../activities/kwl.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">KWL Chart</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
