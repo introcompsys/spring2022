@@ -191,14 +191,6 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [documentation ecosystem of a language other than python](../notes/2022-03-01)
   - prepare
   - graded
-* - shell_scripting.md
-  - [Basic Shell Scripting](../notes/2022-03-03)
-  - prepare
-  - graded
-* - remote_server.md
-  - [How to access and work on a remote server](../notes/2022-03-08)
-  - prepare
-  - graded
 * - octal.md
   - [pracitce with octal numbers in file permissions](../notes/2022-03-08)
   - practice
@@ -206,10 +198,6 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
 * - hpc.md
   - [reflect on HPC systems](../notes/2022-03-08)
   - practice
-  - graded
-* - ssh_basics.md
-  - [Creating ssh keys and using them](../notes/2022-03-10)
-  - prepare
   - graded
 * - ide.md
   - [featrures in most used ide](../notes/2022-03-24)
