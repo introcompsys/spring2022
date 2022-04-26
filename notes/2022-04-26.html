@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How does this all come together? &#8212; Introduction to Computer Systems</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/course_admonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction to Computer Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   About this Site
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/index.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/about.html">
+   Basic Facts
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/tools.html">
+   Tools and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/grading.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/policies.html">
+   Grading Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_resources.html">
+   Support
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/uri_statements.html">
+   General URI Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus/communication.html">
+   Office Hours &amp; Comms
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-25.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-01-27.html">
+   2. How does learning and knowledge work in computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-01.html">
+   3. How do I use git offline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-03.html">
+   4. Why Do I Need to Use a terminal?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-08.html">
+   5. Review and Abstraction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-10.html">
+   6. Survey of Hardware
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-15.html">
+   7. What actually
+   <em>
+    is
+   </em>
+   git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-17.html">
+   8. How does git work?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-22.html">
+   9. How do hashes work in git?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-02-24.html">
+   10. How can git help me?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-01.html">
+   11. How do we build Documentation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-03.html">
+   12. Shell Scripting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-08.html">
+   13. How can I work on a remote server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-10.html">
+   14. How does ssh really work? how can I be more secure?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-24.html">
+   15. What is an IDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-28.html">
+   16. How do we pick programming languages?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-03-31.html">
+   17. What happens when I build code in C?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-05.html">
+   18. Why is the object file not human readable?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-07.html">
+   19. How do represent non integer numbers?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-12.html">
+   20. How can we use logical operations?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-14.html">
+   22. What
+   <em>
+    is
+   </em>
+   a computer?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-19.html">
+   23. How do clocks impact computing?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2022-04-21.html">
+   24. Systems Programming and threading
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Activities
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/kwl.html">
+   KWL Chart
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/prepare.html">
+   Prepare for the next class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/practice.html">
+   More Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/explore.html">
+   Deeper Explorations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../activities/projects.html">
+   Project Information
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/syllabus.html">
+   Syllabus and Grading FAQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq/github.html">
+   Git and GitHub
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/languages.html">
+   Language Specific References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/cheatsheet.html">
+   Cheatsheet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/tips.html">
+   General Tips and Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/learning.html">
+   How to Study in this class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/gettinghelp.html">
+   Getting Help with Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/organization.html">
+   Getting Organized for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
+   Advice from Dr. Brown's Data Science Students
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/notes/2022-04-26.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notes/2022-04-26.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/introcompsys/spring2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/introcompsys/spring2022/issues/new?title=Issue%20on%20page%20%2Fnotes/2022-04-26.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/introcompsys/spring2022/edit/main/notes/2022-04-26.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/introcompsys/spring2022/main?urlpath=tree/notes/2022-04-26.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics-and-grading">
+   Logistics and Grading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contract-checkin">
+   Contract Checkin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-integration-manager-workflow">
+   Testing Integration manager workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-semester-wrap-up">
+   End of Semester Wrap up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
+     What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>How does this all come together?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistics-and-grading">
+   Logistics and Grading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contract-checkin">
+   Contract Checkin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-integration-manager-workflow">
+   Testing Integration manager workflow
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#end-of-semester-wrap-up">
+   End of Semester Wrap up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-for-next-class">
+   Prepare for next class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-practice">
+   More Practice
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-after-class">
+   Questions After Class
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
+     What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-does-this-all-come-together">
+<h1>How does this all come together?<a class="headerlink" href="#how-does-this-all-come-together" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="section" id="logistics-and-grading">
+<h2>Logistics and Grading<a class="headerlink" href="#logistics-and-grading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>I’m a little behind on feedback, will catch up</p></li>
+<li><p><a class="reference external" href="https://calendar.google.com/calendar/u/0/embed?src=c_cdqkelouqa82ckeipig58au0es&#64;group.calendar.google.com&amp;ctz=America/New_York">Extra Office Hours</a></p></li>
+<li><p>Zoom link is on slack to keep it private</p></li>
+<li><p>To be able to revise, work must be submitted by <strong>May 5 at 4pm</strong>. Feedback will be by afternoon May 6.</p></li>
+<li><p>All final work must be submitted by <strong>May 10</strong>  I will do final grading on May 11.</p></li>
+</ul>
+</div>
+<div class="section" id="contract-checkin">
+<h2>Contract Checkin<a class="headerlink" href="#contract-checkin" title="Permalink to this headline">¶</a></h2>
+<p>Create an issue on your grading contract repo using the following as a template.</p>
+<p>Edit so that it applies to you, including deleting any sections that do not apply to you and assign or tag &#64;brownsarahm on the issue so that I can get to it easily.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am (not) on track to complete my contract as agreed.
+
+
+I plan to (catch up/ revise my contract / take an incomplete).
+
+To revise my contract I will:
+&lt;!-- consultaiton is optional --&gt;
+- [ ] attend office hours to discuss options
+- [ ] submit the revised contract as PR by the contract revision deadeline of May 2.
+
+
+To catch up, I will:
+- [ ] tag @brownsarahm in all of my open PRs by 5pm today
+- [ ] attend office hour on (dates)
+- [ ] complete (items) by Thursday at 5pm
+- [ ] complete (items) by May 3rd at 5pm
+- [ ] complete (items) by May 5 at 4pm
+- [ ] complete (items) by May 10
+
+To complete work after accepting an Incomplete grade I will:
+- [ ] complete all activities in my contract by (date)
+
+I have the following questions about my grade/grading in this course:
+
+- [ ] q1
+- [ ] q2
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The last date to change your contract is May 2</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you do not complete your contract, you will get an incomplete which will be changed when you complete work or you will get a low grade (eg no work/D/F) at the deadline for me to change the incomplete</p>
+</div>
+</div>
+<div class="section" id="testing-integration-manager-workflow">
+<h2>Testing Integration manager workflow<a class="headerlink" href="#testing-integration-manager-workflow" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="https://introcompsys.github.io/spring2022/notes/2022-04-21.html#prepare-for-next-class">prepare for next class</a> number 1.</p>
+<p><i class="fa-solid fa-circle-question"></i> Why are merge conflicts expected here?</p>
+<ol class="simple">
+<li><p>Resolve the merge conflicts</p></li>
+<li><p>combine work with your partner on a fork</p></li>
+<li><p>make PR to main sites</p></li>
+<li><p>I will be merging and then tag you when you should resovle the merge conflicton your PR</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Merge conflicts <strong>will</strong> happen.  Knowing how to fix them is <strong>very</strong> important. I want you to get practice with it.</p>
+</div>
+</div>
+<div class="section" id="end-of-semester-wrap-up">
+<h2>End of Semester Wrap up<a class="headerlink" href="#end-of-semester-wrap-up" title="Permalink to this headline">¶</a></h2>
+<p>Instead of introducing new big ideas this week, we will reivew and work on tying ideas together.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Answers for all of these questions exist in this site</p>
+</div>
+<p>What does threading do?</p>
+<ul class="simple">
+<li><p>[ ] divide a program into multiple processes</p></li>
+<li><p>[ ] divides a task across multiple computes</p></li>
+<li><p>[ ] divide a process into mutlple parts that are completed separately</p></li>
+</ul>
+<p>Why do we need to lock writing to a global variable when threading a program?</p>
+<ul class="simple">
+<li><p>[ ] otherwise all threads will overwrite incorrectly and only the slowest one will be saved</p></li>
+<li><p>[ ] otherwise their start/finish order can impact the calculation</p></li>
+<li><p>[ ] it is the only way for a variable to be shared across threads</p></li>
+</ul>
+<p>What is git? <em>multiple may apply</em>*</p>
+<p>A. a file system
+B. backup software<br />
+C. a version control system
+D. a cloud protocol for collaborating on code</p>
+<p>Why do we use version control?</p>
+<ul class="simple">
+<li><p>[ ] to have a cloud backup of code</p></li>
+<li><p>[ ] it’s a legacy tool for undoing changes before IDEs could do it</p></li>
+<li><p>[ ] to be able to separate different versions of code</p></li>
+</ul>
+<p>Why floating point instead of fixed point for fractions ?</p>
+<ul class="simple">
+<li><p>[ ] floating point allows for faster calculations</p></li>
+<li><p>[ ] floating point allows more precise representation</p></li>
+<li><p>[ ] floating point allows for representation of a broader range of values</p></li>
+</ul>
+<p>Label and put in order the following steps of building C code: (replace <code class="docutils literal notranslate"><span class="pre">x</span></code> with a number and <code class="docutils literal notranslate"><span class="pre">step</span></code> with the name of that step)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">x</span><span class="o">.</span> <span class="o">**</span><span class="n">step</span><span class="o">**</span> <span class="n">binaries</span> <span class="k">for</span> <span class="n">compiled</span> <span class="n">libraries</span> <span class="ow">is</span> <span class="n">combined</span> <span class="k">with</span> <span class="n">the</span> <span class="n">compiled</span> <span class="n">program</span> <span class="n">code</span>
+<span class="n">x</span><span class="o">.</span> <span class="o">**</span><span class="n">step</span><span class="o">**</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">translated</span> <span class="kn">from</span> <span class="nn">assembly</span> <span class="n">to</span> <span class="n">machine</span> <span class="n">code</span>
+<span class="n">x</span><span class="o">.</span> <span class="o">**</span><span class="n">step</span><span class="o">**</span> <span class="n">code</span> <span class="kn">from</span> <span class="nn">includes</span> <span class="ow">is</span> <span class="n">copied</span> <span class="n">into</span> <span class="n">the</span> <span class="n">file</span>
+<span class="n">x</span><span class="o">.</span> <span class="o">**</span><span class="n">step</span><span class="o">**</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">translated</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">high</span> <span class="n">level</span> <span class="n">language</span> <span class="n">to</span> <span class="n">assembly</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-for-next-class">
+<span id="class25prep"></span><h2>Prepare for next class<a class="headerlink" href="#prepare-for-next-class" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The text in () in these sections is an explanation of <em>why</em> that task is assigned</p>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Review the questions from class today and in <code class="docutils literal notranslate"><span class="pre">review.md</span></code> write a solution and explanation for your confusion for any that you got wrong. If you missed class, write a solution guide for all of the questions in today's notes. (to reinforce concepts and make sure you understand them correctly)</p></li>
+<li><p>Update your KWL chart by adding 2-3 rows about topics you learned about that are not listed. (to review all concepts in class)</p></li>
+<li><p>Add a new, up to date overview of how you think about computing overallto your KWL repo. Mark the one you made at the beginning as &quot;overivew-pre&quot; and this one as &quot;overview-post&quot; either with heading or the file name (to synthesize ideas)</p></li>
+<li><p>Confirm that your jupyterbook works. (we will work with your KWL in class on Thursday)</p></li>
+<li><p>Create PRs to the main sites from the last class's prepare for next class task.  (more GitHub practice)</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="more-practice">
+<span id="class25practice"></span><h2>More Practice<a class="headerlink" href="#more-practice" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>If you’re on track, you can skip the following and Thursday’s More Practice</p></li>
+<li><p>if you are not on track: <strong>today’s and Thursdays will count for two each, but will be more complex and integrate concepts across multiple class sessions</strong></p></li>
+</ul>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<ol class="simple">
+<li><p>Make a table that compares and contrasts the unix file system to git <em>as</em> a file system on at least 5 aspects (eg header + 5 rows) in <code class="docutils literal notranslate"><span class="pre">filesystem.md</span></code>. Based on this, write a definition of a file system generally and how knowing that these are both file systems helps reinforce concepts and improve understanding.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">whypointers.md</span></code> write a blog-post style argument for why understanding pointers as a concept is important for a computer science student even if they will not work directly in a language that uses pointers.  Consider your audience to be a student who is in CSC212 and struggling. Use two examples from this class where we relied on the concept of pointers to explain how something worked.</p></li>
+<li><p>Reflect on how thise course impacts programming/debugging skills in <code class="docutils literal notranslate"><span class="pre">skillup.md</span></code>.  You can write this as how you think your own skill has improved <strong>or</strong> as if you are convincing another student to take this class. Touch on at least three topics.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="questions-after-class">
+<h2>Questions After Class<a class="headerlink" href="#questions-after-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other">
+<h3>What is the industry standard between github/gitlab/bitbucket? is there one that is better than the other?<a class="headerlink" href="#what-is-the-industry-standard-between-github-gitlab-bitbucket-is-there-one-that-is-better-than-the-other" title="Permalink to this headline">¶</a></h3>
+<div class="toggle docutils container">
+<p>Feature-wise they’re relatively comparable, they all do core git and provide hosting.  The details of features are somewhat different.  The deciding factor though, usually comes down to price and/or a moral position on GitHub being owned by Microsoft and having US Immigration and Customs Enforcement (ICE) as a customer.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Professor Sarah M Brown<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
