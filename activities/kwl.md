@@ -265,6 +265,42 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - graded
 * - `hardwaremap.md`
   - [visualize current hardware knowledge](../notes/2022-04-14)
-  - pracite
+  - practice
+  - graded
+* - `systemsprogramming.md`
+  - [learn about systemsvs application programming](../notes/2022-04-19)
+  - prepare
+  - graded
+* - `singlevmultithread.md`
+  - [compare single vs multi threaded program](../notes/2022-04-21)
+  - prepare
+  - graded
+* - `timing.md`
+  - [experiment with timing of operations](../notes/2022-04-19)
+  - practice
+  - graded
+* - `kernelproc.md`
+  - [check your processes](../notes/2022-04-19)
+  - practice
+  - graded
+* - `systeminteraction.md`
+  - [compare systems libraries in multiple languages](../notes/2022-04-21)
+  - practice
+  - graded
+* - `whymultithread.md`
+  - [learn more applications of threads](../notes/2022-04-21)
+  - practice
+  - graded
+* - `review.md`
+  - [review questions from class](../notes/2022-04-26)
+  - prepare
+  - graded
+* - `filesystem.md`
+  - [compare and contrast the two file systems we saw in class](../notes/2022-04-26)
+  - practice
+  - graded
+* - `whypointers.md`
+  - [explain why the concept of pointers is important with examples](../notes/2022-04-26)
+  - practice
   - graded
 ```
