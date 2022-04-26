@@ -303,4 +303,16 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [learn more applications of threads](../notes/2022-04-21)
   - practice
   - graded
+* - `review.md`
+  - [review questions from class](../notes/2022-04-26)
+  - prepare
+  - graded
+* - `filesystem.md`
+  - [compare and contrast the two file systems we saw in class](../notes/2022-04-26)
+  - practice
+  - graded
+* - `whypointers.md`
+  - [explain why the concept of pointers is important with examples](../notes/2022-04-26)
+  - practice
+  - graded
 ```
