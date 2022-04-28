@@ -34,7 +34,7 @@ prep_file_list = sorted(os.listdir('../_prepare/'))
 
 for prep_file in prep_file_list:
     date_str = prep_file[:-3]
-    date_link = '## [' + date_str + '](../notes/' + date_str + ')'
+    date_link = '[' + date_str + '](../notes/' + date_str + ')'
     display(Markdown(date_link))
     display(Markdown('../_prepare/' + prep_file))
 ```
