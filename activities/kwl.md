@@ -303,4 +303,8 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - [explain why the concept of pointers is important with examples](../notes/2022-04-26)
   - practice
   - graded
+* - `skillup.md`
+  - [Reflect on how thise course impacts programming/debugging skills](../notes/2022-04-26)
+  - practice
+  - graded
 ```
