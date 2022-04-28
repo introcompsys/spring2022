@@ -17,8 +17,7 @@ Additionally, if you're going for an "A Creative" grade, map out your projects
 in advance and have a good plan for their execution. This class can really trip
 you up because it will cover concepts you might already know the basics of and
 go just that one step deeper.
-```{epigraph}
-Here is a cool quotation.
+
 
 -- sp 22 student
 ```
