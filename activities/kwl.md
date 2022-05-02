@@ -292,7 +292,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - practice
   - graded
 * - `review.md`
-  - [review questions from class](../notes/2022-04-26)
+  - review questions from class [April 26](../notes/2022-04-26) AND [April 28](../notes/2022-04-28)
   - prepare
   - graded
 * - `filesystem.md`
@@ -301,6 +301,18 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - graded
 * - `whypointers.md`
   - [explain why the concept of pointers is important with examples](../notes/2022-04-26)
+  - practice
+  - graded
+* - `skillup.md`
+  - [Reflect on how thise course impacts programming/debugging skills](../notes/2022-04-26)
+  - practice
+  - graded
+* - `surprisingfacts.md`
+  - [explain contradictions we saw](../notes/2022-04-28)
+  - practice
+  - graded
+* - `projectplanning.md`
+  - [compare languages and git workflows](../notes/2022-04-28)
   - practice
   - graded
 ```
