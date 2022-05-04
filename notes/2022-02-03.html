@@ -377,6 +377,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../resources/testimonials.html">
+   Advice to future students
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference external" href="https://rhodyprog4ds.github.io/BrownFall20/letters/">
    Advice from Dr. Brown's Data Science Students
   </a>
@@ -1201,6 +1206,27 @@ move it to where we “are” sicne we are in the top level directory still.</p>
 <span class="n">README</span><span class="o">.</span><span class="n">md</span>		<span class="n">about</span><span class="o">.</span><span class="n">md</span>		<span class="n">tests</span>
 <span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>		<span class="n">docs</span>
 </pre></div>
+</div>
+<div class="sidebar">
+<p class="sidebar-title">Tab completion</p>
+<p>If we type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">U</span>
+</pre></div>
+</div>
+<p>then it canot tab complete the whole file name we get only</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">Untitled</span>
+</pre></div>
+</div>
+<p>because there are multiple.  If we
+prest tab twice in a row, it will return the list of possible options</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Untitled</span><span class="o">.</span><span class="n">ipynb</span>    <span class="n">Untitled01</span><span class="o">.</span><span class="n">ipynb</span>  <span class="n">Untitled02</span><span class="o">.</span><span class="n">ipynb</span>  
+</pre></div>
+</div>
+<p>and re-seed the input with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">Untitled</span>
+</pre></div>
+</div>
+<p>so we can type whatever else we want to add to pick the one we want.</p>
 </div>
 <p>we can delete them with <code class="docutils literal notranslate"><span class="pre">rm</span></code> and use <code class="docutils literal notranslate"><span class="pre">*</span></code> to delet them all.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="n">Untitled</span><span class="o">*</span>
