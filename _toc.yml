@@ -61,6 +61,7 @@ parts:
     - file: resources/learning
     - file: resources/gettinghelp
     - file: resources/organization
+    - file: resources/testimonials
     - url: https://rhodyprog4ds.github.io/BrownFall20/letters/
       title: Advice from Dr. Brown's Data Science Students
 
