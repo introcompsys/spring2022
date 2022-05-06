@@ -4,7 +4,7 @@
 
 1. Never commit to main directly
 2. always remember to do you your prepare for next class and more practice in a well named branch such as class-1 or the date.
-3. work on your porjects/deeper explorations erly
+3. work on your projects/deeper explorations early if you're working for above an A
 4. go to office hours frequently to ensure that you understand the topic thoroughly
 5. make sure that the professor approves your idea for a project/deeper exploration not only to prevent you from wasting time if your idea won't count, but also becasue the professor might have some ideas that you can use to improve your idea.
 6. Ask questions about the material if you are lost because things from previous lessons will come back up later in the year so it is important that you know the fundamentals.
