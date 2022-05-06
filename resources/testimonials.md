@@ -1,4 +1,7 @@
 # Advice to future students
+
+## Quick Tips
+
 1. Never commit to main directly
 2. always remember to do you your prepare for next class and more practice in a well named branch such as class-1 or the date.
 3. work on your porjects/deeper explorations erly
