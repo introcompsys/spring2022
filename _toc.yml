@@ -38,6 +38,8 @@ parts:
       - file: notes/2022-04-14
       - file: notes/2022-04-19
       - file: notes/2022-04-21
+      - file: notes/2022-04-26
+      - file: notes/2022-04-28
 
   - caption: Activities
     chapters:
@@ -59,6 +61,7 @@ parts:
     - file: resources/learning
     - file: resources/gettinghelp
     - file: resources/organization
+    - file: resources/testimonials
     - url: https://rhodyprog4ds.github.io/BrownFall20/letters/
       title: Advice from Dr. Brown's Data Science Students
 
