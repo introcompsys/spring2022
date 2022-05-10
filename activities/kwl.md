@@ -104,7 +104,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - type (prepare/practice)
   - zone
   - date
-* - README
+* - README.md
   - the chart, (or usage)
   - default
   - all
