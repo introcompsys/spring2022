@@ -28,3 +28,20 @@ go just that one step deeper.
 
 -- sp 22 student
 ```
+
+```{epigraph}
+Attend every class. Don't be afraid to raise your hand and ask questions if you don't 
+understand or if you want to find out more about something. Be active and contribute 
+to the cheat sheet and glossary, as this will help you memorize the class material 
+and make you a pro. I strongly recommend choosing an A. In this class, projects are 
+of your choice, and thus you have a variety of topics that you can choose. You can pick 
+anything you like, and then the project is not that hard. I picked the things I wanted 
+to know more about it, and the assignment got much easier. I truly liked finding out 
+those things and doing the research. Getting an A wasn't easy, but it's not that bad 
+at all. You have a lot of freedom in this class and you can make the schedule that works 
+for you. And remember, you can always change your grade later if you feel like falling behind. 
+Don't worry! And Professor Brown is awesome, also during office hours, so don't hesitate to ask for help.
+
+
+-- sp 22 student
+```
