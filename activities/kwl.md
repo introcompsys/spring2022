@@ -206,7 +206,7 @@ After your KWL repo is a jupyterbook, you may want to move your chart into a cha
   - 2022-03-01
 * - templating.md
   - [how template based engines work](../notes/2022-03-01)
-  - prepare
+  - practice
   - graded
   - 2022-03-01
 * - docs.md
