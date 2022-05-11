@@ -128,5 +128,8 @@ floating point number
   
 fixed point number
   the concept that the decimal point does not move in the number (the example in the notes where if we split up a bit in the middle and one half was for the decimal and the other half was for the whole number. Cannot represent as many numbers as a floating point number.
+  
+Threading
+  Threading is when a process spreads its computational cost across multiple cores in order to increase the speed in which a process completes or allow a process to accomplish multiple different tasks at one time.
 
 ```
